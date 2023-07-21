@@ -6,6 +6,15 @@
             "id": "fca7593b-4457-4afe-b2dd-4b596f4b5285",
             "actions": [
                 {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "630bd919-2cf2-4417-a811-e2bf82951c5a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Movement",
                     "type": "Value",
                     "id": "72b34a7e-55aa-452b-96d8-dcc66f2068a5",
@@ -83,6 +92,109 @@
                 {
                     "name": "right",
                     "id": "3e072886-8677-4615-8fca-7d6ed658a715",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f192981e-9f42-49ed-9d00-4c94235c42df",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Ship",
+            "id": "55fbb24f-45c4-46f1-a3b1-72ab33288b6a",
+            "actions": [
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "4982f47b-748b-4dd9-a180-214e0ef5f48e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "ceebbacc-b1f2-48bb-be90-3d129831319e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ce8c98c0-ca30-40e6-a69d-f92f32af315f",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "a017e810-66a7-4c5c-9333-d89fcddce8d6",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "f39a70b9-1adf-4af5-9b92-3f11aae8451d",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "ef608f23-2af9-4a1b-86e7-d164f344934e",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "398375f5-f832-4db8-80c4-1841a63f5831",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "5b1105e4-462e-45d2-a777-0e38fbca0937",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",

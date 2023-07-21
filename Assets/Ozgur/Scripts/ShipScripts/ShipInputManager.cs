@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerInputManager : MonoBehaviour
+public class ShipInputManager : MonoBehaviour
 {
     [Header("Sensitivity")]
     public float mouseSensitivity = 0.2f;
@@ -9,21 +9,19 @@ public class PlayerInputManager : MonoBehaviour
 
     public Vector2 lookInput;
     public Vector2 moveInput;
-    public bool isRunKey;
 
     private void Awake()
     {
         pia = new PlayerInputActions();
-        pia.Player.Enable();
+        pia.Ship.Enable();
     }
     
     void Update()
     {
-        lookInput = pia.Player.Look.ReadValue<Vector2>();
+        lookInput = pia.Ship.Look.ReadValue<Vector2>();
         lookInput.x *= mouseSensitivity;
         lookInput.y *= mouseSensitivity;
         
-        moveInput = pia.Player.Movement.ReadValue<Vector2>();
-        isRunKey = pia.Player.Run.IsPressed();
+        moveInput = pia.Ship.Movement.ReadValue<Vector2>();
     }
 }

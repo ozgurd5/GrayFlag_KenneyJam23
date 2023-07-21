@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1584465f8e2a6fe4ca1fb03aad682b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSensitivity: 0.2
+  lookInput: {x: 0, y: 0}
   moveInput: {x: 0, y: 0}
   isRunKey: 0
 --- !u!114 &5592680926233794167
@@ -112,7 +114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSpeed: 5
   runningSpeed: 10
-  mouseSensitivity: 5
   currentRotation: {x: 0, y: 0, z: 0}
 --- !u!136 &7753814635837173998
 CapsuleCollider:

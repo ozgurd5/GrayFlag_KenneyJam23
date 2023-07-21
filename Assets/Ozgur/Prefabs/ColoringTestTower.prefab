@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4025634813429309546}
   - component: {fileID: 2525279380242347736}
   - component: {fileID: -8768234366384250686}
+  - component: {fileID: 8703954832878328380}
   m_Layer: 0
   m_Name: ColoringTestTower
   m_TagString: Untagged
@@ -108,3 +109,25 @@ MonoBehaviour:
   greenMaterialIndexes: 0100000005000000
   blueMaterial: {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
   blueMaterialIndexes: 00000000
+--- !u!64 &8703954832878328380
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3861348565581996801}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1309463313950424264, guid: f0bbde7c0e40ccc4da4b2cf2aebd312c, type: 3}

@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Vector3 offset;
+    [Header("Follow")]
+    [SerializeField] private Transform followTargetTransform;
+    [SerializeField] private Vector3 followOffset;
 
-    private Transform playerTransforn;
-
-    private void Awake()
-    {
-        playerTransforn = GameObject.Find("Player").transform;
-    }
+    [Header("Look At")]
+    [SerializeField] private bool canLookAt;
+    [SerializeField] private Transform lookAtTargetTransform;
 
     private void Update()
     {
-        transform.position = playerTransforn.position + offset;
+        transform.position = followTargetTransform.position + followOffset;
+        if (canLookAt) transform.LookAt(lookAtTargetTransform);
     }
 }

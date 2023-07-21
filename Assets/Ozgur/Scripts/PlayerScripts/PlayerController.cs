@@ -1,4 +1,3 @@
-using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -7,7 +6,6 @@ public class PlayerController : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private float walkingSpeed = 3f;
     [SerializeField] private float runningSpeed = 10f;
-    [SerializeField] private float mouseSensitivity = 5.0f;
 
     private PlayerStateData psd;
     private PlayerInputManager pim;
@@ -36,9 +34,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleLooking()
     {
-        //TODO: integrate with input system and moving direction
-        currentRotation.x -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        currentRotation.y += Input.GetAxis("Mouse X") * mouseSensitivity;
+        currentRotation.x -= pim.lookInput.y;
+        currentRotation.y += pim.lookInput.x;
         
         currentRotation.x = Mathf.Clamp(currentRotation.x, -90f, 90f);
         cameraTransform.localRotation = Quaternion.Euler(currentRotation);
