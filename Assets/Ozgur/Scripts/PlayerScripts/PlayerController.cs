@@ -1,3 +1,4 @@
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -11,8 +12,9 @@ public class PlayerController : MonoBehaviour
     private PlayerStateData psd;
     private PlayerInputManager pim;
     private Rigidbody rb;
+    private Transform cameraTransform;
 
-    private Vector3 currentRotation;
+    public Vector3 currentRotation;
     private Vector3 movingDirection;
     private float movingSpeed;
 
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
         psd = GetComponent<PlayerStateData>();
         pim = GetComponent<PlayerInputManager>();
         rb = GetComponent<Rigidbody>();
+        cameraTransform = GameObject.Find("PlayerCamera").transform;
     }
     
     void Start()
@@ -36,9 +39,12 @@ public class PlayerController : MonoBehaviour
         //TODO: integrate with input system and moving direction
         currentRotation.x -= Input.GetAxis("Mouse Y") * mouseSensitivity;
         currentRotation.y += Input.GetAxis("Mouse X") * mouseSensitivity;
-        currentRotation.x = Mathf.Clamp(currentRotation.x, -90f, 90f);
         
-        transform.localRotation = Quaternion.Euler(currentRotation);
+        currentRotation.x = Mathf.Clamp(currentRotation.x, -90f, 90f);
+        cameraTransform.localRotation = Quaternion.Euler(currentRotation);
+        
+        //currentRotation.x = 0f; //very stupid that it broke the camera's x rotation
+        transform.localRotation = Quaternion.Euler(new Vector3(0f, currentRotation.y, 0f));
     }
     
     private void CalculateMovingDirection()
