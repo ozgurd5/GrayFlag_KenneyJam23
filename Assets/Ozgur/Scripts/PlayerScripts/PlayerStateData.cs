@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// <para>Stores player state data</para>
-/// <para>Works for each player</para>
-/// </summary>
 public class PlayerStateData : MonoBehaviour
 {
     public enum PlayerMainState
