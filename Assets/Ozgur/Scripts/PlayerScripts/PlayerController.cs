@@ -26,11 +26,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cameraTransform = GameObject.Find("PlayerCamera").transform;
     }
-    
-    void Start()
-    {
-        currentRotation = transform.localRotation.eulerAngles;
-    }
 
     private void HandleLooking()
     {
@@ -82,6 +77,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
+        
         DecideIdleOrMovingStates();
         DecideWalkingOrRunningStates();
         HandleLooking();
@@ -89,6 +86,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
+        
         CalculateMovingDirection();
         HandleMovement();
     }

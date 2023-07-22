@@ -4,7 +4,8 @@ public class PlayerStateData : MonoBehaviour
 {
     public enum PlayerMainState
     {
-        NormalState = 0,
+        NormalState,
+        ShipControllingState,
     }
 
     [Header("Main State")]

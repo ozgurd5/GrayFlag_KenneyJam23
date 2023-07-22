@@ -1,4 +1,4 @@
-using Unity.Mathematics;
+using Cinemachine;
 using UnityEngine;
 
 public class ShipController : MonoBehaviour
@@ -6,10 +6,13 @@ public class ShipController : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private float normalSailSpeed = 3f;
     [SerializeField] private float fullSailSpeed = 10f;
+
+    private bool isShipControlled;
     
     private ShipInputManager sim;
     private Transform cameraFollowTransform;
-    public Transform cameraLookAtTransform;
+    private Transform cameraLookAtTransform;
+    private CinemachineVirtualCamera shipCamera;
 
     private Vector3 movingDirection;
     private float movingSpeed;
@@ -22,6 +25,7 @@ public class ShipController : MonoBehaviour
         sim = GetComponent<ShipInputManager>();
         cameraFollowTransform = transform.Find("ShipCameraFollow");
         cameraLookAtTransform = transform.Find("ShipCameraLookAt");
+        shipCamera = GameObject.Find("ShipCamera").GetComponent<CinemachineVirtualCamera>();
     }
 
     private void HandleLooking()
@@ -38,11 +42,23 @@ public class ShipController : MonoBehaviour
     
     private void Update()
     {
-        HandleLooking();
+        if (isShipControlled) HandleLooking();
     }
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (isShipControlled) HandleMovement();
+    }
+
+    public void TakeControl()
+    {
+        isShipControlled = true;
+        shipCamera.enabled = true;
+    }
+
+    private void DropControl()
+    {
+        isShipControlled = false;
+        shipCamera.enabled = false;
     }
 }
