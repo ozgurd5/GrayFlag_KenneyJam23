@@ -44,10 +44,11 @@ public class CrosshairManager : MonoBehaviour
         if (!Physics.Raycast(crosshairRay, out crosshairHit, range))
         {
             isLookingAtInteractable = false;
+            interactableTag = string.Empty;
             return;
         }
 
-        isLookingAtInteractable = crosshairHit.collider.CompareTag("ShipWheel");
+        isLookingAtInteractable = crosshairHit.collider.CompareTag("ShipWheel") || crosshairHit.collider.CompareTag("Enemy");
 
         if (isLookingAtInteractable) interactableTag = crosshairHit.collider.tag;
     }

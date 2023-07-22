@@ -1,12 +1,15 @@
+using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Assign")]
-    [SerializeField] private float walkingSpeed = 3f;
+    [SerializeField] private float walkingSpeed = 5f;
     [SerializeField] private float runningSpeed = 10f;
     [SerializeField] private float jumpSpeed = 10f;
+    [SerializeField] private float acceleration = 10f;
+    [SerializeField] private float deceleration = 20f;
 
     private PlayerStateData psd;
     private PlayerInputManager pim;
@@ -16,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool isJumpCondition;
     private Vector3 currentRotation;
     private Vector3 movingDirection;
-    private float movingSpeed;
+    public float movingSpeed;
 
     private void Awake()
     {
@@ -45,6 +48,16 @@ public class PlayerController : MonoBehaviour
     {
         movingDirection = transform.right * pim.moveInput.x + transform.forward * pim.moveInput.y;
         movingDirection.y = 0f;
+    }
+
+    private void HandleMovingSpeed()
+    {
+        //delete speed thing in walking running decide
+        
+        if (psd.isWalking) StartCoroutine(IncreaseMovingSpeed(walkingSpeed));
+        else if (psd.isRunning) StartCoroutine(IncreaseMovingSpeed(runningSpeed));
+        
+        else StartCoroutine(DecreaseMovingSpeed(0f));
     }
 
     private void HandleMovement()
@@ -106,5 +119,23 @@ public class PlayerController : MonoBehaviour
         CalculateMovingDirection();
         HandleMovement();
         HandleJump();
+    }
+    
+    private IEnumerator IncreaseMovingSpeed(float movingSpeedToReach)
+    {
+        while (movingSpeed < movingSpeedToReach)
+        {
+            movingSpeed += acceleration * Time.deltaTime;
+            yield return null;
+        }
+    }
+    
+    private IEnumerator DecreaseMovingSpeed(float movingSpeedToReach)
+    {
+        while (movingSpeed > movingSpeedToReach)
+        {
+            movingSpeed -= deceleration * Time.deltaTime;
+            yield return null;
+        }
     }
 }
