@@ -11,6 +11,7 @@ public class PlayerInputManager : MonoBehaviour
     public Vector2 moveInput;
     public bool isRunKey;
     public bool isInteractKeyDown;
+    public bool isJumpKeyDown;
 
     private void Awake()
     {
@@ -27,5 +28,6 @@ public class PlayerInputManager : MonoBehaviour
         moveInput = pia.Player.Movement.ReadValue<Vector2>();
         isRunKey = pia.Player.Run.IsPressed();
         isInteractKeyDown = pia.Player.Interact.WasPressedThisFrame();
+        isJumpKeyDown = pia.Player.Jump.WasPressedThisFrame();
     }
 }

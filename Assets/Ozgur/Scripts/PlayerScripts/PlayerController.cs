@@ -6,13 +6,15 @@ public class PlayerController : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private float walkingSpeed = 3f;
     [SerializeField] private float runningSpeed = 10f;
+    [SerializeField] private float jumpSpeed = 10f;
 
     private PlayerStateData psd;
     private PlayerInputManager pim;
     private Rigidbody rb;
     private Transform cameraTransform;
 
-    public Vector3 currentRotation;
+    private bool isJumpCondition;
+    private Vector3 currentRotation;
     private Vector3 movingDirection;
     private float movingSpeed;
 
@@ -51,6 +53,18 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(movingDirection.x, rb.velocity.y, movingDirection.z);
     }
 
+    private void CheckJumpCondition()
+    {
+        if (psd.isGrounded && pim.isJumpKeyDown) isJumpCondition = true;
+    }
+    
+    private void HandleJump()
+    {
+        if (!isJumpCondition) return;
+        rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
+        isJumpCondition = false;
+    }
+
     private void DecideIdleOrMovingStates()
     {
         Vector2 velocityXZ = new Vector2(rb.velocity.x, rb.velocity.z);
@@ -82,6 +96,7 @@ public class PlayerController : MonoBehaviour
         DecideIdleOrMovingStates();
         DecideWalkingOrRunningStates();
         HandleLooking();
+        CheckJumpCondition();
     }
 
     private void FixedUpdate()
@@ -90,5 +105,6 @@ public class PlayerController : MonoBehaviour
         
         CalculateMovingDirection();
         HandleMovement();
+        HandleJump();
     }
 }
