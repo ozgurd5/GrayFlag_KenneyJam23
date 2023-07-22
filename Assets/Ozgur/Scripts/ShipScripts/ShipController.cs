@@ -22,6 +22,7 @@ public class ShipController : MonoBehaviour
     private Transform cameraFollowTransform;
     private Transform cameraLookAtTransform;
     private CinemachineVirtualCamera shipCamera;
+    private Rigidbody rb;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class ShipController : MonoBehaviour
         cameraFollowTransform = transform.Find("ShipCameraFollow");
         cameraLookAtTransform = transform.Find("ShipCameraLookAt");
         shipCamera = GameObject.Find("ShipCamera").GetComponent<CinemachineVirtualCamera>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void HandleLooking()
@@ -79,7 +81,9 @@ public class ShipController : MonoBehaviour
             rotationSpeed = math.min(rotationSpeed, maxRotationSpeed);
         }
 
-        transform.Translate(Vector3.forward * movingSpeed);
+        rb.velocity = transform.forward * movingSpeed;
+        Debug.Log(rb.velocity);
+        //transform.Translate(Vector3.forward * movingSpeed);
         transform.Rotate(0f, sim.moveInput.x * rotationSpeed, 0f);
     }
 
