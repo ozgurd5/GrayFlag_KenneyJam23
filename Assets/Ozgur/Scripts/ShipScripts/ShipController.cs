@@ -56,7 +56,7 @@ public class ShipController : MonoBehaviour
         shipCamera.enabled = true;
     }
 
-    private void DropControl()
+    public void DropControl()
     {
         isShipControlled = false;
         shipCamera.enabled = false;

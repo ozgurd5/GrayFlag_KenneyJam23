@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 14128944976074855}
   m_Layer: 0
   m_Name: Wheel
-  m_TagString: Untagged
+  m_TagString: ShipWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -973,7 +973,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalSailSpeed: 3
   fullSailSpeed: 10
-  cameraLookAtTransform: {fileID: 0}
 --- !u!114 &8343566615419108411
 MonoBehaviour:
   m_ObjectHideFlags: 0
