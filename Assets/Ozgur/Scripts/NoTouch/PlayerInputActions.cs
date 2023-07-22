@@ -169,10 +169,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Movement"",
-                    ""type"": ""Value"",
+                    ""name"": ""SailUp"",
+                    ""type"": ""Button"",
                     ""id"": ""ceebbacc-b1f2-48bb-be90-3d129831319e"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SailDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""ecd6f861-f9d1-4953-b5a5-cec9833a1736"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rotation"",
+                    ""type"": ""Value"",
+                    ""id"": ""44fe01df-1f07-4e19-b4d4-fc248dde96ee"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -191,57 +209,57 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Keyboard"",
-                    ""id"": ""a017e810-66a7-4c5c-9333-d89fcddce8d6"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""f39a70b9-1adf-4af5-9b92-3f11aae8451d"",
+                    ""name"": """",
+                    ""id"": ""6612bdbf-2a5b-4205-9f53-b89007344c06"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""SailUp"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""ef608f23-2af9-4a1b-86e7-d164f344934e"",
+                    ""name"": """",
+                    ""id"": ""65998614-2258-4fa4-9043-559697cb8064"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""SailDown"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""398375f5-f832-4db8-80c4-1841a63f5831"",
+                    ""name"": ""Rotation"",
+                    ""id"": ""de77f26f-47bb-47d0-a373-f943e128f37f"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""07084e34-6aed-468c-9552-3b1ae2df89e3"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""5b1105e4-462e-45d2-a777-0e38fbca0937"",
+                    ""name"": ""Positive"",
+                    ""id"": ""b3103494-aef4-41fe-aa7b-ccbc3d354b33"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -259,7 +277,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Ship
         m_Ship = asset.FindActionMap("Ship", throwIfNotFound: true);
         m_Ship_Look = m_Ship.FindAction("Look", throwIfNotFound: true);
-        m_Ship_Movement = m_Ship.FindAction("Movement", throwIfNotFound: true);
+        m_Ship_SailUp = m_Ship.FindAction("SailUp", throwIfNotFound: true);
+        m_Ship_SailDown = m_Ship.FindAction("SailDown", throwIfNotFound: true);
+        m_Ship_Rotation = m_Ship.FindAction("Rotation", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -392,13 +412,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Ship;
     private List<IShipActions> m_ShipActionsCallbackInterfaces = new List<IShipActions>();
     private readonly InputAction m_Ship_Look;
-    private readonly InputAction m_Ship_Movement;
+    private readonly InputAction m_Ship_SailUp;
+    private readonly InputAction m_Ship_SailDown;
+    private readonly InputAction m_Ship_Rotation;
     public struct ShipActions
     {
         private @PlayerInputActions m_Wrapper;
         public ShipActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Look => m_Wrapper.m_Ship_Look;
-        public InputAction @Movement => m_Wrapper.m_Ship_Movement;
+        public InputAction @SailUp => m_Wrapper.m_Ship_SailUp;
+        public InputAction @SailDown => m_Wrapper.m_Ship_SailDown;
+        public InputAction @Rotation => m_Wrapper.m_Ship_Rotation;
         public InputActionMap Get() { return m_Wrapper.m_Ship; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -411,9 +435,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
-            @Movement.started += instance.OnMovement;
-            @Movement.performed += instance.OnMovement;
-            @Movement.canceled += instance.OnMovement;
+            @SailUp.started += instance.OnSailUp;
+            @SailUp.performed += instance.OnSailUp;
+            @SailUp.canceled += instance.OnSailUp;
+            @SailDown.started += instance.OnSailDown;
+            @SailDown.performed += instance.OnSailDown;
+            @SailDown.canceled += instance.OnSailDown;
+            @Rotation.started += instance.OnRotation;
+            @Rotation.performed += instance.OnRotation;
+            @Rotation.canceled += instance.OnRotation;
         }
 
         private void UnregisterCallbacks(IShipActions instance)
@@ -421,9 +451,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
-            @Movement.started -= instance.OnMovement;
-            @Movement.performed -= instance.OnMovement;
-            @Movement.canceled -= instance.OnMovement;
+            @SailUp.started -= instance.OnSailUp;
+            @SailUp.performed -= instance.OnSailUp;
+            @SailUp.canceled -= instance.OnSailUp;
+            @SailDown.started -= instance.OnSailDown;
+            @SailDown.performed -= instance.OnSailDown;
+            @SailDown.canceled -= instance.OnSailDown;
+            @Rotation.started -= instance.OnRotation;
+            @Rotation.performed -= instance.OnRotation;
+            @Rotation.canceled -= instance.OnRotation;
         }
 
         public void RemoveCallbacks(IShipActions instance)
@@ -451,6 +487,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IShipActions
     {
         void OnLook(InputAction.CallbackContext context);
-        void OnMovement(InputAction.CallbackContext context);
+        void OnSailUp(InputAction.CallbackContext context);
+        void OnSailDown(InputAction.CallbackContext context);
+        void OnRotation(InputAction.CallbackContext context);
     }
 }

@@ -3611,12 +3611,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9578e001527bfe45b6e3846a0f99b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.5
-  reverseSpeed: 0.1
-  acceleration: 0.2
-  deceleration: 0.5
-  minRotationSpeed: 0.2
-  maxRotationSpeed: 0.5
+  force: 0
+  maxSpeed: 30
+  reverseSpeed: 5
+  acceleration: 10
+  deceleration: 15
+  minRotationSpeed: 0.5
+  maxRotationSpeed: 1
   movingSpeed: 0
   rotationSpeed: 0
 --- !u!114 &8343566615419108411
