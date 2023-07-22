@@ -13,6 +13,8 @@ public class PlayerInputManager : MonoBehaviour
     public bool isInteractKeyDown;
     public bool isJumpKeyDown;
     public bool isAttackKeyDown;
+    public bool isHookKeyDown;
+    public bool isHookKeyUp;
 
     private void Awake()
     {
@@ -31,5 +33,7 @@ public class PlayerInputManager : MonoBehaviour
         isInteractKeyDown = pia.Player.Interact.WasPressedThisFrame();
         isJumpKeyDown = pia.Player.Jump.WasPressedThisFrame();
         isAttackKeyDown = pia.Player.Attack.WasPressedThisFrame();
+        isHookKeyDown = pia.Player.Hook.WasPressedThisFrame();
+        isHookKeyUp = pia.Player.Hook.WasReleasedThisFrame();
     }
 }

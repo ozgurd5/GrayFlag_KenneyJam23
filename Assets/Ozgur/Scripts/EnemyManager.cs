@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -16,8 +15,8 @@ public class EnemyManager : MonoBehaviour
     public void GetHit(Vector3 playerTransformForward)
     {
         health -= 3;
-        
         rb.AddForce(knockbackForce * playerTransformForward, ForceMode.Force);
+        CheckForDeath();
     }
 
     private void CheckForDeath()
