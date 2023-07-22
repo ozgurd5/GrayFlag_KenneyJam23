@@ -971,8 +971,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9578e001527bfe45b6e3846a0f99b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSailSpeed: 3
-  fullSailSpeed: 10
+  maxSpeed: 0.5
+  reverseSpeed: 0.1
+  acceleration: 0.2
+  deceleration: 0.5
 --- !u!114 &8343566615419108411
 MonoBehaviour:
   m_ObjectHideFlags: 0
