@@ -4,11 +4,14 @@ public class ShipInputManager : MonoBehaviour
 {
     [Header("Sensitivity")]
     public float mouseSensitivity = 0.2f;
-    
-    private PlayerInputActions pia;
 
+    [Header("Info - No touch")]
     public Vector2 lookInput;
-    public Vector2 moveInput;
+    public float rotateInput;
+    public bool isSailUpKeyDown;
+    public bool isSailDownKeyDown;
+
+    private PlayerInputActions pia;
 
     private void Awake()
     {
@@ -21,7 +24,10 @@ public class ShipInputManager : MonoBehaviour
         lookInput = pia.Ship.Look.ReadValue<Vector2>();
         lookInput.x *= mouseSensitivity;
         lookInput.y *= mouseSensitivity;
-        
-        moveInput = pia.Ship.Movement.ReadValue<Vector2>();
+
+        isSailUpKeyDown = pia.Ship.SailUp.WasPressedThisFrame();
+        isSailDownKeyDown = pia.Ship.SailDown.WasPressedThisFrame();
+
+        rotateInput = pia.Ship.Rotation.ReadValue<float>();
     }
 }
