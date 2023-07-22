@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Cinemachine;
 using Unity.Mathematics;
@@ -5,6 +6,9 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
+    public static event Action<SailMode> OnSailChanged; 
+    public static bool isShipControlled;
+    
     [Header("Assign - Movement")]
     [SerializeField] private float fullSailSpeed = 40f;
     [SerializeField] private float halfSailSpeed = 30f;
@@ -19,19 +23,17 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float fullSailRotationSpeed = 0.5f;
 
     [Header("Info - No touch")]
-    [SerializeField] private SailMode currentSailMode;
+    public SailMode currentSailMode;
     [SerializeField] private float movingSpeed;
     [SerializeField] private float rotationSpeed;
-    
-    private bool isShipControlled;
-    
+
     private ShipInputManager sim;
     private Transform cameraFollowTransform;
     private Transform cameraLookAtTransform;
     private CinemachineVirtualCamera shipCamera;
     private Rigidbody rb;
     
-    private enum SailMode
+    public enum SailMode
     {
         Reverse,
         Stationary,
@@ -124,6 +126,7 @@ public class ShipController : MonoBehaviour
         }
         
         currentSailMode = (SailMode)math.clamp((int)currentSailMode, 0, 3);
+        OnSailChanged?.Invoke(currentSailMode);
     }
     
     private void DecreaseSail()
@@ -152,6 +155,7 @@ public class ShipController : MonoBehaviour
         }
         
         currentSailMode = (SailMode)math.clamp((int)currentSailMode, 0, 3);
+        OnSailChanged?.Invoke(currentSailMode);
     }
 
     private IEnumerator IncreaseMovingSpeed(float movingSpeedToReach)
@@ -161,6 +165,19 @@ public class ShipController : MonoBehaviour
             movingSpeed += acceleration * Time.deltaTime;
             yield return null;
         }
+        
+        if (currentSailMode == SailMode.Stationary) movingSpeed = 0f;
+    }
+    
+    private IEnumerator DecreaseMovingSpeed(float movingSpeedToReach)
+    {
+        while (movingSpeed > movingSpeedToReach)
+        {
+            movingSpeed -= deceleration * Time.deltaTime;
+            yield return null;
+        }
+
+        if (currentSailMode == SailMode.Stationary) movingSpeed = 0f;
     }
     
     private IEnumerator IncreaseRotationSpeed(float rotationSpeedToReach)
@@ -172,15 +189,6 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    private IEnumerator DecreaseMovingSpeed(float movingSpeedToReach)
-    {
-        while (movingSpeed > movingSpeedToReach)
-        {
-            movingSpeed -= deceleration * Time.deltaTime;
-            yield return null;
-        }
-    }
-    
     private IEnumerator DecreaseRotationSpeed(float rotationSpeedToReach)
     {
         while (rotationSpeed < rotationSpeedToReach)

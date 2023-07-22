@@ -1075,13 +1075,14 @@ Transform:
   m_GameObject: {fileID: 1766678935921193383}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.98, z: 0}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5879385148247730203}
   - {fileID: 9205836122985978946}
   - {fileID: 8402926536948423547}
+  - {fileID: 2040926023150896747}
   m_Father: {fileID: 6070167921289403297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1933719599325822771
@@ -1431,6 +1432,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2561176436029404294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2040926023150896747}
+  m_Layer: 0
+  m_Name: BackSailPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2040926023150896747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561176436029404294}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.75, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1053346856316097830}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2589435412302532369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,8 +1475,9 @@ GameObject:
   - component: {fileID: 4835594765589100636}
   - component: {fileID: 779051635691918790}
   - component: {fileID: 4221319438146453054}
+  - component: {fileID: 7387466842465021880}
   m_Layer: 0
-  m_Name: Mesh12_Group14_Group12_Group1_Model
+  m_Name: MidSail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,8 +1492,8 @@ Transform:
   m_GameObject: {fileID: 2589435412302532369}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 2, z: 3}
+  m_LocalPosition: {x: 0, y: 8, z: 0}
+  m_LocalScale: {x: 3, y: 0.5, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1541452463617050087}
@@ -1538,6 +1571,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3858068987807185466, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!95 &7387466842465021880
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589435412302532369}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77cb6a702d16e684c8a7020cb9a297b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2993881484873669038
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,8 +3412,9 @@ GameObject:
   - component: {fileID: 5555735400541319856}
   - component: {fileID: 7279775281535270329}
   - component: {fileID: 7823480805090000555}
+  - component: {fileID: 3020020620288174223}
   m_Layer: 0
-  m_Name: Mesh15_Group17_Group12_Group1_Model
+  m_Name: BackSail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3374,8 +3429,8 @@ Transform:
   m_GameObject: {fileID: 5749437990530584715}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 3}
+  m_LocalPosition: {x: 0, y: 10.5, z: 0}
+  m_LocalScale: {x: 2, y: 0.5, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1053346856316097830}
@@ -3453,6 +3508,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 130512615931007009, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!95 &3020020620288174223
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5749437990530584715}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77cb6a702d16e684c8a7020cb9a297b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5867409655831868703
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,6 +3646,7 @@ GameObject:
   - component: {fileID: 3890689097365670036}
   - component: {fileID: 8343566615419108411}
   - component: {fileID: 6556570861794672174}
+  - component: {fileID: 2443414599970280471}
   m_Layer: 0
   m_Name: ShipParent
   m_TagString: Untagged
@@ -3611,13 +3688,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9578e001527bfe45b6e3846a0f99b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0
-  maxSpeed: 30
+  fullSailSpeed: 40
+  halfSailSpeed: 30
   reverseSpeed: 5
   acceleration: 10
   deceleration: 15
-  minRotationSpeed: 0.5
-  maxRotationSpeed: 1
+  rotationAcceleration: 2
+  stationaryRotationSpeed: 1
+  halfSailRotationSpeed: 0.75
+  fullSailRotationSpeed: 0.5
+  currentSailMode: 0
   movingSpeed: 0
   rotationSpeed: 0
 --- !u!114 &8343566615419108411
@@ -3634,7 +3714,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 0.2
   lookInput: {x: 0, y: 0}
-  moveInput: {x: 0, y: 0}
+  rotateInput: 0
+  isSailUpKeyDown: 0
+  isSailDownKeyDown: 0
 --- !u!54 &6556570861794672174
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3662,6 +3744,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &2443414599970280471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200755057779098840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f06003654d5d4419044fa6f49d4281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6411689019263451598
 GameObject:
   m_ObjectHideFlags: 0
@@ -3808,7 +3902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 636686149354462757}
   m_Layer: 0
-  m_Name: FrontSails
+  m_Name: FrontSail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3830,7 +3924,39 @@ Transform:
   - {fileID: 7880622535802151253}
   - {fileID: 7114192282539903461}
   - {fileID: 1165809443817588945}
+  - {fileID: 4531065764911279333}
   m_Father: {fileID: 6070167921289403297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6835264659292077719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1734761484953867458}
+  m_Layer: 0
+  m_Name: MidSailPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1734761484953867458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6835264659292077719}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1541452463617050087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6837073471731127860
 GameObject:
@@ -5016,7 +5142,7 @@ Transform:
   m_GameObject: {fileID: 8035768680245390696}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.23, z: 0}
+  m_LocalPosition: {x: 0, y: -1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5024,6 +5150,7 @@ Transform:
   - {fileID: 1902467583293269127}
   - {fileID: 4594829420976258755}
   - {fileID: 2733504512805284418}
+  - {fileID: 1734761484953867458}
   m_Father: {fileID: 6070167921289403297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8499098009838288370
@@ -5143,8 +5270,9 @@ GameObject:
   - component: {fileID: 1800787441520643289}
   - component: {fileID: 4054986556222567328}
   - component: {fileID: 1815712819911804027}
+  - component: {fileID: 1201267929132983988}
   m_Layer: 0
-  m_Name: Mesh19_Group21_Group12_Group1_Model
+  m_Name: FrontSail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5159,8 +5287,8 @@ Transform:
   m_GameObject: {fileID: 8534242361502045695}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 3}
+  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalScale: {x: 2, y: 0.5, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 636686149354462757}
@@ -5238,6 +5366,58 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -805227030571209445, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!95 &1201267929132983988
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534242361502045695}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77cb6a702d16e684c8a7020cb9a297b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8686231665115063398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4531065764911279333}
+  m_Layer: 0
+  m_Name: FrontSailPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4531065764911279333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686231665115063398}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 11.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 636686149354462757}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8733251604969638680
 GameObject:
   m_ObjectHideFlags: 0
