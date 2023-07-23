@@ -65,7 +65,7 @@ public class CrosshairManager : MonoBehaviour
 
         isLookingAtShipWheel = crosshairHit.collider.CompareTag("ShipWheel");
         isLookingAtEnemy = crosshairHit.collider.CompareTag("Enemy");
-        isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace") || crosshairHit.collider.CompareTag("Enemy");
+        isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace");
     }
     
     private void CastLongRay()
@@ -78,7 +78,7 @@ public class CrosshairManager : MonoBehaviour
             return;
         }
         
-        isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace") || crosshairHit.collider.CompareTag("Enemy");
+        isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace");
     }
 
     private void CalculateCrosshairHighlightCondition()
