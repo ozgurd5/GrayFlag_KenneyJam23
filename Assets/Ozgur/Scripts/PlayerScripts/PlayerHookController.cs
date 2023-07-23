@@ -1,19 +1,22 @@
+using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerHookController : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private float releaseForce = 200f;
+    [SerializeField] private float animationDuration = 0.2f;
     
     private PlayerStateData psd;
     private PlayerInputManager pim;
     private LineRenderer lr;
     private Rigidbody rb;
-    private Transform hookGunTransform;
+    public Transform hookGunTransform;
 
     private Vector3 hookedPosition;
     private Vector3 movingDirection;
-    private bool releasingCondition;
+    private bool flyingCondition;
 
     private void Awake()
     {
@@ -21,57 +24,54 @@ public class PlayerHookController : MonoBehaviour
         pim = GetComponent<PlayerInputManager>();
         lr = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody>();
-        hookGunTransform = GameObject.Find("PlayerCamera/HookGun").transform;
+        hookGunTransform = GameObject.Find("PlayerCamera/HookGun/LineOut").transform;
     }
 
     private void Update()
     {
         lr.SetPosition(0, hookGunTransform.position);
-        
-        HandleShooting();
-        HandleReleasingCondition();
         HandleExitHookSubState();
+        
+        if (!pim.isHookKeyDown) return;
+        if (!CrosshairManager.isLookingAtHookTarget) return;
+        StartCoroutine(HandleShoot());
     }
 
     private void FixedUpdate()
     {
-        HandleReleasing();
+        HandleFlying();
     }
-
-    private void HandleShooting()
+    
+    private IEnumerator HandleShoot()
     {
-        if (!pim.isHookKeyDown) return;
-        if (!CrosshairManager.isLookingAtHookTarget) return;
-
-        psd.isHooked = true;
-        lr.enabled = true;
+        hookGunTransform.parent.DOLocalRotate(new Vector3(30f, -170f, 0f), animationDuration);
         
+        lr.enabled = true;
         hookedPosition = CrosshairManager.crosshairHit.transform.position;
         lr.SetPosition(1, hookedPosition);
-    }
 
-    private void HandleReleasingCondition()
-    {
-        if (pim.isHookKeyUp && psd.isHooked) releasingCondition = true;
+        flyingCondition = true;
+        
+        yield return new WaitForSeconds(animationDuration);
+        
+        hookGunTransform.parent.DOLocalRotate(new Vector3(15f, -170f, 0f), animationDuration);
+        lr.enabled = false;
     }
-
-    private void HandleReleasing()
+    
+    private void HandleFlying()
     {
-        if (!releasingCondition) return;
+        if (!flyingCondition) return;
         
         movingDirection = (hookedPosition - transform.position).normalized;
         rb.AddForce(movingDirection * releaseForce, ForceMode.Force);
         
         psd.isHookFlying = true;
-        psd.isHooked = false;
-        
-        lr.enabled = false;
-        releasingCondition = false;
+        flyingCondition = false;
     }
 
     private void HandleExitHookSubState()
     {
         if (!psd.isHookFlying) return;
-        if (pim.moveInput.magnitude != 0f) psd.isHookFlying = false;
+        if (pim.moveInput.magnitude != 0f)  psd.isHookFlying = false;
     }
 }
