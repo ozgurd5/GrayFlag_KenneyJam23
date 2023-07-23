@@ -22,7 +22,7 @@ public class EnemyAiTutorial : MonoBehaviour
     
     //OZGUR
     private EnemyManager em;
-    [Header("H")] [SerializeField] private float timer;
+    [Header("Assign")] [SerializeField] private float punchAnimTime = 0.5f;
 
     private void Awake()
     {
@@ -35,6 +35,9 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void Update()
     {
+        //OZGUR
+        if (em.currentState == EnemyManager.EnemyState.Dead) return;
+        
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -74,10 +77,12 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
-        
         //OZGUR
-        if (em.currentState == EnemyManager.EnemyState.Punching) em.Invoke(nameof(em.EnterWalkingState), timer);
+        if (em.isDamageTaking) return;
+        if (em.currentState == EnemyManager.EnemyState.Punching) em.Invoke(nameof(em.EnterWalkingState), punchAnimTime);
+        else em.EnterWalkingState();
+        
+        agent.SetDestination(player.position);
     }
 
     private void AttackPlayer()

@@ -34,6 +34,10 @@ public class PlayerDamageManager : MonoBehaviour
     
     private void CheckForDeath()
     {
-        if (health < 0) transform.position = respawnPoint.position;
+        if (health < 0)
+        {
+            transform.position = respawnPoint.position;
+            health = 20;
+        }
     }
 }

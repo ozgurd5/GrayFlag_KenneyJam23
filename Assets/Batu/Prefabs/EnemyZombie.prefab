@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 7925654054660100788}
   - component: {fileID: 7626726714974566261}
   - component: {fileID: 7543145813042053715}
+  - component: {fileID: 899882065500666343}
   m_Layer: 0
   m_Name: EnemyZombie
   m_TagString: Enemy
@@ -225,7 +226,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   knockbackForce: 1000
+  damageTakingAnimTime: 0.5
+  aliveCollider: {fileID: 6137838205570440563}
+  deadCollider: {fileID: 899882065500666343}
   currentState: 0
+  isDamageTaking: 0
 --- !u!114 &7925654054660100788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +293,28 @@ MonoBehaviour:
   attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
+  punchAnimTime: 0.5
+--- !u!65 &899882065500666343
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582326959126163882}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.09255082, y: 0.025691925, z: 0.10000008}
+  m_Center: {x: -0.0037247138, y: 0.012966888, z: 5.662907e-11}
 --- !u!1 &592108874622966346
 GameObject:
   m_ObjectHideFlags: 0
