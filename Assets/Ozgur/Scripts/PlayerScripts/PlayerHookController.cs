@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerHookController : MonoBehaviour
 {
     [Header("Assign")]
-    [SerializeField] private float releaseForce = 200f;
+    [SerializeField] private float releaseForce = 2000f;
     [SerializeField] private float animationDuration = 0.2f;
+    [SerializeField] private AudioSource aus;
     
     private PlayerStateData psd;
     private PlayerInputManager pim;
@@ -33,6 +34,9 @@ public class PlayerHookController : MonoBehaviour
         HandleExitHookSubState();
         
         if (!pim.isHookKeyDown) return;
+        StartCoroutine(HandleGunAnimation());
+        aus.Play();
+        
         if (!CrosshairManager.isLookingAtHookTarget) return;
         StartCoroutine(HandleShoot());
     }
@@ -44,8 +48,6 @@ public class PlayerHookController : MonoBehaviour
     
     private IEnumerator HandleShoot()
     {
-        hookGunTransform.parent.DOLocalRotate(new Vector3(30f, -170f, 0f), animationDuration);
-        
         lr.enabled = true;
         hookedPosition = CrosshairManager.crosshairHit.transform.position;
         lr.SetPosition(1, hookedPosition);
@@ -54,8 +56,14 @@ public class PlayerHookController : MonoBehaviour
         
         yield return new WaitForSeconds(animationDuration);
         
-        hookGunTransform.parent.DOLocalRotate(new Vector3(15f, -170f, 0f), animationDuration);
         lr.enabled = false;
+    }
+
+    private IEnumerator HandleGunAnimation()
+    {
+        hookGunTransform.parent.DOLocalRotate(new Vector3(30f, -170f, 0f), animationDuration);
+        yield return new WaitForSeconds(animationDuration);
+        hookGunTransform.parent.DOLocalRotate(new Vector3(15f, -170f, 0f), animationDuration);
     }
     
     private void HandleFlying()

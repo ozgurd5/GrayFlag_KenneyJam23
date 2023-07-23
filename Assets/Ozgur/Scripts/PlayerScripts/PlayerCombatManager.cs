@@ -6,6 +6,7 @@ public class PlayerCombatManager : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private float animationDuration = 0.1f;
+    [SerializeField] private AudioSource aus;
     
     private PlayerInputManager pim;
     private GameObject sword;
@@ -20,7 +21,8 @@ public class PlayerCombatManager : MonoBehaviour
     {
         if (!pim.isAttackKeyDown) return;
         StartCoroutine(PlaySwordAnimation());
-            
+        aus.Play();
+        
         if (!CrosshairManager.isLookingAtEnemy) return;
         CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
     }

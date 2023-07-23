@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static event Action OnJump;
+    
     [Header("Assign")]
-    [SerializeField] private float walkingSpeed = 5f;
+    [SerializeField] private float walkingSpeed = 2f;
     [SerializeField] private float runningSpeed = 10f;
     [SerializeField] private float jumpSpeed = 10f;
     [SerializeField] private float acceleration = 10f;
@@ -78,8 +81,17 @@ public class PlayerController : MonoBehaviour
     private void HandleJump()
     {
         if (!isJumpCondition) return;
+        
         rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
+        OnJump?.Invoke();
+        
+        psd.isJumping = true;
         isJumpCondition = false;
+    }
+
+    private void DecideJumpingState()
+    {
+        if (psd.isGrounded) psd.isJumping = false;
     }
 
     private void DecideIdleOrMovingStates()
@@ -109,7 +121,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
-        
+
+        DecideJumpingState();
         DecideIdleOrMovingStates();
         DecideWalkingOrRunningStates();
         HandleLooking();
