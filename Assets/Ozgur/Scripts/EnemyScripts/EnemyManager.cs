@@ -4,8 +4,7 @@ public class EnemyManager : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private int health = 10;
-    [SerializeField] private int knockbackForce = 600;
-    [SerializeField] private float enemyAttackRange = 7f;
+    [SerializeField] private int knockbackForce = 1000;
 
     private Rigidbody rb;
     private Animator an;
@@ -41,7 +40,7 @@ public class EnemyManager : MonoBehaviour
         
         currentState = EnemyState.Punching;
         an.Play("Zombie Punching");
-        playerDamageManager.GetHit();
+        playerDamageManager.GetHit(transform.forward);
     }
 
     private void ExitPunchingState()

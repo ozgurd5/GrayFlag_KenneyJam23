@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (psd.isHookFlying) return;
+        if (psd.isHookFlying || psd.isGettingDamage) return;
         
         movingDirection *= movingSpeed;
         rb.velocity = new Vector3(movingDirection.x, rb.velocity.y, movingDirection.z);

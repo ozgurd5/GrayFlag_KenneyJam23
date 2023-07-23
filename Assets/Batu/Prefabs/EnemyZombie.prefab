@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 7239240239474887057}
   - component: {fileID: 347492080682599521}
   - component: {fileID: 7925654054660100788}
+  - component: {fileID: 7626726714974566261}
   m_Layer: 0
   m_Name: EnemyZombie
   m_TagString: Enemy
@@ -222,8 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1241241241
-  knockbackForce: 300
-  enemyAttackRange: 7
+  knockbackForce: 1000
   currentState: 0
 --- !u!114 &7925654054660100788
 MonoBehaviour:
@@ -238,6 +238,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraGravity: 20
+--- !u!195 &7626726714974566261
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582326959126163882}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &592108874622966346
 GameObject:
   m_ObjectHideFlags: 0
