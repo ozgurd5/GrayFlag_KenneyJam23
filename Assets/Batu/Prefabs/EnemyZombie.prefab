@@ -110,6 +110,8 @@ GameObject:
   - component: {fileID: 7239240239474887057}
   - component: {fileID: 347492080682599521}
   - component: {fileID: 7925654054660100788}
+  - component: {fileID: 7626726714974566261}
+  - component: {fileID: 7543145813042053715}
   m_Layer: 0
   m_Name: EnemyZombie
   m_TagString: Enemy
@@ -153,7 +155,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3365de4f488a6dd4abc458285d6abd03, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -221,9 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27919c04949ebe5449650b070786de56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1241241241
-  knockbackForce: 300
-  enemyAttackRange: 7
+  health: 10
+  knockbackForce: 1000
   currentState: 0
 --- !u!114 &7925654054660100788
 MonoBehaviour:
@@ -238,6 +239,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraGravity: 20
+--- !u!195 &7626726714974566261
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582326959126163882}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &7543145813042053715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582326959126163882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4473cc843601a94479a2a2861921c843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 7626726714974566261}
+  player: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 128
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 64
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 5
+  timeBetweenAttacks: 0.5
+  sightRange: 20
+  attackRange: 5
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!1 &592108874622966346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,7 +1918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2323519272412547483
 Transform:
   m_ObjectHideFlags: 0

@@ -122,6 +122,7 @@ MonoBehaviour:
   isGrounded: 0
   isHooked: 0
   isHookFlying: 0
+  isGettingDamage: 0
 --- !u!114 &3250083124061316166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,7 +771,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
   health: 20
-  knockbackForce: 600
+  knockbackForce: 1000
+  damageStopTime: 0.5
 --- !u!1 &5961817998518397154
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +787,7 @@ GameObject:
   - component: {fileID: 1391848207515869346}
   - component: {fileID: 88697514315557560}
   - component: {fileID: 5497913604089565200}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrosshairCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +915,7 @@ GameObject:
   - component: {fileID: 8079561455487421202}
   - component: {fileID: 4982121701062130963}
   - component: {fileID: 1815668464058173558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}

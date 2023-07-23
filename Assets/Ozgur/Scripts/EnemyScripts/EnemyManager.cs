@@ -4,8 +4,7 @@ public class EnemyManager : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private int health = 10;
-    [SerializeField] private int knockbackForce = 600;
-    [SerializeField] private float enemyAttackRange = 7f;
+    [SerializeField] private int knockbackForce = 1000;
 
     private Rigidbody rb;
     private Animator an;
@@ -31,27 +30,26 @@ public class EnemyManager : MonoBehaviour
         pd = GetComponentInChildren<PlayerDetection>();
         playerDamageManager = GameObject.Find("Player").GetComponent<PlayerDamageManager>();
 
-        pd.OnPlayerEnter += EnterPunchingState;
-        pd.OnPlayerExit += ExitPunchingState;
+        //pd.OnPlayerEnter += EnterPunchingState;
+        //pd.OnPlayerExit += ExitPunchingState;
     }
 
-    private void EnterPunchingState()
+    public void EnterPunchingState()
     {
         if (currentState == EnemyState.Dead) return;
         
         currentState = EnemyState.Punching;
         an.Play("Zombie Punching");
-        playerDamageManager.GetHit();
     }
 
-    private void ExitPunchingState()
+    public void EnterWalkingState()
     {
         if (currentState == EnemyState.Dead) return;
         
         currentState = EnemyState.Walking;
         an.Play("ZombieWalking");
     }
-    
+
     public void GetHit(Vector3 playerTransformForward)
     {
         health -= 3;
