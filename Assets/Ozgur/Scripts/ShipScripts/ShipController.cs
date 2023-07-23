@@ -10,11 +10,11 @@ public class ShipController : MonoBehaviour
     public static bool isShipControlled;
     
     [Header("Assign - Movement")]
-    [SerializeField] private float fullSailSpeed = 40f;
-    [SerializeField] private float halfSailSpeed = 30f;
-    [SerializeField] private float reverseSpeed = 5f;
-    [SerializeField] private float acceleration = 10f;
-    [SerializeField] private float deceleration = 15f;
+    [SerializeField] private float fullSailSpeed = 60f;
+    [SerializeField] private float halfSailSpeed = 40f;
+    [SerializeField] private float reverseSpeed = 10f;
+    [SerializeField] private float acceleration = 20f;
+    [SerializeField] private float deceleration = 30f;
 
     [Header("Assign - Rotation")]
     [SerializeField] private float rotationAcceleration = 2f; //2 means nearly no acceleration at all

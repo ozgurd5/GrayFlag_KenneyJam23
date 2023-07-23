@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
     public static event Action OnJump;
     
     [Header("Assign")]
-    [SerializeField] private float walkingSpeed = 2f;
-    [SerializeField] private float runningSpeed = 10f;
-    [SerializeField] private float jumpSpeed = 10f;
+    [SerializeField] private float walkingSpeed = 8f;
+    [SerializeField] private float runningSpeed = 15f;
+    [SerializeField] private float jumpSpeed = 15f;
     [SerializeField] private float acceleration = 10f;
     [SerializeField] private float deceleration = 20f;
 

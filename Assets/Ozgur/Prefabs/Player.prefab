@@ -43,8 +43,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 818854848270513654}
   m_Father: {fileID: 0}
@@ -96,7 +96,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1.5
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4923112127215478963
@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ebd6f6ae7db5d469cf2a2df7637c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 2
-  runningSpeed: 10
-  jumpSpeed: 10
+  walkingSpeed: 8
+  runningSpeed: 15
+  jumpSpeed: 15
   acceleration: 10
   deceleration: 20
   movingSpeed: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030139f705deaf344a602ccc0a913fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraGravity: 10
+  extraGravity: 20
 --- !u!114 &6799235340352460331
 MonoBehaviour:
   m_ObjectHideFlags: 0

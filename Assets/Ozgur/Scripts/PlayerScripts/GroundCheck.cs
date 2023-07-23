@@ -11,6 +11,6 @@ public class GroundCheck : MonoBehaviour
 
     private void Update()
     {
-        psd.isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.8f);
+        psd.isGrounded = Physics.Raycast(transform.position, Vector3.down, 2f);
     }
 }

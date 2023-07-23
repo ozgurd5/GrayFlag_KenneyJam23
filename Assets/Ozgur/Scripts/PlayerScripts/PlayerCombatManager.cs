@@ -7,18 +7,22 @@ public class PlayerCombatManager : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private float animationDuration = 0.1f;
     [SerializeField] private AudioSource aus;
-    
+
+    private PlayerStateData psd;
     private PlayerInputManager pim;
     private GameObject sword;
 
     private void Awake()
     {
+        psd = GetComponent<PlayerStateData>();
         pim = GetComponent<PlayerInputManager>();
         sword = GameObject.Find("PlayerCamera/Sword");
     }
 
     private void Update()
     {
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
+        
         if (!pim.isAttackKeyDown) return;
         StartCoroutine(PlaySwordAnimation());
         aus.Play();
