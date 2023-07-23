@@ -3,12 +3,14 @@ using UnityEngine.UI;
 
 public class CrosshairManager : MonoBehaviour
 {
-    public static bool isLookingAtInteractable;
-    public static string interactableTag;
+    public static bool isLookingAtShipWheel;
+    public static bool isLookingAtEnemy;
+    public static bool isLookingAtHookTarget;
     public static RaycastHit crosshairHit;
     
     [Header("Assign")]
     [SerializeField] private float range = 7f;
+    [SerializeField] private float longRange = 50f;
     [SerializeField] [Range(0, 1)] private float opacity = 0.3f;
 
     private Image crosshairImage;
@@ -16,6 +18,12 @@ public class CrosshairManager : MonoBehaviour
     
     private Ray crosshairRay;
     private Color temporaryColor;
+
+    public bool crosshairHighlightCondition;
+
+    public bool wheel;
+    public bool enemy;
+    public bool target;
 
     private void Awake()
     {
@@ -25,14 +33,20 @@ public class CrosshairManager : MonoBehaviour
 
     private void Update()
     {
+        wheel = isLookingAtShipWheel;
+        enemy = isLookingAtEnemy;
+        target = isLookingAtHookTarget;
+        
         CastRay();
+        CastLongRay();
+        CalculateCrosshairHighlightCondition();
 
         //Just like the mesh renderer example, we can not directly change crosshairImage.color.a
         //We can only assign a color variable to it. Therefore we need a temporary color variable..
         //..to make changes upon and finally assign it
         
         temporaryColor = crosshairImage.color;
-        if (isLookingAtInteractable) temporaryColor.a = 1f;
+        if (crosshairHighlightCondition) temporaryColor.a = 1f;
         else temporaryColor.a = opacity;
         crosshairImage.color = temporaryColor;
     }
@@ -43,12 +57,32 @@ public class CrosshairManager : MonoBehaviour
 
         if (!Physics.Raycast(crosshairRay, out crosshairHit, range))
         {
-            isLookingAtInteractable = false;
+            isLookingAtShipWheel = false;
+            isLookingAtEnemy = false;
+            isLookingAtHookTarget = false;
             return;
         }
 
-        isLookingAtInteractable = crosshairHit.collider.CompareTag("ShipWheel");
+        isLookingAtShipWheel = crosshairHit.collider.CompareTag("ShipWheel");
+        isLookingAtEnemy = crosshairHit.collider.CompareTag("Enemy");
+        isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace") || crosshairHit.collider.CompareTag("Enemy");
+    }
+    
+    private void CastLongRay()
+    {
+        crosshairRay = cam.ScreenPointToRay(crosshairImage.rectTransform.position);
 
-        if (isLookingAtInteractable) interactableTag = crosshairHit.collider.tag;
+        if (!Physics.Raycast(crosshairRay, out crosshairHit, longRange))
+        {
+            isLookingAtHookTarget = false;
+            return;
+        }
+        
+        isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace") || crosshairHit.collider.CompareTag("Enemy");
+    }
+
+    private void CalculateCrosshairHighlightCondition()
+    {
+        crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtEnemy || isLookingAtHookTarget;
     }
 }
