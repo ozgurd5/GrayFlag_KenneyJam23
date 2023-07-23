@@ -25,11 +25,9 @@ public class PauseMenu : MonoBehaviour
             if (Paused)
             {
                 Play();
-                OnGameContinue?.Invoke();
             }
             else
             {
-                OnGamePause?.Invoke();
                 Stop();
             }
         }
@@ -37,6 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     void Stop()
     {
+        OnGamePause?.Invoke();
         PauseMenuCanvas.SetActive(true);
         Time.timeScale = 0f;
         Paused = true; 
@@ -46,6 +45,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Play()
     {
+        OnGameContinue?.Invoke();
         PauseMenuCanvas.SetActive(false);
         Time.timeScale = 1f;
         Paused = false;
