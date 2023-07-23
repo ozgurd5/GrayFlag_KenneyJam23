@@ -6,6 +6,7 @@ public class PlayerStateData : MonoBehaviour
     {
         NormalState,
         ShipControllingState,
+        PauseMenuState,
     }
 
     [Header("Main State")]
