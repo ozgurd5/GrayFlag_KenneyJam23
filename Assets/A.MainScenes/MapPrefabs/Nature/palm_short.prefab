@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2581342328371693949}
   - component: {fileID: 971015119889463600}
   - component: {fileID: 6814723052856150920}
+  - component: {fileID: 258066535693225885}
   m_Layer: 0
   m_Name: Group 23
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8067726398312463513, guid: 396707c8e942a9241828d63a791b0f09, type: 3}
+  - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,6 +107,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8682095721318388021, guid: 396707c8e942a9241828d63a791b0f09, type: 3}
+--- !u!114 &258066535693225885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642934859621277967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 00000000
 --- !u!1 &5718052637778842113
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,6 +172,7 @@ GameObject:
   - component: {fileID: 678588822158597691}
   - component: {fileID: 8288708002049206709}
   - component: {fileID: 670438530159909997}
+  - component: {fileID: 3448402933183848358}
   m_Layer: 0
   m_Name: Group 25
   m_TagString: Untagged
@@ -201,7 +223,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5316684210946835829, guid: 396707c8e942a9241828d63a791b0f09, type: 3}
+  - {fileID: 2100000, guid: 9b83fcb0cdcfafa4e9067a24534acb50, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -245,3 +267,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1002166396878158951, guid: 396707c8e942a9241828d63a791b0f09, type: 3}
+--- !u!114 &3448402933183848358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8895987473408270633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 2100000, guid: 9b83fcb0cdcfafa4e9067a24534acb50, type: 2}
+  greenMaterialIndexes: 00000000
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 

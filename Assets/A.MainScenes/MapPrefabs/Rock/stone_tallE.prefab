@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2366243320247865531}
   - component: {fileID: 7565309755650615895}
   - component: {fileID: 4540413453012823297}
+  - component: {fileID: 243745207214835486}
   m_Layer: 0
   m_Name: stone_tallE
   m_TagString: Untagged
@@ -62,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7555185752953191562, guid: 5f479c1aa6cca12439f04304590336bc, type: 3}
-  - {fileID: -3963241562183589234, guid: 5f479c1aa6cca12439f04304590336bc, type: 3}
+  - {fileID: 2100000, guid: 149b845c3eeecf244acaee97984a8d6e, type: 2}
+  - {fileID: 2100000, guid: 149b845c3eeecf244acaee97984a8d6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,3 +108,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4334067293474568735, guid: 5f479c1aa6cca12439f04304590336bc, type: 3}
+--- !u!114 &243745207214835486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7540499843280836662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 149b845c3eeecf244acaee97984a8d6e, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 

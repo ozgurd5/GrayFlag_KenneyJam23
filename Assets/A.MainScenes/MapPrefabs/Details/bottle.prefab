@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2286168997562086776}
   - component: {fileID: 2545676470141186633}
   - component: {fileID: 4348014677804383895}
+  - component: {fileID: -5873957187046044752}
   m_Layer: 0
   m_Name: bottle
   m_TagString: Untagged
@@ -61,9 +62,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5316684210946835829, guid: d4459664f22c4c841a31ec92f689c3e2, type: 3}
-  - {fileID: -8067726398312463513, guid: d4459664f22c4c841a31ec92f689c3e2, type: 3}
-  - {fileID: -4695092126019524277, guid: d4459664f22c4c841a31ec92f689c3e2, type: 3}
+  - {fileID: 2100000, guid: 261c09be40d373a43ad05a3878a8348e, type: 2}
+  - {fileID: 2100000, guid: 149b845c3eeecf244acaee97984a8d6e, type: 2}
+  - {fileID: 2100000, guid: 149b845c3eeecf244acaee97984a8d6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,3 +86,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-5873957187046044752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4614686315693903149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 149b845c3eeecf244acaee97984a8d6e, type: 2}
+  redMaterialIndexes: 0100000002000000
+  greenMaterial: {fileID: 2100000, guid: 261c09be40d373a43ad05a3878a8348e, type: 2}
+  greenMaterialIndexes: 00000000
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
