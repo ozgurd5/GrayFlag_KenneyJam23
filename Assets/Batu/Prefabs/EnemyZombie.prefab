@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   knockbackForce: 1000
-  damageTakingAnimTime: 0.5
+  damageTakingAnimTime: 0.8
   aliveCollider: {fileID: 6137838205570440563}
   deadCollider: {fileID: 899882065500666343}
   currentState: 0
@@ -293,7 +293,7 @@ MonoBehaviour:
   attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
-  punchAnimTime: 0.5
+  punchAnimTime: 0.2
 --- !u!65 &899882065500666343
 BoxCollider:
   m_ObjectHideFlags: 0
