@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 1144943161751778686}
   - component: {fileID: 1533240515108090845}
   - component: {fileID: 1156759242787644637}
+  - component: {fileID: 3579904437471178975}
   m_Layer: 3
   m_Name: Sword
   m_TagString: Untagged
@@ -230,7 +231,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
   - {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
   - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
-  - {fileID: -3963241562183589234, guid: e1c887009b62ed24c937cf4010ccc62e, type: 3}
+  - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -252,6 +253,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3579904437471178975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4788288386517693023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 0000000003000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
+  blueMaterialIndexes: 01000000
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 02000000
 --- !u!1 &7807918243532206069
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +284,7 @@ GameObject:
   - component: {fileID: 2788576140919291856}
   - component: {fileID: 8219318331223462665}
   - component: {fileID: 5366668387548298198}
+  - component: {fileID: 611952499096866567}
   m_Layer: 3
   m_Name: HookGun
   m_TagString: Untagged
@@ -339,3 +361,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &611952499096866567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807918243532206069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 0000000002000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
+  blueMaterialIndexes: 01000000
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 03000000
