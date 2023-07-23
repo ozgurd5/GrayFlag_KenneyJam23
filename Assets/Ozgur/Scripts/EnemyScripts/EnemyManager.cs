@@ -30,27 +30,26 @@ public class EnemyManager : MonoBehaviour
         pd = GetComponentInChildren<PlayerDetection>();
         playerDamageManager = GameObject.Find("Player").GetComponent<PlayerDamageManager>();
 
-        pd.OnPlayerEnter += EnterPunchingState;
-        pd.OnPlayerExit += ExitPunchingState;
+        //pd.OnPlayerEnter += EnterPunchingState;
+        //pd.OnPlayerExit += ExitPunchingState;
     }
 
-    private void EnterPunchingState()
+    public void EnterPunchingState()
     {
         if (currentState == EnemyState.Dead) return;
         
         currentState = EnemyState.Punching;
         an.Play("Zombie Punching");
-        playerDamageManager.GetHit(transform.forward);
     }
 
-    private void ExitPunchingState()
+    public void EnterWalkingState()
     {
         if (currentState == EnemyState.Dead) return;
         
         currentState = EnemyState.Walking;
         an.Play("ZombieWalking");
     }
-    
+
     public void GetHit(Vector3 playerTransformForward)
     {
         health -= 3;

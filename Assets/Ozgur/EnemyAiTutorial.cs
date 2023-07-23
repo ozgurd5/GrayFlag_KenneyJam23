@@ -4,12 +4,8 @@ using UnityEngine.AI;
 public class EnemyAiTutorial : MonoBehaviour
 {
     public NavMeshAgent agent;
-
     public Transform player;
-
     public LayerMask whatIsGround, whatIsPlayer;
-
-    public float health;
 
     //Patroling
     public Vector3 walkPoint;
@@ -19,16 +15,22 @@ public class EnemyAiTutorial : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
 
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+    
+    //OZGUR
+    private EnemyManager em;
+    [Header("H")] [SerializeField] private float timer;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        
+        //OZGUR
+        em = GetComponent<EnemyManager>();
     }
 
     private void Update()
@@ -54,6 +56,9 @@ public class EnemyAiTutorial : MonoBehaviour
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
+        
+        //OZGUR
+        em.EnterWalkingState();
     }
     private void SearchWalkPoint()
     {
@@ -70,6 +75,9 @@ public class EnemyAiTutorial : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        
+        //OZGUR
+        if (em.currentState == EnemyManager.EnemyState.Punching) em.Invoke(nameof(em.EnterWalkingState), timer);
     }
 
     private void AttackPlayer()
@@ -81,11 +89,9 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            ///End of attack code
+            //OZGUR
+            player.GetComponent<PlayerDamageManager>().GetHit(transform.forward);
+            em.EnterPunchingState();
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -94,11 +100,6 @@ public class EnemyAiTutorial : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
-    }
-    
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
