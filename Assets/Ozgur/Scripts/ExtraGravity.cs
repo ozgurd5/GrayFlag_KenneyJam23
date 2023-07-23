@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ExtraGravity : MonoBehaviour
 {
-    [SerializeField] private float extraGravity = 10f;
+    [SerializeField] private float extraGravity = 20f;
 
     private Rigidbody rb;
 

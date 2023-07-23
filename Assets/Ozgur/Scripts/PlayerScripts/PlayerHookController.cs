@@ -30,6 +30,8 @@ public class PlayerHookController : MonoBehaviour
 
     private void Update()
     {
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
+        
         lr.SetPosition(0, hookGunTransform.position);
         HandleExitHookSubState();
         

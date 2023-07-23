@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ebd6f6ae7db5d469cf2a2df7637c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 2
-  runningSpeed: 10
-  jumpSpeed: 10
+  walkingSpeed: 8
+  runningSpeed: 15
+  jumpSpeed: 15
   acceleration: 10
   deceleration: 20
   movingSpeed: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030139f705deaf344a602ccc0a913fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraGravity: 10
+  extraGravity: 20
 --- !u!114 &6799235340352460331
 MonoBehaviour:
   m_ObjectHideFlags: 0

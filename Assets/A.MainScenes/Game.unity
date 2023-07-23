@@ -7177,7 +7177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &681991557
 Transform:
   m_ObjectHideFlags: 0
@@ -9079,31 +9079,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3890689097365670036, guid: b4c69e0a856cfa6449f73e645e536dbe,
-        type: 3}
-      propertyPath: acceleration
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890689097365670036, guid: b4c69e0a856cfa6449f73e645e536dbe,
-        type: 3}
-      propertyPath: deceleration
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890689097365670036, guid: b4c69e0a856cfa6449f73e645e536dbe,
-        type: 3}
-      propertyPath: reverseSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890689097365670036, guid: b4c69e0a856cfa6449f73e645e536dbe,
-        type: 3}
-      propertyPath: fullSailSpeed
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3890689097365670036, guid: b4c69e0a856cfa6449f73e645e536dbe,
-        type: 3}
-      propertyPath: halfSailSpeed
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 6070167921289403297, guid: b4c69e0a856cfa6449f73e645e536dbe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16365,7 +16340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1704513389
 Transform:
   m_ObjectHideFlags: 0
