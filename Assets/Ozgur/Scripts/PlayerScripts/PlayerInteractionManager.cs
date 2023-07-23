@@ -9,12 +9,17 @@ public class PlayerInteractionManager : MonoBehaviour
     private CinemachineVirtualCamera playerCamera;
     private ShipController sc;
 
+    private GameObject sword;
+    private GameObject hookGun;
+
     private void Awake()
     {
         pim = GetComponent<PlayerInputManager>();
         psd = GetComponent<PlayerStateData>();
 
         playerCamera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
+        sword = playerCamera.transform.Find("Sword").gameObject;
+        hookGun = playerCamera.transform.Find("HookGun").gameObject;
     }
 
     private void Update()
@@ -27,6 +32,9 @@ public class PlayerInteractionManager : MonoBehaviour
             sc.DropControl();
             
             playerCamera.enabled = true;
+            sword.SetActive(true);
+            hookGun.SetActive(true);
+            
             psd.currentMainState = PlayerStateData.PlayerMainState.NormalState;
             transform.parent = null;
         }
@@ -40,6 +48,9 @@ public class PlayerInteractionManager : MonoBehaviour
             sc.TakeControl();
             
             playerCamera.enabled = false;
+            sword.SetActive(false);
+            hookGun.SetActive(false);
+            
             psd.currentMainState = PlayerStateData.PlayerMainState.ShipControllingState;
             transform.parent = sc.transform;
         }
