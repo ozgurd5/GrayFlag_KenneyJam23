@@ -14,6 +14,10 @@ public class ObjectColorChanger : MonoBehaviour
     [Header("Blue")]
     [SerializeField] private Material blueMaterial;
     [SerializeField] private List<int> blueMaterialIndexes;
+    
+    [Header("Yellow")]
+    [SerializeField] private Material yellowMaterial;
+    [SerializeField] private List<int> yellowMaterialIndexes;
 
     private MeshRenderer mr;
 
@@ -24,6 +28,7 @@ public class ObjectColorChanger : MonoBehaviour
         PlayerColorEnabler.OnRedColorEnabled += ActiveRedColor;
         PlayerColorEnabler.OnGreenColorEnabled += ActiveGreenColor;
         PlayerColorEnabler.OnBlueColorEnabled += ActiveBlueColor;
+        PlayerColorEnabler.OnYellowColorEnabled += ActiveYellowColor;
     }
 
     //Updating mesh renderer materials in Unity is ultra protected for several long reasons
@@ -62,6 +67,18 @@ public class ObjectColorChanger : MonoBehaviour
         foreach (int index in blueMaterialIndexes)
         {
             temporaryMaterials[index] = blueMaterial;
+        }
+        
+        mr.materials = temporaryMaterials;
+    }
+    
+    private void ActiveYellowColor()
+    {
+        Material[] temporaryMaterials = mr.materials;
+
+        foreach (int index in yellowMaterialIndexes)
+        {
+            temporaryMaterials[index] = yellowMaterial;
         }
         
         mr.materials = temporaryMaterials;

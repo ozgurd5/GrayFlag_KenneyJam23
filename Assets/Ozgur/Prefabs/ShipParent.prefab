@@ -1097,6 +1097,7 @@ GameObject:
   - component: {fileID: 4360597146339416533}
   - component: {fileID: 3581614548720376764}
   - component: {fileID: 8780325785918913767}
+  - component: {fileID: 3475101884904969494}
   m_Layer: 0
   m_Name: Mesh17_Group19_Group12_Group1_Model
   m_TagString: Untagged
@@ -1191,6 +1192,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7308093039361824642, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!114 &3475101884904969494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933719599325822771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1 &1953239282149367385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1497,7 @@ GameObject:
   - component: {fileID: 779051635691918790}
   - component: {fileID: 4221319438146453054}
   - component: {fileID: 7387466842465021880}
+  - component: {fileID: 3489549426256591670}
   m_Layer: 0
   m_Name: MidSail
   m_TagString: Untagged
@@ -1592,6 +1614,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3489549426256591670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589435412302532369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 01000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 00000000
 --- !u!1 &2993881484873669038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,6 +2066,7 @@ GameObject:
   - component: {fileID: 113137203522700676}
   - component: {fileID: 2264005136376734894}
   - component: {fileID: 8762419426488374378}
+  - component: {fileID: 3708525565208865131}
   m_Layer: 0
   m_Name: Mesh18_Group20_Group12_Group1_Model
   m_TagString: Untagged
@@ -2118,6 +2161,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7733767782693897778, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!114 &3708525565208865131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530060226350435438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1 &4091134865982039560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,6 +2298,7 @@ GameObject:
   - component: {fileID: 7951344230554707223}
   - component: {fileID: 4960018624168106961}
   - component: {fileID: 4108501835308403948}
+  - component: {fileID: 9122219471656531320}
   m_Layer: 0
   m_Name: Mesh16_Group18_Group12_Group1_Model
   m_TagString: Untagged
@@ -2329,6 +2393,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7880736737457129388, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!114 &9122219471656531320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4124939697589690461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 00000000
 --- !u!1 &4138401580575171938
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,6 +2529,7 @@ GameObject:
   - component: {fileID: 7753945293387447238}
   - component: {fileID: 7356755978571538522}
   - component: {fileID: 3008370580339331255}
+  - component: {fileID: 6353339641838148297}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -2534,7 +2619,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
-  - {fileID: -1247029336700580421, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+  - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
   - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -2557,6 +2642,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6353339641838148297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530109927575905473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 02000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 0000000001000000
 --- !u!1 &4546107726786691144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,6 +3094,7 @@ GameObject:
   - component: {fileID: 5118665360432839271}
   - component: {fileID: 5213086262045339082}
   - component: {fileID: 14128944976074855}
+  - component: {fileID: 3737097712792738363}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: ShipWheel
@@ -3084,6 +3190,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3168751378939438005, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!114 &3737097712792738363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462861326131598806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 0000000001000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1 &5552424720961859133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3201,6 +3327,7 @@ GameObject:
   - component: {fileID: 5012841973350746138}
   - component: {fileID: 7543734280374180517}
   - component: {fileID: 4045302359690978371}
+  - component: {fileID: 8392945944182168840}
   m_Layer: 0
   m_Name: Mesh21_Group23_Group12_Group1_Model
   m_TagString: Untagged
@@ -3295,6 +3422,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5200087750367054128, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!114 &8392945944182168840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5555956203918425001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1 &5643871664817505612
 GameObject:
   m_ObjectHideFlags: 0
@@ -3413,6 +3560,7 @@ GameObject:
   - component: {fileID: 7279775281535270329}
   - component: {fileID: 7823480805090000555}
   - component: {fileID: 3020020620288174223}
+  - component: {fileID: 34010525111400406}
   m_Layer: 0
   m_Name: BackSail
   m_TagString: Untagged
@@ -3529,6 +3677,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &34010525111400406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5749437990530584715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 01000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 00000000
 --- !u!1 &5867409655831868703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4180,6 +4348,7 @@ GameObject:
   - component: {fileID: 8061002099738053082}
   - component: {fileID: 6552158457356090361}
   - component: {fileID: 4968797956264596081}
+  - component: {fileID: 4841747649077731072}
   m_Layer: 0
   m_Name: Mesh13_Group15_Group12_Group1_Model
   m_TagString: Untagged
@@ -4275,6 +4444,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7890044935952398373, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!114 &4841747649077731072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7022820398708670788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 01000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 00000000
 --- !u!1 &7667120263200380266
 GameObject:
   m_ObjectHideFlags: 0
@@ -4917,6 +5106,7 @@ GameObject:
   - component: {fileID: 6986828111794622659}
   - component: {fileID: 2193473658538928922}
   - component: {fileID: 9040594783076364536}
+  - component: {fileID: 6501788449456051967}
   m_Layer: 0
   m_Name: Mesh20_Group22_Group12_Group1_Model
   m_TagString: Untagged
@@ -5012,6 +5202,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 31099449014806008, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!114 &6501788449456051967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7938283359999613365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 01000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 00000000
 --- !u!1 &7952951594154925524
 GameObject:
   m_ObjectHideFlags: 0
@@ -5271,6 +5481,7 @@ GameObject:
   - component: {fileID: 4054986556222567328}
   - component: {fileID: 1815712819911804027}
   - component: {fileID: 1201267929132983988}
+  - component: {fileID: 3390692343383064716}
   m_Layer: 0
   m_Name: FrontSail
   m_TagString: Untagged
@@ -5387,6 +5598,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3390692343383064716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534242361502045695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 01000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 00000000
 --- !u!1 &8686231665115063398
 GameObject:
   m_ObjectHideFlags: 0
@@ -5430,6 +5661,7 @@ GameObject:
   - component: {fileID: 5151625986729482223}
   - component: {fileID: 6114639879817048068}
   - component: {fileID: 1519677741138874014}
+  - component: {fileID: 8845043780068439993}
   m_Layer: 0
   m_Name: Mesh14_Group16_Group12_Group1_Model
   m_TagString: Untagged
@@ -5525,6 +5757,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4240701398473206399, guid: ff6b024e9c40f4448a6c21e2e22461f4, type: 3}
+--- !u!114 &8845043780068439993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8733251604969638680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 01000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 00000000
 --- !u!1 &8920869185870862872
 GameObject:
   m_ObjectHideFlags: 0
