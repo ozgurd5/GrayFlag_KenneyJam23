@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9058803129215917397}
   - component: {fileID: 1334324682088171165}
   - component: {fileID: 507437580533271378}
+  - component: {fileID: 7368800600718489499}
   m_Layer: 0
   m_Name: rockSmall
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7555185752953191562, guid: ea047b90476d89d46beba06b01efea50, type: 3}
+  - {fileID: 2100000, guid: 8204982561e49fd49a49bf3018ca9a38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,3 +107,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1471282414184350066, guid: ea047b90476d89d46beba06b01efea50, type: 3}
+--- !u!114 &7368800600718489499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6550926702783199432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 8204982561e49fd49a49bf3018ca9a38, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 

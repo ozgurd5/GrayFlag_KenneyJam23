@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6625808665212805505}
   - component: {fileID: 5540887622507747711}
   - component: {fileID: 4985273930430822054}
+  - component: {fileID: -1519316130149751370}
   m_Layer: 0
   m_Name: stones
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4218046369211427024, guid: d952911fc062abb4bab82c0cb2cc0d44, type: 3}
+  - {fileID: 2100000, guid: c3bd3b89ad428694db60f71cab138656, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,3 +107,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7478561364360854413, guid: d952911fc062abb4bab82c0cb2cc0d44, type: 3}
+--- !u!114 &-1519316130149751370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956374793212602331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 2100000, guid: c3bd3b89ad428694db60f71cab138656, type: 2}
+  blueMaterialIndexes: 00000000
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 

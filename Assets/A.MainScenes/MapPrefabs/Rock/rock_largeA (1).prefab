@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3408788204402396104}
   - component: {fileID: 2302072219759551683}
   - component: {fileID: -3515464222125013665}
+  - component: {fileID: 4892341282325609858}
   m_Layer: 0
   m_Name: rock_largeA (1)
   m_TagString: Untagged
@@ -62,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5559793438365659755, guid: f2cb8f513be4f4f4f9f5b7dd26d2c7ef, type: 3}
-  - {fileID: 8507789265930873676, guid: f2cb8f513be4f4f4f9f5b7dd26d2c7ef, type: 3}
+  - {fileID: 2100000, guid: 8204982561e49fd49a49bf3018ca9a38, type: 2}
+  - {fileID: 2100000, guid: 8204982561e49fd49a49bf3018ca9a38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,3 +108,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7705791283668964911, guid: f2cb8f513be4f4f4f9f5b7dd26d2c7ef, type: 3}
+--- !u!114 &4892341282325609858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5389219777987396227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 8204982561e49fd49a49bf3018ca9a38, type: 2}
+  redMaterialIndexes: 0000000001000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 

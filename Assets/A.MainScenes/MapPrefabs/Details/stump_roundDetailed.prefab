@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8168530409995897286}
   - component: {fileID: 4878610024717283113}
   - component: {fileID: -5779533985824180929}
+  - component: {fileID: 6942311089133484441}
   m_Layer: 0
   m_Name: stump_roundDetailed
   m_TagString: Untagged
@@ -62,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8911647698024284698, guid: 4a20be03f1993184ba9c5069de3e64d5, type: 3}
-  - {fileID: -2131346279574542703, guid: 4a20be03f1993184ba9c5069de3e64d5, type: 3}
+  - {fileID: 2100000, guid: 8204982561e49fd49a49bf3018ca9a38, type: 2}
+  - {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,3 +108,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1153123562192320988, guid: 4a20be03f1993184ba9c5069de3e64d5, type: 3}
+--- !u!114 &6942311089133484441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7145031737858671508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 8204982561e49fd49a49bf3018ca9a38, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 

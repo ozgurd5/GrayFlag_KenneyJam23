@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7331697003938537983}
   - component: {fileID: 8576061610921449392}
   - component: {fileID: -1409666108085245085}
+  - component: {fileID: -6593780608696019414}
   m_Layer: 0
   m_Name: formationLarge_rock
   m_TagString: Untagged
@@ -62,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8067726398312463513, guid: d824a2b4c7a866f4bb95a7b793fc8ece, type: 3}
-  - {fileID: -1114199533890271507, guid: d824a2b4c7a866f4bb95a7b793fc8ece, type: 3}
+  - {fileID: 2100000, guid: 0a5916af69507944aa7fcbfdcdb8caaa, type: 2}
+  - {fileID: 2100000, guid: 0a5916af69507944aa7fcbfdcdb8caaa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,3 +108,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7371470680976479755, guid: d824a2b4c7a866f4bb95a7b793fc8ece, type: 3}
+--- !u!114 &-6593780608696019414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057012992378343761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 0a5916af69507944aa7fcbfdcdb8caaa, type: 2}
+  yellowMaterialIndexes: 0000000001000000

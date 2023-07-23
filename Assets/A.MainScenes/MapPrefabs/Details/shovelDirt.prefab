@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7646386142289877460}
   - component: {fileID: 6722313278620035462}
   - component: {fileID: 5703418973936600077}
+  - component: {fileID: -4075646216891644392}
   m_Layer: 0
   m_Name: shovelDirt
   m_TagString: Untagged
@@ -62,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7555185752953191562, guid: a9f62c44fe0a02a4a822fa87364035b4, type: 3}
-  - {fileID: -8067726398312463513, guid: a9f62c44fe0a02a4a822fa87364035b4, type: 3}
+  - {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
+  - {fileID: 2100000, guid: 1c8dc9092de938946a5d6e7f6ce0a7e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,3 +108,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7594845045334337107, guid: a9f62c44fe0a02a4a822fa87364035b4, type: 3}
+--- !u!114 &-4075646216891644392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7161530543858495206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
+  blueMaterialIndexes: 00000000
+  yellowMaterial: {fileID: 2100000, guid: 1c8dc9092de938946a5d6e7f6ce0a7e1, type: 2}
+  yellowMaterialIndexes: 01000000

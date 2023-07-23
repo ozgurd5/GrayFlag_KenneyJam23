@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1373523963746506223}
   - component: {fileID: 6816097324408773481}
   - component: {fileID: -3937438499579748418}
+  - component: {fileID: 1950201321723141233}
   m_Layer: 0
   m_Name: fence_simpleCenter
   m_TagString: Untagged
@@ -62,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8067726398312463513, guid: 8353dfb8e5b9b0e4c9c04806e57f33a1, type: 3}
-  - {fileID: -5173966397720942367, guid: 8353dfb8e5b9b0e4c9c04806e57f33a1, type: 3}
+  - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,6 +105,26 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4008676679046863574, guid: 8353dfb8e5b9b0e4c9c04806e57f33a1, type: 3}
+--- !u!114 &1950201321723141233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035147321011029598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 0000000001000000

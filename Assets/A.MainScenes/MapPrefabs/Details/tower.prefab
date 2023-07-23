@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3206340860083719685}
   - component: {fileID: 8234501656340754479}
   - component: {fileID: -2500455269908792865}
+  - component: {fileID: 8255796538891753997}
   m_Layer: 0
   m_Name: tower
   m_TagString: Untagged
@@ -62,13 +63,13 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7555185752953191562, guid: f0bbde7c0e40ccc4da4b2cf2aebd312c, type: 3}
-  - {fileID: -5173966397720942367, guid: f0bbde7c0e40ccc4da4b2cf2aebd312c, type: 3}
-  - {fileID: -3963241562183589234, guid: f0bbde7c0e40ccc4da4b2cf2aebd312c, type: 3}
-  - {fileID: -5945402096816309425, guid: f0bbde7c0e40ccc4da4b2cf2aebd312c, type: 3}
-  - {fileID: -8067726398312463513, guid: f0bbde7c0e40ccc4da4b2cf2aebd312c, type: 3}
-  - {fileID: -1114199533890271507, guid: f0bbde7c0e40ccc4da4b2cf2aebd312c, type: 3}
-  - {fileID: -4695092126019524277, guid: f0bbde7c0e40ccc4da4b2cf2aebd312c, type: 3}
+  - {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
+  - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  - {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
+  - {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
+  - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  - {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
+  - {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,3 +113,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1309463313950424264, guid: f0bbde7c0e40ccc4da4b2cf2aebd312c, type: 3}
+--- !u!114 &8255796538891753997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150350332803081154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 0100000004000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
+  blueMaterialIndexes: 00000000
+  yellowMaterial: {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
+  yellowMaterialIndexes: 020000000500000006000000

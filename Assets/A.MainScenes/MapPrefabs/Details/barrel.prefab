@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2603833817138742971}
   - component: {fileID: 2631951653181871543}
   - component: {fileID: 13660959097291717}
+  - component: {fileID: 7119275437601931862}
   m_Layer: 0
   m_Name: barrel
   m_TagString: Untagged
@@ -62,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2609809028551464901, guid: 8e0e89ca09f9d5141bd1d789c03b7f3f, type: 3}
-  - {fileID: 6176237238205673327, guid: 8e0e89ca09f9d5141bd1d789c03b7f3f, type: 3}
+  - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  - {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,3 +108,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2643173543783292932, guid: 8e0e89ca09f9d5141bd1d789c03b7f3f, type: 3}
+--- !u!114 &7119275437601931862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420758049137766148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
+  blueMaterialIndexes: 01000000
+  yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  yellowMaterialIndexes: 00000000

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6004081361750674596}
   - component: {fileID: 7611496641578474278}
   - component: {fileID: -8588210539763618123}
+  - component: {fileID: -2132539929393535359}
   m_Layer: 0
   m_Name: ship_wreck
   m_TagString: Untagged
@@ -62,12 +63,12 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8067726398312463513, guid: c6a2328d163411a47b930101cab3f921, type: 3}
-  - {fileID: -5945402096816309425, guid: c6a2328d163411a47b930101cab3f921, type: 3}
-  - {fileID: -5173966397720942367, guid: c6a2328d163411a47b930101cab3f921, type: 3}
-  - {fileID: 3398073514908505954, guid: c6a2328d163411a47b930101cab3f921, type: 3}
-  - {fileID: -5316684210946835829, guid: c6a2328d163411a47b930101cab3f921, type: 3}
-  - {fileID: -3963241562183589234, guid: c6a2328d163411a47b930101cab3f921, type: 3}
+  - {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
+  - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  - {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
+  - {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
+  - {fileID: 2100000, guid: 261c09be40d373a43ad05a3878a8348e, type: 2}
+  - {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,3 +112,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2051387375742568565, guid: c6a2328d163411a47b930101cab3f921, type: 3}
+--- !u!114 &-2132539929393535359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869146382107134771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
+  redMaterialIndexes: 01000000
+  greenMaterial: {fileID: 2100000, guid: 261c09be40d373a43ad05a3878a8348e, type: 2}
+  greenMaterialIndexes: 04000000
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
+  yellowMaterialIndexes: 0000000002000000

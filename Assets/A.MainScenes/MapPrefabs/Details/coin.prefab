@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4112501427199743847}
   - component: {fileID: 4261027671378379641}
   - component: {fileID: 5521894267075970017}
+  - component: {fileID: -8527629864760473231}
   m_Layer: 0
   m_Name: coin
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5354028657143720620, guid: 992c31bcf49924245892e7456dfa8fe6, type: 3}
+  - {fileID: 2100000, guid: 1c8dc9092de938946a5d6e7f6ce0a7e1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,3 +134,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.415, y: 0.4166667, z: 0.16666673}
   m_Center: {x: 0, y: 0.20833334, z: -0.000061035156}
+--- !u!114 &-8527629864760473231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6121332501059921595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: 1c8dc9092de938946a5d6e7f6ce0a7e1, type: 2}
+  yellowMaterialIndexes: 00000000

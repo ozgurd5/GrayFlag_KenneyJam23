@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5635090117163932494}
   - component: {fileID: 7885805575207244853}
   - component: {fileID: 4638665731238158630}
+  - component: {fileID: 2469638695457257634}
   m_Layer: 0
   m_Name: sword
   m_TagString: Untagged
@@ -61,10 +62,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4695092126019524277, guid: e1c887009b62ed24c937cf4010ccc62e, type: 3}
-  - {fileID: 7555185752953191562, guid: e1c887009b62ed24c937cf4010ccc62e, type: 3}
-  - {fileID: -8067726398312463513, guid: e1c887009b62ed24c937cf4010ccc62e, type: 3}
-  - {fileID: -3963241562183589234, guid: e1c887009b62ed24c937cf4010ccc62e, type: 3}
+  - {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
+  - {fileID: 2100000, guid: 149b845c3eeecf244acaee97984a8d6e, type: 2}
+  - {fileID: 2100000, guid: 261c09be40d373a43ad05a3878a8348e, type: 2}
+  - {fileID: 2100000, guid: 261c09be40d373a43ad05a3878a8348e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,3 +87,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2469638695457257634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593171235098966414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 149b845c3eeecf244acaee97984a8d6e, type: 2}
+  redMaterialIndexes: 01000000
+  greenMaterial: {fileID: 2100000, guid: 261c09be40d373a43ad05a3878a8348e, type: 2}
+  greenMaterialIndexes: 0200000003000000
+  blueMaterial: {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
+  blueMaterialIndexes: 00000000
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
