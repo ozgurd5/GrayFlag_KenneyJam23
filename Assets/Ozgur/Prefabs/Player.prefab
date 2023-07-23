@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 4930711311431640911}
   - component: {fileID: 4742588102845881557}
   - component: {fileID: 1874473195205953622}
+  - component: {fileID: 4422597988546080891}
+  - component: {fileID: 3211577368745415198}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -742,6 +744,33 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &4422597988546080891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410474728315385331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ca14c70bbbd984280a47f23b5551bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3211577368745415198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410474728315385331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f93bcaf07d4cb47879c53025e9656e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
+  health: 20
+  knockbackForce: 600
 --- !u!1 &5961817998518397154
 GameObject:
   m_ObjectHideFlags: 0
