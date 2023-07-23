@@ -21,7 +21,7 @@ public class PlayerCombatManager : MonoBehaviour
         if (!pim.isAttackKeyDown) return;
         StartCoroutine(PlaySwordAnimation());
             
-        if (CrosshairManager.interactableTag != "Enemy") return;
+        if (!CrosshairManager.isLookingAtEnemy) return;
         CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
     }
 

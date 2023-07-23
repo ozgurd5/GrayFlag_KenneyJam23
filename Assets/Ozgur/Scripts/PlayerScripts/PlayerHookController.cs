@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerHookController : MonoBehaviour
@@ -6,10 +5,10 @@ public class PlayerHookController : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private float releaseForce = 200f;
     
+    private PlayerStateData psd;
     private PlayerInputManager pim;
     private LineRenderer lr;
     private Rigidbody rb;
-    
     private Transform hookGunTransform;
 
     private Vector3 hookedPosition;
@@ -18,10 +17,10 @@ public class PlayerHookController : MonoBehaviour
 
     private void Awake()
     {
+        psd = GetComponent<PlayerStateData>();
         pim = GetComponent<PlayerInputManager>();
         lr = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody>();
-
         hookGunTransform = GameObject.Find("PlayerCamera/HookGun").transform;
     }
 
@@ -31,6 +30,7 @@ public class PlayerHookController : MonoBehaviour
         
         HandleShooting();
         HandleReleasingCondition();
+        HandleExitHookSubState();
     }
 
     private void FixedUpdate()
@@ -41,17 +41,18 @@ public class PlayerHookController : MonoBehaviour
     private void HandleShooting()
     {
         if (!pim.isHookKeyDown) return;
-        if (!CrosshairManager.isLookingAtInteractable) return;
-        if (CrosshairManager.interactableTag != "HookPlace") return;
+        if (!CrosshairManager.isLookingAtHookTarget) return;
 
+        psd.isHooked = true;
         lr.enabled = true;
+        
         hookedPosition = CrosshairManager.crosshairHit.transform.position;
         lr.SetPosition(1, hookedPosition);
     }
 
     private void HandleReleasingCondition()
     {
-        if (pim.isHookKeyUp) releasingCondition = true;
+        if (pim.isHookKeyUp && psd.isHooked) releasingCondition = true;
     }
 
     private void HandleReleasing()
@@ -61,7 +62,16 @@ public class PlayerHookController : MonoBehaviour
         movingDirection = (hookedPosition - transform.position).normalized;
         rb.AddForce(movingDirection * releaseForce, ForceMode.Force);
         
+        psd.isHookFlying = true;
+        psd.isHooked = false;
+        
         lr.enabled = false;
         releasingCondition = false;
+    }
+
+    private void HandleExitHookSubState()
+    {
+        if (!psd.isHookFlying) return;
+        if (pim.moveInput.magnitude != 0f) psd.isHookFlying = false;
     }
 }

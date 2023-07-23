@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     
     private void CalculateMovingDirection()
     {
+        if (psd.isHookFlying) return;
+        
         movingDirection = transform.right * pim.moveInput.x + transform.forward * pim.moveInput.y;
         movingDirection.y = 0f;
     }
@@ -62,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (psd.isHookFlying) return;
+        
         movingDirection *= movingSpeed;
         rb.velocity = new Vector3(movingDirection.x, rb.velocity.y, movingDirection.z);
     }

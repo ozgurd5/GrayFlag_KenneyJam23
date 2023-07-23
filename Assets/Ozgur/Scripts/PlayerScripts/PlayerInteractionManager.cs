@@ -31,10 +31,10 @@ public class PlayerInteractionManager : MonoBehaviour
             transform.parent = null;
         }
         
-        if (!CrosshairManager.isLookingAtInteractable) return;
+        if (!CrosshairManager.isLookingAtShipWheel) return;
         
         
-        if (psd.currentMainState == PlayerStateData.PlayerMainState.NormalState && CrosshairManager.interactableTag == "ShipWheel")
+        if (psd.currentMainState == PlayerStateData.PlayerMainState.NormalState && CrosshairManager.isLookingAtShipWheel)
         {
             sc = CrosshairManager.crosshairHit.collider.GetComponentInParent<ShipController>();
             sc.TakeControl();
