@@ -10,7 +10,7 @@ public class CrosshairManager : MonoBehaviour
     
     [Header("Assign")]
     [SerializeField] private float range = 7f;
-    [SerializeField] private float longRange = 50f;
+    [SerializeField] private float longRange = 100f;
     [SerializeField] [Range(0, 1)] private float opacity = 0.3f;
 
     private Image crosshairImage;

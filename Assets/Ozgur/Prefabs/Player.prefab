@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyingForce: 2000
-  flyingMovementForce: 2000
+  flyingMovingSpeed: 15
   animationDuration: 0.2
   aus: {fileID: 4742588102845881557}
   hookGunTransform: {fileID: 0}
@@ -903,7 +903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 7
-  longRange: 50
+  longRange: 100
   opacity: 0.3
   crosshairHighlightCondition: 0
   wheel: 0

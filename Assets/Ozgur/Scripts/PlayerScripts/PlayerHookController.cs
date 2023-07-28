@@ -6,24 +6,25 @@ public class PlayerHookController : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private float flyingForce = 2000f;
-    [SerializeField] private float flyingMovementForce = 2000f;
+    [SerializeField] private float flyingMovingSpeed = 15f;
     [SerializeField] private float animationDuration = 0.2f;
     [SerializeField] private AudioSource aus;
     
     private PlayerStateData psd;
     private PlayerInputManager pim;
+    private PlayerLookingController plc;
     private LineRenderer lr;
     private Rigidbody rb;
     public Transform hookGunTransform;
 
     private Vector3 hookedPosition;
-    private Vector3 movingDirection;
     private bool flyingCondition;
 
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
         pim = GetComponent<PlayerInputManager>();
+        plc = GetComponent<PlayerLookingController>();
         lr = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody>();
         hookGunTransform = GameObject.Find("PlayerCamera/HookGun/LineOut").transform;
@@ -31,19 +32,16 @@ public class PlayerHookController : MonoBehaviour
 
     private void Update()
     {
-        lr.SetPosition(0, hookGunTransform.position);
-
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
-        if (!pim.isHookKeyDown) return;
-
-        StartCoroutine(HandleGunAnimation());
-        aus.Play();
-        if (CrosshairManager.isLookingAtHookTarget) StartCoroutine(HandleShoot());
+        
+        lr.SetPosition(0, hookGunTransform.position);
+        HandleEnterHookState();
     }
 
     private void FixedUpdate()
     {
         HandleFlying();
+        HandleFlyingMovement();
     }
     
     private IEnumerator HandleShoot()
@@ -70,19 +68,37 @@ public class PlayerHookController : MonoBehaviour
     {
         if (!flyingCondition) return;
         
-        movingDirection = (hookedPosition - transform.position).normalized;
-        rb.AddForce(movingDirection * flyingForce, ForceMode.Force);
+        Vector3 move = (hookedPosition - transform.position).normalized;
+        rb.AddForce(move * flyingForce, ForceMode.Force);
 
         psd.currentMainState = PlayerStateData.PlayerMainState.HookState;
         flyingCondition = false;
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void HandleFlyingMovement()
     {
-        HandleExitHookSubState();
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.HookState) return;
+        
+        if (plc.movingDirection.x == 0 || plc.movingDirection.z == 0) return;
+        
+        Vector3 moving = plc.movingDirection * flyingMovingSpeed;
+        rb.velocity = new Vector3(moving.x, rb.velocity.y, moving.z);
     }
 
-    private void HandleExitHookSubState()
+    private void OnCollisionEnter(Collision col)
+    {
+        HandleExitHookState();
+    }
+
+    private void HandleEnterHookState()
+    {
+        if (!pim.isHookKeyDown) return;
+        StartCoroutine(HandleGunAnimation());
+        aus.Play();
+        if (CrosshairManager.isLookingAtHookTarget) StartCoroutine(HandleShoot());
+    }
+
+    private void HandleExitHookState()
     {
         if (psd.currentMainState == PlayerStateData.PlayerMainState.HookState)
             psd.currentMainState = PlayerStateData.PlayerMainState.NormalState;
