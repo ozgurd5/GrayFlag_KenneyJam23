@@ -8,12 +8,13 @@ public class PlayerColorEnabler : MonoBehaviour
     public static event Action OnBlueColorEnabled;
     public static event Action OnYellowColorEnabled;
 
-    private void Update()
+    //TODO: remove before build
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.J)) OnRedColorEnabled?.Invoke();
-        else if (Input.GetKeyDown(KeyCode.K)) OnGreenColorEnabled?.Invoke();
-        else if (Input.GetKeyDown(KeyCode.L)) OnBlueColorEnabled?.Invoke();
-        else if (Input.GetKeyDown(KeyCode.H)) OnYellowColorEnabled?.Invoke();
+        OnRedColorEnabled?.Invoke();
+        OnGreenColorEnabled?.Invoke();
+        OnBlueColorEnabled?.Invoke();
+        OnYellowColorEnabled?.Invoke();
     }
 
     public static void EnableRedColor()

@@ -7,6 +7,7 @@ public class PlayerStateData : MonoBehaviour
         NormalState,
         ShipControllingState,
         PauseMenuState,
+        HookState,
     }
 
     [Header("Main State")]
@@ -21,7 +22,5 @@ public class PlayerStateData : MonoBehaviour
     [Header("Logic Only Sub-states")]
     public bool isMoving;           //PlayerController.cs
     public bool isGrounded;         //GroundCheck.cs
-    public bool isHooked;           //PlayerHookController.cs
-    public bool isHookFlying;       //PlayerHookController.cs
     public bool isGettingDamage;    //PlayerHookController.cs
 }

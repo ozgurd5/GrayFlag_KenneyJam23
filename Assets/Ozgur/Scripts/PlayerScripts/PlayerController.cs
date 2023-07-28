@@ -16,12 +16,10 @@ public class PlayerController : MonoBehaviour
 
     private PlayerStateData psd;
     private PlayerInputManager pim;
+    private PlayerLookingController plc;
     private Rigidbody rb;
-    private Transform cameraTransform;
 
     private bool isJumpCondition;
-    private Vector3 currentRotation;
-    private Vector3 movingDirection;
     public float movingSpeed;
 
     private void Awake()
@@ -31,28 +29,26 @@ public class PlayerController : MonoBehaviour
 
         psd = GetComponent<PlayerStateData>();
         pim = GetComponent<PlayerInputManager>();
+        plc = GetComponent<PlayerLookingController>();
         rb = GetComponent<Rigidbody>();
-        cameraTransform = GameObject.Find("PlayerCamera").transform;
-    }
-
-    private void HandleLooking()
-    {
-        currentRotation.x -= pim.lookInput.y;
-        currentRotation.y += pim.lookInput.x;
-        
-        currentRotation.x = Mathf.Clamp(currentRotation.x, -90f, 90f);
-        cameraTransform.localRotation = Quaternion.Euler(currentRotation);
-        
-        //currentRotation.x = 0f; //very stupid that it broke the camera's x rotation
-        transform.localRotation = Quaternion.Euler(new Vector3(0f, currentRotation.y, 0f));
     }
     
-    private void CalculateMovingDirection()
+    private void Update()
     {
-        if (psd.isHookFlying) return;
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
+
+        DecideJumpingState();
+        DecideIdleOrMovingStates();
+        DecideWalkingOrRunningStates();
+        CheckJumpCondition();
+    }
+
+    private void FixedUpdate()
+    {
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
         
-        movingDirection = transform.right * pim.moveInput.x + transform.forward * pim.moveInput.y;
-        movingDirection.y = 0f;
+        HandleMovement();
+        HandleJump();
     }
 
     private void HandleMovingSpeed()
@@ -67,10 +63,10 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (psd.isHookFlying || psd.isGettingDamage) return;
-        
-        movingDirection *= movingSpeed;
-        rb.velocity = new Vector3(movingDirection.x, rb.velocity.y, movingDirection.z);
+        if (psd.isGettingDamage) return;
+
+        Vector3 moving = plc.movingDirection * movingSpeed;
+        rb.velocity = new Vector3(moving.x, rb.velocity.y, moving.z);
     }
 
     private void CheckJumpCondition()
@@ -118,26 +114,6 @@ public class PlayerController : MonoBehaviour
         else movingSpeed = walkingSpeed;
     }
 
-    private void Update()
-    {
-        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
-
-        DecideJumpingState();
-        DecideIdleOrMovingStates();
-        DecideWalkingOrRunningStates();
-        HandleLooking();
-        CheckJumpCondition();
-    }
-
-    private void FixedUpdate()
-    {
-        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
-        
-        CalculateMovingDirection();
-        HandleMovement();
-        HandleJump();
-    }
-    
     private IEnumerator IncreaseMovingSpeed(float movingSpeedToReach)
     {
         while (movingSpeed < movingSpeedToReach)

@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerHookController : MonoBehaviour
 {
     [Header("Assign")]
-    [SerializeField] private float releaseForce = 2000f;
+    [SerializeField] private float flyingForce = 2000f;
+    [SerializeField] private float flyingMovementForce = 2000f;
     [SerializeField] private float animationDuration = 0.2f;
     [SerializeField] private AudioSource aus;
     
@@ -30,17 +31,14 @@ public class PlayerHookController : MonoBehaviour
 
     private void Update()
     {
-        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
-        
         lr.SetPosition(0, hookGunTransform.position);
-        HandleExitHookSubState();
-        
+
+        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
         if (!pim.isHookKeyDown) return;
+
         StartCoroutine(HandleGunAnimation());
         aus.Play();
-        
-        if (!CrosshairManager.isLookingAtHookTarget) return;
-        StartCoroutine(HandleShoot());
+        if (CrosshairManager.isLookingAtHookTarget) StartCoroutine(HandleShoot());
     }
 
     private void FixedUpdate()
@@ -73,15 +71,20 @@ public class PlayerHookController : MonoBehaviour
         if (!flyingCondition) return;
         
         movingDirection = (hookedPosition - transform.position).normalized;
-        rb.AddForce(movingDirection * releaseForce, ForceMode.Force);
-        
-        psd.isHookFlying = true;
+        rb.AddForce(movingDirection * flyingForce, ForceMode.Force);
+
+        psd.currentMainState = PlayerStateData.PlayerMainState.HookState;
         flyingCondition = false;
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        HandleExitHookSubState();
     }
 
     private void HandleExitHookSubState()
     {
-        if (!psd.isHookFlying) return;
-        if (pim.moveInput.magnitude != 0f)  psd.isHookFlying = false;
+        if (psd.currentMainState == PlayerStateData.PlayerMainState.HookState)
+            psd.currentMainState = PlayerStateData.PlayerMainState.NormalState;
     }
 }
