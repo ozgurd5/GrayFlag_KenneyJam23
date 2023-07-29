@@ -11,22 +11,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float walkingSpeed = 8f;
     [SerializeField] private float runningSpeed = 15f;
     [SerializeField] private float jumpSpeed = 15f;
-    [SerializeField] private float acceleration = 10f;
-    [SerializeField] private float deceleration = 20f;
+    [SerializeField] private float acceleration = 15f;
 
     private PlayerStateData psd;
     private PlayerInputManager pim;
     private PlayerLookingController plc;
     private Rigidbody rb;
-
+    
+    [Header("No Touch")]
+    [SerializeField] private float movingSpeed;
+    [SerializeField] private bool isIncreasingSpeed;
     private bool isJumpCondition;
-    public float movingSpeed;
 
     private void Awake()
     {
-        //Moving speed default must be walking speed
-        movingSpeed = walkingSpeed;
-
         psd = GetComponent<PlayerStateData>();
         pim = GetComponent<PlayerInputManager>();
         plc = GetComponent<PlayerLookingController>();
@@ -40,6 +38,7 @@ public class PlayerController : MonoBehaviour
         DecideJumpingState();
         DecideIdleOrMovingStates();
         DecideWalkingOrRunningStates();
+        HandleMovingSpeed();
         CheckJumpCondition();
     }
 
@@ -53,12 +52,15 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovingSpeed()
     {
-        //delete speed thing in walking running decide
+        if (psd.isIdle) movingSpeed = 0f;
         
-        if (psd.isWalking) StartCoroutine(IncreaseMovingSpeed(walkingSpeed));
-        else if (psd.isRunning) StartCoroutine(IncreaseMovingSpeed(runningSpeed));
+        else if (psd.isWalking)
+        {
+            if (movingSpeed > walkingSpeed) movingSpeed = walkingSpeed;    //from running to moving
+            else if (!isIncreasingSpeed && movingSpeed != walkingSpeed) StartCoroutine(IncreaseMovingSpeed(walkingSpeed));
+        }
         
-        else StartCoroutine(DecreaseMovingSpeed(0f));
+        else if (psd.isRunning && !isIncreasingSpeed && movingSpeed != runningSpeed) StartCoroutine(IncreaseMovingSpeed(runningSpeed));
     }
 
     private void HandleMovement()
@@ -91,10 +93,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void DecideIdleOrMovingStates()
-    {
-        Vector2 velocityXZ = new Vector2(rb.velocity.x, rb.velocity.z);
-        
-        psd.isMoving = math.abs(velocityXZ.magnitude) > 0.01f;  //It's never 0, idk why
+    { 
+        psd.isMoving = pim.moveInput.magnitude > 0;
         psd.isIdle = !psd.isMoving;
     }
     
@@ -109,26 +109,20 @@ public class PlayerController : MonoBehaviour
         
         psd.isRunning = pim.isRunKey;
         psd.isWalking = !psd.isRunning;
-
-        if (psd.isRunning) movingSpeed = runningSpeed;
-        else movingSpeed = walkingSpeed;
     }
 
     private IEnumerator IncreaseMovingSpeed(float movingSpeedToReach)
     {
+        isIncreasingSpeed = true;
+        
         while (movingSpeed < movingSpeedToReach)
         {
             movingSpeed += acceleration * Time.deltaTime;
             yield return null;
         }
-    }
-    
-    private IEnumerator DecreaseMovingSpeed(float movingSpeedToReach)
-    {
-        while (movingSpeed > movingSpeedToReach)
-        {
-            movingSpeed -= deceleration * Time.deltaTime;
-            yield return null;
-        }
+        
+        if (movingSpeed > movingSpeedToReach) movingSpeed = movingSpeedToReach;
+        
+        isIncreasingSpeed = false;
     }
 }
