@@ -39,8 +39,6 @@ public class PauseMenu : MonoBehaviour
         PauseMenuCanvas.SetActive(true);
         Time.timeScale = 0f;
         Paused = true; 
-        Debug.Log("Oyun Durdu");
-
     }
 
     public void Play()

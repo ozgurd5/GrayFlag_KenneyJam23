@@ -6,7 +6,7 @@ public class PlayerHookController : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private float flyingForce = 2000f;
-    [SerializeField] private float flyingMovingSpeed = 15f;
+    [SerializeField] private float flyingMovingSpeed = 10f;
     [SerializeField] private float animationDuration = 0.2f;
     [SerializeField] private AudioSource aus;
     
@@ -68,10 +68,13 @@ public class PlayerHookController : MonoBehaviour
     {
         if (!flyingCondition) return;
         
+        psd.currentMainState = PlayerStateData.PlayerMainState.HookState;
+        
         Vector3 move = (hookedPosition - transform.position).normalized;
         rb.AddForce(move * flyingForce, ForceMode.Force);
-
-        psd.currentMainState = PlayerStateData.PlayerMainState.HookState;
+        
+        Vector3 moveDirection = (hookedPosition - transform.position).normalized;
+        rb.AddForce(moveDirection * flyingForce); 
         flyingCondition = false;
     }
 
