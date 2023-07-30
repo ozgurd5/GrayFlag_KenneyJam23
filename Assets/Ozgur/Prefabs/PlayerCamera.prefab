@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 2241721858031547132}
   - component: {fileID: 649794090132293874}
   - component: {fileID: 4602695955762970916}
+  - component: {fileID: 5143005600894692717}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -135,6 +136,19 @@ MonoBehaviour:
   followOffset: {x: 0, y: 0, z: 0}
   canLookAt: 0
   lookAtTargetTransform: {fileID: 0}
+--- !u!114 &5143005600894692717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538644184915573226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54afd95bd4c336f448178141c405f83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPlayer: {fileID: 0}
 --- !u!1 &3026391508542526417
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 4788288386517693023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.08715578, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0.55, y: -0.35, z: 0.7}
+  m_LocalPosition: {x: 0.45, y: -0.35, z: 0.7}
   m_LocalScale: {x: 0.14999999, y: 0.14999999, z: 0.14999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -228,9 +242,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
-  - {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
-  - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  - {fileID: 2100000, guid: 25f0c06633fb11b4685ed8f57b4cf14c, type: 2}
+  - {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
+  - {fileID: 2100000, guid: 325f39dac63eefb4bb2f84c5c453f254, type: 2}
   - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -291,7 +305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2788576140919291856
 Transform:
   m_ObjectHideFlags: 0
@@ -336,10 +350,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
-  - {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
-  - {fileID: 2100000, guid: a55234cf646ec934fa289f9f33e29dd8, type: 2}
-  - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  - {fileID: 2100000, guid: 25f0c06633fb11b4685ed8f57b4cf14c, type: 2}
+  - {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
+  - {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
+  - {fileID: 2100000, guid: 325f39dac63eefb4bb2f84c5c453f254, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

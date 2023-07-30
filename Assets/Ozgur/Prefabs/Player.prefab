@@ -442,8 +442,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244780f88e804804780b2f4f12c57aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationDuration: 0.1
+  attackAnimationHalfDuration: 0.1
+  walkingAnimationHalfDuration: 0.5
+  runningAnimationHalfDuration: 0.2
   aus: {fileID: 4388190400856024315}
+  attackRotationX: 50
+  attackRotationXBack: 0
+  movingAnimationPositionY: -0.35
+  movingAnimationPositionYBack: -0.4
+  walkingModeMovingAnimationPositionZ: 0.62
+  walkingModeMovingAnimationPositionZBack: 0.6
+  runningModeMovingAnimationPositionZ: 0.52
+  runningModeMovingAnimationPositionZBack: 0.5
+  runningModeRotationX: 25
+  runningModeRotationXBack: 0
+  runningModePositionZ: 0.5
+  runningModePositionZBack: 0.6
 --- !u!82 &4388190400856024315
 AudioSource:
   m_ObjectHideFlags: 0
@@ -554,9 +568,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingForce: 2000
   flyingMovingSpeed: 10
-  animationDuration: 0.2
+  shootAnimationDuration: 0.2
+  walkingAnimationHalfDuration: 0.5
+  runningAnimationHalfDuration: 0.2
   aus: {fileID: 4742588102845881557}
-  hookGunTransform: {fileID: 0}
+  value1: -0.2
+  value2: -0.35
 --- !u!82 &4742588102845881557
 AudioSource:
   m_ObjectHideFlags: 0

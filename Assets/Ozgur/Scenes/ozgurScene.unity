@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5622598, g: 0.7275005, b: 0.7958603, a: 1}
+  m_IndirectSpecularColor: {r: 0.58690363, g: 0.7599503, b: 0.83148265, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8222,21 +8222,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1156759242787644637, guid: f4911f1920383fb4daf6ec838d38e45f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 25f0c06633fb11b4685ed8f57b4cf14c, type: 2}
-    - target: {fileID: 1156759242787644637, guid: f4911f1920383fb4daf6ec838d38e45f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
-    - target: {fileID: 1156759242787644637, guid: f4911f1920383fb4daf6ec838d38e45f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 325f39dac63eefb4bb2f84c5c453f254, type: 2}
     - target: {fileID: 2241721858031547132, guid: f4911f1920383fb4daf6ec838d38e45f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8292,64 +8277,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 2538644184915573226, guid: f4911f1920383fb4daf6ec838d38e45f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4602695955762970916, guid: f4911f1920383fb4daf6ec838d38e45f,
         type: 3}
       propertyPath: followTargetTransform
       value: 
       objectReference: {fileID: 1471631215}
-    - target: {fileID: 5366668387548298198, guid: f4911f1920383fb4daf6ec838d38e45f,
+    - target: {fileID: 5143005600894692717, guid: f4911f1920383fb4daf6ec838d38e45f,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: soundPlayer
       value: 
-      objectReference: {fileID: 2100000, guid: 25f0c06633fb11b4685ed8f57b4cf14c, type: 2}
-    - target: {fileID: 5366668387548298198, guid: f4911f1920383fb4daf6ec838d38e45f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
-    - target: {fileID: 5366668387548298198, guid: f4911f1920383fb4daf6ec838d38e45f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
-    - target: {fileID: 5366668387548298198, guid: f4911f1920383fb4daf6ec838d38e45f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 325f39dac63eefb4bb2f84c5c453f254, type: 2}
+      objectReference: {fileID: 473016411}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2538644184915573226, guid: f4911f1920383fb4daf6ec838d38e45f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 682105744}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4911f1920383fb4daf6ec838d38e45f, type: 3}
---- !u!1 &682105743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2538644184915573226, guid: f4911f1920383fb4daf6ec838d38e45f,
+--- !u!114 &682105744 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5143005600894692717, guid: f4911f1920383fb4daf6ec838d38e45f,
     type: 3}
   m_PrefabInstance: {fileID: 682105742}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &682105744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682105743}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54afd95bd4c336f448178141c405f83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundPlayer: {fileID: 473016411}
 --- !u!1001 &690022044
 PrefabInstance:
   m_ObjectHideFlags: 0
