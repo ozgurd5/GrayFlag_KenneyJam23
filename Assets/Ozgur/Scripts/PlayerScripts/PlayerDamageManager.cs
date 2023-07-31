@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDamageManager : MonoBehaviour
 {
@@ -10,20 +11,26 @@ public class PlayerDamageManager : MonoBehaviour
 
     private PlayerStateData psd;
     private Rigidbody rb;
+    private Slider healthBar;
 
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
         rb = GetComponent<Rigidbody>();
+        healthBar = GetComponentInChildren<Slider>();
     }
 
     public void GetHit(Vector3 enemyTransformForward)
     {
         health -= 3;
+        healthBar.value = health;
+        
         rb.AddForce(20f * transform.up);
         rb.AddForce(knockbackForce * enemyTransformForward, ForceMode.Acceleration);
+        
         psd.isGettingDamage = true;
         Invoke(nameof(SetIsGettingDamageFalse), damageStopTime);
+        
         CheckForDeath();
     }
 
@@ -38,6 +45,7 @@ public class PlayerDamageManager : MonoBehaviour
         {
             transform.position = respawnPoint.position;
             health = 20;
+            healthBar.value = health;
         }
     }
 }

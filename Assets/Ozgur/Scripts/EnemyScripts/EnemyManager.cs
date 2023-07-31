@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class EnemyManager : MonoBehaviour
 
     private Rigidbody rb;
     private Animator an;
+    private Slider healthBar;
 
     private RaycastHit hit;
     
@@ -30,6 +32,7 @@ public class EnemyManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         an = GetComponent<Animator>();
+        healthBar = GetComponentInChildren<Slider>();
     }
 
     public void EnterPunchingState()
@@ -56,6 +59,7 @@ public class EnemyManager : MonoBehaviour
         isDamageTaking = true;
         
         health -= 3;
+        healthBar.value = health;
         if (CheckForDeath()) return;
         
         an.Play("Zombie Reaction Hit More");
@@ -78,6 +82,9 @@ public class EnemyManager : MonoBehaviour
             
             aliveCollider.enabled = false;
             deadCollider.enabled = true;
+
+            healthBar.gameObject.SetActive(false);
+            
             return true;
         }
 
