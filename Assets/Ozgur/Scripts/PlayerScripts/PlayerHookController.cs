@@ -7,14 +7,12 @@ public class PlayerHookController : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private float flyingForce = 2000f;
     [SerializeField] private float flyingMovingSpeed = 10f;
-    [SerializeField] private float shootAnimationDuration = 0.2f;
-    [SerializeField] private float walkingAnimationHalfDuration = 0.5f;
-    [SerializeField] private float runningAnimationHalfDuration = 0.2f;
     [SerializeField] private AudioSource aus;
     
     private PlayerStateData psd;
     private PlayerInputManager pim;
     private PlayerLookingController plc;
+    private PlayerHookGunAnimationManager an;
     private LineRenderer lr;
     private Rigidbody rb;
     private Transform lineOutTransform;
@@ -22,18 +20,13 @@ public class PlayerHookController : MonoBehaviour
 
     private Vector3 hookedPosition;
     private bool flyingCondition;
-    
-    private bool isMovingAnimationPlaying;
-    private float movingAnimationHalfDuration;
-    
-    public float value1 = -0.2f;
-    public float value2 = -0.35f;
 
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
         pim = GetComponent<PlayerInputManager>();
         plc = GetComponent<PlayerLookingController>();
+        an = GetComponent<PlayerHookGunAnimationManager>();
         lr = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody>();
         hookGunTransform = GameObject.Find("PlayerCamera/HookGun").transform;
@@ -43,10 +36,6 @@ public class PlayerHookController : MonoBehaviour
     private void Update()
     {
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
-        
-        if (psd.isWalking) movingAnimationHalfDuration = walkingAnimationHalfDuration;
-        else if (psd.isRunning) movingAnimationHalfDuration = runningAnimationHalfDuration;
-        if (psd.isMoving && !isMovingAnimationPlaying) StartCoroutine(PlayMovingAnimation());
         
         lr.SetPosition(0, lineOutTransform.position);
         HandleEnterHookState();
@@ -66,31 +55,11 @@ public class PlayerHookController : MonoBehaviour
 
         flyingCondition = true;
         
-        yield return new WaitForSeconds(shootAnimationDuration);
+        yield return new WaitForSeconds(an.attackAnimationHalfDuration);
         
         lr.enabled = false;
     }
 
-    private IEnumerator PlayGunAnimation()
-    {
-        hookGunTransform.DOLocalRotate(new Vector3(30f, -170f, 0f), shootAnimationDuration);
-        yield return new WaitForSeconds(shootAnimationDuration);
-        hookGunTransform.DOLocalRotate(new Vector3(15f, -170f, 0f), shootAnimationDuration);
-    }
-    
-    private IEnumerator PlayMovingAnimation()
-    {
-        isMovingAnimationPlaying = true;
-        
-        hookGunTransform.DOLocalMoveY(value1, movingAnimationHalfDuration);
-        yield return new WaitForSeconds(movingAnimationHalfDuration);
-        
-        hookGunTransform.DOLocalMoveY(value2, movingAnimationHalfDuration);
-        yield return new WaitForSeconds(movingAnimationHalfDuration);
-        
-        isMovingAnimationPlaying = false;
-    }
-    
     private void HandleFlying()
     {
         if (!flyingCondition) return;
@@ -123,7 +92,6 @@ public class PlayerHookController : MonoBehaviour
     private void HandleEnterHookState()
     {
         if (!pim.isHookKeyDown) return;
-        StartCoroutine(PlayGunAnimation());
         aus.Play();
         if (CrosshairManager.isLookingAtHookTarget) StartCoroutine(HandleShoot());
     }

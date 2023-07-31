@@ -2,20 +2,19 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerSwordController : MonoBehaviour
+public class PlayerHookGunAnimationManager : MonoBehaviour
 {
     [Header("Assign")]
-    [SerializeField] private float attackAnimationHalfDuration = 0.1f;
+    public float attackAnimationHalfDuration = 0.1f;
     [SerializeField] private float walkingAnimationHalfDuration = 0.5f;
     [SerializeField] private float runningAnimationHalfDuration = 0.2f;
-    [SerializeField] private AudioSource aus;
 
     [Header("Assign")]
     [SerializeField] private float attackRotationX = 50f;
-    [SerializeField] private float runningModeRotationX = 25f;
+    [SerializeField] private float runningModeRotationX = 15f;
     [SerializeField] private float walkingModeRotationX = 0f;
-    [SerializeField] private float movingAnimationPositionY = -0.35f;
-    [SerializeField] private float movingAnimationPositionYBack = -0.4f;
+    [SerializeField] private float movingAnimationPositionY = -0.15f;
+    [SerializeField] private float movingAnimationPositionYBack = -0.2f;
     [SerializeField] private float walkingModeMovingAnimationPositionZ = 0.62f;
     [SerializeField] private float walkingModeMovingAnimationPositionZBack = 0.6f;
     [SerializeField] private float runningModeMovingAnimationPositionZ = 0.52f;
@@ -23,7 +22,7 @@ public class PlayerSwordController : MonoBehaviour
 
     private PlayerStateData psd;
     private PlayerInputManager pim;
-    private GameObject sword;
+    private GameObject hookGun;
 
     [Header("Info - No Touch")]
     [SerializeField] private bool isRunningModeActive;
@@ -42,7 +41,7 @@ public class PlayerSwordController : MonoBehaviour
     {
         psd = GetComponent<PlayerStateData>();
         pim = GetComponent<PlayerInputManager>();
-        sword = GameObject.Find("PlayerCamera/Sword");
+        hookGun = GameObject.Find("PlayerCamera/HookGun");
 
         playMovingAnimation = PlayMovingAnimation();
         
@@ -66,9 +65,8 @@ public class PlayerSwordController : MonoBehaviour
         if (psd.isRunning && !isRunningModeActive) EnableRunningMode();
         else if (!psd.isRunning && isRunningModeActive) DisableRunningMode();
 
-        if (!pim.isAttackKeyDown) return;
+        if (!pim.isHookKeyDown) return;
         StartCoroutine(PlayAttackAnimation());
-        aus.Play();
 
         if (CrosshairManager.isLookingAtEnemy)
             CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
@@ -82,21 +80,21 @@ public class PlayerSwordController : MonoBehaviour
 
     private IEnumerator PlayAttackAnimation()
     {
-        sword.transform.DOLocalRotate(new Vector3(attackRotationX, 0f, 0f), attackAnimationHalfDuration);
+        hookGun.transform.DOLocalRotate(new Vector3(attackRotationX, -170f, 0f), attackAnimationHalfDuration);
         yield return new WaitForSeconds(attackAnimationHalfDuration);
-        sword.transform.DOLocalRotate(new Vector3(attackRotationXBack, 0f, 0f), attackAnimationHalfDuration);
+        hookGun.transform.DOLocalRotate(new Vector3(attackRotationXBack, -170f, 0f), attackAnimationHalfDuration);
     }
     
     private IEnumerator PlayMovingAnimation()
     {
         isMovingAnimationPlaying = true;
         
-        swordMovingTweenZ = sword.transform.DOLocalMoveZ(movingAnimationPositionZ, movingAnimationHalfDuration);
-        swordMovingTweenY = sword.transform.DOLocalMoveY(movingAnimationPositionY, movingAnimationHalfDuration);
+        swordMovingTweenZ = hookGun.transform.DOLocalMoveZ(movingAnimationPositionZ, movingAnimationHalfDuration);
+        swordMovingTweenY = hookGun.transform.DOLocalMoveY(movingAnimationPositionY, movingAnimationHalfDuration);
         yield return new WaitForSeconds(movingAnimationHalfDuration);
         
-        swordMovingTweenZ = sword.transform.DOLocalMoveY(movingAnimationPositionYBack, movingAnimationHalfDuration);
-        swordMovingTweenY = sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, movingAnimationHalfDuration);
+        swordMovingTweenZ = hookGun.transform.DOLocalMoveY(movingAnimationPositionYBack, movingAnimationHalfDuration);
+        swordMovingTweenY = hookGun.transform.DOLocalMoveZ(movingAnimationPositionZBack, movingAnimationHalfDuration);
         yield return new WaitForSeconds(movingAnimationHalfDuration);
         
         isMovingAnimationPlaying = false;
@@ -110,8 +108,8 @@ public class PlayerSwordController : MonoBehaviour
         swordMovingTweenZ.Kill();
         swordMovingTweenY.Kill();
 
-        if (psd.isIdle) sword.transform.DOLocalMoveY(movingAnimationPositionYBack, 0.1f);
-        sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, 0.1f);
+        if (psd.isIdle) hookGun.transform.DOLocalMoveY(movingAnimationPositionYBack, 0.1f);
+        hookGun.transform.DOLocalMoveZ(movingAnimationPositionZBack, 0.1f);
     }
     
     private void EnableRunningMode()
@@ -123,7 +121,7 @@ public class PlayerSwordController : MonoBehaviour
         StopMovingAnimation();
 
         swordRunningModeRotationTween.Kill();
-        swordRunningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(runningModeRotationX, 0f, 0f), 0.1f);
+        swordRunningModeRotationTween = hookGun.transform.DOLocalRotate(new Vector3(runningModeRotationX, -170f, 0f), 0.1f);
         
         isRunningModeActive = true;
     }
@@ -137,7 +135,7 @@ public class PlayerSwordController : MonoBehaviour
         StopMovingAnimation();
         
         swordRunningModeRotationTween.Kill();
-        swordRunningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(walkingModeRotationX, 0f, 0f), 0.1f);
+        swordRunningModeRotationTween = hookGun.transform.DOLocalRotate(new Vector3(walkingModeRotationX, -170f, 0f), 0.1f);
 
         isRunningModeActive = false;
     }
