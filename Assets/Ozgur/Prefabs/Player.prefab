@@ -25,11 +25,11 @@ GameObject:
   - component: {fileID: 7111750619286296056}
   - component: {fileID: 4388190400856024315}
   - component: {fileID: 4930711311431640911}
+  - component: {fileID: 1578110214120312660}
   - component: {fileID: 4742588102845881557}
   - component: {fileID: 1874473195205953622}
   - component: {fileID: 4422597988546080891}
   - component: {fileID: 3211577368745415198}
-  - component: {fileID: 1578110214120312660}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -448,15 +448,20 @@ MonoBehaviour:
   runningAnimationHalfDuration: 0.2
   aus: {fileID: 4388190400856024315}
   attackRotationX: 50
-  attackRotationXBack: 0
+  runningModeRotationX: 25
+  walkingModeRotationX: 0
   movingAnimationPositionY: -0.35
   movingAnimationPositionYBack: -0.4
   walkingModeMovingAnimationPositionZ: 0.62
   walkingModeMovingAnimationPositionZBack: 0.6
   runningModeMovingAnimationPositionZ: 0.52
   runningModeMovingAnimationPositionZBack: 0.5
-  runningModeRotationX: 25
-  runningModeRotationXBack: 0
+  isRunningModeActive: 0
+  isMovingAnimationPlaying: 0
+  movingAnimationHalfDuration: 0
+  attackRotationXBack: 0
+  movingAnimationPositionZ: 0
+  movingAnimationPositionZBack: 0
 --- !u!82 &4388190400856024315
 AudioSource:
   m_ObjectHideFlags: 0
@@ -568,6 +573,36 @@ MonoBehaviour:
   flyingForce: 2000
   flyingMovingSpeed: 10
   aus: {fileID: 4742588102845881557}
+--- !u!114 &1578110214120312660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410474728315385331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816fd0ab6365dc147aa163fa331b9a38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimationHalfDuration: 0.1
+  walkingAnimationHalfDuration: 0.5
+  runningAnimationHalfDuration: 0.2
+  attackRotationX: 50
+  runningModeRotationX: 15
+  walkingModeRotationX: 0
+  movingAnimationPositionY: -0.15
+  movingAnimationPositionYBack: -0.2
+  walkingModeMovingAnimationPositionZ: 0.62
+  walkingModeMovingAnimationPositionZBack: 0.6
+  runningModeMovingAnimationPositionZ: 0.52
+  runningModeMovingAnimationPositionZBack: 0.5
+  isRunningModeActive: 0
+  isMovingAnimationPlaying: 0
+  movingAnimationHalfDuration: 0
+  attackRotationXBack: 0
+  movingAnimationPositionZ: 0
+  movingAnimationPositionZBack: 0
 --- !u!82 &4742588102845881557
 AudioSource:
   m_ObjectHideFlags: 0
@@ -797,31 +832,6 @@ MonoBehaviour:
   health: 20
   knockbackForce: 1000
   damageStopTime: 0.5
---- !u!114 &1578110214120312660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 410474728315385331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 816fd0ab6365dc147aa163fa331b9a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootAnimationHalfDuration: 0.1
-  walkingAnimationHalfDuration: 0.5
-  runningAnimationHalfDuration: 0.2
-  shootRotationX: 30
-  shootRotationXBack: 15
-  movingAnimationPositionY: -0.15
-  movingAnimationPositionYBack: -0.2
-  walkingModeMovingAnimationPositionZ: 0.62
-  walkingModeMovingAnimationPositionZBack: 0.6
-  runningModeMovingAnimationPositionZ: 0.52
-  runningModeMovingAnimationPositionZBack: 0.5
-  runningModeRotationX: 15
-  runningModeRotationXBack: 15
 --- !u!1 &5961817998518397154
 GameObject:
   m_ObjectHideFlags: 0
