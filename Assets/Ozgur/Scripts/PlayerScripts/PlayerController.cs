@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runningSpeed = 15f;
     [SerializeField] private float jumpSpeed = 15f;
     [SerializeField] private float acceleration = 15f;
+    [SerializeField] private float jumpBufferLimit = 0.2f;
 
     private PlayerStateData psd;
     private PlayerInputManager pim;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movingSpeed;
     [SerializeField] private bool isIncreasingSpeed;
     private bool isJumpCondition;
+    private float jumpBufferTimer;
 
     private void Awake()
     {
@@ -34,12 +36,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
-
-        DecideJumpingState();
+        
         DecideIdleOrMovingStates();
         DecideWalkingOrRunningStates();
         HandleMovingSpeed();
-        CheckJumpCondition();
+        HandleJumpCondition();
     }
 
     private void FixedUpdate()
@@ -71,11 +72,19 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(moving.x, rb.velocity.y, moving.z);
     }
 
-    private void CheckJumpCondition()
+    private void HandleJumpCondition()
     {
-        if (psd.isGrounded && pim.isJumpKeyDown) isJumpCondition = true;
+        if (pim.isJumpKeyDown)
+        {
+            psd.isJumping = false;
+            jumpBufferTimer = jumpBufferLimit;
+        }
+        
+        else jumpBufferTimer -= Time.deltaTime;
+        
+        if (jumpBufferTimer > 0f && psd.isGrounded) isJumpCondition = true;
     }
-    
+
     private void HandleJump()
     {
         if (!isJumpCondition) return;
@@ -85,11 +94,6 @@ public class PlayerController : MonoBehaviour
         
         psd.isJumping = true;
         isJumpCondition = false;
-    }
-
-    private void DecideJumpingState()
-    {
-        if (psd.isGrounded) psd.isJumping = false;
     }
 
     private void DecideIdleOrMovingStates()

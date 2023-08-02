@@ -1,9 +1,20 @@
+using System;
 using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    private PlayerStateData psd;
+    [Header("Assign")]
+    [SerializeField] private float radius = 1f;
+    [SerializeField] private float offset = 1.15f;
+
+    [Header("Select")] [SerializeField] private bool gizmos;
     
+    [Header("Info - No Touch")]
+    [SerializeField] private Collider[] colliders;
+    [SerializeField] private int collidedObjectNumber;
+
+    private PlayerStateData psd;
+
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
@@ -11,6 +22,22 @@ public class GroundCheck : MonoBehaviour
 
     private void Update()
     {
-        psd.isGrounded = Physics.Raycast(transform.position, Vector3.down, 2.1f);
+        colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y - offset, transform.position.z), radius);
+        collidedObjectNumber = colliders.Length;
+        
+        foreach (Collider col in colliders)
+        {
+            if (col.isTrigger) collidedObjectNumber--;
+        }
+        
+        psd.isGrounded = collidedObjectNumber > 1;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!gizmos) return;
+        
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y - offset, transform.position.z), radius);
     }
 }
