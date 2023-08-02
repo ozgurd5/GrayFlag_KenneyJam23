@@ -47,7 +47,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 2, y: 2.5, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 818854848270513654}
@@ -570,9 +570,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8574d9ef4187a4a898feb60fcd5f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingForce: 2000
-  flyingMovingSpeed: 10
+  flyingForce: 1000
+  acceleration: 500
+  maxSpeedXZ: 50
+  maxSpeedY: 50
   aus: {fileID: 4742588102845881557}
+  flyingMovingSpeed: 10
+  speedo: {x: 0, y: 0, z: 0}
+  speedTowardsMovingDirection: 0
 --- !u!114 &1578110214120312660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +837,6 @@ MonoBehaviour:
   health: 20
   knockbackForce: 1000
   damageStopTime: 0.5
-  healthBar: {fileID: 0}
 --- !u!1 &1084383491306380171
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +848,7 @@ GameObject:
   - component: {fileID: 7848197610929454107}
   - component: {fileID: 3308774708006053413}
   m_Layer: 6
-  m_Name: HealthBar
+  m_Name: PlayerHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

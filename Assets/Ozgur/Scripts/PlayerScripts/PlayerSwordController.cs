@@ -52,7 +52,7 @@ public class PlayerSwordController : MonoBehaviour
 
     private void Update()
     {
-        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
+        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
 
         DecideForMovingAnimationHalfDuration();
         
