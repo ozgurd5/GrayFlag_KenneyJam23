@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5592680926233794167}
   - component: {fileID: 8901005242164675167}
   - component: {fileID: 1088928005676915774}
+  - component: {fileID: 4278908228895780537}
   - component: {fileID: 6698959394485874753}
   - component: {fileID: 3893333688513228691}
   - component: {fileID: 3183640080552008285}
@@ -186,10 +187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3ced8a395de3d4680cd7d7d0511ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSound: {fileID: 8300000, guid: c2cfba73b1aa67c42abd526eff61e591, type: 3}
-  runningSound: {fileID: 8300000, guid: 0f9f493abfa27bb438c16282fdee1a6b, type: 3}
-  jumpingAudioSource: {fileID: 6698959394485874753}
-  aus: {fileID: 1088928005676915774}
+  jumpingSource: {fileID: 1088928005676915774}
+  walkingSource: {fileID: 4278908228895780537}
+  runningSource: {fileID: 6698959394485874753}
 --- !u!82 &1088928005676915774
 AudioSource:
   m_ObjectHideFlags: 0
@@ -200,9 +200,105 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1f16c6012190d964f8fd96b6639c3b06, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &4278908228895780537
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410474728315385331}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c2cfba73b1aa67c42abd526eff61e591, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -296,7 +392,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1f16c6012190d964f8fd96b6639c3b06, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0f9f493abfa27bb438c16282fdee1a6b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1
@@ -570,14 +666,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8574d9ef4187a4a898feb60fcd5f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingForce: 1000
-  acceleration: 40
-  maxSpeedXZ: 20
+  flyingForce: 3000
+  acceleration: 20
+  maxSpeedXZ: 15
   maxSpeedY: 50
   aus: {fileID: 4742588102845881557}
   flyingMovingSpeed: 0
   isIncreasingSpeed: 0
-  treshold: 44
 --- !u!114 &1578110214120312660
 MonoBehaviour:
   m_ObjectHideFlags: 0
