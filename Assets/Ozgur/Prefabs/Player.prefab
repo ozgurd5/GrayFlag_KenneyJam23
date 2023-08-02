@@ -571,13 +571,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyingForce: 1000
-  acceleration: 500
-  maxSpeedXZ: 50
+  acceleration: 40
+  maxSpeedXZ: 20
   maxSpeedY: 50
   aus: {fileID: 4742588102845881557}
-  flyingMovingSpeed: 10
-  speedo: {x: 0, y: 0, z: 0}
-  speedTowardsMovingDirection: 0
+  flyingMovingSpeed: 0
+  isIncreasingSpeed: 0
+  treshold: 44
 --- !u!114 &1578110214120312660
 MonoBehaviour:
   m_ObjectHideFlags: 0

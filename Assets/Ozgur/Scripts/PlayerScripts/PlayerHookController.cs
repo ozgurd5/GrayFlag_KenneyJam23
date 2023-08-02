@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerHookController : MonoBehaviour
 {
     //TODO: oncollisionstay 2 seconds allowance
+    //TODO: pressing another key without leaving other
     
     [Header("Assign")]
     [SerializeField] private float flyingForce = 1000f;
@@ -23,13 +24,10 @@ public class PlayerHookController : MonoBehaviour
 
     [Header("Info - No Touch")]
     [SerializeField] private float flyingMovingSpeed;
-    private bool isIncreasingSpeed;
+    [SerializeField] private bool isIncreasingSpeed;
     private Vector3 hookedPosition;
     private bool flyingCondition;
-
-    //
-    public Vector3 speedo;
-    public float speedTowardsMovingDirection;
+    private IEnumerator increaseMovingSpeed;
 
     private void Awake()
     {
@@ -41,14 +39,12 @@ public class PlayerHookController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         hookGunTransform = GameObject.Find("PlayerCamera/HookGun").transform;
         lineOutTransform = hookGunTransform.GetChild(0);
+        
+        increaseMovingSpeed = IncreaseMovingSpeed();
     }
 
     private void Update()
     {
-        //
-        speedo = rb.velocity;
-        speedTowardsMovingDirection = Vector3.Dot(rb.velocity, plc.movingDirection);
-        
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
         
         lr.SetPosition(0, lineOutTransform.position);
@@ -66,7 +62,6 @@ public class PlayerHookController : MonoBehaviour
     {
         Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
 
-        // Limit the horizontal velocity magnitude
         if (horizontalVelocity.magnitude > maxSpeedXZ)
         {
             horizontalVelocity = horizontalVelocity.normalized * maxSpeedXZ;
@@ -95,25 +90,29 @@ public class PlayerHookController : MonoBehaviour
         
         psd.currentMainState = PlayerStateData.PlayerMainState.HookState;
         
-        Vector3 move = (hookedPosition - transform.position).normalized;
-        rb.AddForce(move * flyingForce, ForceMode.Force);
-        
         Vector3 moveDirection = (hookedPosition - transform.position).normalized;
-        rb.AddForce(moveDirection * flyingForce); 
+        rb.AddForce(moveDirection * flyingForce);
+
         flyingCondition = false;
     }
 
     private void HandleFlyingMovement()
     {
-        if (pim.moveInput.magnitude == 0)
+        if (flyingCondition) return;
+        
+        if (pim.moveInput.magnitude == 0 || psd.isGettingDamage || psd.currentMainState != PlayerStateData.PlayerMainState.HookState)
         {
+            StopCoroutine(increaseMovingSpeed);
+            isIncreasingSpeed = false;
             flyingMovingSpeed = 0f;
             return;
         }
-        if (psd.isGettingDamage) return;
-        if (psd.currentMainState != PlayerStateData.PlayerMainState.HookState) return;
 
-        if (!isIncreasingSpeed) StartCoroutine(IncreaseMovingSpeed());
+        if (!isIncreasingSpeed)
+        {
+            increaseMovingSpeed = IncreaseMovingSpeed();
+            StartCoroutine(increaseMovingSpeed);
+        }
         
         Vector3 velocity = plc.movingDirection * flyingMovingSpeed;
         rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
@@ -139,6 +138,14 @@ public class PlayerHookController : MonoBehaviour
     
     private IEnumerator IncreaseMovingSpeed()
     {
+        Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if (Vector3.Angle(horizontalVelocity.normalized, transform.forward) < 44 && pim.moveInput.y == 1)
+        {
+            flyingMovingSpeed = maxSpeedXZ;
+            Debug.Log("no need");
+            yield break;
+        }
+        
         isIncreasingSpeed = true;
 
         while (flyingMovingSpeed < maxSpeedXZ)
