@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class PlayerHookController : MonoBehaviour
 {
-    //TODO: oncollisionstay 2 seconds allowance
-    //TODO: pressing another key without leaving other
-    
     [Header("Assign")]
     [SerializeField] private float flyingForce = 3000f;
     [SerializeField] private float acceleration = 20f;
