@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    public static event Action<SailMode> OnSailChanged; 
-    public static bool isShipControlled;
+    public static event Action<SailMode> OnSailChanged;
     
     [Header("Assign - Movement")]
     [SerializeField] private float fullSailSpeed = 60f;
@@ -32,6 +31,8 @@ public class ShipController : MonoBehaviour
     private Transform cameraLookAtTransform;
     private CinemachineVirtualCamera shipCamera;
     private Rigidbody rb;
+
+    private PlayerStateData psd;
     
     public enum SailMode
     {
@@ -51,10 +52,14 @@ public class ShipController : MonoBehaviour
         cameraLookAtTransform = transform.Find("ShipCameraLookAt");
         shipCamera = GameObject.Find("ShipCamera").GetComponent<CinemachineVirtualCamera>();
         rb = GetComponent<Rigidbody>();
+
+        psd = GameObject.Find("Player").GetComponent<PlayerStateData>();
     }
 
     private void HandleLooking()
     {
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.ShipControllingState) return;
+        
         cameraFollowTransform.RotateAround(cameraLookAtTransform.position, Vector3.up, sim.lookInput.x);
         cameraFollowTransform.RotateAround(cameraLookAtTransform.position, Vector3.right, -sim.lookInput.y);
     }
@@ -73,28 +78,25 @@ public class ShipController : MonoBehaviour
 
     private void Update()
     {
-        if (isShipControlled)
-        {
-            HandleLooking();
-            HandleSailMode();
-        }
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.ShipControllingState) return;
+        
+        HandleLooking();
+        HandleSailMode();
     }
 
     private void FixedUpdate()
     {
-        if (isShipControlled) HandleMovement();
+        if (psd.currentMainState == PlayerStateData.PlayerMainState.ShipControllingState) HandleMovement();
     }
 
     public void TakeControl()
     {
-        isShipControlled = true;
         shipCamera.enabled = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     public void DropControl()
     {
-        isShipControlled = false;
         shipCamera.enabled = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
         currentSailMode = SailMode.Stationary;

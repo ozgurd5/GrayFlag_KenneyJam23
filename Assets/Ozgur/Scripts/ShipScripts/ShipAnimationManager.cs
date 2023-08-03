@@ -44,8 +44,6 @@ public class ShipAnimationManager : MonoBehaviour
 
     private void Update()
     {
-        if (!ShipController.isShipControlled) return;
-    
         //frontSail.RotateAround(frontSailPivot.position, Vector3.up, sim.rotateInput);
         //midSail.RotateAround(midSailPivot.position, Vector3.up, sim.rotateInput);
         //backSail.RotateAround(backSailPivot.position, Vector3.up, sim.rotateInput);

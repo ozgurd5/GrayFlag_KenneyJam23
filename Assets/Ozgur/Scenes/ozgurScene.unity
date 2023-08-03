@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5987622, g: 0.775733, b: 0.84888226, a: 1}
+  m_IndirectSpecularColor: {r: 0.5864371, g: 0.7593318, b: 0.83080363, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,6 +136,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2838048169539550327, guid: 00318b93beb93eb49b4bfb8ac4e3570b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2838048169539550327, guid: 00318b93beb93eb49b4bfb8ac4e3570b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3211577368745415198, guid: 00318b93beb93eb49b4bfb8ac4e3570b,
         type: 3}
       propertyPath: respawnPoint
@@ -154,7 +164,7 @@ PrefabInstance:
     - target: {fileID: 3867957945215238531, guid: 00318b93beb93eb49b4bfb8ac4e3570b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 287.08
+      value: 409.1
       objectReference: {fileID: 0}
     - target: {fileID: 3867957945215238531, guid: 00318b93beb93eb49b4bfb8ac4e3570b,
         type: 3}

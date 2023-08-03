@@ -24,13 +24,16 @@ public class GroundCheck : MonoBehaviour
     {
         colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y - offset, transform.position.z), radius);
         collidedObjectNumber = colliders.Length;
-        
+
+        psd.isSwimming = false;
         foreach (Collider col in colliders)
         {
             if (col.isTrigger) collidedObjectNumber--;
+            if (col.CompareTag("SeaGround")) psd.isSwimming = true;
         }
         
         psd.isGrounded = collidedObjectNumber > 1;
+        if (psd.isSwimming) psd.isGrounded = false;
     }
 
     private void OnDrawGizmos()
