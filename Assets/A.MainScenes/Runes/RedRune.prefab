@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1439621963216363397}
   - component: {fileID: 7900576420127356441}
   - component: {fileID: 8912401127481561661}
+  - component: {fileID: 4990186273344690009}
   m_Layer: 0
   m_Name: RedRune
   m_TagString: RedRune
@@ -217,3 +218,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4990186273344690009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982436777892391206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ec500b4de3394d8f91169869235eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionChange: 0.2
+  positionTime: 1
+  rotationTime: 4
+  isUpDownPlaying: 0
+  isRotationPlaying: 0

@@ -3,13 +3,10 @@ using UnityEngine;
 
 public class PlayerHookController : MonoBehaviour
 {
-    //TODO: oncollisionstay 2 seconds allowance
-    //TODO: pressing another key without leaving other
-    
     [Header("Assign")]
-    [SerializeField] private float flyingForce = 1000f;
-    [SerializeField] private float acceleration = 40f;
-    [SerializeField] private float maxSpeedXZ = 20f;
+    [SerializeField] private float flyingForce = 3000f;
+    [SerializeField] private float acceleration = 20f;
+    [SerializeField] private float maxSpeedXZ = 15f;
     [SerializeField] private float maxSpeedY = 50f;
     [SerializeField] private AudioSource aus;
     
@@ -142,7 +139,6 @@ public class PlayerHookController : MonoBehaviour
         if (Vector3.Angle(horizontalVelocity.normalized, transform.forward) < 44 && pim.moveInput.y == 1)
         {
             flyingMovingSpeed = maxSpeedXZ;
-            Debug.Log("no need");
             yield break;
         }
         

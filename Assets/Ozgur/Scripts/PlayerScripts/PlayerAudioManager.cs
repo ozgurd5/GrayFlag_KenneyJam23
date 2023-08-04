@@ -3,46 +3,28 @@ using UnityEngine;
 public class PlayerAudioManager : MonoBehaviour
 {
     [Header("Assign")]
-    [SerializeField] private AudioClip walkingSound;
-    [SerializeField] private AudioClip runningSound;
-    [SerializeField] private AudioSource jumpingAudioSource;
-    [SerializeField] private AudioSource aus;
+    [SerializeField] private AudioSource jumpingSource;
+    [SerializeField] private AudioSource walkingSource;
+    [SerializeField] private AudioSource runningSource;
     
     private PlayerStateData psd;
-
+    
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
-        PlayerController.OnJump += () => jumpingAudioSource.Play();
+        PlayerController.OnJump += () => jumpingSource.Play();
     }
 
     private void Update()
     {
-        if (psd.isMoving && psd.isGrounded)
-        {
-            SelectClip();
-            PlaySound();
-        }
-        
-        else
-        {
-            //Setting loop property to false feels more natural then using aus.Stop();
-            aus.loop = false;
-        }
-    }
-    
-    private void SelectClip()
-    {
-        if (psd.isWalking) aus.clip = walkingSound;
-        else if (psd.isRunning) aus.clip = runningSound;
+        if (psd.isMoving && psd.isGrounded) PlaySound();
     }
 
     private void PlaySound()
     {
-        if (aus.isPlaying) return;
+        if (walkingSource.isPlaying || runningSource.isPlaying) return;
         
-        //Making loop property to false feels more natural then using Stop method, but we have to enable it everytime
-        aus.loop = true;
-        aus.Play();
+        if (psd.isWalking) walkingSource.Play();
+        else if (psd.isRunning) runningSource.Play();
     }
 }

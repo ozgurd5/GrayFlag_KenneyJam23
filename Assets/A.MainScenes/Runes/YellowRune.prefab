@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4877157788526943712}
   - component: {fileID: 6282350113114697304}
   - component: {fileID: 2804829039978715909}
+  - component: {fileID: 4357544897590658950}
   m_Layer: 0
   m_Name: YellowRune
   m_TagString: YellowRune
@@ -217,3 +218,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4357544897590658950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263495812670210530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f2ec500b4de3394d8f91169869235eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionChange: 0.2
+  positionTime: 1
+  rotationTime: 4
+  isUpDownPlaying: 0
+  isRotationPlaying: 0
