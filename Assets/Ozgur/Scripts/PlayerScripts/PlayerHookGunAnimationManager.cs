@@ -19,12 +19,20 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
     [SerializeField] private float walkingModeMovingAnimationPositionZBack = 0.6f;
     [SerializeField] private float runningModeMovingAnimationPositionZ = 0.52f;
     [SerializeField] private float runningModeMovingAnimationPositionZBack = 0.5f;
+    
+    [Header("Assign - Hiding")]
+    [SerializeField] private float hidingTime = 0.3f;
+    [SerializeField] private float hiddenPositionY = -0.6f;
+    [SerializeField] private float hiddenPositionYBack = -0.2f;
+    [SerializeField] private AudioSource hidingSource;
 
     private PlayerStateData psd;
     private PlayerInputManager pim;
     private GameObject hookGun;
 
     [Header("Info - No Touch")]
+    public bool isHidden;
+    [SerializeField] private bool isHidingAnimationPlaying;
     [SerializeField] private bool isRunningModeActive;
     [SerializeField] private bool isMovingAnimationPlaying;
     [SerializeField] private float movingAnimationHalfDuration;
@@ -33,9 +41,13 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
     [SerializeField] private float movingAnimationPositionZBack;
 
     private IEnumerator playMovingAnimation;
-    private Tweener swordMovingTweenY;
-    private Tweener swordMovingTweenZ;
-    private Tweener swordRunningModeRotationTween;
+    private Tweener movingTweenY;
+    private Tweener movingTweenZ;
+    private Tweener runningModeRotationTween;
+    
+    private IEnumerator playHideWeaponAnimation;
+    private IEnumerator playExposeWeaponAnimation;
+    private Tweener hideTween;
     
     private void Awake()
     {
@@ -44,6 +56,8 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         hookGun = GameObject.Find("PlayerCamera/HookGun");
 
         playMovingAnimation = PlayMovingAnimation();
+        playHideWeaponAnimation = PlayHideWeaponAnimation();
+        playExposeWeaponAnimation = PlayExposeWeaponAnimation();
         
         //Walking values are the default values
         DisableRunningMode();
@@ -52,6 +66,9 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
     private void Update()
     {
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
+        
+        HandleHiddenStatus();
+        if (isHidden || isHidingAnimationPlaying) return;
 
         DecideForMovingAnimationHalfDuration();
         
@@ -65,11 +82,7 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         if (psd.isRunning && !isRunningModeActive) EnableRunningMode();
         else if (!psd.isRunning && isRunningModeActive) DisableRunningMode();
 
-        if (!pim.isHookKeyDown) return;
-        StartCoroutine(PlayAttackAnimation());
-
-        if (CrosshairManager.isLookingAtEnemy)
-            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
+        HandleAttack();
     }
 
     private void DecideForMovingAnimationHalfDuration()
@@ -78,23 +91,16 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         else if (psd.isRunning) movingAnimationHalfDuration = runningAnimationHalfDuration;
     }
 
-    private IEnumerator PlayAttackAnimation()
-    {
-        hookGun.transform.DOLocalRotate(new Vector3(attackRotationX, -170f, 0f), attackAnimationHalfDuration);
-        yield return new WaitForSeconds(attackAnimationHalfDuration);
-        hookGun.transform.DOLocalRotate(new Vector3(attackRotationXBack, -170f, 0f), attackAnimationHalfDuration);
-    }
-    
     private IEnumerator PlayMovingAnimation()
     {
         isMovingAnimationPlaying = true;
         
-        swordMovingTweenZ = hookGun.transform.DOLocalMoveZ(movingAnimationPositionZ, movingAnimationHalfDuration);
-        swordMovingTweenY = hookGun.transform.DOLocalMoveY(movingAnimationPositionY, movingAnimationHalfDuration);
+        movingTweenZ = hookGun.transform.DOLocalMoveZ(movingAnimationPositionZ, movingAnimationHalfDuration);
+        movingTweenY = hookGun.transform.DOLocalMoveY(movingAnimationPositionY, movingAnimationHalfDuration);
         yield return new WaitForSeconds(movingAnimationHalfDuration);
         
-        swordMovingTweenZ = hookGun.transform.DOLocalMoveY(movingAnimationPositionYBack, movingAnimationHalfDuration);
-        swordMovingTweenY = hookGun.transform.DOLocalMoveZ(movingAnimationPositionZBack, movingAnimationHalfDuration);
+        movingTweenZ = hookGun.transform.DOLocalMoveY(movingAnimationPositionYBack, movingAnimationHalfDuration);
+        movingTweenY = hookGun.transform.DOLocalMoveZ(movingAnimationPositionZBack, movingAnimationHalfDuration);
         yield return new WaitForSeconds(movingAnimationHalfDuration);
         
         isMovingAnimationPlaying = false;
@@ -105,8 +111,8 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         StopCoroutine(playMovingAnimation);
         isMovingAnimationPlaying = false;
         
-        swordMovingTweenZ.Kill();
-        swordMovingTweenY.Kill();
+        movingTweenZ.Kill();
+        movingTweenY.Kill();
 
         if (psd.isIdle) hookGun.transform.DOLocalMoveY(movingAnimationPositionYBack, 0.1f);
         hookGun.transform.DOLocalMoveZ(movingAnimationPositionZBack, 0.1f);
@@ -120,8 +126,8 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         
         StopMovingAnimation();
 
-        swordRunningModeRotationTween.Kill();
-        swordRunningModeRotationTween = hookGun.transform.DOLocalRotate(new Vector3(runningModeRotationX, -170f, 0f), 0.1f);
+        runningModeRotationTween.Kill();
+        runningModeRotationTween = hookGun.transform.DOLocalRotate(new Vector3(runningModeRotationX, -170f, 0f), 0.1f);
         
         isRunningModeActive = true;
     }
@@ -134,9 +140,75 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         
         StopMovingAnimation();
         
-        swordRunningModeRotationTween.Kill();
-        swordRunningModeRotationTween = hookGun.transform.DOLocalRotate(new Vector3(walkingModeRotationX, -170f, 0f), 0.1f);
+        runningModeRotationTween.Kill();
+        runningModeRotationTween = hookGun.transform.DOLocalRotate(new Vector3(walkingModeRotationX, -170f, 0f), 0.1f);
 
         isRunningModeActive = false;
+    }
+
+    private void HandleAttack()
+    {
+        if (!pim.isHookKeyDown) return;
+        StartCoroutine(PlayAttackAnimation());
+
+        if (CrosshairManager.isLookingAtEnemy)
+            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
+    }
+    
+    private IEnumerator PlayAttackAnimation()
+    {
+        hookGun.transform.DOLocalRotate(new Vector3(attackRotationX, -170f, 0f), attackAnimationHalfDuration);
+        yield return new WaitForSeconds(attackAnimationHalfDuration);
+        hookGun.transform.DOLocalRotate(new Vector3(attackRotationXBack, -170f, 0f), attackAnimationHalfDuration);
+    }
+    
+    private void HandleHiddenStatus()
+    {
+        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming))
+        {
+            isHidden = true;
+            
+            playHideWeaponAnimation = PlayHideWeaponAnimation();
+            StartCoroutine(playHideWeaponAnimation);
+        }
+        
+        else if (isHidden && pim.isWeaponHideKeyDown)
+        {
+            isHidden = false;
+            
+            playExposeWeaponAnimation = PlayExposeWeaponAnimation();
+            StartCoroutine(playExposeWeaponAnimation);
+        }
+    }
+
+    private IEnumerator PlayHideWeaponAnimation()
+    {
+        StopMovingAnimation();
+        StopCoroutine(playExposeWeaponAnimation);
+        hideTween.Kill();
+        hidingSource.Play();
+        
+        isHidingAnimationPlaying = true;
+        
+        hideTween = hookGun.transform.DOLocalMoveY(hiddenPositionY, hidingTime);
+        yield return new WaitForSeconds(hidingTime);
+
+        isHidingAnimationPlaying = false;
+    }
+
+    private IEnumerator PlayExposeWeaponAnimation()
+    {
+        if (psd.isSwimming) yield break;
+        
+        StopCoroutine(playHideWeaponAnimation);
+        hideTween.Kill();
+        hidingSource.Play();
+        
+        isHidingAnimationPlaying = true;
+        
+        hideTween = hookGun.transform.DOLocalMoveY(hiddenPositionYBack, hidingTime);
+        yield return new WaitForSeconds(hidingTime);
+
+        isHidingAnimationPlaying = false;
     }
 }

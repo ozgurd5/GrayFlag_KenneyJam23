@@ -6,7 +6,7 @@ public class PlayerHookController : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private float flyingForce = 3000f;
     [SerializeField] private float acceleration = 20f;
-    [SerializeField] private float maxSpeedXZ = 15f;
+    [SerializeField] private float maxSpeedXZ = 50f;
     [SerializeField] private float maxSpeedY = 50f;
     [SerializeField] private AudioSource aus;
     
@@ -43,6 +43,7 @@ public class PlayerHookController : MonoBehaviour
     private void Update()
     {
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
+        if (an.isHidden) return;
         
         lr.SetPosition(0, lineOutTransform.position);
         HandleEnterHookState();

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class PlayerSwordController : MonoBehaviour
     [SerializeField] private float attackAnimationHalfDuration = 0.1f;
     [SerializeField] private float walkingAnimationHalfDuration = 0.5f;
     [SerializeField] private float runningAnimationHalfDuration = 0.2f;
-    [SerializeField] private AudioSource aus;
+    [SerializeField] private AudioSource attackSource;
 
     [Header("Assign")]
     [SerializeField] private float attackRotationX = 50f;
@@ -21,11 +22,19 @@ public class PlayerSwordController : MonoBehaviour
     [SerializeField] private float runningModeMovingAnimationPositionZ = 0.52f;
     [SerializeField] private float runningModeMovingAnimationPositionZBack = 0.5f;
 
+    [Header("Assign - Hiding")]
+    [SerializeField] private float hidingTime = 0.3f;
+    [SerializeField] private float hiddenPositionY = -1.1f;
+    [SerializeField] private float hiddenPositionYBack = -0.4f;
+    [SerializeField] private AudioSource hidingSource;
+
     private PlayerStateData psd;
     private PlayerInputManager pim;
     private GameObject sword;
 
     [Header("Info - No Touch")]
+    [SerializeField] private bool isHidden;
+    [SerializeField] private bool isHidingAnimationPlaying;
     [SerializeField] private bool isRunningModeActive;
     [SerializeField] private bool isMovingAnimationPlaying;
     [SerializeField] private float movingAnimationHalfDuration;
@@ -34,9 +43,13 @@ public class PlayerSwordController : MonoBehaviour
     [SerializeField] private float movingAnimationPositionZBack;
 
     private IEnumerator playMovingAnimation;
-    private Tweener swordMovingTweenY;
-    private Tweener swordMovingTweenZ;
-    private Tweener swordRunningModeRotationTween;
+    private Tweener movingTweenY;
+    private Tweener movingTweenZ;
+    private Tweener runningModeRotationTween;
+    
+    private IEnumerator playHideWeaponAnimation;
+    private IEnumerator playExposeWeaponAnimation;
+    private Tweener hideTween;
     
     private void Awake()
     {
@@ -45,6 +58,8 @@ public class PlayerSwordController : MonoBehaviour
         sword = GameObject.Find("PlayerCamera/Sword");
 
         playMovingAnimation = PlayMovingAnimation();
+        playHideWeaponAnimation = PlayHideWeaponAnimation();
+        playExposeWeaponAnimation = PlayExposeWeaponAnimation();
         
         //Walking values are the default values
         DisableRunningMode();
@@ -54,6 +69,9 @@ public class PlayerSwordController : MonoBehaviour
     {
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
 
+        HandleHiddenStatus();
+        if (isHidden || isHidingAnimationPlaying) return;
+        
         DecideForMovingAnimationHalfDuration();
         
         if (psd.isMoving && !isMovingAnimationPlaying)
@@ -66,12 +84,7 @@ public class PlayerSwordController : MonoBehaviour
         if (psd.isRunning && !isRunningModeActive) EnableRunningMode();
         else if (!psd.isRunning && isRunningModeActive) DisableRunningMode();
 
-        if (!pim.isAttackKeyDown) return;
-        StartCoroutine(PlayAttackAnimation());
-        aus.Play();
-
-        if (CrosshairManager.isLookingAtEnemy)
-            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
+        HandleAttack();
     }
 
     private void DecideForMovingAnimationHalfDuration()
@@ -79,39 +92,20 @@ public class PlayerSwordController : MonoBehaviour
         if (psd.isWalking) movingAnimationHalfDuration = walkingAnimationHalfDuration;
         else if (psd.isRunning) movingAnimationHalfDuration = runningAnimationHalfDuration;
     }
-
-    private IEnumerator PlayAttackAnimation()
-    {
-        sword.transform.DOLocalRotate(new Vector3(attackRotationX, 0f, 0f), attackAnimationHalfDuration);
-        yield return new WaitForSeconds(attackAnimationHalfDuration);
-        sword.transform.DOLocalRotate(new Vector3(attackRotationXBack, 0f, 0f), attackAnimationHalfDuration);
-    }
     
     private IEnumerator PlayMovingAnimation()
     {
         isMovingAnimationPlaying = true;
         
-        swordMovingTweenZ = sword.transform.DOLocalMoveZ(movingAnimationPositionZ, movingAnimationHalfDuration);
-        swordMovingTweenY = sword.transform.DOLocalMoveY(movingAnimationPositionY, movingAnimationHalfDuration);
+        movingTweenZ = sword.transform.DOLocalMoveZ(movingAnimationPositionZ, movingAnimationHalfDuration);
+        movingTweenY = sword.transform.DOLocalMoveY(movingAnimationPositionY, movingAnimationHalfDuration);
         yield return new WaitForSeconds(movingAnimationHalfDuration);
         
-        swordMovingTweenZ = sword.transform.DOLocalMoveY(movingAnimationPositionYBack, movingAnimationHalfDuration);
-        swordMovingTweenY = sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, movingAnimationHalfDuration);
+        movingTweenZ = sword.transform.DOLocalMoveY(movingAnimationPositionYBack, movingAnimationHalfDuration);
+        movingTweenY = sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, movingAnimationHalfDuration);
         yield return new WaitForSeconds(movingAnimationHalfDuration);
         
         isMovingAnimationPlaying = false;
-    }
-
-    private void StopMovingAnimation()
-    {
-        StopCoroutine(playMovingAnimation);
-        isMovingAnimationPlaying = false;
-        
-        swordMovingTweenZ.Kill();
-        swordMovingTweenY.Kill();
-
-        if (psd.isIdle) sword.transform.DOLocalMoveY(movingAnimationPositionYBack, 0.1f);
-        sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, 0.1f);
     }
     
     private void EnableRunningMode()
@@ -122,8 +116,8 @@ public class PlayerSwordController : MonoBehaviour
         
         StopMovingAnimation();
 
-        swordRunningModeRotationTween.Kill();
-        swordRunningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(runningModeRotationX, 0f, 0f), 0.1f);
+        runningModeRotationTween.Kill();
+        runningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(runningModeRotationX, 0f, 0f), 0.1f);
         
         isRunningModeActive = true;
     }
@@ -136,9 +130,88 @@ public class PlayerSwordController : MonoBehaviour
         
         StopMovingAnimation();
         
-        swordRunningModeRotationTween.Kill();
-        swordRunningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(walkingModeRotationX, 0f, 0f), 0.1f);
+        runningModeRotationTween.Kill();
+        runningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(walkingModeRotationX, 0f, 0f), 0.1f);
 
         isRunningModeActive = false;
+    }
+
+    private void StopMovingAnimation()
+    {
+        StopCoroutine(playMovingAnimation);
+        isMovingAnimationPlaying = false;
+        
+        movingTweenZ.Kill();
+        movingTweenY.Kill();
+
+        if (psd.isIdle) sword.transform.DOLocalMoveY(movingAnimationPositionYBack, 0.1f);
+        sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, 0.1f);
+    }
+
+    private void HandleAttack()
+    {
+        if (!pim.isAttackKeyDown) return;
+        StartCoroutine(PlayAttackAnimation());
+        attackSource.Play();
+
+        if (CrosshairManager.isLookingAtEnemy)
+            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
+    }
+
+    private IEnumerator PlayAttackAnimation()
+    {
+        sword.transform.DOLocalRotate(new Vector3(attackRotationX, 0f, 0f), attackAnimationHalfDuration);
+        yield return new WaitForSeconds(attackAnimationHalfDuration);
+        sword.transform.DOLocalRotate(new Vector3(attackRotationXBack, 0f, 0f), attackAnimationHalfDuration);
+    }
+
+    private void HandleHiddenStatus()
+    {
+        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming))
+        {
+            isHidden = true;
+            
+            playHideWeaponAnimation = PlayHideWeaponAnimation();
+            StartCoroutine(playHideWeaponAnimation);
+        }
+        
+        else if (isHidden && pim.isWeaponHideKeyDown)
+        {
+            isHidden = false;
+            
+            playExposeWeaponAnimation = PlayExposeWeaponAnimation();
+            StartCoroutine(playExposeWeaponAnimation);
+        }
+    }
+
+    private IEnumerator PlayHideWeaponAnimation()
+    {
+        StopMovingAnimation();
+        StopCoroutine(playExposeWeaponAnimation);
+        hideTween.Kill();
+        hidingSource.Play();
+        
+        isHidingAnimationPlaying = true;
+        
+        hideTween = sword.transform.DOLocalMoveY(hiddenPositionY, hidingTime);
+        yield return new WaitForSeconds(hidingTime);
+
+        isHidingAnimationPlaying = false;
+    }
+
+    private IEnumerator PlayExposeWeaponAnimation()
+    {
+        if (psd.isSwimming) yield break;
+        
+        StopCoroutine(playHideWeaponAnimation);
+        hideTween.Kill();
+        hidingSource.Play();
+        
+        isHidingAnimationPlaying = true;
+        
+        hideTween = sword.transform.DOLocalMoveY(hiddenPositionYBack, hidingTime);
+        yield return new WaitForSeconds(hidingTime);
+
+        isHidingAnimationPlaying = false;
     }
 }
