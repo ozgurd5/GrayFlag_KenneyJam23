@@ -14,7 +14,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool isJumpKeyDown;
     public bool isAttackKeyDown;
     public bool isHookKeyDown;
-    public bool isHookKeyUp;
+    public bool isWeaponHideKeyDown;
 
     private void Awake()
     {
@@ -34,6 +34,6 @@ public class PlayerInputManager : MonoBehaviour
         isJumpKeyDown = pia.Player.Jump.WasPressedThisFrame();
         isAttackKeyDown = pia.Player.Attack.WasPressedThisFrame();
         isHookKeyDown = pia.Player.Hook.WasPressedThisFrame();
-        isHookKeyUp = pia.Player.Hook.WasReleasedThisFrame();
+        isWeaponHideKeyDown = pia.Player.WeaponHide.WasReleasedThisFrame();
     }
 }
