@@ -21,6 +21,10 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float halfSailRotationSpeed = 0.75f;
     [SerializeField] private float fullSailRotationSpeed = 0.5f;
 
+    [Header("Assign - Look")]
+    [SerializeField] private float cameraMinYPos = 10f;
+    [SerializeField] private float cameraMaxYPos = 110f;
+    
     [Header("Info - No touch")]
     public SailMode currentSailMode;
     [SerializeField] private float movingSpeed;
@@ -59,9 +63,13 @@ public class ShipController : MonoBehaviour
     private void HandleLooking()
     {
         if (psd.currentMainState != PlayerStateData.PlayerMainState.ShipControllingState) return;
-        
+
         cameraFollowTransform.RotateAround(cameraLookAtTransform.position, Vector3.up, sim.lookInput.x);
-        cameraFollowTransform.RotateAround(cameraLookAtTransform.position, Vector3.right, -sim.lookInput.y);
+        
+        if ((cameraFollowTransform.position.y < cameraMinYPos && sim.lookInput.y < 0) ||
+            cameraFollowTransform.position.y > cameraMaxYPos && sim.lookInput.y > 0) return;
+        
+        cameraFollowTransform.RotateAround(cameraLookAtTransform.position, cameraFollowTransform.right, sim.lookInput.y);
     }
 
     private void HandleSailMode()

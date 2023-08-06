@@ -2549,6 +2549,72 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4218866799637457170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4463253747829678132}
+  - component: {fileID: 4353914190660929413}
+  - component: {fileID: 6081423012095939770}
+  m_Layer: 2
+  m_Name: ShipParenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4463253747829678132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218866799637457170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6070167921289403297}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4353914190660929413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218866799637457170}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 25, z: 30}
+  m_Center: {x: 0, y: 7, z: 3}
+--- !u!114 &6081423012095939770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218866799637457170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a5c9b45dea1b74599c0cba2074f377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4530109927575905473
 GameObject:
   m_ObjectHideFlags: 0
@@ -3848,7 +3914,7 @@ GameObject:
   - component: {fileID: 2443414599970280471}
   m_Layer: 0
   m_Name: ShipParent
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3874,6 +3940,7 @@ Transform:
   - {fileID: 1053346856316097830}
   - {fileID: 8135709788992429526}
   - {fileID: 3991420158304294041}
+  - {fileID: 4463253747829678132}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6556570861794672174
@@ -3924,6 +3991,8 @@ MonoBehaviour:
   stationaryRotationSpeed: 1
   halfSailRotationSpeed: 0.75
   fullSailRotationSpeed: 0.5
+  cameraMinYPos: 10
+  cameraMaxYPos: 110
   currentSailMode: 0
   movingSpeed: 0
   rotationSpeed: 0

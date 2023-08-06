@@ -39,7 +39,7 @@ public class PlayerInteractionManager : MonoBehaviour
             
             psd.currentMainState = PlayerStateData.PlayerMainState.NormalState;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
-            transform.parent = null;
+            //transform.parent = null;
         }
         
         if (!CrosshairManager.isLookingAtShipWheel) return;
@@ -56,7 +56,7 @@ public class PlayerInteractionManager : MonoBehaviour
             
             psd.currentMainState = PlayerStateData.PlayerMainState.ShipControllingState;
             rb.constraints = RigidbodyConstraints.FreezeAll;
-            transform.parent = sc.transform;
+            //transform.parent = sc.transform;
         }
     }
 }
