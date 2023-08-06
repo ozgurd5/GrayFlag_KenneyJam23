@@ -18,6 +18,7 @@ public class RGBChanger : MonoBehaviour
     bool greenColorEnabled;
     bool blueColorEnabled;
     bool yellowColorEnabled;
+    bool isGameOver; // özgürü bekle
 
 
     private void Awake()
@@ -27,7 +28,7 @@ public class RGBChanger : MonoBehaviour
         PlayerColorEnabler.OnGreenColorEnabled += PlayerColorEnabler_OnGreenColorEnabled;
         PlayerColorEnabler.OnYellowColorEnabled += PlayerColorEnabler_OnYellowColorEnabled;
     }
-
+    
     #region ReceiveEvents
     private void PlayerColorEnabler_OnYellowColorEnabled()
     {
@@ -78,6 +79,7 @@ public class RGBChanger : MonoBehaviour
         if(redColorEnabled && blueColorEnabled && greenColorEnabled && yellowColorEnabled) return true;
         else return false;
     }
+
 }
 
 
