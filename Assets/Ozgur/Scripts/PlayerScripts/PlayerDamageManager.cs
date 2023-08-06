@@ -9,6 +9,11 @@ public class PlayerDamageManager : MonoBehaviour
     [SerializeField] private int knockbackForce = 1000;
     [SerializeField] private float damageStopTime = 0.5f;
 
+    [Header("Assign - Sound")]
+    [SerializeField] private AudioSource aus;
+    [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioClip deathSound;
+    
     private PlayerStateData psd;
     private Rigidbody rb;
     private Slider healthBar;
@@ -30,7 +35,7 @@ public class PlayerDamageManager : MonoBehaviour
         
         psd.isGettingDamage = true;
         Invoke(nameof(SetIsGettingDamageFalse), damageStopTime);
-        
+
         CheckForDeath();
     }
 
@@ -46,6 +51,10 @@ public class PlayerDamageManager : MonoBehaviour
             transform.position = respawnPoint.position;
             health = 20;
             healthBar.value = health;
+            
+            aus.PlayOneShot(deathSound);
         }
+
+        else aus.PlayOneShot(damageSound);
     }
 }

@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class EnemyAiTutorial : MonoBehaviour
     
     //OZGUR
     private EnemyManager em;
+    private bool flag;
     [Header("Assign")] [SerializeField] private float punchAnimTime = 0.5f;
 
     private void Awake()
@@ -33,6 +36,12 @@ public class EnemyAiTutorial : MonoBehaviour
         em = GetComponent<EnemyManager>();
     }
 
+    private void Start()
+    {
+        //OZGUR
+        em.EnterWalkingState();
+    }
+
     private void Update()
     {
         //OZGUR
@@ -42,12 +51,12 @@ public class EnemyAiTutorial : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
 
-    private void Patroling()
+    private void Patrolling()
     {
         if (!walkPointSet) SearchWalkPoint();
 
@@ -61,8 +70,9 @@ public class EnemyAiTutorial : MonoBehaviour
             walkPointSet = false;
         
         //OZGUR
-        em.EnterWalkingState();
+        if (em.currentState != EnemyManager.EnemyState.Walking) em.EnterWalkingState();
     }
+    
     private void SearchWalkPoint()
     {
         //Calculate random point in range
@@ -79,9 +89,11 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         //OZGUR
         if (em.isDamageTaking) return;
-        if (em.currentState == EnemyManager.EnemyState.Punching) em.Invoke(nameof(em.EnterWalkingState), punchAnimTime);
-        else em.EnterWalkingState();
+
+        if (em.currentState == EnemyManager.EnemyState.Punching && !flag) StartCoroutine(EnterWalkingFromPunching());
         
+        else if (em.currentState != EnemyManager.EnemyState.Walking && !flag) em.EnterWalkingState();
+
         agent.SetDestination(player.position);
     }
 
@@ -113,5 +125,14 @@ public class EnemyAiTutorial : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    private IEnumerator EnterWalkingFromPunching()
+    {
+        flag = true;
+        yield return new WaitForSeconds(punchAnimTime);
+        
+        em.EnterWalkingState();
+        flag = false;
     }
 }
