@@ -9,20 +9,49 @@ public class BuoyancyObject : MonoBehaviour
     public float underWaterAngularDrag = 1f;
     public float airDrag = 0f;
     public float airAngularDrag = 0.05f;
-    public float floatingPower = 15f;
+    public float floatingPower = 130f;
     public float waterHeight = 0f;
 
-    private Rigidbody m_Rigidbody;
+    private Rigidbody mRigidbody;
     private bool underwater;
     
     
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
+        mRigidbody = GetComponent<Rigidbody>();
     }
     
     void FixedUpdate()
     {
-        float difference = transf
+        float difference = transform.position.y - waterHeight;
+
+        if (difference < 0)
+        {
+            mRigidbody.AddForceAtPosition(Vector3.up * floatingPower * Mathf.Abs(difference), transform.position, ForceMode.Force);
+            if (!underwater)
+            {
+                underwater = true;
+                SwitchState(true);
+            }
+            
+        }
+        else if (underwater)
+        {
+            underwater = false;
+        }
+    }
+
+    void SwitchState(bool isUnderwater)
+    {
+        if (isUnderwater)
+        {
+            mRigidbody.drag = underWaterDrag;
+            mRigidbody.angularDrag = underWaterAngularDrag;
+        }
+        else
+        {
+            mRigidbody.drag = airDrag;
+            mRigidbody.angularDrag = airAngularDrag;
+        }
     }
 }
