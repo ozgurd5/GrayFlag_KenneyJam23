@@ -2532,7 +2532,6 @@ GameObject:
   - component: {fileID: 7611341905863417957}
   - component: {fileID: 7270077739983313660}
   - component: {fileID: 4999070168708926585}
-  - component: {fileID: 6061055282392702503}
   m_Layer: 0
   m_Name: Woman
   m_TagString: Untagged
@@ -2640,26 +2639,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.085568234
   m_Center: {x: 0, y: 0.097401045, z: -0}
---- !u!114 &6061055282392702503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9135187039763010241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  redMaterial: {fileID: 0}
-  redMaterialIndexes: 
-  greenMaterial: {fileID: 0}
-  greenMaterialIndexes: 
-  blueMaterial: {fileID: 0}
-  blueMaterialIndexes: 
-  yellowMaterial: {fileID: 0}
-  yellowMaterialIndexes: 
 --- !u!1 &9201124123675831280
 GameObject:
   m_ObjectHideFlags: 0
