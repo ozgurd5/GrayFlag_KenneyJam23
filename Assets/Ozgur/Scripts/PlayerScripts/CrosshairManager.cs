@@ -6,6 +6,7 @@ public class CrosshairManager : MonoBehaviour
     public static bool isLookingAtShipWheel;
     public static bool isLookingAtEnemy;
     public static bool isLookingAtHookTarget;
+    public static bool isLookingAtChest;
     public static RaycastHit crosshairHit;
     
     [Header("Assign")]
@@ -19,11 +20,13 @@ public class CrosshairManager : MonoBehaviour
     private Ray crosshairRay;
     private Color temporaryColor;
 
-    public bool crosshairHighlightCondition;
-
-    public bool wheel;
-    public bool enemy;
-    public bool target;
+    [Header("Info - No Touch")]
+    [SerializeField] private bool crosshairHighlightCondition;
+    [SerializeField] private bool wheel;
+    [SerializeField] private bool enemy;
+    [SerializeField] private bool target;
+    [SerializeField] private bool chest;
+    [SerializeField] private string lookName;
 
     private void Awake()
     {
@@ -33,10 +36,6 @@ public class CrosshairManager : MonoBehaviour
 
     private void Update()
     {
-        wheel = isLookingAtShipWheel;
-        enemy = isLookingAtEnemy;
-        target = isLookingAtHookTarget;
-        
         CastRay();
         CastLongRay();
         CalculateCrosshairHighlightCondition();
@@ -49,6 +48,8 @@ public class CrosshairManager : MonoBehaviour
         if (crosshairHighlightCondition) temporaryColor.a = 1f;
         else temporaryColor.a = opacity;
         crosshairImage.color = temporaryColor;
+
+        HandleDebugInfo();
     }
     
     private void CastRay()
@@ -60,12 +61,14 @@ public class CrosshairManager : MonoBehaviour
             isLookingAtShipWheel = false;
             isLookingAtEnemy = false;
             isLookingAtHookTarget = false;
+            isLookingAtChest = false;
             return;
         }
 
         isLookingAtShipWheel = crosshairHit.collider.CompareTag("ShipWheel");
         isLookingAtEnemy = crosshairHit.collider.CompareTag("Enemy");
         isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace");
+        isLookingAtChest = crosshairHit.collider.CompareTag("Chest");
     }
     
     private void CastLongRay()
@@ -83,6 +86,15 @@ public class CrosshairManager : MonoBehaviour
 
     private void CalculateCrosshairHighlightCondition()
     {
-        crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtEnemy || isLookingAtHookTarget;
+        crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtEnemy || isLookingAtHookTarget || isLookingAtChest;
+    }
+
+    private void HandleDebugInfo()
+    {
+        wheel = isLookingAtShipWheel;
+        enemy = isLookingAtEnemy;
+        target = isLookingAtHookTarget;
+        chest = isLookingAtChest;
+        if (crosshairHit.collider != null) lookName = crosshairHit.collider.name;
     }
 }

@@ -12,6 +12,7 @@ public class PlayerInteractionManager : MonoBehaviour
     private GameObject hookGun;
     
     private ShipController sc;
+    private ChestManager cm;
 
     private void Awake()
     {
@@ -28,7 +29,12 @@ public class PlayerInteractionManager : MonoBehaviour
     {
         if (!pim.isInteractKeyDown) return;
         
-        //TODO: this not the place of this, find a better script
+        HandleShipInteraction();
+        HandleChestInteraction();
+    }
+
+    private void HandleShipInteraction()
+    {
         if (psd.currentMainState == PlayerStateData.PlayerMainState.ShipControllingState)
         {
             sc.DropControl();
@@ -39,12 +45,10 @@ public class PlayerInteractionManager : MonoBehaviour
             
             psd.currentMainState = PlayerStateData.PlayerMainState.NormalState;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
-            //transform.parent = null;
         }
         
         if (!CrosshairManager.isLookingAtShipWheel) return;
-        
-        
+
         if (psd.currentMainState == PlayerStateData.PlayerMainState.NormalState && CrosshairManager.isLookingAtShipWheel)
         {
             sc = CrosshairManager.crosshairHit.collider.GetComponentInParent<ShipController>();
@@ -56,7 +60,14 @@ public class PlayerInteractionManager : MonoBehaviour
             
             psd.currentMainState = PlayerStateData.PlayerMainState.ShipControllingState;
             rb.constraints = RigidbodyConstraints.FreezeAll;
-            //transform.parent = sc.transform;
         }
+    }
+
+    private void HandleChestInteraction()
+    {
+        if (!CrosshairManager.isLookingAtChest) return;
+        cm = CrosshairManager.crosshairHit.collider.GetComponent<ChestManager>();
+        if (!cm) cm = CrosshairManager.crosshairHit.transform.parent.GetComponent<ChestManager>(); //if lid is selected
+        if (!cm.isChestOpened) cm.OpenChest();
     }
 }

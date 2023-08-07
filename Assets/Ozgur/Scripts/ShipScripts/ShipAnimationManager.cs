@@ -26,6 +26,7 @@ public class ShipAnimationManager : MonoBehaviour
     private Tweener backSailTweenScale;
 
     private ShipInputManager sim;
+    private PlayerStateData psd;
 
     private bool isRotatingAnimationPlaying;
     private float rotationAmount;
@@ -43,10 +44,13 @@ public class ShipAnimationManager : MonoBehaviour
 
         sim = GetComponent<ShipInputManager>();
         ShipController.OnSailChanged += PlayAnimation;
+        
+        psd = GameObject.Find("Player").GetComponent<PlayerStateData>();
     }
 
     private void Update()
     {
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.ShipControllingState) return;
         PlayRotationAnimation();
     }
 
