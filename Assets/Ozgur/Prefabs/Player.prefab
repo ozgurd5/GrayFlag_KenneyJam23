@@ -1051,6 +1051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
+  playerDamageEffect: {fileID: 2471462566660503249}
   health: 20
   knockbackForce: 1000
   damageStopTime: 0.5
@@ -1767,7 +1768,7 @@ GameObject:
   - component: {fileID: 2574186341412924814}
   - component: {fileID: 1930901542038690227}
   m_Layer: 6
-  m_Name: PlayerDamageImage
+  m_Name: PlayerDamageEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
