@@ -1,10 +1,11 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
 public class ChestManager : MonoBehaviour
 {
+    public static int totalChestCount;
+    
     [Header("Assign")]
     [SerializeField] private float chestOpeningAnimationTime = 0.5f;
     [SerializeField] private float coinAnimationTime = 0.5f;
@@ -17,27 +18,24 @@ public class ChestManager : MonoBehaviour
     [Header("Info - No Touch")]
     public bool isChestOpened;
 
-   
     private Transform chestLidTransform;
-    private Transform coinTransform;
-    private AudioSource aus;
+    private Transform coin1Transform;
+    private Transform coin2Transform;
+    private Transform coin3Transform;
     private Transform playerTransform;
+    private AudioSource aus;
 
-    //agah
-    public static int count;
-    public static event Action OnChestPickup;
-    
-    public ChestManager()
-    {
-        count++;
-    }
-    //agah
     private void Awake()
     {
         chestLidTransform = transform.GetChild(0);
-        coinTransform = transform.GetChild(1);
-        aus = GetComponent<AudioSource>();
+        coin1Transform = transform.GetChild(1);
+        coin2Transform = transform.GetChild(2);
+        coin3Transform = transform.GetChild(3);
+
         playerTransform = GameObject.Find("Player").transform;
+        aus = GetComponent<AudioSource>();
+
+        totalChestCount++;
     }
 
     public void OpenChest()
@@ -45,6 +43,7 @@ public class ChestManager : MonoBehaviour
         isChestOpened = true;
         
         aus.PlayOneShot(chestSound);
+        CoinChestMushroomManager.Singleton.IncreaseChestNumber();
         StartCoroutine(PlayChestOpenAnimation());
     }
 
@@ -54,14 +53,20 @@ public class ChestManager : MonoBehaviour
         yield return new WaitForSeconds(chestOpeningAnimationTime);
         
         aus.PlayOneShot(coinSound);
-        coinTransform.DOLocalMoveY(10, coinAnimationTime);
+        coin1Transform.DOLocalMoveY(8, coinAnimationTime);
+        coin2Transform.DOLocalMoveY(10, coinAnimationTime);
+        coin3Transform.DOLocalMoveY(8, coinAnimationTime);
         yield return new WaitForSeconds(coinAnimationTime);
         
-        coinTransform.DOMove(playerTransform.position + new Vector3(0f, 0.5f, 0f), coinFlyTime);
+        coin1Transform.DOMove(playerTransform.position + new Vector3(0f, 0.5f, 0f), coinFlyTime);
+        coin2Transform.DOMove(playerTransform.position + new Vector3(0f, 0.5f, 0f), coinFlyTime);
+        coin3Transform.DOMove(playerTransform.position + new Vector3(0f, 0.5f, 0f), coinFlyTime);
         yield return new WaitForSeconds(coinFlyTime);
-
-        OnChestPickup?.Invoke();
-        CoinManager.Singleton.IncreaseCoinNumber();
-        Destroy(coinTransform.gameObject);
+        
+        CoinChestMushroomManager.Singleton.IncreaseCoinNumber();
+        
+        Destroy(coin1Transform.gameObject);
+        Destroy(coin2Transform.gameObject);
+        Destroy(coin3Transform.gameObject);
     }
 }
