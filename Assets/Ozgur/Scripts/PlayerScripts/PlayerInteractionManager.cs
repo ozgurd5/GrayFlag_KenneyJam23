@@ -14,6 +14,7 @@ public class PlayerInteractionManager : MonoBehaviour
     
     private ShipController sc;
     private ChestManager cm;
+    private MushroomManager mm;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class PlayerInteractionManager : MonoBehaviour
         
         HandleShipInteraction();
         HandleChestInteraction();
+        HandleMushroomInteraction();
     }
 
     private void HandleShipInteraction()
@@ -73,5 +75,12 @@ public class PlayerInteractionManager : MonoBehaviour
         cm = CrosshairManager.crosshairHit.collider.GetComponent<ChestManager>();
         if (!cm) cm = CrosshairManager.crosshairHit.transform.parent.GetComponent<ChestManager>(); //if lid is selected
         if (!cm.isChestOpened) cm.OpenChest();
+    }
+
+    private void HandleMushroomInteraction()
+    {
+        if (!CrosshairManager.isLookingAtMushroom) return;
+        mm = CrosshairManager.crosshairHit.collider.GetComponent<MushroomManager>();
+        if (!mm.isCollected) mm.CollectMushroom();
     }
 }

@@ -5,6 +5,7 @@ public class CrosshairManager : MonoBehaviour
 {
     public static bool isLookingAtShipWheel;
     public static bool isLookingAtEnemy;
+    public static bool isLookingAtEnemyLong;
     public static bool isLookingAtHookTarget;
     public static bool isLookingAtChest;
     public static bool isLookingAtMushroom;
@@ -24,8 +25,12 @@ public class CrosshairManager : MonoBehaviour
 
     [Header("Info - No Touch")]
     [SerializeField] private bool crosshairHighlightCondition;
+    [SerializeField] private bool crosshairAttackCondition;
+    
+    [Header("Debug")]
     [SerializeField] private bool wheel;
     [SerializeField] private bool enemy;
+    [SerializeField] private bool enemyLong;
     [SerializeField] private bool target;
     [SerializeField] private bool chest;
     [SerializeField] private bool mushroom;
@@ -48,8 +53,13 @@ public class CrosshairManager : MonoBehaviour
         //We can only assign a color variable to it. Therefore we need a temporary color variable..
         //..to make changes upon and finally assign it
         
-        temporaryColor = crosshairImage.color;
-        if (crosshairHighlightCondition) temporaryColor.a = 1f;
+        temporaryColor = Color.white;
+        if (crosshairAttackCondition)
+        {
+            temporaryColor = Color.red;
+            temporaryColor.a = 1f;
+        }
+        else if (crosshairHighlightCondition) temporaryColor.a = 1f;
         else temporaryColor.a = opacity;
         crosshairImage.color = temporaryColor;
 
@@ -85,21 +95,24 @@ public class CrosshairManager : MonoBehaviour
             isLookingAtHookTarget = false;
             return;
         }
-        
-        isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace");
+
+        isLookingAtEnemyLong = crosshairHit.collider.CompareTag("Enemy");
+        isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace") || isLookingAtEnemyLong;
     }
 
     private void CalculateCrosshairHighlightCondition()
     {
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
         
-        crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtEnemy || isLookingAtHookTarget || isLookingAtChest || isLookingAtMushroom;
+        crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtHookTarget || isLookingAtChest || isLookingAtMushroom;
+        crosshairAttackCondition = isLookingAtEnemy;
     }
 
     private void HandleDebugInfo()
     {
         wheel = isLookingAtShipWheel;
         enemy = isLookingAtEnemy;
+        enemyLong = isLookingAtEnemyLong;
         target = isLookingAtHookTarget;
         chest = isLookingAtChest;
         mushroom = isLookingAtMushroom;

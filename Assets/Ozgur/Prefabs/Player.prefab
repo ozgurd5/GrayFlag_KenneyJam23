@@ -1051,6 +1051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
+  playerDamageEffect: {fileID: 2471462566660503249}
   health: 20
   knockbackForce: 1000
   damageStopTime: 0.5
@@ -1727,9 +1728,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1011332232856010289}
-  - component: {fileID: 5457141541966983987}
   m_Layer: 5
-  m_Name: MushObjParent
+  m_Name: MushroomParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1756,19 +1756,81 @@ RectTransform:
   m_AnchoredPosition: {x: -720, y: 265}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5457141541966983987
+--- !u!1 &2471462566660503249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2182180409809612316}
+  - component: {fileID: 2574186341412924814}
+  - component: {fileID: 1930901542038690227}
+  m_Layer: 6
+  m_Name: PlayerDamageEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2182180409809612316
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471462566660503249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 818854848270513654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.000061035}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2574186341412924814
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471462566660503249}
+  m_CullTransparentMesh: 1
+--- !u!114 &1930901542038690227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2201558215419005607}
+  m_GameObject: {fileID: 2471462566660503249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aab6d4935cd4bb44e818f39be81865dc, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shroomText: {fileID: 5979710698462694789}
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: bd878e12520e8484ab4d905454c1a4b3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4236154615871215296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,7 +1843,7 @@ GameObject:
   - component: {fileID: 6976154069048285542}
   - component: {fileID: 9121833001538413892}
   m_Layer: 5
-  m_Name: chest
+  m_Name: ChestObject
   m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1795,7 +1857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4236154615871215296}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.15130918, y: 0.336754, z: -0.014545514, w: 0.929242}
+  m_LocalRotation: {x: -0.13493118, y: -0.12364164, z: 0.025855368, w: 0.9827705}
   m_LocalPosition: {x: 0.010878906, y: 0.005966339, z: 0.037395265}
   m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 1
@@ -1803,7 +1865,7 @@ Transform:
   - {fileID: 3253489303626411117}
   - {fileID: 2879120236651597613}
   m_Father: {fileID: 8212845772734078184}
-  m_LocalEulerAnglesHint: {x: -15.748, y: 40.907, z: -7.699}
+  m_LocalEulerAnglesHint: {x: -15, y: -15, z: 5}
 --- !u!33 &6976154069048285542
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1906,13 +1968,13 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 0.11
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -2123,6 +2185,7 @@ GameObject:
   - component: {fileID: 5497913604089565200}
   - component: {fileID: 88697514315557560}
   - component: {fileID: 2874619748495816332}
+  - component: {fileID: 3523930477229757448}
   m_Layer: 6
   m_Name: PlayerCanvas
   m_TagString: Untagged
@@ -2146,6 +2209,7 @@ RectTransform:
   - {fileID: 8079561455487421202}
   - {fileID: 7848197610929454107}
   - {fileID: 2135873564485310564}
+  - {fileID: 2182180409809612316}
   m_Father: {fileID: 3867957945215238531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2170,7 +2234,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -2260,7 +2324,106 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinText: {fileID: 7078729341951430287}
   chestText: {fileID: 3007500898991652860}
+  mushroomText: {fileID: 5979710698462694789}
   coinNumber: 0
+  chestNumber: 0
+  mushroomNumber: 0
+--- !u!82 &3523930477229757448
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5961817998518397154}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4be5451e27041344d85d66a4be4d1e92, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6909583412276702579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,7 +2434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8212845772734078184}
   m_Layer: 5
-  m_Name: ChestObjParent
+  m_Name: ChestParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2594,7 +2757,7 @@ GameObject:
   - component: {fileID: 805036382610780058}
   - component: {fileID: 2589022751165805348}
   m_Layer: 5
-  m_Name: CanvasMushroom
+  m_Name: MushroomObject
   m_TagString: Mushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2608,13 +2771,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8138971871651868306}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.06383838, y: 0.38176215, z: -0.002174842, w: 0.9220508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.007, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1011332232856010289}
-  m_LocalEulerAnglesHint: {x: -6.665, y: 45.16, z: -3.045}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &805036382610780058
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2814,7 +2977,7 @@ GameObject:
   - component: {fileID: 8299188770536968892}
   - component: {fileID: 5979710698462694789}
   m_Layer: 5
-  m_Name: mushText
+  m_Name: MushroomText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
