@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RGBChanger : MonoBehaviour
 {
-    MeshRenderer cubeMeshRenderer;
+    MeshRenderer meshRenderer;
     [SerializeField][Range(0f, 5f)] float lerpTime;
 
     [SerializeField] Color[] myColors;
@@ -52,7 +52,7 @@ public class RGBChanger : MonoBehaviour
     #endregion
     void Start()
     {
-        cubeMeshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
 
     void Update()
@@ -63,7 +63,7 @@ public class RGBChanger : MonoBehaviour
 
     void ChangeColors()
     {
-        cubeMeshRenderer.material.color = Color.Lerp(cubeMeshRenderer.material.color, myColors[colorIndex], lerpTime * Time.deltaTime);
+        meshRenderer.material.color = Color.Lerp(meshRenderer.material.color, myColors[colorIndex], lerpTime * Time.deltaTime);
 
         t = Mathf.Lerp(t, 1f, lerpTime * Time.deltaTime);
         if (t > .99f)
