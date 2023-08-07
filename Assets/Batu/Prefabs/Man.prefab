@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2342044459644735781}
   - component: {fileID: 5496870244752415584}
+  - component: {fileID: 4614081660868176575}
   m_Layer: 0
   m_Name: Body1
   m_TagString: Untagged
@@ -96,6 +97,26 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0018920284, y: 0.017520824, z: 0.008262506}
     m_Extent: {x: 0.02862127, y: 0.032234244, z: 0.018135112}
   m_DirtyAABB: 0
+--- !u!114 &4614081660868176575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103015278348218236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d24b06a8df9bb64a893eca1095a7cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: d68aff9958b46104a85ceea951e2ebbc, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1 &172683313677380175
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7779454247403984571}
   - component: {fileID: 5913740567371436092}
+  - component: {fileID: 5165039410307914077}
   m_Layer: 0
   m_Name: ArmLeft1
   m_TagString: Untagged
@@ -460,6 +482,26 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.020350523, y: -0.0046983575, z: 0.021529507}
     m_Extent: {x: 0.016720146, y: 0.020701606, z: 0.028995462}
   m_DirtyAABB: 0
+--- !u!114 &5165039410307914077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592576735824716432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d24b06a8df9bb64a893eca1095a7cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: d68aff9958b46104a85ceea951e2ebbc, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1 &842303185359934113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,6 +1292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3717000383397288751}
   - component: {fileID: 2702429082579818021}
+  - component: {fileID: 3054717397579704936}
   m_Layer: 0
   m_Name: LegLeft1
   m_TagString: Untagged
@@ -1331,6 +1374,26 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.018722769, y: -0.028485626, z: 0.024423243}
     m_Extent: {x: 0.012030912, y: 0.034782484, z: 0.03429585}
   m_DirtyAABB: 0
+--- !u!114 &3054717397579704936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038056080806720065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d24b06a8df9bb64a893eca1095a7cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 2100000, guid: d68aff9958b46104a85ceea951e2ebbc, type: 2}
+  blueMaterialIndexes: 00000000
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1 &4156929351957446745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8666020684877927600}
   - component: {fileID: 1819992544306972859}
+  - component: {fileID: 9104646964170078729}
   m_Layer: 0
   m_Name: ArmRight1
   m_TagString: Untagged
@@ -1850,6 +1914,26 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.015887443, y: -0.007462102, z: 0.022781078}
     m_Extent: {x: 0.017260399, y: 0.023511257, z: 0.030247148}
   m_DirtyAABB: 0
+--- !u!114 &9104646964170078729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770567917098816078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d24b06a8df9bb64a893eca1095a7cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: d68aff9958b46104a85ceea951e2ebbc, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1 &5998859303739761857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,6 +2194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6944906590920488397}
   - component: {fileID: 2257723976786389970}
+  - component: {fileID: 2358075126464858276}
   m_Layer: 0
   m_Name: LegRight1
   m_TagString: Untagged
@@ -2191,6 +2276,26 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.018049054, y: -0.026441857, z: 0.023906391}
     m_Extent: {x: 0.015230905, y: 0.03557661, z: 0.033778995}
   m_DirtyAABB: 0
+--- !u!114 &2358075126464858276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016692159272010794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d24b06a8df9bb64a893eca1095a7cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 2100000, guid: d68aff9958b46104a85ceea951e2ebbc, type: 2}
+  blueMaterialIndexes: 00000000
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1 &8083284116128697111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,6 +2507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2910011838875305500}
   - component: {fileID: 2196788601429684361}
+  - component: {fileID: 6333638674193743958}
   m_Layer: 0
   m_Name: Head1
   m_TagString: Untagged
@@ -2479,6 +2585,26 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0007275082, y: 0.022577502, z: -0.0056604715}
     m_Extent: {x: 0.022771869, y: 0.026484601, z: 0.026872706}
   m_DirtyAABB: 0
+--- !u!114 &6333638674193743958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8700988848882499766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d24b06a8df9bb64a893eca1095a7cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 2100000, guid: d68aff9958b46104a85ceea951e2ebbc, type: 2}
+  yellowMaterialIndexes: 00000000
 --- !u!1 &8952835884984859147
 GameObject:
   m_ObjectHideFlags: 0
