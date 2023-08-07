@@ -7,6 +7,7 @@ public class CrosshairManager : MonoBehaviour
     public static bool isLookingAtEnemy;
     public static bool isLookingAtHookTarget;
     public static bool isLookingAtChest;
+    public static bool isLookingAtMushroom;
     public static RaycastHit crosshairHit;
     
     [Header("Assign")]
@@ -27,6 +28,7 @@ public class CrosshairManager : MonoBehaviour
     [SerializeField] private bool enemy;
     [SerializeField] private bool target;
     [SerializeField] private bool chest;
+    [SerializeField] private bool mushroom;
     [SerializeField] private string lookName;
 
     private void Awake()
@@ -71,6 +73,7 @@ public class CrosshairManager : MonoBehaviour
         isLookingAtEnemy = crosshairHit.collider.CompareTag("Enemy");
         isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace");
         isLookingAtChest = crosshairHit.collider.CompareTag("Chest");
+        isLookingAtMushroom = crosshairHit.collider.CompareTag("Mushroom");
     }
     
     private void CastLongRay()
@@ -90,7 +93,7 @@ public class CrosshairManager : MonoBehaviour
     {
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
         
-        crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtEnemy || isLookingAtHookTarget || isLookingAtChest;
+        crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtEnemy || isLookingAtHookTarget || isLookingAtChest || isLookingAtMushroom;
     }
 
     private void HandleDebugInfo()
@@ -99,6 +102,7 @@ public class CrosshairManager : MonoBehaviour
         enemy = isLookingAtEnemy;
         target = isLookingAtHookTarget;
         chest = isLookingAtChest;
+        mushroom = isLookingAtMushroom;
         if (crosshairHit.collider != null) lookName = crosshairHit.collider.name;
     }
 }
