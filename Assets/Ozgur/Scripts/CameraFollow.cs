@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 followOffset;
 
     [Header("Look At")]
-    [SerializeField] private bool canLookAt;
+    public bool canLookAt;
     [SerializeField] private Transform lookAtTargetTransform;
 
     private void Update()

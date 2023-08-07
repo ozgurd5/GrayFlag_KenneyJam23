@@ -535,9 +535,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572cacf7671182e4ea5833fb80dd6888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
-  offset: 1.15
-  gizmos: 0
+  radius: 0.5
+  offset: 0.6
+  gizmos: 1
   colliders: []
   collidedObjectNumber: 0
 --- !u!114 &7111750619286296056
@@ -2194,7 +2194,7 @@ PrefabInstance:
     - target: {fileID: 1502151518081036161, guid: b31098369d67a6c46b40b5c6d5a14042,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -60.2
+      value: -60.19995
       objectReference: {fileID: 0}
     - target: {fileID: 1502151518081036161, guid: b31098369d67a6c46b40b5c6d5a14042,
         type: 3}

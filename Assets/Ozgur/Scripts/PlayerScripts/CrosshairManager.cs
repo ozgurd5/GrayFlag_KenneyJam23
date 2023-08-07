@@ -16,6 +16,7 @@ public class CrosshairManager : MonoBehaviour
 
     private Image crosshairImage;
     private Camera cam;
+    private PlayerStateData psd;
     
     private Ray crosshairRay;
     private Color temporaryColor;
@@ -32,6 +33,7 @@ public class CrosshairManager : MonoBehaviour
     {
         crosshairImage = GetComponentInChildren<Image>();
         cam = Camera.main;
+        psd = GetComponentInParent<PlayerStateData>();
     }
 
     private void Update()
@@ -86,6 +88,8 @@ public class CrosshairManager : MonoBehaviour
 
     private void CalculateCrosshairHighlightCondition()
     {
+        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
+        
         crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtEnemy || isLookingAtHookTarget || isLookingAtChest;
     }
 

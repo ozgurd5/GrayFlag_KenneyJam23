@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CursorHider : MonoBehaviour
@@ -34,5 +35,11 @@ public class CursorHider : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         
         psd.currentMainState = previousState;
+    }
+
+    private void OnDestroy()
+    {
+        PauseMenu.OnGamePause -= PauseGame;
+        PauseMenu.OnGameContinue -= ContinueGame;
     }
 }

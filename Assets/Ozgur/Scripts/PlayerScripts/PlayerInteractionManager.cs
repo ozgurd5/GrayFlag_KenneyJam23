@@ -8,6 +8,7 @@ public class PlayerInteractionManager : MonoBehaviour
     private Rigidbody rb;
 
     private CinemachineVirtualCamera playerCamera;
+    private CameraFollow cf;
     private GameObject sword;
     private GameObject hookGun;
     
@@ -21,6 +22,7 @@ public class PlayerInteractionManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         playerCamera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
+        cf = playerCamera.GetComponent<CameraFollow>();
         sword = playerCamera.transform.Find("Sword").gameObject;
         hookGun = playerCamera.transform.Find("HookGun").gameObject;
     }
@@ -40,6 +42,7 @@ public class PlayerInteractionManager : MonoBehaviour
             sc.DropControl();
             
             playerCamera.enabled = true;
+            cf.canLookAt = false;
             sword.SetActive(true);
             hookGun.SetActive(true);
             
@@ -55,6 +58,7 @@ public class PlayerInteractionManager : MonoBehaviour
             sc.TakeControl();
             
             playerCamera.enabled = false;
+            cf.canLookAt = true;
             sword.SetActive(false);
             hookGun.SetActive(false);
             

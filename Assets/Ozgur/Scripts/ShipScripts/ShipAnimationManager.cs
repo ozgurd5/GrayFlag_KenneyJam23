@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using Unity.Mathematics;
@@ -208,4 +209,9 @@ public class ShipAnimationManager : MonoBehaviour
     }
     
     #endregion
+
+    private void OnDestroy()
+    {
+        ShipController.OnSailChanged -= PlayAnimation;
+    }
 }

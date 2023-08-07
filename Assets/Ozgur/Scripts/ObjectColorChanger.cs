@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -82,5 +83,13 @@ public class ObjectColorChanger : MonoBehaviour
         }
         
         mr.materials = temporaryMaterials;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerColorEnabler.OnRedColorEnabled -= ActiveRedColor;
+        PlayerColorEnabler.OnGreenColorEnabled -= ActiveGreenColor;
+        PlayerColorEnabler.OnBlueColorEnabled -= ActiveBlueColor;
+        PlayerColorEnabler.OnYellowColorEnabled -= ActiveYellowColor;
     }
 }

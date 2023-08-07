@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAudioManager : MonoBehaviour
@@ -12,7 +13,7 @@ public class PlayerAudioManager : MonoBehaviour
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
-        PlayerController.OnJump += () => jumpingSource.Play();
+        PlayerController.OnJump += PlayJumpSound;
     }
 
     private void Update()
@@ -26,5 +27,15 @@ public class PlayerAudioManager : MonoBehaviour
         
         if (psd.isWalking) walkingSource.Play();
         else if (psd.isRunning) runningSource.Play();
+    }
+
+    private void PlayJumpSound()
+    {
+        jumpingSource.Play();
+    }
+
+    private void OnDestroy()
+    {
+        PlayerController.OnJump -= PlayJumpSound;
     }
 }
