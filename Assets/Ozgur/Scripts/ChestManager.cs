@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -20,7 +21,16 @@ public class ChestManager : MonoBehaviour
     private Transform coinTransform;
     private AudioSource aus;
     private Transform playerTransform;
-    
+
+    //agah
+    public static event Action OnChestPickup;
+    public static int count;
+
+    public ChestManager()
+    {
+        count++;
+    }
+    //agah
     private void Awake()
     {
         chestLidTransform = transform.GetChild(0);
@@ -48,7 +58,8 @@ public class ChestManager : MonoBehaviour
         
         coinTransform.DOMove(playerTransform.position + new Vector3(0f, 0.5f, 0f), coinFlyTime);
         yield return new WaitForSeconds(coinFlyTime);
-        
+
+        OnChestPickup?.Invoke();
         CoinManager.Singleton.IncreaseCoinNumber();
         Destroy(coinTransform.gameObject);
     }
