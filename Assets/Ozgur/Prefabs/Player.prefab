@@ -2270,7 +2270,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8212845772734078184}
-  - component: {fileID: 4570046929044727635}
   m_Layer: 5
   m_Name: ChestObjParent
   m_TagString: Untagged
@@ -2299,19 +2298,6 @@ RectTransform:
   m_AnchoredPosition: {x: -720, y: 390.03754}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4570046929044727635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6909583412276702579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aab6d4935cd4bb44e818f39be81865dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shroomText: {fileID: 3007500898991652860}
 --- !u!1 &6938624237287487362
 GameObject:
   m_ObjectHideFlags: 0
