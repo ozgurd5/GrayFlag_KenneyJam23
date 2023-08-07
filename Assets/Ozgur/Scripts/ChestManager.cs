@@ -17,15 +17,16 @@ public class ChestManager : MonoBehaviour
     [Header("Info - No Touch")]
     public bool isChestOpened;
 
+   
     private Transform chestLidTransform;
     private Transform coinTransform;
     private AudioSource aus;
     private Transform playerTransform;
 
     //agah
-    public static event Action OnChestPickup;
     public static int count;
-
+    public static event Action OnChestPickup;
+    
     public ChestManager()
     {
         count++;

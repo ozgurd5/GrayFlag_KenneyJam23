@@ -6,6 +6,7 @@ public class CoinManager : MonoBehaviour
     [Header("Assign")][SerializeField] private TextMeshProUGUI coinText;
                       [SerializeField]private TextMeshProUGUI chestText;
     [Header("Info - No Touch")] [SerializeField] private int coinNumber; private int chestCollected = 0, chestAmount;
+    
 
     public static CoinManager Singleton;
 
@@ -15,6 +16,7 @@ public class CoinManager : MonoBehaviour
         ChestManager.OnChestPickup += ChestPickup_OnChestPickup;
         chestAmount = ChestManager.count;
     }
+    
 
     private void ChestPickup_OnChestPickup()
     {
