@@ -5,7 +5,7 @@ using UnityEngine;
 public class RGBLights : MonoBehaviour
 {
     Light light;
-    [SerializeField][Range(0f, 5f)] float lerpTime;
+    [SerializeField][Range(0f, 15f)] float lerpTime;
 
     [SerializeField] Color[] myColors;
 
