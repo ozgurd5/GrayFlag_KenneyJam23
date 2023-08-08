@@ -7,6 +7,7 @@ public class Rotator : MonoBehaviour
     [SerializeField]Transform tr;
     [SerializeField][Range(0f,5f)]float r;
     [SerializeField][Range(0f, 360f)]float angle;
+    [SerializeField] float timeF= 1.001f;
 
     void Rotato()
     {
@@ -15,6 +16,7 @@ public class Rotator : MonoBehaviour
     private void Update()
     {
        Rotato();
+       r = Mathf.Lerp(r, 5, timeF * Time.deltaTime);
     }
 
 }
