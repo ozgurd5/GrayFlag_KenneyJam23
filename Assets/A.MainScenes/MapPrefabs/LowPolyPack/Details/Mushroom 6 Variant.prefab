@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7364661258401759278}
   - component: {fileID: 2348929231183362514}
   - component: {fileID: 2590819357397730571}
-  - component: {fileID: -6049691635570003495}
+  - component: {fileID: 106126967021574490}
   m_Layer: 0
   m_Name: Mushroom 6 Variant
   m_TagString: Mushroom
@@ -102,14 +102,14 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8893926669976447121, guid: 9cacd675232ac344281a2e1a3ab6a7cf, type: 3}
---- !u!114 &-6049691635570003495
+--- !u!114 &106126967021574490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,6 +118,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5198962194824620292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6854765228ae178489b799369b7f09bc, type: 3}
+  m_Script: {fileID: 11500000, guid: aab6d4935cd4bb44e818f39be81865dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomFlyTime: 0.1
+  isCollected: 0
