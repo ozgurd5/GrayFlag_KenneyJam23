@@ -16,7 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -24,7 +25,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -82,7 +83,42 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: watermill(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: paddle
+      parentName: watermill(Clone)
+      position: {x: -0.18499999, y: -0.57712495, z: 0.30433568}
+      rotation: {x: 0.4999999, y: -2.1924757e-13, z: 1.8286823e-14, w: 0.86602545}
+      scale: {x: 1, y: 1, z: 1}
+    - name: paddle 5
+      parentName: watermill(Clone)
+      position: {x: -0.18499999, y: -0.024999999, z: 0.6519728}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: paddle 4
+      parentName: watermill(Clone)
+      position: {x: -0.18499999, y: 0.024999999, z: -0.6519728}
+      rotation: {x: 1, y: 6.123234e-17, z: 6.123234e-17, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: paddle 3
+      parentName: watermill(Clone)
+      position: {x: -0.18499999, y: 0.5521249, z: 0.347637}
+      rotation: {x: -0.5, y: 2.192475e-13, z: -1.828691e-14, w: 0.8660254}
+      scale: {x: 1, y: 1, z: 1}
+    - name: paddle 2
+      parentName: watermill(Clone)
+      position: {x: -0.18499999, y: 0.57712495, z: -0.30433568}
+      rotation: {x: 0.8660254, y: 8.3644934e-17, z: 8.3644934e-17, w: -0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: paddle 1
+      parentName: watermill(Clone)
+      position: {x: -0.18499999, y: -0.5521249, z: -0.347637}
+      rotation: {x: 0.86602545, y: 2.24126e-17, z: 2.24126e-17, w: 0.4999999}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -99,7 +135,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
