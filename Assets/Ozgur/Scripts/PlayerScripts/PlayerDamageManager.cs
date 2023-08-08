@@ -3,8 +3,11 @@ using UnityEngine.UI;
 
 public class PlayerDamageManager : MonoBehaviour
 {
-    [Header("Assign")]
+    [Header("Assign Manually")]
     [SerializeField] private Transform respawnPoint;
+    [SerializeField] private GameObject playerDamageEffect;
+    
+    [Header("Assign")]
     [SerializeField] private int health = 20;
     [SerializeField] private int knockbackForce = 1000;
     [SerializeField] private float damageStopTime = 0.5f;
@@ -34,6 +37,7 @@ public class PlayerDamageManager : MonoBehaviour
         rb.AddForce(knockbackForce * enemyTransformForward, ForceMode.Acceleration);
         
         psd.isGettingDamage = true;
+        playerDamageEffect.SetActive(true);
         Invoke(nameof(SetIsGettingDamageFalse), damageStopTime);
 
         CheckForDeath();
@@ -42,6 +46,7 @@ public class PlayerDamageManager : MonoBehaviour
     private void SetIsGettingDamageFalse()
     {
         psd.isGettingDamage = false;
+        playerDamageEffect.SetActive(false);
     }
     
     private void CheckForDeath()
