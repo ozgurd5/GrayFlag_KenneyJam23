@@ -8468,7 +8468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1796786318
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18048,6 +18048,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Menu Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 940733507651617104, guid: 228281748efeda644b10998c3646994f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1063190736694596238, guid: 228281748efeda644b10998c3646994f,
         type: 3}
