@@ -16,7 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -24,7 +25,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -82,7 +83,62 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: burgerDouble(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bunBottom
+      parentName: burgerDouble(Clone)
+      position: {x: 7.219113e-16, y: 0, z: 1.8047788e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.8, z: 1}
+    - name: bunBottom 1
+      parentName: burgerDouble(Clone)
+      position: {x: 7.219113e-16, y: 0.12999998, z: 1.8047788e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bunTop
+      parentName: burgerDouble(Clone)
+      position: {x: 1.0828669e-15, y: 0.24, z: 1.8047788e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cheese
+      parentName: burgerDouble(Clone)
+      position: {x: -1.4438229e-15, y: 0.06848, z: 1.8047788e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 2.793447, y: 0.8, z: 1.425}
+    - name: cheese 1
+      parentName: burgerDouble(Clone)
+      position: {x: -1.2633449e-15, y: 0.20648, z: 1.8047788e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 2.793447, y: 0.8, z: 1.425}
+    - name: patty
+      parentName: burgerDouble(Clone)
+      position: {x: 7.219113e-16, y: 0.055999998, z: 1.624301e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.912, z: 1}
+    - name: patty 1
+      parentName: burgerDouble(Clone)
+      position: {x: 7.219113e-16, y: 0.19399999, z: 1.624301e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 0.912, z: 1}
+    - name: salad
+      parentName: burgerDouble(Clone)
+      position: {x: -0, y: 0.04, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9184, y: 0.75, z: 0.9184}
+    - name: salad 1
+      parentName: burgerDouble(Clone)
+      position: {x: -0, y: 0.17, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9184, y: 0.6, z: 0.9184}
+    - name: tomato
+      parentName: burgerDouble(Clone)
+      position: {x: -3.068123e-15, y: 0.10847999, z: 2.6169288e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.56, y: 0.5632, z: 1.56}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -99,7 +155,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

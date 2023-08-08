@@ -16,7 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -24,7 +25,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -82,7 +83,52 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: pizza(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: slice1
+      parentName: pizza(Clone)
+      position: {x: -0.00000002745888, y: 5.07594e-17, z: 0.00000003590978}
+      rotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: 6.123234e-17}
+      scale: {x: 0.69, y: 0.8694, z: 0.69}
+    - name: slice2
+      parentName: pizza(Clone)
+      position: {x: -0.000000021483189, y: 5.07594e-17, z: 0.00000003343457}
+      rotation: {x: -3.3138708e-17, y: 0.92387956, z: 3.3138708e-17, w: -0.38268346}
+      scale: {x: 0.69, y: 0.8694, z: 0.69}
+    - name: slice3
+      parentName: pizza(Clone)
+      position: {x: -0.000000019007969, y: -1.127987e-17, z: 0.00000002745888}
+      rotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+      scale: {x: 0.69, y: 0.8694, z: 0.69}
+    - name: slice4
+      parentName: pizza(Clone)
+      position: {x: -0.000000021483178, y: -1.127987e-17, z: 0.000000021483178}
+      rotation: {x: 0, y: -0.38268346, z: -0, w: 0.92387956}
+      scale: {x: 0.69, y: 0.8694, z: 0.69}
+    - name: slice5
+      parentName: pizza(Clone)
+      position: {x: -0.000000027458857, y: 5.07594e-17, z: 0.00000001900799}
+      rotation: {x: 0, y: -0.00000003161226, z: -0, w: 1}
+      scale: {x: 0.69, y: 0.8694, z: 0.69}
+    - name: slice6
+      parentName: pizza(Clone)
+      position: {x: -0.00000003343457, y: 5.07594e-17, z: 0.0000000214832}
+      rotation: {x: 0, y: 0.38268346, z: -0, w: 0.92387956}
+      scale: {x: 0.69, y: 0.8694, z: 0.69}
+    - name: slice7
+      parentName: pizza(Clone)
+      position: {x: -0.00000003590978, y: -1.127987e-17, z: 0.00000002745888}
+      rotation: {x: -0, y: 0.7071067, z: 0, w: 0.7071068}
+      scale: {x: 0.69, y: 0.8694, z: 0.69}
+    - name: slice8
+      parentName: pizza(Clone)
+      position: {x: -0.00000003343457, y: -1.127987e-17, z: 0.00000003343459}
+      rotation: {x: -8.0003916e-17, y: 0.92387956, z: 8.0003916e-17, w: 0.38268346}
+      scale: {x: 0.69, y: 0.8694, z: 0.69}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -99,7 +145,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
