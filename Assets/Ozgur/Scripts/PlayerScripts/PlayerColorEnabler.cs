@@ -11,10 +11,10 @@ public class PlayerColorEnabler : MonoBehaviour
     //TODO: remove before build
     private void Start()
     {
-        OnRedColorEnabled?.Invoke();
-        OnGreenColorEnabled?.Invoke();
-        OnBlueColorEnabled?.Invoke();
-        OnYellowColorEnabled?.Invoke();
+        //OnRedColorEnabled?.Invoke();
+        //OnGreenColorEnabled?.Invoke();
+        //OnBlueColorEnabled?.Invoke();
+        //OnYellowColorEnabled?.Invoke();
     }
 
     public static void EnableRedColor()
