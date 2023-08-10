@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1897807530384754732}
   - component: {fileID: 4950374485918238446}
   - component: {fileID: 2600718270081366407}
-  - component: {fileID: 6164908276148099542}
   - component: {fileID: 6597546851159351714}
+  - component: {fileID: 8255062424182863127}
   m_Layer: 7
   m_Name: "CAVEWALLINTERR\u0130OR"
   m_TagString: Untagged
@@ -85,7 +85,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6164908276148099542
+--- !u!114 &6597546851159351714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619829729414927600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 0}
+  redMaterialIndexes: 
+  greenMaterial: {fileID: 0}
+  greenMaterialIndexes: 
+  blueMaterial: {fileID: 2100000, guid: 89fd80bb78797304ca7c14714dc1a8a7, type: 2}
+  blueMaterialIndexes: 00000000
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
+--- !u!64 &8255062424182863127
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,23 +127,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3045174830671527193, guid: e460e8474f316d14b8464ff825d1d4b9, type: 3}
---- !u!114 &6597546851159351714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8619829729414927600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  redMaterial: {fileID: 0}
-  redMaterialIndexes: 
-  greenMaterial: {fileID: 0}
-  greenMaterialIndexes: 
-  blueMaterial: {fileID: 2100000, guid: 89fd80bb78797304ca7c14714dc1a8a7, type: 2}
-  blueMaterialIndexes: 00000000
-  yellowMaterial: {fileID: 0}
-  yellowMaterialIndexes: 
