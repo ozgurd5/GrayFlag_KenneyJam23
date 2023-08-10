@@ -167,7 +167,7 @@ public class PlayerSwordController : MonoBehaviour
 
     private void HandleHiddenStatus()
     {
-        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen ))
+        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming && DialogueController.isOpen ))
         {
             isHidden = true;
             
@@ -175,7 +175,7 @@ public class PlayerSwordController : MonoBehaviour
             StartCoroutine(playHideWeaponAnimation);
         }
         
-        else if (isHidden && (pim.isWeaponHideKeyDown || !DialogueController.isOpen))
+        else if (isHidden && (pim.isWeaponHideKeyDown && DialogueController.isOpen) || (pim.isWeaponHideKeyDown && !DialogueController.isOpen))
         {
             isHidden = false;
             
