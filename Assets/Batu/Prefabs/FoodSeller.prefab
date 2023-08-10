@@ -203,7 +203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237791324485721197}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.44465905, z: -0, w: 0.8956999}
+  m_LocalRotation: {x: 0, y: -0.44465858, z: 0, w: 0.89570016}
   m_LocalPosition: {x: 288.643, y: 14.379, z: 245.132}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 1
@@ -1498,6 +1498,7 @@ GameObject:
   - component: {fileID: 8993651821297164139}
   - component: {fileID: 5218678198998414998}
   - component: {fileID: 4382933761038886411}
+  - component: {fileID: 226433569017248975}
   m_Layer: 0
   m_Name: Body1
   m_TagString: Untagged
@@ -1604,6 +1605,27 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 0}
   yellowMaterialIndexes: 
+--- !u!135 &226433569017248975
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141317968268569999}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.07589838
+  m_Center: {x: -0.0024119923, y: 0.058770247, z: 0.014250717}
 --- !u!1 &4181928433644312514
 GameObject:
   m_ObjectHideFlags: 0
