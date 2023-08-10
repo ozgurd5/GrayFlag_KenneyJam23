@@ -164,7 +164,7 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
     
     private void HandleHiddenStatus()
     {
-        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming))
+        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen))
         {
             isHidden = true;
             
@@ -172,7 +172,7 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
             StartCoroutine(playHideWeaponAnimation);
         }
         
-        else if (isHidden && pim.isWeaponHideKeyDown)
+        else if (isHidden && (pim.isWeaponHideKeyDown || !DialogueController.isOpen))
         {
             isHidden = false;
             
