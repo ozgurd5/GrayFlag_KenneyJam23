@@ -175,7 +175,7 @@ public class PlayerSwordController : MonoBehaviour
             StartCoroutine(playHideWeaponAnimation);
         }
         
-        else if (isHidden && (pim.isWeaponHideKeyDown || !DialogueController.isOpen))
+        else if (isHidden && ((pim.isWeaponHideKeyDown && !DialogueController.isOpen) || (pim.isWeaponHideKeyDown && DialogueController.isOpen)) )
         {
             isHidden = false;
             
