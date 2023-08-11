@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2722490273722173914}
-  - component: {fileID: 2836287919198042242}
+  - component: {fileID: 6258780414015081174}
+  - component: {fileID: 751976170557503764}
   - component: {fileID: 8784635938532794108}
-  - component: {fileID: 4974630995265360349}
   - component: {fileID: 8325144059098526788}
   - component: {fileID: 346840669250841197}
   m_Layer: 0
@@ -37,7 +37,7 @@ Transform:
   - {fileID: 8947932679219436639}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &2836287919198042242
+--- !u!20 &6258780414015081174
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,15 +88,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8784635938532794108
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7901013837974200677}
-  m_Enabled: 1
---- !u!114 &4974630995265360349
+--- !u!114 &751976170557503764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,6 +132,14 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!81 &8784635938532794108
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7901013837974200677}
+  m_Enabled: 1
 --- !u!114 &8325144059098526788
 MonoBehaviour:
   m_ObjectHideFlags: 0

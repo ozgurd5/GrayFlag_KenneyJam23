@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 2241721858031547132}
   - component: {fileID: 649794090132293874}
   - component: {fileID: 4602695955762970916}
-  - component: {fileID: 5143005600894692717}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -134,22 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTargetTransform: {fileID: 0}
-  followOffset: {x: 0, y: 1, z: 0}
+  followOffset: {x: 0, y: 2, z: 0}
   canLookAt: 0
   lookAtTargetTransform: {fileID: 0}
---- !u!114 &5143005600894692717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538644184915573226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54afd95bd4c336f448178141c405f83e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundPlayer: {fileID: 0}
 --- !u!1 &3026391508542526417
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,10 +410,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarExplosionOrange
       objectReference: {fileID: 0}
+    - target: {fileID: 1142579534423739767, guid: 0cb9816fb22347843aea4bc2bc6337df,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1380558717421175922, guid: 0cb9816fb22347843aea4bc2bc6337df,
         type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559422131798991466, guid: 0cb9816fb22347843aea4bc2bc6337df,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2668887917335295737, guid: 0cb9816fb22347843aea4bc2bc6337df,
         type: 3}
@@ -497,6 +493,16 @@ PrefabInstance:
     - target: {fileID: 6585521387093695661, guid: 0cb9816fb22347843aea4bc2bc6337df,
         type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585521387093695661, guid: 0cb9816fb22347843aea4bc2bc6337df,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6610383384485338639, guid: 0cb9816fb22347843aea4bc2bc6337df,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8961501919659074990, guid: 0cb9816fb22347843aea4bc2bc6337df,

@@ -107,10 +107,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.48135376, z: 0}
 --- !u!114 &4923112127215478963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +557,7 @@ MonoBehaviour:
   walkingAnimationHalfDuration: 0.5
   runningAnimationHalfDuration: 0.2
   attackSource: {fileID: 4388190400856024315}
+  attackParticle: {fileID: 0}
   attackRotationX: 50
   runningModeRotationX: 25
   walkingModeRotationX: 0
@@ -2304,8 +2305,10 @@ MonoBehaviour:
   longRange: 100
   opacity: 0.3
   crosshairHighlightCondition: 0
+  crosshairAttackCondition: 0
   wheel: 0
   enemy: 0
+  enemyLong: 0
   target: 0
   chest: 0
   mushroom: 0
