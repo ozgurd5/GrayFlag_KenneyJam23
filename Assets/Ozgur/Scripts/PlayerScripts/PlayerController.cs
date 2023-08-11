@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpBufferLimit = 0.2f;
 
     private PlayerStateData psd;
-    private PlayerInputManager pim;
     private PlayerLookingController plc;
     private Rigidbody rb;
     
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
-        pim = GetComponent<PlayerInputManager>();
         plc = GetComponent<PlayerLookingController>();
         rb = GetComponent<Rigidbody>();
     }
@@ -73,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJumpCondition()
     {
-        if (pim.isJumpKeyDown)
+        if (PlayerInputManager.Singleton.isJumpKeyDown)
         {
             psd.isJumping = false;
             jumpBufferTimer = jumpBufferLimit;
@@ -97,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     private void DecideIdleOrMovingStates()
     { 
-        psd.isMoving = pim.moveInput.magnitude > 0;
+        psd.isMoving = PlayerInputManager.Singleton.moveInput.magnitude > 0;
         psd.isIdle = !psd.isMoving;
     }
     
@@ -110,7 +108,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
-        psd.isRunning = pim.isRunKey;
+        psd.isRunning = PlayerInputManager.Singleton.isRunKey;
         psd.isWalking = !psd.isRunning;
     }
 

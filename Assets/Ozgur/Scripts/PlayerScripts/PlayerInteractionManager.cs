@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerInteractionManager : MonoBehaviour
 {
-    private PlayerInputManager pim;
     private PlayerStateData psd;
     private Rigidbody rb;
 
@@ -18,7 +17,6 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void Awake()
     {
-        pim = GetComponent<PlayerInputManager>();
         psd = GetComponent<PlayerStateData>();
         rb = GetComponent<Rigidbody>();
 
@@ -30,7 +28,7 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void Update()
     {
-        if (!pim.isInteractKeyDown) return;
+        if (!PlayerInputManager.Singleton.isInteractKeyDown) return;
         
         HandleShipInteraction();
         HandleChestInteraction();

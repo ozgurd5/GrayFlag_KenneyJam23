@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerLookingController : MonoBehaviour
@@ -6,7 +5,6 @@ public class PlayerLookingController : MonoBehaviour
     public Vector3 movingDirection { get; private set; }
     
     private PlayerStateData psd;
-    private PlayerInputManager pim;
     private Transform cameraTransform;
     
     private Vector3 currentRotation;
@@ -14,7 +12,6 @@ public class PlayerLookingController : MonoBehaviour
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
-        pim = GetComponent<PlayerInputManager>();
         cameraTransform = GameObject.Find("PlayerCamera").transform;
     }
 
@@ -28,8 +25,8 @@ public class PlayerLookingController : MonoBehaviour
 
     private void HandleLooking()
     {
-        currentRotation.x -= pim.lookInput.y;
-        currentRotation.y += pim.lookInput.x;
+        currentRotation.x -= PlayerInputManager.Singleton.lookInput.y;
+        currentRotation.y += PlayerInputManager.Singleton.lookInput.x;
         
         currentRotation.x = Mathf.Clamp(currentRotation.x, -90f, 90f);
         cameraTransform.localRotation = Quaternion.Euler(currentRotation);
@@ -45,6 +42,6 @@ public class PlayerLookingController : MonoBehaviour
         Vector3 newForward = parentRotation * transform.forward;
         Vector3 newRight = parentRotation * transform.right;
         
-        movingDirection = newRight * pim.moveInput.x + newForward * pim.moveInput.y;
+        movingDirection = newRight * PlayerInputManager.Singleton.moveInput.x + newForward * PlayerInputManager.Singleton.moveInput.y;
     }
 }

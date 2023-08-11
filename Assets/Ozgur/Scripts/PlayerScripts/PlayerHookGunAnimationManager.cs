@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerHookGunAnimationManager : MonoBehaviour
+public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
 {
     [Header("Assign")]
     public float attackAnimationHalfDuration = 0.1f;
@@ -28,8 +27,7 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
     [SerializeField] private AudioSource hidingSource;
 
     private PlayerStateData psd;
-    private PlayerInputManager pim;
-    private GameObject hookGun;
+    private Transform hookGun;
 
     [Header("Info - No Touch")]
     public bool isHidden;
@@ -58,8 +56,7 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
-        pim = GetComponent<PlayerInputManager>();
-        hookGun = GameObject.Find("PlayerCamera/HookGun");
+        hookGun = GameObject.Find("PlayerCamera/HookGun").transform;
 
         playMovingAnimation = PlayMovingAnimation();
         playHideWeaponAnimation = PlayHideWeaponAnimation();
@@ -90,6 +87,15 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         else if (!psd.isRunning && isRunningModeActive) DisableRunningMode();
 
         HandleAttack();
+    }
+    
+    private void HandleAttack()
+    {
+        if (!PlayerInputManager.Singleton.isHookKeyDown) return;
+        StartCoroutine(PlayAttackAnimation(hookGun, attackRotationX, attackRotationXBack, -170f, attackAnimationHalfDuration));
+
+        if (CrosshairManager.isLookingAtEnemy)
+            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
     }
 
     private void DecideForMovingAnimationHalfDuration()
@@ -152,26 +158,10 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
 
         isRunningModeActive = false;
     }
-
-    private void HandleAttack()
-    {
-        if (!pim.isHookKeyDown) return;
-        StartCoroutine(PlayAttackAnimation());
-
-        if (CrosshairManager.isLookingAtEnemy)
-            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
-    }
-    
-    private IEnumerator PlayAttackAnimation()
-    {
-        hookGun.transform.DOLocalRotate(new Vector3(attackRotationX, -170f, 0f), attackAnimationHalfDuration);
-        yield return new WaitForSeconds(attackAnimationHalfDuration);
-        hookGun.transform.DOLocalRotate(new Vector3(attackRotationXBack, -170f, 0f), attackAnimationHalfDuration);
-    }
     
     private void HandleHiddenStatus()
     {
-        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen ))
+        if (!isHidden && (PlayerInputManager.Singleton.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen ))
         {
             isHidden = true;
             
@@ -179,7 +169,7 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
             StartCoroutine(playHideWeaponAnimation);
         }
 
-        else if (didExitSwimming || didExitDialogue || (isHidden && pim.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
+        else if (didExitSwimming || didExitDialogue || (isHidden && PlayerInputManager.Singleton.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
         {
             isHidden = false;
             
