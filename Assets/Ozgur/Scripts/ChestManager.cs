@@ -10,6 +10,8 @@ public class ChestManager : MonoBehaviour
     [SerializeField] private float chestOpeningAnimationTime = 0.5f;
     [SerializeField] private float coinAnimationTime = 0.5f;
     [SerializeField] private float coinFlyTime = 0.1f;
+    [SerializeField] private ParticleSystem chestOpenParticle;
+
 
     [Header("Assign - Sound")]
     [SerializeField] private AudioClip chestSound;
@@ -44,6 +46,7 @@ public class ChestManager : MonoBehaviour
         
         aus.PlayOneShot(chestSound);
         CoinChestMushroomManager.Singleton.IncreaseChestNumber();
+        chestOpenParticle.Play();
         StartCoroutine(PlayChestOpenAnimation());
     }
 

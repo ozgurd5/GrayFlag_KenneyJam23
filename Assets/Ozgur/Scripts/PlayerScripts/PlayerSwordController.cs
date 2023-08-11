@@ -10,6 +10,7 @@ public class PlayerSwordController : MonoBehaviour
     [SerializeField] private float walkingAnimationHalfDuration = 0.5f;
     [SerializeField] private float runningAnimationHalfDuration = 0.2f;
     [SerializeField] private AudioSource attackSource;
+    [SerializeField] private ParticleSystem attackParticle;
 
     [Header("Assign")]
     [SerializeField] private float attackRotationX = 50f;
@@ -155,7 +156,10 @@ public class PlayerSwordController : MonoBehaviour
         attackSource.Play();
 
         if (CrosshairManager.isLookingAtEnemy)
+        {
             CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
+            attackParticle.Play();
+        }
     }
 
     private IEnumerator PlayAttackAnimation()
