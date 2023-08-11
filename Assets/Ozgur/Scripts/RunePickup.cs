@@ -3,6 +3,7 @@ using UnityEngine;
 public class RunePickup : MonoBehaviour
 {
     [SerializeField] private bool isCollected;
+    [SerializeField] private ParticleSystem runeParticle;
     private AudioSource aus;
     private MeshRenderer mr;
 
@@ -20,6 +21,7 @@ public class RunePickup : MonoBehaviour
         isCollected = true;
         aus.Play();
         mr.enabled = false;
+        runeParticle.Play();
         
         if (CompareTag("RedRune")) PlayerColorEnabler.EnableRedColor();
         if (CompareTag("GreenRune")) PlayerColorEnabler.EnableGreenColor();
