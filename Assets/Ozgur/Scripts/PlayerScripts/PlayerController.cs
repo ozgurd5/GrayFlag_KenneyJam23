@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
-        pim = GetComponent<PlayerInputManager>();
+        psd = PlayerStateData.Singleton;
+        pim = PlayerInputManager.Singleton;
         plc = GetComponent<PlayerLookingController>();
         rb = GetComponent<Rigidbody>();
     }

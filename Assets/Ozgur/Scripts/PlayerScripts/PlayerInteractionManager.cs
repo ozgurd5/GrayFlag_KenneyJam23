@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerInteractionManager : MonoBehaviour
 {
-    private PlayerInputManager pim;
     private PlayerStateData psd;
+    private PlayerInputManager pim;
     private Rigidbody rb;
 
     private CinemachineVirtualCamera playerCamera;
@@ -18,8 +18,8 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void Awake()
     {
-        pim = GetComponent<PlayerInputManager>();
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
+        pim = PlayerInputManager.Singleton;
         rb = GetComponent<Rigidbody>();
 
         playerCamera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();

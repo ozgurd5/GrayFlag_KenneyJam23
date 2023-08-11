@@ -28,8 +28,8 @@ public class PlayerHookController : MonoBehaviour
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
-        pim = GetComponent<PlayerInputManager>();
+        psd = PlayerStateData.Singleton;
+        pim = PlayerInputManager.Singleton;
         plc = GetComponent<PlayerLookingController>();
         an = GetComponent<PlayerHookGunAnimationManager>();
         lr = GetComponent<LineRenderer>();

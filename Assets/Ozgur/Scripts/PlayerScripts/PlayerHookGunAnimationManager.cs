@@ -2,7 +2,7 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerHookGunAnimationManager : MonoBehaviour
+public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
 {
     [Header("Assign")]
     public float attackAnimationHalfDuration = 0.1f;
@@ -28,7 +28,7 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
 
     private PlayerStateData psd;
     private PlayerInputManager pim;
-    private GameObject hookGun;
+    private Transform hookGun;
 
     [Header("Info - No Touch")]
     public bool isHidden;
@@ -48,12 +48,17 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
     private IEnumerator playHideWeaponAnimation;
     private IEnumerator playExposeWeaponAnimation;
     private Tweener hideTween;
+
+    private bool previousIsDialogueOpen;
+    private bool previousIsSwimming;
+    private bool didExitSwimming;
+    private bool didExitDialogue;
     
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
-        pim = GetComponent<PlayerInputManager>();
-        hookGun = GameObject.Find("PlayerCamera/HookGun");
+        psd = PlayerStateData.Singleton;
+        pim = PlayerInputManager.Singleton;
+        hookGun = GameObject.Find("PlayerCamera/HookGun").transform;
 
         playMovingAnimation = PlayMovingAnimation();
         playHideWeaponAnimation = PlayHideWeaponAnimation();
@@ -68,6 +73,7 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
         
         HandleHiddenStatus();
+        CheckDialogueAndSwimmingConditions();
         if (isHidden || isHidingAnimationPlaying) return;
 
         DecideForMovingAnimationHalfDuration();
@@ -83,6 +89,15 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         else if (!psd.isRunning && isRunningModeActive) DisableRunningMode();
 
         HandleAttack();
+    }
+    
+    private void HandleAttack()
+    {
+        if (!pim.isHookKeyDown) return;
+        StartCoroutine(PlayAttackAnimation(hookGun, attackRotationX, attackRotationXBack, -170f, attackAnimationHalfDuration));
+
+        if (CrosshairManager.isLookingAtEnemy)
+            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
     }
 
     private void DecideForMovingAnimationHalfDuration()
@@ -145,22 +160,6 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
 
         isRunningModeActive = false;
     }
-
-    private void HandleAttack()
-    {
-        if (!pim.isHookKeyDown) return;
-        StartCoroutine(PlayAttackAnimation());
-
-        if (CrosshairManager.isLookingAtEnemy)
-            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
-    }
-    
-    private IEnumerator PlayAttackAnimation()
-    {
-        hookGun.transform.DOLocalRotate(new Vector3(attackRotationX, -170f, 0f), attackAnimationHalfDuration);
-        yield return new WaitForSeconds(attackAnimationHalfDuration);
-        hookGun.transform.DOLocalRotate(new Vector3(attackRotationXBack, -170f, 0f), attackAnimationHalfDuration);
-    }
     
     private void HandleHiddenStatus()
     {
@@ -171,8 +170,8 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
             playHideWeaponAnimation = PlayHideWeaponAnimation();
             StartCoroutine(playHideWeaponAnimation);
         }
-        
-        else if (isHidden && ((pim.isWeaponHideKeyDown && !DialogueController.isOpen) || (pim.isWeaponHideKeyDown && DialogueController.isOpen)) )
+
+        else if (didExitSwimming || didExitDialogue || (isHidden && pim.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
         {
             isHidden = false;
             
@@ -210,5 +209,14 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
         yield return new WaitForSeconds(hidingTime);
 
         isHidingAnimationPlaying = false;
+    }
+
+    private void CheckDialogueAndSwimmingConditions()
+    {
+        didExitSwimming = previousIsSwimming && !psd.isSwimming;
+        didExitDialogue = previousIsDialogueOpen && !DialogueController.isOpen;
+
+        previousIsSwimming = psd.isSwimming;
+        previousIsDialogueOpen = DialogueController.isOpen;
     }
 }

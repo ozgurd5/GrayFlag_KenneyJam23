@@ -35,6 +35,7 @@ public class ShipController : MonoBehaviour
     private Transform cameraLookAtTransform;
     private CinemachineVirtualCamera shipCamera;
     private Rigidbody rb;
+    private AudioSource aus;
 
     private PlayerStateData psd;
     
@@ -56,8 +57,9 @@ public class ShipController : MonoBehaviour
         cameraLookAtTransform = transform.Find("ShipCameraLookAt");
         shipCamera = GameObject.Find("ShipCamera").GetComponent<CinemachineVirtualCamera>();
         rb = GetComponent<Rigidbody>();
+        aus = GetComponent<AudioSource>();
 
-        psd = GameObject.Find("Player").GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;;
     }
 
     private void HandleLooking()
@@ -70,18 +72,6 @@ public class ShipController : MonoBehaviour
             cameraFollowTransform.position.y > cameraMaxYPos && sim.lookInput.y > 0) return;
         
         cameraFollowTransform.RotateAround(cameraLookAtTransform.position, cameraFollowTransform.right, sim.lookInput.y);
-    }
-
-    private void HandleSailMode()
-    {
-        if (sim.isSailUpKeyDown) IncreaseSail();
-        else if (sim.isSailDownKeyDown) DecreaseSail();
-    }
-
-    private void HandleMovement()
-    {
-        rb.velocity = transform.forward * movingSpeed;
-        transform.Rotate(0f, sim.rotateInput * rotationSpeed, 0f);
     }
 
     private void Update()
@@ -109,6 +99,18 @@ public class ShipController : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeAll;
         currentSailMode = SailMode.Stationary;
     }
+    
+    private void HandleSailMode()
+    {
+        if (sim.isSailUpKeyDown && currentSailMode != SailMode.FullSail) IncreaseSail();
+        else if (sim.isSailDownKeyDown && currentSailMode != SailMode.Reverse) DecreaseSail();
+    }
+
+    private void HandleMovement()
+    {
+        rb.velocity = transform.forward * movingSpeed;
+        transform.Rotate(0f, sim.rotateInput * rotationSpeed, 0f);
+    }
 
     private void IncreaseSail()
     {
@@ -123,6 +125,9 @@ public class ShipController : MonoBehaviour
         
         else if (currentSailMode == SailMode.HalfSail)
         {
+            aus.Stop();
+            aus.Play();
+            
             StopAllCoroutines();
             StartCoroutine(IncreaseMovingSpeed(halfSailSpeed));
             StartCoroutine(IncreaseRotationSpeed(halfSailRotationSpeed));
@@ -130,6 +135,9 @@ public class ShipController : MonoBehaviour
         
         else if (currentSailMode == SailMode.FullSail)
         {
+            aus.Stop();
+            aus.Play();
+            
             StopAllCoroutines();
             StartCoroutine(IncreaseMovingSpeed(fullSailSpeed));
             StartCoroutine(IncreaseRotationSpeed(fullSailRotationSpeed));
@@ -152,6 +160,9 @@ public class ShipController : MonoBehaviour
         
         else if (currentSailMode == SailMode.Stationary)
         {
+            aus.Stop();
+            aus.Play();
+            
             StopAllCoroutines();
             StartCoroutine(DecreaseMovingSpeed(0f));
             StartCoroutine(DecreaseRotationSpeed(stationaryRotationSpeed));
@@ -159,6 +170,9 @@ public class ShipController : MonoBehaviour
         
         else if (currentSailMode == SailMode.HalfSail)
         {
+            aus.Stop();
+            aus.Play();
+            
             StopAllCoroutines();
             StartCoroutine(DecreaseMovingSpeed(halfSailSpeed));
             StartCoroutine(DecreaseRotationSpeed(halfSailRotationSpeed));

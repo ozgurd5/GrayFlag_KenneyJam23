@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerInputManager : MonoBehaviour
 {
+    public static PlayerInputManager Singleton;
+    
     [Header("Sensitivity")]
     public float mouseSensitivity = 0.2f;
     
@@ -20,6 +22,8 @@ public class PlayerInputManager : MonoBehaviour
     {
         pia = new PlayerInputActions();
         pia.Player.Enable();
+
+        Singleton = GetComponent<PlayerInputManager>();
     }
     
     void Update()

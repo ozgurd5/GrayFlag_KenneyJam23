@@ -1,7 +1,15 @@
+using System;
 using UnityEngine;
 
 public class PlayerStateData : MonoBehaviour
 {
+    public static PlayerStateData Singleton;
+
+    private void Awake()
+    {
+        Singleton = GetComponent<PlayerStateData>();
+    }
+
     public enum PlayerMainState
     {
         NormalState,

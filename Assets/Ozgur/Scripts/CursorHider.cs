@@ -4,11 +4,11 @@ using UnityEngine;
 public class CursorHider : MonoBehaviour
 {
     private PlayerStateData psd;
-    public PlayerStateData.PlayerMainState previousState;
+    private PlayerStateData.PlayerMainState previousState;
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
 
         PauseMenu.OnGamePause += PauseGame;
         PauseMenu.OnGameContinue += ContinueGame;

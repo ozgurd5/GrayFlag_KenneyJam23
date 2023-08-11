@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerAudioManager : MonoBehaviour
@@ -12,12 +11,14 @@ public class PlayerAudioManager : MonoBehaviour
     
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
         PlayerController.OnJump += PlayJumpSound;
     }
 
     private void Update()
     {
+        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.HookState or PlayerStateData.PlayerMainState.NormalState)) return;
+        
         if (psd.isMoving && psd.isGrounded) PlaySound();
     }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     [Header("Assign")]
-    [SerializeField] private float radius = 0.5f;
+    [SerializeField] private float radius = 1f;
     [SerializeField] private float offset = 0.6f;
 
     [Header("Select")] [SerializeField] private bool gizmos;
@@ -16,7 +16,7 @@ public class GroundCheck : MonoBehaviour
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
     }
 
     private void Update()

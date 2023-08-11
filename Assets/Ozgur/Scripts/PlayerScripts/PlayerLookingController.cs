@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerLookingController : MonoBehaviour
@@ -13,8 +12,8 @@ public class PlayerLookingController : MonoBehaviour
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
-        pim = GetComponent<PlayerInputManager>();
+        psd = PlayerStateData.Singleton;
+        pim = PlayerInputManager.Singleton;
         cameraTransform = GameObject.Find("PlayerCamera").transform;
     }
 
