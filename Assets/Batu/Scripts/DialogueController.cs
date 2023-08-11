@@ -16,7 +16,7 @@ public class DialogueController : MonoBehaviour
     public static bool isOpen = false;
     private Dialogue dialogue;
 
-    private void Start()
+    private void Awake()
     {
         dialogue = dialogueObject.GetComponentInChildren<Dialogue>();
     }
