@@ -18,6 +18,8 @@ public class PlayerAudioManager : MonoBehaviour
 
     private void Update()
     {
+        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.HookState or PlayerStateData.PlayerMainState.NormalState)) return;
+        
         if (psd.isMoving && psd.isGrounded) PlaySound();
     }
 

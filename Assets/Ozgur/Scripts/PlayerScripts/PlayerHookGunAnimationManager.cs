@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -221,8 +222,8 @@ public class PlayerHookGunAnimationManager : MonoBehaviour
     private void CheckDialogueAndSwimmingConditions()
     {
         didExitSwimming = previousIsSwimming && !psd.isSwimming;
-        didExitDialogue = previousIsDialogueOpen && !previousIsDialogueOpen;
-        
+        didExitDialogue = previousIsDialogueOpen && !DialogueController.isOpen;
+
         previousIsSwimming = psd.isSwimming;
         previousIsDialogueOpen = DialogueController.isOpen;
     }

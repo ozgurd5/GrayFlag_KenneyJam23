@@ -52,6 +52,11 @@ public class PlayerSwordController : MonoBehaviour
     private IEnumerator playExposeWeaponAnimation;
     private Tweener hideTween;
     
+    private bool previousIsDialogueOpen;
+    private bool previousIsSwimming;
+    private bool didExitSwimming;
+    private bool didExitDialogue;
+    
     private void Awake()
     {
         psd = GetComponent<PlayerStateData>();
@@ -69,8 +74,9 @@ public class PlayerSwordController : MonoBehaviour
     private void Update()
     {
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
-
+        
         HandleHiddenStatus();
+        CheckDialogueAndSwimmingConditions();
         if (isHidden || isHidingAnimationPlaying) return;
         
         DecideForMovingAnimationHalfDuration();
@@ -178,8 +184,8 @@ public class PlayerSwordController : MonoBehaviour
             playHideWeaponAnimation = PlayHideWeaponAnimation();
             StartCoroutine(playHideWeaponAnimation);
         }
-        
-        else if (isHidden && ((pim.isWeaponHideKeyDown && !DialogueController.isOpen) || (pim.isWeaponHideKeyDown && DialogueController.isOpen)) )
+
+        else if (didExitSwimming || didExitDialogue || (isHidden && pim.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
         {
             isHidden = false;
             
@@ -217,5 +223,14 @@ public class PlayerSwordController : MonoBehaviour
         yield return new WaitForSeconds(hidingTime);
 
         isHidingAnimationPlaying = false;
+    }
+    
+    private void CheckDialogueAndSwimmingConditions()
+    {
+        didExitSwimming = previousIsSwimming && !psd.isSwimming;
+        didExitDialogue = previousIsDialogueOpen && !DialogueController.isOpen;
+
+        previousIsSwimming = psd.isSwimming;
+        previousIsDialogueOpen = DialogueController.isOpen;
     }
 }
