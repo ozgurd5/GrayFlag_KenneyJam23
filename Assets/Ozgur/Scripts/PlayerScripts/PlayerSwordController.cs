@@ -30,6 +30,7 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     [SerializeField] private AudioSource hidingSource;
 
     private PlayerStateData psd;
+    private PlayerInputManager pim;
     private Transform sword;
 
     [Header("Info - No Touch")]
@@ -58,7 +59,8 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
+        pim = PlayerInputManager.Singleton;
         sword = GameObject.Find("PlayerCamera/Sword").transform;
 
         playMovingAnimation = PlayMovingAnimation();
@@ -94,7 +96,7 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     
     private void HandleAttack()
     {
-        if (!PlayerInputManager.Singleton.isAttackKeyDown) return;
+        if (!pim.isAttackKeyDown) return;
         StartCoroutine(PlayAttackAnimation(sword, attackRotationX, attackRotationXBack, 0f, attackAnimationHalfDuration));
         attackSource.Play();
 
@@ -168,7 +170,7 @@ public class PlayerSwordController : WeaponAnimationManagerBase
 
     private void HandleHiddenStatus()
     {
-        if (!isHidden && (PlayerInputManager.Singleton.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen ))
+        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen ))
         {
             isHidden = true;
             
@@ -176,7 +178,7 @@ public class PlayerSwordController : WeaponAnimationManagerBase
             StartCoroutine(playHideWeaponAnimation);
         }
 
-        else if (didExitSwimming || didExitDialogue || (isHidden && PlayerInputManager.Singleton.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
+        else if (didExitSwimming || didExitDialogue || (isHidden && pim.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
         {
             isHidden = false;
             

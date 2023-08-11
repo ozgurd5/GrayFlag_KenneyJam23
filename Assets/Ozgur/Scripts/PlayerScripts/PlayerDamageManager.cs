@@ -23,7 +23,7 @@ public class PlayerDamageManager : MonoBehaviour
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
         rb = GetComponent<Rigidbody>();
         healthBar = GetComponentInChildren<Slider>();
     }

@@ -16,7 +16,7 @@ public class GroundCheck : MonoBehaviour
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
     }
 
     private void Update()

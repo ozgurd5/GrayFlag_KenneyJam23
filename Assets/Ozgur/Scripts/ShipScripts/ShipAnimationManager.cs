@@ -45,7 +45,7 @@ public class ShipAnimationManager : MonoBehaviour
         sim = GetComponent<ShipInputManager>();
         ShipController.OnSailChanged += PlayAnimation;
         
-        psd = GameObject.Find("Player").GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;;
     }
 
     private void Update()

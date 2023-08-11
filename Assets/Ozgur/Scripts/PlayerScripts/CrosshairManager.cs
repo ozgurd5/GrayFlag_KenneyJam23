@@ -40,7 +40,7 @@ public class CrosshairManager : MonoBehaviour
     {
         crosshairImage = GetComponentInChildren<Image>();
         cam = Camera.main;
-        psd = GetComponentInParent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
     }
 
     private void Update()

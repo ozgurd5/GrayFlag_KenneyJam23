@@ -11,7 +11,7 @@ public class PlayerAudioManager : MonoBehaviour
     
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
         PlayerController.OnJump += PlayJumpSound;
     }
 

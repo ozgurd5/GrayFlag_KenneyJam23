@@ -27,6 +27,7 @@ public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
     [SerializeField] private AudioSource hidingSource;
 
     private PlayerStateData psd;
+    private PlayerInputManager pim;
     private Transform hookGun;
 
     [Header("Info - No Touch")]
@@ -55,7 +56,8 @@ public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
     
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
+        pim = PlayerInputManager.Singleton;
         hookGun = GameObject.Find("PlayerCamera/HookGun").transform;
 
         playMovingAnimation = PlayMovingAnimation();
@@ -91,7 +93,7 @@ public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
     
     private void HandleAttack()
     {
-        if (!PlayerInputManager.Singleton.isHookKeyDown) return;
+        if (!pim.isHookKeyDown) return;
         StartCoroutine(PlayAttackAnimation(hookGun, attackRotationX, attackRotationXBack, -170f, attackAnimationHalfDuration));
 
         if (CrosshairManager.isLookingAtEnemy)
@@ -161,7 +163,7 @@ public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
     
     private void HandleHiddenStatus()
     {
-        if (!isHidden && (PlayerInputManager.Singleton.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen ))
+        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen ))
         {
             isHidden = true;
             
@@ -169,7 +171,7 @@ public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
             StartCoroutine(playHideWeaponAnimation);
         }
 
-        else if (didExitSwimming || didExitDialogue || (isHidden && PlayerInputManager.Singleton.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
+        else if (didExitSwimming || didExitDialogue || (isHidden && pim.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
         {
             isHidden = false;
             

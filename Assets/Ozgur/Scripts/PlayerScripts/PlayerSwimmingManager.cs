@@ -15,7 +15,7 @@ public class PlayerSwimmingManager : MonoBehaviour
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
         rb = GetComponent<Rigidbody>();
     }
 

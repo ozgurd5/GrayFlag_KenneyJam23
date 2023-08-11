@@ -59,7 +59,7 @@ public class ShipController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         aus = GetComponent<AudioSource>();
 
-        psd = GameObject.Find("Player").GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;;
     }
 
     private void HandleLooking()

@@ -11,6 +11,7 @@ public class PlayerHookController : MonoBehaviour
     [SerializeField] private AudioSource aus;
     
     private PlayerStateData psd;
+    private PlayerInputManager pim;
     private PlayerLookingController plc;
     private PlayerHookGunAnimationManager an;
     private LineRenderer lr;
@@ -27,7 +28,8 @@ public class PlayerHookController : MonoBehaviour
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
+        pim = PlayerInputManager.Singleton;
         plc = GetComponent<PlayerLookingController>();
         an = GetComponent<PlayerHookGunAnimationManager>();
         lr = GetComponent<LineRenderer>();
@@ -96,7 +98,7 @@ public class PlayerHookController : MonoBehaviour
     {
         if (flyingCondition) return;
         
-        if (PlayerInputManager.Singleton.moveInput.magnitude == 0 || psd.isGettingDamage || psd.currentMainState != PlayerStateData.PlayerMainState.HookState)
+        if (pim.moveInput.magnitude == 0 || psd.isGettingDamage || psd.currentMainState != PlayerStateData.PlayerMainState.HookState)
         {
             StopCoroutine(increaseMovingSpeed);
             isIncreasingSpeed = false;
@@ -121,7 +123,7 @@ public class PlayerHookController : MonoBehaviour
 
     private void HandleEnterHookState()
     {
-        if (!PlayerInputManager.Singleton.isHookKeyDown) return;
+        if (!pim.isHookKeyDown) return;
         aus.Play();
         if (CrosshairManager.isLookingAtHookTarget) StartCoroutine(HandleShoot());
     }
@@ -135,7 +137,7 @@ public class PlayerHookController : MonoBehaviour
     private IEnumerator IncreaseMovingSpeed()
     {
         Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if (Vector3.Angle(horizontalVelocity.normalized, transform.forward) < 44 && PlayerInputManager.Singleton.moveInput.y == 1)
+        if (Vector3.Angle(horizontalVelocity.normalized, transform.forward) < 44 && pim.moveInput.y == 1)
         {
             flyingMovingSpeed = maxSpeedXZ;
             yield break;

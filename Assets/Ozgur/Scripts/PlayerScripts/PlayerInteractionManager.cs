@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerInteractionManager : MonoBehaviour
 {
     private PlayerStateData psd;
+    private PlayerInputManager pim;
     private Rigidbody rb;
 
     private CinemachineVirtualCamera playerCamera;
@@ -17,7 +18,8 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void Awake()
     {
-        psd = GetComponent<PlayerStateData>();
+        psd = PlayerStateData.Singleton;
+        pim = PlayerInputManager.Singleton;
         rb = GetComponent<Rigidbody>();
 
         playerCamera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
@@ -28,7 +30,7 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerInputManager.Singleton.isInteractKeyDown) return;
+        if (!pim.isInteractKeyDown) return;
         
         HandleShipInteraction();
         HandleChestInteraction();
