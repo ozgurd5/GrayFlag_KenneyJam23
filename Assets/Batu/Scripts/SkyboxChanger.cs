@@ -9,11 +9,8 @@ public class SkyboxChanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger entered");
         if (other.CompareTag("BlueRune"))
         {
-            Debug.Log("Triggered by object with bluerune tag");
-            Debug.Log("Triggered by object with bluerune tag");
             RenderSettings.skybox = blueSkyboxMaterial;
             DynamicGI.UpdateEnvironment();
         }
