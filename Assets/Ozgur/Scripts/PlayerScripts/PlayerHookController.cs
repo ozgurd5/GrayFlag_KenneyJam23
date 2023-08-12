@@ -72,8 +72,10 @@ public class PlayerHookController : MonoBehaviour
     private IEnumerator HandleShoot()
     {
         lr.enabled = true;
-        hookedPosition = CrosshairManager.crosshairHit.transform.position;
         lr.SetPosition(1, hookedPosition);
+
+        if (CrosshairManager.isLookingAtEnemy || CrosshairManager.isLookingAtEnemyLong) hookedPosition = CrosshairManager.enemyHookPlace.position;
+        else hookedPosition = CrosshairManager.crosshairHit.transform.position;
 
         flyingCondition = true;
         

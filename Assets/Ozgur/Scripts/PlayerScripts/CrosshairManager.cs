@@ -10,6 +10,7 @@ public class CrosshairManager : MonoBehaviour
     public static bool isLookingAtChest;
     public static bool isLookingAtMushroom;
     public static RaycastHit crosshairHit;
+    public static Transform enemyHookPlace;
     
     [Header("Assign")]
     [SerializeField] private float range = 7f;
@@ -31,7 +32,7 @@ public class CrosshairManager : MonoBehaviour
     [SerializeField] private bool wheel;
     [SerializeField] private bool enemy;
     [SerializeField] private bool enemyLong;
-    [SerializeField] private bool target;
+    [SerializeField] private bool hookTarget;
     [SerializeField] private bool chest;
     [SerializeField] private bool mushroom;
     [SerializeField] private string lookName;
@@ -47,6 +48,7 @@ public class CrosshairManager : MonoBehaviour
     {
         CastRay();
         CastLongRay();
+        GetEnemyHookPlace();
         CalculateCrosshairHighlightCondition();
 
         //Just like the mesh renderer example, we can not directly change crosshairImage.color.a
@@ -93,11 +95,17 @@ public class CrosshairManager : MonoBehaviour
         if (!Physics.Raycast(crosshairRay, out crosshairHit, longRange))
         {
             isLookingAtHookTarget = false;
+            isLookingAtEnemyLong = false;
             return;
         }
 
         isLookingAtEnemyLong = crosshairHit.collider.CompareTag("Enemy");
         isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace") || isLookingAtEnemyLong;
+    }
+
+    private void GetEnemyHookPlace()
+    {
+        if (isLookingAtEnemy || isLookingAtEnemyLong) enemyHookPlace = crosshairHit.transform.Find("EnemyHookPlace");
     }
 
     private void CalculateCrosshairHighlightCondition()
@@ -113,7 +121,7 @@ public class CrosshairManager : MonoBehaviour
         wheel = isLookingAtShipWheel;
         enemy = isLookingAtEnemy;
         enemyLong = isLookingAtEnemyLong;
-        target = isLookingAtHookTarget;
+        hookTarget = isLookingAtHookTarget;
         chest = isLookingAtChest;
         mushroom = isLookingAtMushroom;
         if (crosshairHit.collider != null) lookName = crosshairHit.collider.name;
