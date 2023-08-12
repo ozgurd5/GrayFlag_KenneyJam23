@@ -2,48 +2,63 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AdaPositionManager : MonoBehaviour
 {
     [SerializeField] GameObject adaParent;
     [SerializeField] Transform adaTargetTr;
-
-    Transform ada5Obj;
+    [SerializeField] float moveTime;
+    [Header("Assing Main Camera Here")][SerializeField] Camera mainCamera;
+    LayerMask adaLayerMask;
 
     private void Awake()
     {
-        ada5Obj = adaParent.transform.GetChild(0);
         PlayerColorEnabler.OnAllColorEnabled += OnAllColorEnabled;
     }
 
+    private void Start()
+    {
+        Debug.Log(PlayerColorEnabler.IsAllColorEnabled());
+        StartCoroutine(Wait());
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3);
+        HandleIsland();
+    }
     private void OnAllColorEnabled()
     {
-        HandleAda();
+        //HandleIsland();
+        Debug.Log("OnAllColorEnabled()");
     }
 
     public void ShowIsland()
     {
-        ada5Obj.gameObject.SetActive(true);
+        mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("InvisibleLayer");
     }
 
     public void MoveIsland()
     {
-        //Özgür: DoTween ile yap?
+        transform.DOMoveY(adaTargetTr.position.y,moveTime);
         Debug.Log("MoveIsland();");
     }
+
     public void PlayCutscene() 
     {
         Debug.Log("PlayCutscene()");
     }
 
-    public void HandleAda() 
+    public void HandleIsland() 
     {
-        if(PlayerColorEnabler.IsAllColorEnabled())
-        { 
-            ShowIsland();
-            MoveIsland();
-            PlayCutscene();
-        }
+        ShowIsland();
+        MoveIsland();
+        PlayCutscene();
+    }
+    private void OnDestroy()
+    {
+        PlayerColorEnabler.OnAllColorEnabled -= OnAllColorEnabled;
     }
 
 }
