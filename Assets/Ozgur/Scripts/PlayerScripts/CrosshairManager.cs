@@ -30,9 +30,9 @@ public class CrosshairManager : MonoBehaviour
     
     [Header("Debug")]
     [SerializeField] private bool wheel;
+    [SerializeField] private bool hookTarget;
     [SerializeField] private bool enemy;
     [SerializeField] private bool enemyLong;
-    [SerializeField] private bool hookTarget;
     [SerializeField] private bool chest;
     [SerializeField] private bool mushroom;
     [SerializeField] private string lookName;
@@ -82,10 +82,12 @@ public class CrosshairManager : MonoBehaviour
         }
 
         isLookingAtShipWheel = crosshairHit.collider.CompareTag("ShipWheel");
-        isLookingAtEnemy = crosshairHit.collider.CompareTag("Enemy");
         isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace");
         isLookingAtChest = crosshairHit.collider.CompareTag("Chest");
         isLookingAtMushroom = crosshairHit.collider.CompareTag("Mushroom");
+        
+        isLookingAtEnemy = crosshairHit.collider.CompareTag("Enemy");
+        if (isLookingAtEnemy) CheckForDeadEnemy();
     }
     
     private void CastLongRay()
@@ -98,8 +100,10 @@ public class CrosshairManager : MonoBehaviour
             isLookingAtEnemyLong = false;
             return;
         }
-
+        
         isLookingAtEnemyLong = crosshairHit.collider.CompareTag("Enemy");
+        if (isLookingAtEnemyLong) CheckForDeadEnemy();
+        
         isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace") || isLookingAtEnemyLong;
     }
 
@@ -116,12 +120,21 @@ public class CrosshairManager : MonoBehaviour
         crosshairAttackCondition = isLookingAtEnemy;
     }
 
+    private void CheckForDeadEnemy()
+    {
+        if (crosshairHit.collider.GetComponent<EnemyManager>().currentState == EnemyManager.EnemyState.Dead)
+        {
+            isLookingAtEnemy = false;
+            isLookingAtEnemyLong = false;
+        }
+    }
+
     private void HandleDebugInfo()
     {
         wheel = isLookingAtShipWheel;
+        hookTarget = isLookingAtHookTarget;
         enemy = isLookingAtEnemy;
         enemyLong = isLookingAtEnemyLong;
-        hookTarget = isLookingAtHookTarget;
         chest = isLookingAtChest;
         mushroom = isLookingAtMushroom;
         if (crosshairHit.collider != null) lookName = crosshairHit.collider.name;

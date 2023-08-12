@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class PlayerHookController : MonoBehaviour
     [SerializeField] private float maxSpeedXZ = 50f;
     [SerializeField] private float maxSpeedY = 50f;
     [SerializeField] private AudioSource aus;
+    [SerializeField] private float collisionTimerLimit;
     
     private PlayerStateData psd;
     private PlayerInputManager pim;
@@ -25,6 +27,7 @@ public class PlayerHookController : MonoBehaviour
     private Vector3 hookedPosition;
     private bool flyingCondition;
     private IEnumerator increaseMovingSpeed;
+    private float collisionTimer;
 
     private void Awake()
     {
@@ -46,7 +49,7 @@ public class PlayerHookController : MonoBehaviour
         if (an.isHidden) return;
         
         lr.SetPosition(0, lineOutTransform.position);
-        HandleEnterHookState();
+        EnterHookState();
     }
 
     private void FixedUpdate()
@@ -71,12 +74,12 @@ public class PlayerHookController : MonoBehaviour
     
     private IEnumerator HandleShoot()
     {
-        lr.enabled = true;
-        lr.SetPosition(1, hookedPosition);
-
         if (CrosshairManager.isLookingAtEnemy || CrosshairManager.isLookingAtEnemyLong) hookedPosition = CrosshairManager.enemyHookPlace.position;
         else hookedPosition = CrosshairManager.crosshairHit.transform.position;
 
+        lr.enabled = true;
+        lr.SetPosition(1, hookedPosition);
+        
         flyingCondition = true;
         
         yield return new WaitForSeconds(an.attackAnimationHalfDuration);
@@ -120,17 +123,17 @@ public class PlayerHookController : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        HandleExitHookState();
+        ExitHookState();
     }
 
-    private void HandleEnterHookState()
+    private void EnterHookState()
     {
         if (!pim.isHookKeyDown) return;
         aus.Play();
         if (CrosshairManager.isLookingAtHookTarget) StartCoroutine(HandleShoot());
     }
 
-    private void HandleExitHookState()
+    private void ExitHookState()
     {
         if (psd.currentMainState == PlayerStateData.PlayerMainState.HookState)
             psd.currentMainState = PlayerStateData.PlayerMainState.NormalState;
@@ -139,7 +142,7 @@ public class PlayerHookController : MonoBehaviour
     private IEnumerator IncreaseMovingSpeed()
     {
         Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if (Vector3.Angle(horizontalVelocity.normalized, transform.forward) < 44 && pim.moveInput.y == 1)
+        if (Vector3.Angle(horizontalVelocity.normalized, transform.forward) < 15 && pim.moveInput.y == 1)
         {
             flyingMovingSpeed = maxSpeedXZ;
             yield break;

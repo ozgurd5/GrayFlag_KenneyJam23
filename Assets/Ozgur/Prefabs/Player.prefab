@@ -793,6 +793,7 @@ MonoBehaviour:
   maxSpeedXZ: 50
   maxSpeedY: 50
   aus: {fileID: 4742588102845881557}
+  collisionTimerLimit: 0
   flyingMovingSpeed: 0
   isIncreasingSpeed: 0
 --- !u!114 &1578110214120312660
@@ -1059,7 +1060,7 @@ MonoBehaviour:
   respawnPoint: {fileID: 0}
   playerDamageEffect: {fileID: 2471462566660503249}
   health: 20
-  knockbackForce: 1000
+  knockbackForce: 1500
   damageStopTime: 0.5
   aus: {fileID: 7643033943649779526}
   damageSound: {fileID: 8300000, guid: 5df867cf5e778914db2c526a52585d04, type: 3}
@@ -2316,9 +2317,9 @@ MonoBehaviour:
   crosshairHighlightCondition: 0
   crosshairAttackCondition: 0
   wheel: 0
+  hookTarget: 0
   enemy: 0
   enemyLong: 0
-  target: 0
   chest: 0
   mushroom: 0
   lookName: 

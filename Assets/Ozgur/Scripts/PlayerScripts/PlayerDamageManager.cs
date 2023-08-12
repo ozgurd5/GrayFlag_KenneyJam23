@@ -9,7 +9,7 @@ public class PlayerDamageManager : MonoBehaviour
     
     [Header("Assign")]
     [SerializeField] private int health = 20;
-    [SerializeField] private int knockbackForce = 1000;
+    [SerializeField] private int knockbackForce = 1500;
     [SerializeField] private float damageStopTime = 0.5f;
 
     [Header("Assign - Sound")]

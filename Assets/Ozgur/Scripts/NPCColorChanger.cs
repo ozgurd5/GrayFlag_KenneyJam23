@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterColorChanger : MonoBehaviour
+public class NPCColorChanger : MonoBehaviour
 {
     [Header("Red")]
     [SerializeField] private Material redMaterial;
