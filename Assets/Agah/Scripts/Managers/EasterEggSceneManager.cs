@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,11 +15,13 @@ public class EasterEggSceneManager : MonoBehaviour
     {
         var _mushroomCollected = CoinChestMushroomManager.GetNumber("Mushroom");
         mushroomCollected = _mushroomCollected;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         StartCoroutine(CallMushroomEvent());
+        //InvokeMushroomEvent();
     }
 
     public void InvokeMushroomEvent()
@@ -29,11 +29,9 @@ public class EasterEggSceneManager : MonoBehaviour
         OnMushroomEvent?.Invoke(mushroomCollected);
     }
 
-    IEnumerator CallMushroomEvent()
+    IEnumerator CallMushroomEvent() // TODO: Build öncesi sil ve Start'a gerekli fonksiyonu koy.
     {
         yield return new WaitForSeconds(3);
         InvokeMushroomEvent();
-
     }
-
 }

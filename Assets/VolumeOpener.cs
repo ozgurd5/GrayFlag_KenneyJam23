@@ -15,10 +15,6 @@ public class VolumeOpener : MonoBehaviour
         EasterEggSceneManager.OnMushroomEvent += EasterEggSceneManager_OnMushroomEvent;
         
     }
-    private void Start()
-    {
-        Debug.Log(volume1);
-    }
 
     private void EasterEggSceneManager_OnMushroomEvent(int eatenMushroomAmount)
     {

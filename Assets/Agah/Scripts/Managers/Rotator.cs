@@ -8,6 +8,8 @@ public class Rotator : MonoBehaviour
     [SerializeField][Range(0f,400f)]float r;
     [SerializeField][Range(0f, 2160f)]float angle;
     [SerializeField] float timeF= 1.001f;
+    [SerializeField] int waitTime = 2;
+    bool didWait = false;
 
     void Rotato()
     {
@@ -15,9 +17,15 @@ public class Rotator : MonoBehaviour
     }
     private void Update()
     {
-       Rotato();
-       r = Mathf.Lerp(r, 400f, timeF * Time.deltaTime);
-        if (r >= 24) angle = Mathf.Lerp(angle, 2160f, timeF * Time.deltaTime);
+        if (!didWait) StartCoroutine(WaitForPlayerReadingTheScreenLol());
+        else 
+        {
+            Rotato();
+            r = Mathf.Lerp(r, 400f, timeF * Time.deltaTime);
+            if (r >= 24) angle = Mathf.Lerp(angle, 2160f, timeF * Time.deltaTime);
+        }
     }
+
+    IEnumerator WaitForPlayerReadingTheScreenLol() { yield return new WaitForSeconds(waitTime); didWait = true; }
 
 }

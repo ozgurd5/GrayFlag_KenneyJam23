@@ -6,11 +6,10 @@ using DG.Tweening;
 
 public class AdaPositionManager : MonoBehaviour
 {
-    [SerializeField] GameObject adaParent;
+    [SerializeField] GameObject AdaObject;
     [SerializeField] Transform adaTargetTr;
     [SerializeField] float moveTime;
     [Header("Assing Main Camera Here")][SerializeField] Camera mainCamera;
-    LayerMask adaLayerMask;
 
     private void Awake()
     {
@@ -20,8 +19,13 @@ public class AdaPositionManager : MonoBehaviour
     private void Start()
     {
         Debug.Log(PlayerColorEnabler.IsAllColorEnabled());
-        StartCoroutine(Wait());
+        StartCoroutine(Wait()); 
     }
+
+    //Bu Kodda Yapýlacaklar TODO:
+    //Wait() ENUMATORÜ SÝLÝNECEK, CUTSCENE YAPILIP REFERANSLANIP PlayCutscene() ÝÇÝNDE REFERANSLANICAK,
+    //HandleIsland() FONKSÝYONU OnAllColorEnabled() ÝÇÝNE KONACAK.
+
 
     IEnumerator Wait()
     {
@@ -31,7 +35,7 @@ public class AdaPositionManager : MonoBehaviour
     private void OnAllColorEnabled()
     {
         //HandleIsland();
-        Debug.Log("OnAllColorEnabled()");
+        Debug.Log("OnAllColorEnabled()"); // bu da silinecek.
     }
 
     public void ShowIsland()
@@ -41,7 +45,7 @@ public class AdaPositionManager : MonoBehaviour
 
     public void MoveIsland()
     {
-        transform.DOMoveY(adaTargetTr.position.y,moveTime);
+        AdaObject.transform.DOMoveY(adaTargetTr.position.y,moveTime);
         Debug.Log("MoveIsland();");
     }
 
