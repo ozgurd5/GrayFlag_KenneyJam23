@@ -208,7 +208,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 1f16c6012190d964f8fd96b6639c3b06, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -304,7 +305,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c2cfba73b1aa67c42abd526eff61e591, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -400,7 +402,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 0f9f493abfa27bb438c16282fdee1a6b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -588,7 +591,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 681a04f89ee07b54eaea90f1cf18b6af, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
@@ -684,7 +688,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 6e2eff3802651f84b8a68f1f1f01a69b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
@@ -835,7 +840,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: cf251d1a215ede541b0f1011faca05f1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
@@ -1067,7 +1073,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.6
@@ -1180,7 +1187,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 4faceaf0512c4694fbc2877ce270f315, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
@@ -1276,7 +1284,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 1d30db7aa0b918148ace12ff93dff0f8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -1372,7 +1381,8 @@ AudioSource:
   m_GameObject: {fileID: 410474728315385331}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c2c5a42d8902cbb41bdfca0d99f6152b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -1882,12 +1892,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4236154615871215296}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -2704,8 +2714,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: caf25541b3d93744591cfdd88a673da5, type: 2}
-  - {fileID: 2100000, guid: 25f0c06633fb11b4685ed8f57b4cf14c, type: 2}
+  - {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  - {fileID: 2100000, guid: 8b52863652e29f14886a7de56f2d0d82, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2796,12 +2806,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8138971871651868306}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
