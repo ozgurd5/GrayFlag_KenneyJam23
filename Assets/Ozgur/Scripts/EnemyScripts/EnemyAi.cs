@@ -80,8 +80,8 @@ public class EnemyAi : MonoBehaviour
     {
         if (em.isDamageTaking) return;
 
-        if (em.currentState == EnemyManager.EnemyState.Punching && !walkingFromPunchingFlag) StartCoroutine(EnterWalkingFromPunching());
-        else if (em.currentState != EnemyManager.EnemyState.Walking && !walkingFromPunchingFlag) em.EnterWalkingState();
+        if (em.currentState == EnemyManager.EnemyState.Attack && !walkingFromPunchingFlag) StartCoroutine(EnterWalkingFromPunching());
+        else if (em.currentState == EnemyManager.EnemyState.Walking) em.EnterRunningState();
 
         meshAgent.SetDestination(player.position);
     }
@@ -95,7 +95,7 @@ public class EnemyAi : MonoBehaviour
         {
             isAttacking = true;
             
-            StartCoroutine(em.EnterPunchingState());
+            StartCoroutine(em.EnterAttackState());
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }

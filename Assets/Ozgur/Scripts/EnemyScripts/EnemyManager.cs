@@ -33,7 +33,8 @@ public class EnemyManager : MonoBehaviour
     public enum EnemyState
     {
         Walking,
-        Punching,
+        Running,
+        Attack,
         Dead
     }
 
@@ -50,14 +51,14 @@ public class EnemyManager : MonoBehaviour
         idleSoundCoroutine = HandleIdleSound();
     }
 
-    public IEnumerator EnterPunchingState()
+    public IEnumerator EnterAttackState()
     {
         if (currentState == EnemyState.Dead) yield break;
         
         StopCoroutine(idleSoundCoroutine);
         aus.Stop();
         
-        currentState = EnemyState.Punching;
+        currentState = EnemyState.Attack;
         an.Play("EnemyAttack");
 
         yield return new WaitForSeconds(preparingForAttackAnimTime);
@@ -75,6 +76,16 @@ public class EnemyManager : MonoBehaviour
 
         idleSoundCoroutine = HandleIdleSound();
         StartCoroutine(idleSoundCoroutine);
+    }
+    
+    public void EnterRunningState()
+    {
+        if (currentState == EnemyState.Dead) return;
+        
+        currentState = EnemyState.Running;
+        an.Play("EnemyRunning");
+
+        //SOUND
     }
 
     private IEnumerator HandleIdleSound()
