@@ -227,18 +227,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  knockbackForce: 1000
+  knockbackForce: 2500
   damageTakingAnimTime: 0.8
+  attackPrepareTime: 1
   aliveCollider: {fileID: 6137838205570440563}
   deadCollider: {fileID: 899882065500666343}
+  idleSoundInterval: 10
   aus: {fileID: 5726007746137824460}
   damageSound: {fileID: 8300000, guid: 82cee00ae10100f478ebef023d2894d6, type: 3}
   deathSound: {fileID: 8300000, guid: bf065a5f4dc7a48499616558175b8841, type: 3}
   attackSound: {fileID: 8300000, guid: 674a3fb5ba1904d449ae8d1b6c790b50, type: 3}
-  idleSoundInterval: 10
   idleSound: {fileID: 8300000, guid: bb952e1b5e5f29f4889e7eeb3b4e492e, type: 3}
   currentState: 0
-  isDamageTaking: 0
+  isTakingDamage: 0
 --- !u!114 &7925654054660100788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,9 +293,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  punchAnimTime: 0.2
   walkPointRange: 5
-  timeBetweenAttacks: 1.05
   sightRange: 20
   attackRange: 5
 --- !u!65 &899882065500666343

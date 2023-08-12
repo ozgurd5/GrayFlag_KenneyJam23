@@ -6,9 +6,9 @@ public class EnemyManager : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private int health = 10;
-    [SerializeField] private int knockbackForce = 1000;
+    [SerializeField] private int knockbackForce = 2500;
     [SerializeField] private float damageTakingAnimTime = 0.8f;
-    public float preparingForAttackAnimTime = 0.5f;
+    public float attackPrepareTime = 0.5f;
     
     [Header("Assign - Colliders")]
     [SerializeField] private Collider aliveCollider;
@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     public EnemyState currentState;
-    public bool isDamageTaking;
+    public bool isTakingDamage;
 
     private void Awake()
     {
@@ -61,7 +61,7 @@ public class EnemyManager : MonoBehaviour
         currentState = EnemyState.Attack;
         an.Play("EnemyAttack");
 
-        yield return new WaitForSeconds(preparingForAttackAnimTime);
+        yield return new WaitForSeconds(attackPrepareTime);
         
         player.GetComponent<PlayerDamageManager>().GetHit(transform.forward);
         aus.PlayOneShot(attackSound);
@@ -85,7 +85,8 @@ public class EnemyManager : MonoBehaviour
         currentState = EnemyState.Running;
         an.Play("EnemyRunning");
 
-        //SOUND
+        idleSoundCoroutine = HandleIdleSound();
+        StartCoroutine(idleSoundCoroutine);
     }
 
     private IEnumerator HandleIdleSound()
@@ -102,7 +103,7 @@ public class EnemyManager : MonoBehaviour
         if (currentState == EnemyState.Dead) return;
         
         an.applyRootMotion = false;
-        isDamageTaking = true;
+        isTakingDamage = true;
         
         health -= 3;
         healthBar.value = health;
@@ -116,7 +117,7 @@ public class EnemyManager : MonoBehaviour
     private void ResetAfterDamage()
     {
         an.applyRootMotion = true;
-        isDamageTaking = false;
+        isTakingDamage = false;
         
         EnterWalkingState();
     }
