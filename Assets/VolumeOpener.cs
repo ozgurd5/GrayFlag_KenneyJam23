@@ -13,7 +13,6 @@ public class VolumeOpener : MonoBehaviour
         volume4 = transform.GetChild(3);
         volume5 = transform.GetChild(4);
         EasterEggSceneManager.OnMushroomEvent += EasterEggSceneManager_OnMushroomEvent;
-        
     }
 
     private void EasterEggSceneManager_OnMushroomEvent(int eatenMushroomAmount)

@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class EasterEggSceneManager : MonoBehaviour
 {
-    [SerializeField] Button button;
     int mushroomCollected;
-
     public static event Action<int> OnMushroomEvent;
 
     private void Awake()
@@ -26,7 +24,7 @@ public class EasterEggSceneManager : MonoBehaviour
 
     public void InvokeMushroomEvent()
     {
-        OnMushroomEvent?.Invoke(mushroomCollected);
+        OnMushroomEvent?.Invoke(/*mushroomCollected*/5); //TODO 5'i sil, commenti kaldýr.
     }
 
     IEnumerator CallMushroomEvent() // TODO: Build öncesi sil ve Start'a gerekli fonksiyonu koy.
