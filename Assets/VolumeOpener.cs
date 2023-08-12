@@ -20,9 +20,9 @@ public class VolumeOpener : MonoBehaviour
         Debug.Log(volume1);
     }
 
-    private void EasterEggSceneManager_OnMushroomEvent(int obj)
+    private void EasterEggSceneManager_OnMushroomEvent(int eatenMushroomAmount)
     {
-        switch (obj)
+        switch (eatenMushroomAmount)
         {
             case 0: Debug.LogError("0 Mantar ile Sahneye Geçiþ Yapmayý Deneme!"); break;
             case 1: volume1.gameObject.SetActive(true); break;
@@ -32,5 +32,10 @@ public class VolumeOpener : MonoBehaviour
             case 5: volume5.gameObject.SetActive(true); break;
             default: Debug.LogError("1 ila 5 Mantar ile Sahneye Geçiþ Yapman Lazým!"); break;
         }
+    }
+
+    private void OnDestroy()
+    {
+        EasterEggSceneManager.OnMushroomEvent -= EasterEggSceneManager_OnMushroomEvent;
     }
 }
