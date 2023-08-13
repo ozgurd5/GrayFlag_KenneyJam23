@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27919c04949ebe5449650b070786de56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 31231231
+  health: 10
   knockbackForce: 2500
   damageTakingAnimTime: 0.8
   attackPrepareTime: 1
@@ -1238,7 +1238,7 @@ RectTransform:
   m_Father: {fileID: 2384325299202473971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -5.2298, y: 0}
   m_SizeDelta: {x: 20.4594, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2404,7 +2404,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 4966665111989126099}
   m_HandleRect: {fileID: 0}
   m_Direction: 1
-  m_MinValue: 0
+  m_MinValue: 1
   m_MaxValue: 10
   m_WholeNumbers: 1
   m_Value: 10

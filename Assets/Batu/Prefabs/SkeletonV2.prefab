@@ -1640,10 +1640,10 @@ MonoBehaviour:
   deadCollider: {fileID: 4651637017737408094}
   idleSoundInterval: 10
   aus: {fileID: 5953192798894016935}
-  damageSound: {fileID: 8300000, guid: 82cee00ae10100f478ebef023d2894d6, type: 3}
-  deathSound: {fileID: 8300000, guid: bf065a5f4dc7a48499616558175b8841, type: 3}
+  damageSound: {fileID: 8300000, guid: 8eefcf22a41b47f48a5923b04e81d862, type: 3}
+  deathSound: {fileID: 8300000, guid: 0e10e93dd15c12d4c91c76f5349fe82e, type: 3}
   attackSound: {fileID: 8300000, guid: 674a3fb5ba1904d449ae8d1b6c790b50, type: 3}
-  idleSound: {fileID: 8300000, guid: bb952e1b5e5f29f4889e7eeb3b4e492e, type: 3}
+  idleSound: {fileID: 8300000, guid: 157261d7aae907e4e9b22eb57938fe85, type: 3}
   currentState: 0
 --- !u!114 &2795022376013593946
 MonoBehaviour:
@@ -2388,10 +2388,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 7201956008798709444}
   m_HandleRect: {fileID: 0}
   m_Direction: 1
-  m_MinValue: 0
-  m_MaxValue: 10
+  m_MinValue: 1
+  m_MaxValue: 15
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 15
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

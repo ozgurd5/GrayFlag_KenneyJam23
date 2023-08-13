@@ -95,9 +95,6 @@ public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
     {
         if (!pim.isHookKeyDown) return;
         StartCoroutine(PlayAttackAnimation(hookGun, attackRotationX, attackRotationXBack, -170f, attackAnimationHalfDuration));
-
-        if (CrosshairManager.isLookingAtEnemy)
-            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
     }
 
     private void DecideForMovingAnimationHalfDuration()
