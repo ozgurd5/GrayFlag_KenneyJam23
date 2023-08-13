@@ -1529,7 +1529,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5305742100afd0f49a0dcda5c37d662c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1556,7 +1556,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.092550755, y: 0.15884578, z: 0.10000008}
+  m_Size: {x: 0.12, y: 0.16, z: 0.12}
   m_Center: {x: -0.0037247143, y: 0.07954401, z: 0}
 --- !u!54 &2054350124775419215
 Rigidbody:
@@ -1594,18 +1594,18 @@ NavMeshAgent:
   m_GameObject: {fileID: 5830669774990424661}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.06
-  m_Speed: 4
-  m_Acceleration: 8
+  m_Radius: 0.08
+  m_Speed: 17
+  m_Acceleration: 120
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 720
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.16
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2779187399523354803
 MonoBehaviour:
@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27919c04949ebe5449650b070786de56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 15
   knockbackForce: 2500
   damageTakingAnimTime: 0.8
   attackPrepareTime: 0.7
@@ -1645,7 +1645,6 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 674a3fb5ba1904d449ae8d1b6c790b50, type: 3}
   idleSound: {fileID: 8300000, guid: bb952e1b5e5f29f4889e7eeb3b4e492e, type: 3}
   currentState: 0
-  isTakingDamage: 0
 --- !u!114 &2795022376013593946
 MonoBehaviour:
   m_ObjectHideFlags: 0

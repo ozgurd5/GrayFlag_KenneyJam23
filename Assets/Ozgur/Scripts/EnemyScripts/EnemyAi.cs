@@ -15,7 +15,7 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float attackRange = 7f;
     
     private Transform player;
-    private NavMeshAgent meshAgent;
+    private NavMeshAgent navMeshAgent;
     private EnemyManager em;
     
     private Vector3 walkPoint;
@@ -25,21 +25,13 @@ public class EnemyAi : MonoBehaviour
     private bool playerInAttackRange;
     
     private bool didEncounterPlayer;
-    private float timeBetweenAttacks;
     private bool isAttacking;
-
-    private IEnumerator attackRoutine;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        meshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         em = GetComponent<EnemyManager>();
-
-        attackRoutine = em.EnterAttackState();
-
-        //Disable for play-mode testing
-        //timeBetweenAttacks = em.preparingForAttackAnimTime + 0.05f;
     }
 
     private void Start()
@@ -49,10 +41,12 @@ public class EnemyAi : MonoBehaviour
 
     private void Update()
     {
-        //Enable while play-mode testing
-        timeBetweenAttacks = em.attackPrepareTime + 0.05f;
-        
         if (em.currentState == EnemyManager.EnemyState.Dead) return;
+        if (em.currentState == EnemyManager.EnemyState.GettingDamage)
+        {
+            navMeshAgent.isStopped = true;
+            return;
+        }
         
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
@@ -65,7 +59,7 @@ public class EnemyAi : MonoBehaviour
     private void Patrolling()
     {
         if (!isWalkPointSet) SearchWalkPoint();
-        else if (isWalkPointSet) meshAgent.SetDestination(walkPoint);
+        else if (isWalkPointSet) navMeshAgent.SetDestination(walkPoint);
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         if (distanceToWalkPoint.magnitude < 1f) isWalkPointSet = false;
@@ -84,32 +78,22 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
-        if (em.isTakingDamage) return;
+        if (em.currentState == EnemyManager.EnemyState.GettingDamage) return;
         
+        navMeshAgent.isStopped = false;
         didEncounterPlayer = true;
-        StopCoroutine(attackRoutine);
+
+        em.StopAttack();
         if (em.currentState != EnemyManager.EnemyState.Running) em.EnterRunningState();
-        meshAgent.SetDestination(player.position);
+        navMeshAgent.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
-        meshAgent.SetDestination(transform.position);
+        navMeshAgent.isStopped = true;
         transform.LookAt(player);
 
-        if (!isAttacking)
-        {
-            isAttacking = true;
-            
-            attackRoutine = em.EnterAttackState();
-            StartCoroutine(attackRoutine);
-            
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
-    private void ResetAttack()
-    {
-        isAttacking = false;
+        if (em.currentState != EnemyManager.EnemyState.Attack) em.AttackPlayer();
     }
 
     private void OnDrawGizmosSelected()

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class EnemyManager : MonoBehaviour
 {
     [Header("Assign")]
-    [SerializeField] private int health = 10;
+    [SerializeField] private int health; //10 zombie - 15 skeleton
     [SerializeField] private int knockbackForce = 2500;
     [SerializeField] private float damageTakingAnimTime = 0.8f;
-    public float attackPrepareTime; //0.1 in zombie - 0.7 in skeleton
+    public float attackPrepareTime; //0.1 zombie - 0.7 skeleton
     
     [Header("Assign - Colliders")]
     [SerializeField] private Collider aliveCollider;
@@ -26,33 +26,46 @@ public class EnemyManager : MonoBehaviour
     private Rigidbody rb;
     private Animator an;
     private Slider healthBar;
-    
     private GameObject player;
-    private IEnumerator idleSoundCoroutine;
+    
     private RaycastHit hit;
+    private IEnumerator idleSoundCoroutine;
+    private IEnumerator attackRoutine;
     
     public enum EnemyState
     {
         Walking,
         Running,
         Attack,
+        GettingDamage,
         Dead
     }
 
     public EnemyState currentState;
-    public bool isTakingDamage;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         an = GetComponent<Animator>();
         healthBar = GetComponentInChildren<Slider>();
-        
         player = GameObject.Find("Player");
+        
         idleSoundCoroutine = HandleIdleSound();
+        attackRoutine = EnterAttackState();
     }
 
-    public IEnumerator EnterAttackState()
+    public void AttackPlayer()
+    {
+        attackRoutine = EnterAttackState();
+        StartCoroutine(attackRoutine);
+    }
+
+    public void StopAttack()
+    {
+        StopCoroutine(attackRoutine);
+    }
+
+    private IEnumerator EnterAttackState()
     {
         if (currentState == EnemyState.Dead) yield break;
         
@@ -102,9 +115,9 @@ public class EnemyManager : MonoBehaviour
     public void GetHit(Vector3 playerTransformForward)
     {
         if (currentState == EnemyState.Dead) return;
-        
-        an.applyRootMotion = false;
-        isTakingDamage = true;
+
+        StopAttack();
+        currentState = EnemyState.GettingDamage;
         
         health -= 3;
         healthBar.value = health;
@@ -112,15 +125,13 @@ public class EnemyManager : MonoBehaviour
         
         an.Play("EnemyGetHit");
         rb.AddForce(knockbackForce * playerTransformForward, ForceMode.Acceleration);
-        Invoke(nameof(ResetAfterDamage), damageTakingAnimTime);
+        Invoke(nameof(ResetTakingDamage), damageTakingAnimTime);
     }
     
-    private void ResetAfterDamage()
+    private void ResetTakingDamage()
     {
-        an.applyRootMotion = true;
-        isTakingDamage = false;
-        
-        EnterWalkingState();
+        currentState = EnemyState.Walking;
+        rb.velocity = Vector3.zero;
     }
     
     private bool CheckForDeath()
