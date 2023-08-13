@@ -6,8 +6,8 @@ using UnityEngine;
 public class ShowExitTheGame : MonoBehaviour
 {
     [SerializeField] TMP_Text exitText;
-    [SerializeField] int shroomWaitTime = 5;
-    [SerializeField] int exitDestroyTime = 3;
+    [Tooltip("Time the object waits before appearing for the shroom text to move and disappear")][SerializeField] int shroomTextWaitTime = 5;
+    [Tooltip("Time the object waits before disappearing")][SerializeField] int exitDestroyTime = 45;
 
     private void Awake()
     {
@@ -23,10 +23,9 @@ public class ShowExitTheGame : MonoBehaviour
     {
         exitText.text = "Game is Over, hold <b> E </b> to exit.";
     }
-
     IEnumerator WaitForShroomText()
     {
-        yield return new WaitForSeconds(shroomWaitTime);
+        yield return new WaitForSeconds(shroomTextWaitTime);
         ShowExitText();
         Destroy(transform.parent.gameObject, exitDestroyTime);
     }

@@ -9,7 +9,7 @@ public class Rotator : MonoBehaviour
     [SerializeField][Range(0f,400f)]float r, rMax;
     [SerializeField][Range(0f, 2160f)]float angle, angleMax;
     [SerializeField] float timeF= 1.001f;
-    [SerializeField] int waitTime = 2;
+    [Tooltip("Wait for seconds before starting rotations.")][SerializeField] int waitTime = 2;
     [SerializeField] bool x, y, z;
     bool didWait = false;
 

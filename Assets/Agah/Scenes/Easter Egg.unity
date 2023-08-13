@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 15324336}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.80346, y: -105.60068, z: 115.3126}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -356,9 +356,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tr: {fileID: 239765475}
   r: 0.15
-  rMax: 0
+  rMax: 60
   angle: 14
-  angleMax: 0
+  angleMax: 360
   timeF: 0.03
   waitTime: 2
   x: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shroomText: {fileID: 1182507368}
-  disapperTime: 15
+  disapperTime: 40
 --- !u!114 &261788193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 272771789}
   - component: {fileID: 272771790}
+  - component: {fileID: 272771791}
   m_Layer: 0
   m_Name: ExitTextObjHolder
   m_TagString: Untagged
@@ -523,7 +524,7 @@ Transform:
   m_GameObject: {fileID: 272771788}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 90, y: 125, z: 17.5}
+  m_LocalPosition: {x: 90, y: -150, z: 17.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -544,14 +545,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tr: {fileID: 272791471}
   r: 0.1
-  rMax: 1
-  angle: 0
-  angleMax: 30
+  rMax: 2
+  angle: 5
+  angleMax: 120
   timeF: 1.001
-  waitTime: 20
+  waitTime: 10
   x: 1
   y: 0
-  z: 1
+  z: 0
+--- !u!114 &272771791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272771788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00da14c5a964495499330d72acd13ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 40
+  y: 10
+  z: 17.5
+  moveTime: 4
+  waitTime: 10
+  objTr: {fileID: 272771789}
 --- !u!1 &272791468
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,9 +958,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tr: {fileID: 340685478}
   r: 0.05
-  rMax: 0
+  rMax: 60
   angle: 30
-  angleMax: 0
+  angleMax: 360
   timeF: 0.1
   waitTime: 2
   x: 0
@@ -1186,6 +1205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 640638273}
   - component: {fileID: 640638272}
+  - component: {fileID: 640638274}
   m_Layer: 0
   m_Name: ShroomTextObjHolder
   m_TagString: Untagged
@@ -1207,11 +1227,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tr: {fileID: 1182507367}
   r: 0
-  rMax: 2
-  angle: 5
-  angleMax: 30
+  rMax: 3
+  angle: 15
+  angleMax: 120
   timeF: 1.001
-  waitTime: 8
+  waitTime: 3
   x: 0
   y: 0
   z: 1
@@ -1224,13 +1244,31 @@ Transform:
   m_GameObject: {fileID: 640638271}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 90, y: 125, z: 17.5}
+  m_LocalPosition: {x: 90, y: 225, z: 17.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 261788196}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &640638274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640638271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00da14c5a964495499330d72acd13ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 90
+  y: 125
+  z: 17.5
+  moveTime: 4
+  waitTime: 0
+  objTr: {fileID: 640638273}
 --- !u!1 &697149935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,8 +1426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitText: {fileID: 272791469}
-  shroomWaitTime: 15
-  exitDestroyTime: 5
+  shroomTextWaitTime: 10
+  exitDestroyTime: 30
 --- !u!114 &876913934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,7 +1500,7 @@ RectTransform:
   m_GameObject: {fileID: 876913932}
   m_LocalRotation: {x: 0.016692424, y: 0.3823192, z: 0.040299077, w: 0.9230003}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39999995, y: 0.40000004, z: 0.39999998}
+  m_LocalScale: {x: 0.4, y: 0.40000004, z: 0.39999998}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 272791471}
@@ -2072,9 +2110,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tr: {fileID: 1439373179}
   r: 0.05
-  rMax: 0
+  rMax: 60
   angle: 30
-  angleMax: 0
+  angleMax: 360
   timeF: 0.1
   waitTime: 2
   x: 0
@@ -2189,7 +2227,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 70.3
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2443,6 +2481,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770698834}
   m_CullTransparentMesh: 1
+--- !u!1 &1842035427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1842035429}
+  - component: {fileID: 1842035428}
+  m_Layer: 0
+  m_Name: ExitObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1842035428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842035427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b929c12dac5c346bb0a34ed54ff4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitPressTime: 1.5
+--- !u!4 &1842035429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842035427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857861962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,6 +2555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 726e7fe832ffa2542b6871e4fd344e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0
 --- !u!4 &1857861964
 Transform:
   m_ObjectHideFlags: 0
@@ -2481,7 +2565,7 @@ Transform:
   m_GameObject: {fileID: 1857861962}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -602.6679, y: 294.1999, z: -307.24408}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2534,9 +2618,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tr: {fileID: 1876424953}
   r: 0.05
-  rMax: 0
+  rMax: 60
   angle: 30
-  angleMax: 0
+  angleMax: 360
   timeF: 0.1
   waitTime: 2
   x: 0
@@ -2643,7 +2727,7 @@ GameObject:
   - component: {fileID: 6957033168991423124}
   - component: {fileID: 6388664625293402136}
   m_Layer: 0
-  m_Name: Island_6 Variant
+  m_Name: ada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2654,15 +2738,16 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1460225164}
+  - {fileID: 938626663}
+  - {fileID: 1438506760}
+  - {fileID: 1857861964}
+  - {fileID: 15324338}
+  - {fileID: 640638273}
+  - {fileID: 272771789}
   - {fileID: 1439373179}
   - {fileID: 1876424953}
   - {fileID: 340685478}
   - {fileID: 239765475}
-  - {fileID: 640638273}
-  - {fileID: 272771789}
-  - {fileID: 8126591673343406587}
-  - {fileID: 15324338}
-  - {fileID: 938626663}
-  - {fileID: 1438506760}
   - {fileID: 313363285}
-  - {fileID: 1857861964}
+  - {fileID: 8126591673343406587}
+  - {fileID: 1842035429}

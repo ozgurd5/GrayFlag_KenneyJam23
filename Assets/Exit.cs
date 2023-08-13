@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class Exit : MonoBehaviour
 {
-    [SerializeField] float exitPressTime = 1.5f;
+    [Tooltip("Exit button hold time.")][SerializeField] float exitPressTime = 1.5f;
     private void Update()
     {
-        while(Input.GetKey(KeyCode.E))
+        if(Input.GetKey(KeyCode.E))
         {
             exitPressTime -= Time.deltaTime;
-            if (exitPressTime < 0) {Application.Quit(); Debug.Log("Application Quits the Game"); }
-            else return;
         }
+
+        if (exitPressTime <= 0)
+        {
+            /*Application.Quit();*/ Debug.Log("Application Quits the Game");
+            exitPressTime = 1.5f;
+        }
+
+        else return;
     }
 }

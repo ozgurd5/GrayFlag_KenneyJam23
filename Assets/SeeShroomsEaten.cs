@@ -7,14 +7,13 @@ using UnityEngine;
 public class SeeShroomsEaten : MonoBehaviour
 {
     [SerializeField] TMP_Text shroomText;
-    [SerializeField]int disapperTime;
+    [Tooltip("Time it takes before destroying the object.")][SerializeField]int disapperTime;
 
     int eatenShroomAmount;
 
     private void Awake()
     {
-        EasterEggSceneManager.OnMushroomEvent += EasterEggSceneManager_OnMushroomEvent;
-        
+        EasterEggSceneManager.OnMushroomEvent += EasterEggSceneManager_OnMushroomEvent;  
     }
 
     private void EasterEggSceneManager_OnMushroomEvent(int obj)
@@ -23,7 +22,6 @@ public class SeeShroomsEaten : MonoBehaviour
         ShowShroomText();
         Destroy(transform.parent.gameObject, disapperTime);
     }
-
     void ShowShroomText()
     {
         shroomText.text = $"{eatenShroomAmount} Shrooms Eaten!!";

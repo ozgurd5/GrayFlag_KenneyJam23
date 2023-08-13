@@ -19,7 +19,7 @@ public class VolumeOpener : MonoBehaviour
     {
         switch (eatenMushroomAmount)
         {
-            case 0: Debug.LogError("0 Mantar ile Sahneye Geçiþ Yapmayý Deneme!"); break;
+            case 0: Debug.LogError("0 Mantar ile Sahneye Geçiþ Yapmak Efektleri Çalýþtýrmaz!"); break;
             case 1: volume1.gameObject.SetActive(true); break;
             case 2: volume2.gameObject.SetActive(true); break;
             case 3: volume3.gameObject.SetActive(true); break;
