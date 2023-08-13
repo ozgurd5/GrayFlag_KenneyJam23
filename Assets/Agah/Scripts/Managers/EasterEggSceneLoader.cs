@@ -9,7 +9,6 @@ public class EasterEggSceneLoader : MonoBehaviour
 {
     [SerializeField]Button buttonYes;
     [SerializeField]Button buttonNo;
-
     void Start()
     {
         StartCoroutine(Wait());
