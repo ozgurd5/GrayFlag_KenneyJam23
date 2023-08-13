@@ -13,7 +13,7 @@ public class CrosshairManager : MonoBehaviour
     public static Transform enemyHookPlace;
     
     [Header("Assign")]
-    [SerializeField] private float range = 7f;
+    [SerializeField] private float range = 10f;
     [SerializeField] private float longRange = 100f;
     [SerializeField] [Range(0, 1)] private float opacity = 0.3f;
 

@@ -8,35 +8,30 @@ public class EnemyAi : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private float punchAnimTime = 0.2f;
     
     [Header("Assign - Values")]
     [SerializeField] private float walkPointRange = 5f;
     [SerializeField] private float sightRange = 20f;
-    [SerializeField] private float attackRange = 5f;
+    [SerializeField] private float attackRange = 7f;
     
     private Transform player;
-    private NavMeshAgent meshAgent;
+    private NavMeshAgent navMeshAgent;
     private EnemyManager em;
     
     private Vector3 walkPoint;
-    private bool walkPointSet;
-
-    private float timeBetweenAttacks;
-    private bool isAttacking;
+    private bool isWalkPointSet;
+    
     private bool playerInSightRange;
     private bool playerInAttackRange;
     
-    private bool walkingFromPunchingFlag;
+    private bool didEncounterPlayer;
+    private bool isAttacking;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        meshAgent = GetComponent<NavMeshAgent>();
-        
+        navMeshAgent = GetComponent<NavMeshAgent>();
         em = GetComponent<EnemyManager>();
-
-        timeBetweenAttacks = em.preparingForAttackAnimTime + 0.05f;
     }
 
     private void Start()
@@ -47,22 +42,27 @@ public class EnemyAi : MonoBehaviour
     private void Update()
     {
         if (em.currentState == EnemyManager.EnemyState.Dead) return;
+        if (em.currentState == EnemyManager.EnemyState.GettingDamage)
+        {
+            navMeshAgent.isStopped = true;
+            return;
+        }
         
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patrolling();
-        else if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (!playerInSightRange && !playerInAttackRange && !didEncounterPlayer) Patrolling();
         else if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        else if ((playerInSightRange && !playerInAttackRange) || didEncounterPlayer) ChasePlayer();
     }
 
     private void Patrolling()
     {
-        if (!walkPointSet) SearchWalkPoint();
-        else if (walkPointSet) meshAgent.SetDestination(walkPoint);
+        if (!isWalkPointSet) SearchWalkPoint();
+        else if (isWalkPointSet) navMeshAgent.SetDestination(walkPoint);
         
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
-        if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
+        if (distanceToWalkPoint.magnitude < 1f) isWalkPointSet = false;
         
         if (em.currentState != EnemyManager.EnemyState.Walking) em.EnterWalkingState();
     }
@@ -73,46 +73,29 @@ public class EnemyAi : MonoBehaviour
         float randomX = Random.Range(-walkPointRange, walkPointRange);
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer)) walkPointSet = true;
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer)) isWalkPointSet = true;
     }
 
     private void ChasePlayer()
     {
-        if (em.isDamageTaking) return;
+        if (em.currentState == EnemyManager.EnemyState.GettingDamage) return;
+        
+        navMeshAgent.isStopped = false;
+        didEncounterPlayer = true;
 
-        if (em.currentState == EnemyManager.EnemyState.Attack && !walkingFromPunchingFlag) StartCoroutine(EnterWalkingFromPunching());
-        else if (em.currentState == EnemyManager.EnemyState.Walking) em.EnterRunningState();
-
-        meshAgent.SetDestination(player.position);
+        em.StopAttack();
+        if (em.currentState != EnemyManager.EnemyState.Running) em.EnterRunningState();
+        navMeshAgent.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
-        meshAgent.SetDestination(transform.position);
+        navMeshAgent.isStopped = true;
         transform.LookAt(player);
 
-        if (!isAttacking)
-        {
-            isAttacking = true;
-            
-            StartCoroutine(em.EnterAttackState());
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
-    private void ResetAttack()
-    {
-        isAttacking = false;
+        if (em.currentState != EnemyManager.EnemyState.Attack) em.AttackPlayer();
     }
 
-    private IEnumerator EnterWalkingFromPunching()
-    {
-        walkingFromPunchingFlag = true;
-        yield return new WaitForSeconds(punchAnimTime);
-        
-        em.EnterWalkingState();
-        walkingFromPunchingFlag = false;
-    }
-    
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
