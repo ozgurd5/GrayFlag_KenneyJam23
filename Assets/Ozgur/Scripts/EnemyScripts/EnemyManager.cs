@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private int health = 10;
     [SerializeField] private int knockbackForce = 2500;
     [SerializeField] private float damageTakingAnimTime = 0.8f;
-    public float attackPrepareTime = 0.5f;
+    public float attackPrepareTime; //0.1 in zombie - 0.7 in skeleton
     
     [Header("Assign - Colliders")]
     [SerializeField] private Collider aliveCollider;

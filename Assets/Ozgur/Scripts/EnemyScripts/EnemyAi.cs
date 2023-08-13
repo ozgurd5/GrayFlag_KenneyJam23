@@ -12,7 +12,7 @@ public class EnemyAi : MonoBehaviour
     [Header("Assign - Values")]
     [SerializeField] private float walkPointRange = 5f;
     [SerializeField] private float sightRange = 20f;
-    [SerializeField] private float attackRange = 5f;
+    [SerializeField] private float attackRange = 7f;
     
     private Transform player;
     private NavMeshAgent meshAgent;
