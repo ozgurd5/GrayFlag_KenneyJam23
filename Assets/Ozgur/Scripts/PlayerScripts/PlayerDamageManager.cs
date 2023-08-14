@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,9 @@ public class PlayerDamageManager : MonoBehaviour
     [SerializeField] private GameObject playerDamageEffect;
     
     [Header("Assign")]
-    [SerializeField] private int health = 20;
-    [SerializeField] private int knockbackForce = 1500;
+    [SerializeField] private int defaultHealth = 20;
+    [SerializeField] private int powerUpHealth = 30;
+    [SerializeField] private int knockBackForce = 1500;
     [SerializeField] private float damageStopTime = 0.5f;
 
     [Header("Assign - Sound")]
@@ -20,12 +22,15 @@ public class PlayerDamageManager : MonoBehaviour
     private PlayerStateData psd;
     private Rigidbody rb;
     private Slider healthBar;
+    private int health;
 
     private void Awake()
     {
         psd = PlayerStateData.Singleton;
         rb = GetComponent<Rigidbody>();
         healthBar = GetComponentInChildren<Slider>();
+        health = defaultHealth;
+        PlayerPowerUps.OnFishBought += IncreaseHealth;
     }
 
     public void GetHit(Vector3 enemyTransformForward)
@@ -34,7 +39,7 @@ public class PlayerDamageManager : MonoBehaviour
         healthBar.value = health;
         
         rb.AddForce(20f * transform.up);
-        rb.AddForce(knockbackForce * enemyTransformForward, ForceMode.Acceleration);
+        rb.AddForce(knockBackForce * enemyTransformForward, ForceMode.Acceleration);
         
         psd.isGettingDamage = true;
         playerDamageEffect.SetActive(true);
@@ -54,12 +59,24 @@ public class PlayerDamageManager : MonoBehaviour
         if (health < 0)
         {
             transform.position = respawnPoint.position;
-            health = 20;
+            health = defaultHealth;
             healthBar.value = health;
             
             aus.PlayOneShot(deathSound);
         }
-
         else aus.PlayOneShot(damageSound);
+    }
+
+    private void IncreaseHealth() //powerup
+    {
+        defaultHealth = powerUpHealth;
+        health = powerUpHealth;
+        healthBar.maxValue = powerUpHealth;
+        healthBar.value = powerUpHealth;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPowerUps.OnFishBought -= IncreaseHealth;
     }
 }
