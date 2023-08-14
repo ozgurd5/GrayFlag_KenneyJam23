@@ -90,13 +90,14 @@ public class ShipController : MonoBehaviour
     public void TakeControl()
     {
         shipCamera.enabled = true;
+        rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     public void DropControl()
     {
         shipCamera.enabled = false;
-        rb.constraints = RigidbodyConstraints.FreezeAll;
+        rb.isKinematic = true;
         currentSailMode = SailMode.Stationary;
     }
     
