@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4603780333450796602}
   - component: {fileID: 4182027547872646366}
   - component: {fileID: 7624226295990271839}
+  - component: {fileID: 6848165820211152516}
   m_Layer: 0
   m_Name: BlueRune
   m_TagString: BlueRune
@@ -101,7 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCollected: 0
   runeParticle: {fileID: 0}
-  newSkybox: {fileID: 2100000, guid: 07d9b45f8a6013142a785022267c54ee, type: 2}
 --- !u!82 &4603780333450796602
 AudioSource:
   m_ObjectHideFlags: 0
@@ -237,3 +237,16 @@ MonoBehaviour:
   rotationTime: 4
   isUpDownPlaying: 0
   isRotationPlaying: 0
+--- !u!114 &6848165820211152516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2356873846159565187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106e53a604d31354eaf15e3ba8d3f015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSkybox: {fileID: 2100000, guid: 07d9b45f8a6013142a785022267c54ee, type: 2}
