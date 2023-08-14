@@ -7,9 +7,12 @@ public class PlayerController : MonoBehaviour
     public static event Action OnJump;
     
     [Header("Assign")]
-    [SerializeField] private float walkingSpeed = 8f;
-    [SerializeField] private float runningSpeed = 15f;
-    [SerializeField] private float jumpSpeed = 15f;
+    [SerializeField] private float defaultWalkingSpeed = 8f;
+    [SerializeField] private float defaultRunningSpeed = 15f;
+    [SerializeField] private float defaultJumpSpeed = 15f;
+    [SerializeField] private float powerUptWalkingSpeed = 18f;
+    [SerializeField] private float powerUpRunningSpeed = 25f;
+    [SerializeField] private float powerUpJumpSpeed = 25f;
     [SerializeField] private float acceleration = 15f;
     [SerializeField] private float jumpBufferLimit = 0.2f;
 
@@ -24,12 +27,21 @@ public class PlayerController : MonoBehaviour
     private bool isJumpCondition;
     private float jumpBufferTimer;
 
+    private float walkingSpeed;
+    private float runningSpeed;
+    private float jumpSpeed;
     private void Awake()
     {
         psd = PlayerStateData.Singleton;
         pim = PlayerInputManager.Singleton;
         plc = GetComponent<PlayerLookingController>();
         rb = GetComponent<Rigidbody>();
+
+        walkingSpeed = defaultWalkingSpeed;
+        runningSpeed = defaultRunningSpeed;
+        jumpSpeed = defaultJumpSpeed;
+
+        PlayerPowerUps.OnOrangeBought += IncreaseSpeed;
     }
     
     private void Update()
@@ -127,5 +139,17 @@ public class PlayerController : MonoBehaviour
         if (movingSpeed > movingSpeedToReach) movingSpeed = movingSpeedToReach;
         
         isIncreasingSpeed = false;
+    }
+
+    private void IncreaseSpeed()
+    {
+        walkingSpeed = powerUptWalkingSpeed;
+        runningSpeed = powerUpRunningSpeed;
+        jumpSpeed = powerUpJumpSpeed;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPowerUps.OnOrangeBought -= IncreaseSpeed;
     }
 }

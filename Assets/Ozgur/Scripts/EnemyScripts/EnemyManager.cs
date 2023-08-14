@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +7,11 @@ public class EnemyManager : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private int health; //10 zombie - 15 skeleton
-    [SerializeField] private int knockbackForce = 2500;
+    [SerializeField] private int knockBackForce = 2500;
     [SerializeField] private float damageTakingAnimTime = 0.8f;
     public float attackPrepareTime; //1 zombie - 0.7 skeleton
+    [SerializeField] private int defaultTakenDamage = 3;
+    [SerializeField] private int powerUpTakenDamage = 5;
     
     [Header("Assign - Colliders")]
     [SerializeField] private Collider aliveCollider;
@@ -30,6 +33,8 @@ public class EnemyManager : MonoBehaviour
     private RaycastHit hit;
     private IEnumerator idleSoundCoroutine;
     private IEnumerator attackRoutine;
+    
+    private int takenDamage;
 
     public enum EnemyState
     {
@@ -52,6 +57,8 @@ public class EnemyManager : MonoBehaviour
         
         idleSoundCoroutine = HandleIdleSound();
         attackRoutine = EnterAttackState();
+        takenDamage = defaultTakenDamage;
+        PlayerPowerUps.OnChickenBought += IncreaseTakenDamage;
     }
 
     public void AttackPlayer()
@@ -116,12 +123,12 @@ public class EnemyManager : MonoBehaviour
         StopAttack();
         currentState = EnemyState.GettingDamage;
 
-        health -= 3;
+        health -= takenDamage;
         healthBar.value = health;
         if (CheckForDeath()) return;
         
         an.Play("EnemyGetHit");
-        rb.AddForce(knockbackForce * playerTransformForward, ForceMode.Acceleration);
+        rb.AddForce(knockBackForce * playerTransformForward, ForceMode.Acceleration);
         Invoke(nameof(ResetTakingDamage), damageTakingAnimTime);
     }
     
@@ -157,5 +164,15 @@ public class EnemyManager : MonoBehaviour
             aus.PlayOneShot(damageSound);
             return false;
         }
+    }
+
+    private void IncreaseTakenDamage()
+    {
+        takenDamage = powerUpTakenDamage;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPowerUps.OnChickenBought -= IncreaseTakenDamage;
     }
 }
