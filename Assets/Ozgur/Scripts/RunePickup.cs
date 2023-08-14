@@ -4,7 +4,6 @@ public class RunePickup : MonoBehaviour
 {
     [SerializeField] private bool isCollected;
     [SerializeField] private ParticleSystem runeParticle;
-    [SerializeField] private Material newSkybox;
     private AudioSource aus;
     private MeshRenderer mr;
 
@@ -14,11 +13,6 @@ public class RunePickup : MonoBehaviour
         mr = GetComponent<MeshRenderer>();
     }
     
-    private void ChangeSkybox()
-    {
-        RenderSettings.skybox = newSkybox; // Assign the new skybox material
-    }
-
     private void OnTriggerEnter(Collider col)
     {
         if (!col.CompareTag("Player")) return;
@@ -28,8 +22,7 @@ public class RunePickup : MonoBehaviour
         aus.Play();
         mr.enabled = false;
         runeParticle.Play();
-        ChangeSkybox();
-        
+         
         if (CompareTag("RedRune")) PlayerColorEnabler.EnableRedColor();
         if (CompareTag("GreenRune")) PlayerColorEnabler.EnableGreenColor();
         if (CompareTag("BlueRune")) PlayerColorEnabler.EnableBlueColor();
