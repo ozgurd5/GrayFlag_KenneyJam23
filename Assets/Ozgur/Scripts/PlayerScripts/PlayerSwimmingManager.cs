@@ -17,20 +17,22 @@ public class PlayerSwimmingManager : MonoBehaviour
     {
         psd = PlayerStateData.Singleton;
         rb = GetComponent<Rigidbody>();
+
+        GroundCheck.OnSwimmingEnter += PlaySplashSound;
     }
 
     private void Update()
     {
-        if (splashCondition && psd.isSwimming) PlaySplashSound();
         if (psd.isMoving && psd.isSwimming) PlaySwimmingSound();
-
-        if (!splashCondition) splashCondition = rb.velocity.y < splashVelocityLimit;
     }
 
     private void PlaySplashSound()
     {
-        splashSource.Play();
-        splashCondition = false;
+        if (rb.velocity.y < splashVelocityLimit)
+        {
+            splashSource.Play();
+            splashCondition = false;
+        }
     }
 
     private void PlaySwimmingSound()

@@ -32,8 +32,9 @@ public class PlayerLookingController : MonoBehaviour
         
         currentRotation.x = Mathf.Clamp(currentRotation.x, -90f, 90f);
         cameraTransform.localRotation = Quaternion.Euler(currentRotation);
-        
-        transform.localRotation = Quaternion.Euler(new Vector3(0f, currentRotation.y, 0f));
+
+        Vector3 rotationEuler = transform.localRotation.eulerAngles;
+        transform.localRotation = Quaternion.Euler(new Vector3(rotationEuler.x, currentRotation.y, rotationEuler.z));
     }
     
     private void CalculateMovingDirection()

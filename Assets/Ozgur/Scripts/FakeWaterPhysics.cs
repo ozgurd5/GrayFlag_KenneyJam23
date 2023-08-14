@@ -2,11 +2,14 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public class ShipWaterPhysics : MonoBehaviour
+public class FakeWaterPhysics : MonoBehaviour
 {
-    [Header("Assign")]
-    [SerializeField] private float movingAmount = 1f;
-    [SerializeField] private float movingTime = 1f;
+    [Header("IMPORTANT - SELECT IF PLAYER")] 
+    [SerializeField] private bool isPlayer;
+
+    [Header("Assign")] [SerializeField]
+    private float movingAmount; //ship: 1 - player: 0.5
+    [SerializeField] private float movingTime; //ship: 1 - player: 0.75
     [SerializeField] private float rotatingAmount = 1f;
     [SerializeField] private float rotatingSpeed = 1f;
 
@@ -18,37 +21,63 @@ public class ShipWaterPhysics : MonoBehaviour
     private bool isXRotating;
     private bool isZRotating;
     
-    private IEnumerator movingAnimation;
-    private IEnumerator xRotatingAnimation;
-    private IEnumerator zRotatingAnimation;
+    private Rigidbody playerRb;
+    private ExtraGravity playerEg;
 
+    private enum Axis
+    {
+        X,Z
+    }
+    
     private void Awake()
     {
-        movingAnimation = Move();
+        if (!isPlayer) return;
+        
+        playerRb = GetComponent<Rigidbody>();
+        playerEg = GetComponent<ExtraGravity>();
+
+        GroundCheck.OnSwimmingEnter += EnablePlayerSwimmingAnimation;
+        GroundCheck.OnSwimmingExit += DisablePlayerSwimmingAnimation;
     }
 
     private void Update()
     {
-        if (!isMoving)
-        {
-            movingAnimation = Move();
-            StartCoroutine(movingAnimation);
-        }
+        if (isPlayer) HandlePlayerSwimmingAnimations();
+        else PlaySwimmingAnimations();
+    }
+
+    private void HandlePlayerSwimmingAnimations()
+    {
+        if (!PlayerStateData.Singleton.isSwimming) return;
+        PlaySwimmingAnimations();
+    }
+
+    private void EnablePlayerSwimmingAnimation()
+    {
+        playerEg.enabled = false;
+        playerRb.useGravity = false;
+    }
+    
+    private void DisablePlayerSwimmingAnimation()
+    {
+        playerEg.enabled = true;
+        playerRb.useGravity = true;
+    }
+    
+    private void PlaySwimmingAnimations()
+    {
+        if (!isMoving) StartCoroutine(Move());
 
         if (!isXRotating)
         {
-            if (isXPositive) xRotatingAnimation = Rotate(false, Axis.X);
-            else xRotatingAnimation = Rotate(true, Axis.X);
-
-            StartCoroutine(xRotatingAnimation);
+            if (isXPositive) StartCoroutine(Rotate(false, Axis.X));
+            else StartCoroutine(Rotate(true, Axis.X));
         }
         
         if (!isZRotating)
         {
-            if (isZPositive) zRotatingAnimation = Rotate(false, Axis.Z);
-            else zRotatingAnimation = Rotate(true, Axis.Z);
-
-            StartCoroutine(zRotatingAnimation);
+            if (isZPositive) StartCoroutine(Rotate(false, Axis.Z));
+            else StartCoroutine(Rotate(true, Axis.Z));
         }
     }
 
@@ -63,11 +92,6 @@ public class ShipWaterPhysics : MonoBehaviour
         yield return new WaitForSeconds(movingTime);
         
         isMoving = false;
-    }
-
-    private enum Axis
-    {
-        X,Z
     }
     
     private IEnumerator Rotate(bool isPositive, Axis axis)
@@ -99,5 +123,13 @@ public class ShipWaterPhysics : MonoBehaviour
 
         if (axis == Axis.X) isXRotating = false;
         else isZRotating = false;
+    }
+
+    private void OnDestroy()
+    {
+        if (!isPlayer) return;
+        
+        GroundCheck.OnSwimmingEnter -= EnablePlayerSwimmingAnimation;
+        GroundCheck.OnSwimmingExit -= DisablePlayerSwimmingAnimation;
     }
 }

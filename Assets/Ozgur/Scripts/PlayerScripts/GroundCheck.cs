@@ -1,7 +1,12 @@
+using System;
 using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
+    public static event Action OnSwimmingEnter;
+    public static event Action OnSwimmingExit;
+    
+    
     [Header("Assign")]
     [SerializeField] private float radius = 1f;
     [SerializeField] private float offset = 0.6f;
@@ -13,6 +18,8 @@ public class GroundCheck : MonoBehaviour
     [SerializeField] private int collidedObjectNumber;
 
     private PlayerStateData psd;
+    
+    private bool previousIsSwimming;
 
     private void Awake()
     {
@@ -33,8 +40,18 @@ public class GroundCheck : MonoBehaviour
         
         psd.isGrounded = collidedObjectNumber > 1;
         if (psd.isSwimming) psd.isGrounded = false;
+
+        CheckEnterExitSwimming();
     }
 
+    private void CheckEnterExitSwimming()
+    {
+        if (previousIsSwimming && !psd.isSwimming) OnSwimmingExit?.Invoke();
+        else if (!previousIsSwimming && psd.isSwimming) OnSwimmingEnter?.Invoke();
+
+        previousIsSwimming = psd.isSwimming;
+    }
+    
     private void OnDrawGizmos()
     {
         if (!gizmos) return;
