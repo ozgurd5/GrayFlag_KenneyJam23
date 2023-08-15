@@ -15,20 +15,7 @@ public class PlayerColorEnabler : MonoBehaviour
     static bool yellowColorEnabled;
 
     //TODO: remove before build
-    private void Awake()
-    {
-        redColorEnabled = true;
-        greenColorEnabled = true;
-        blueColorEnabled = true;
-        yellowColorEnabled = true;
-    }
-    private void Start()
-    {
-        EnableBlueColor();
-        EnableYellowColor();
-        EnableGreenColor();
-        EnableRedColor();
-    }
+   
 
     public static void EnableRedColor()
     {
