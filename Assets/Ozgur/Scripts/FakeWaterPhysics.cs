@@ -7,15 +7,18 @@ public class FakeWaterPhysics : MonoBehaviour
     [Header("IMPORTANT - SELECT IF PLAYER")] 
     [SerializeField] private bool isPlayer;
 
-    [Header("Assign")] [SerializeField]
-    private float movingAmount; //ship: 1 - player: 0.5
-    [SerializeField] private float movingTime; //ship: 1 - player: 0.75
+    [Header("Assign")]
+    [SerializeField] private float movingAmount = 1f;
+    [SerializeField] private float movingTime = 1f;
     [SerializeField] private float rotatingAmount = 1f;
     [SerializeField] private float rotatingSpeed = 1f;
+    [SerializeField] private float swimPosition = 2f;
 
     [Header("Info - No Touch")]
     [SerializeField] private bool isXPositive;
     [SerializeField] private bool isZPositive;
+    [SerializeField] private bool canPlayerSwimAnimationPlay;
+    [SerializeField] private bool isPlayerSinking;
     
     private bool isMoving;
     private bool isXRotating;
@@ -23,7 +26,7 @@ public class FakeWaterPhysics : MonoBehaviour
     
     private Rigidbody playerRb;
     private ExtraGravity playerEg;
-
+    
     private enum Axis
     {
         X,Z
@@ -36,8 +39,8 @@ public class FakeWaterPhysics : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerEg = GetComponent<ExtraGravity>();
 
-        GroundCheck.OnSwimmingEnter += EnablePlayerSwimmingAnimation;
-        GroundCheck.OnSwimmingExit += DisablePlayerSwimmingAnimation;
+        PlayerSwimmingManager.OnSwimmingEnter += EnablePlayerSwimmingAnimation;
+        PlayerSwimmingManager.OnSwimmingExit += DisablePlayerSwimmingAnimation;
     }
 
     private void Update()
@@ -48,18 +51,41 @@ public class FakeWaterPhysics : MonoBehaviour
 
     private void HandlePlayerSwimmingAnimations()
     {
-        if (!PlayerStateData.Singleton.isSwimming) return;
-        PlaySwimmingAnimations();
+        if (canPlayerSwimAnimationPlay) PlaySwimmingAnimations();
     }
 
     private void EnablePlayerSwimmingAnimation()
     {
-        playerEg.enabled = false;
-        playerRb.useGravity = false;
+        StartCoroutine(SinkPlayer());
+    }
+
+    private IEnumerator SinkPlayer()
+    {
+        isPlayerSinking = true;
+        
+        while (isPlayerSinking)
+        {
+            if (transform.position.y <= swimPosition)
+            {
+                playerRb.velocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
+                playerEg.enabled = false;
+                playerRb.useGravity = false;
+
+                isPlayerSinking = false;
+                canPlayerSwimAnimationPlay = true;
+            }
+
+            else
+            {
+                yield return null;
+            }
+        }
     }
     
     private void DisablePlayerSwimmingAnimation()
     {
+        canPlayerSwimAnimationPlay = false;
+        
         playerEg.enabled = true;
         playerRb.useGravity = true;
     }
@@ -109,7 +135,7 @@ public class FakeWaterPhysics : MonoBehaviour
 
             if (!isPositive) angle = -angle;
 
-            Vector3 rotation = Vector3.zero;
+            Vector3 rotation;
             if (axis == Axis.X) rotation = new Vector3(angle, 0f, 0f);
             else rotation = new Vector3(0f, 0f, angle);
             
@@ -129,7 +155,7 @@ public class FakeWaterPhysics : MonoBehaviour
     {
         if (!isPlayer) return;
         
-        GroundCheck.OnSwimmingEnter -= EnablePlayerSwimmingAnimation;
-        GroundCheck.OnSwimmingExit -= DisablePlayerSwimmingAnimation;
+        PlayerSwimmingManager.OnSwimmingEnter -= EnablePlayerSwimmingAnimation;
+        PlayerSwimmingManager.OnSwimmingExit -= DisablePlayerSwimmingAnimation;
     }
 }

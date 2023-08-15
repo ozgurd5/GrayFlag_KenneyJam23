@@ -1179,7 +1179,6 @@ MonoBehaviour:
   normalSwimSource: {fileID: 2637279264968589862}
   fastSwimSource: {fileID: 1578971529020157866}
   splashVelocityLimit: -30
-  splashCondition: 0
 --- !u!82 &438370206042254084
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1484,12 +1483,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
-  movingAmount: 0.5
-  movingTime: 0.75
+  movingAmount: 1
+  movingTime: 1
   rotatingAmount: 1
   rotatingSpeed: 1
   isXPositive: 0
   isZPositive: 0
+  seconds: 0.1
 --- !u!1 &1084383491306380171
 GameObject:
   m_ObjectHideFlags: 0

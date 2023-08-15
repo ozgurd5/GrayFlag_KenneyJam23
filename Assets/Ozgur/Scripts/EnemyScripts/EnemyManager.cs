@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,11 +6,11 @@ public class EnemyManager : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private int health; //10 zombie - 15 skeleton
+    [SerializeField] private int defaultTakenDamage = 3;
+    [SerializeField] private int powerUpTakenDamage = 5;
     [SerializeField] private int knockBackForce = 2500;
     [SerializeField] private float damageTakingAnimTime = 0.8f;
     public float attackPrepareTime; //1 zombie - 0.7 skeleton
-    [SerializeField] private int defaultTakenDamage = 3;
-    [SerializeField] private int powerUpTakenDamage = 5;
     
     [Header("Assign - Colliders")]
     [SerializeField] private Collider aliveCollider;
@@ -57,6 +56,7 @@ public class EnemyManager : MonoBehaviour
         
         idleSoundCoroutine = HandleIdleSound();
         attackRoutine = EnterAttackState();
+        
         takenDamage = defaultTakenDamage;
         PlayerPowerUps.OnChickenBought += IncreaseTakenDamage;
     }

@@ -22,6 +22,7 @@ public class PlayerDamageManager : MonoBehaviour
     private PlayerStateData psd;
     private Rigidbody rb;
     private Slider healthBar;
+    
     private int health;
 
     private void Awake()
@@ -29,6 +30,7 @@ public class PlayerDamageManager : MonoBehaviour
         psd = PlayerStateData.Singleton;
         rb = GetComponent<Rigidbody>();
         healthBar = GetComponentInChildren<Slider>();
+        
         health = defaultHealth;
         PlayerPowerUps.OnFishBought += IncreaseHealth;
     }
@@ -64,14 +66,16 @@ public class PlayerDamageManager : MonoBehaviour
             
             aus.PlayOneShot(deathSound);
         }
+        
         else aus.PlayOneShot(damageSound);
     }
 
-    private void IncreaseHealth() //powerup
+    private void IncreaseHealth()
     {
         defaultHealth = powerUpHealth;
         health = powerUpHealth;
         healthBar.maxValue = powerUpHealth;
+        
         healthBar.value = powerUpHealth;
     }
 

@@ -9,49 +9,65 @@ public class PlayerColorEnabler : MonoBehaviour
     public static event Action OnYellowColorEnabled;
     public static event Action OnAllColorEnabled;
 
-    static bool redColorEnabled;
-    static bool greenColorEnabled; 
-    static bool blueColorEnabled ;
-    static bool yellowColorEnabled;
+    private static bool isRedColorEnabled;
+    private static bool isGreenColorEnabled; 
+    private static bool isBlueColorEnabled;
+    private static bool isYellowColorEnabled;
 
     //TODO: remove before build
-   
+    private void Start()
+    {
+        isRedColorEnabled = true;
+        isGreenColorEnabled = true;
+        isBlueColorEnabled = true;
+        isYellowColorEnabled = true;
+        
+        OnRedColorEnabled?.Invoke();
+        OnGreenColorEnabled?.Invoke();
+        OnBlueColorEnabled?.Invoke();
+        OnYellowColorEnabled?.Invoke();
+        OnAllColorEnabled?.Invoke();
+    }
 
     public static void EnableRedColor()
     {
         OnRedColorEnabled?.Invoke();
-        redColorEnabled = true;
-        if (redColorEnabled && greenColorEnabled && blueColorEnabled && yellowColorEnabled)
+        isRedColorEnabled = true;
+        
+        if (IsAllColorEnabled())
             OnAllColorEnabled?.Invoke();
     }
 
     public static void EnableGreenColor()
     {
         OnGreenColorEnabled?.Invoke();
-        greenColorEnabled = true;
-        if (redColorEnabled && greenColorEnabled && blueColorEnabled && yellowColorEnabled)
+        isGreenColorEnabled = true;
+        
+        if (IsAllColorEnabled())
             OnAllColorEnabled?.Invoke();
     }
 
     public static void EnableBlueColor()
     {
         OnBlueColorEnabled?.Invoke();
-        blueColorEnabled = true;
-        if (redColorEnabled && greenColorEnabled && blueColorEnabled && yellowColorEnabled)
+        isBlueColorEnabled = true;
+        
+        if (IsAllColorEnabled())
             OnAllColorEnabled?.Invoke();
     }
 
     public static void EnableYellowColor()
     {
         OnYellowColorEnabled?.Invoke();
-        yellowColorEnabled = true;
-        if (redColorEnabled && greenColorEnabled && blueColorEnabled && yellowColorEnabled)
+        isYellowColorEnabled = true;
+        
+        if (IsAllColorEnabled())
             OnAllColorEnabled?.Invoke();
     }
     
     public static bool IsAllColorEnabled()
     {
-        if(redColorEnabled &&  greenColorEnabled && blueColorEnabled && yellowColorEnabled)
+        if(isRedColorEnabled &&  isGreenColorEnabled && isBlueColorEnabled && isYellowColorEnabled)
             return true;
         else return false;
     }

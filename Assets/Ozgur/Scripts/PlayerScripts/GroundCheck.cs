@@ -1,12 +1,9 @@
-using System;
 using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    public static event Action OnSwimmingEnter;
-    public static event Action OnSwimmingExit;
-    
-    
+    public static int collidedObjectNumber { get; private set; }
+
     [Header("Assign")]
     [SerializeField] private float radius = 1f;
     [SerializeField] private float offset = 0.6f;
@@ -15,11 +12,9 @@ public class GroundCheck : MonoBehaviour
     
     [Header("Info - No Touch")]
     [SerializeField] private Collider[] colliders;
-    [SerializeField] private int collidedObjectNumber;
+    [SerializeField] private int collidedObjectNumberDebug;
 
     private PlayerStateData psd;
-    
-    private bool previousIsSwimming;
 
     private void Awake()
     {
@@ -29,27 +24,24 @@ public class GroundCheck : MonoBehaviour
     private void Update()
     {
         colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y - offset, transform.position.z), radius);
-        collidedObjectNumber = colliders.Length;
+        collidedObjectNumber = colliders.Length - 1; //must not include player
 
         psd.isSwimming = false;
         foreach (Collider col in colliders)
         {
             if (col.isTrigger) collidedObjectNumber--;
-            if (col.CompareTag("SeaGround")) psd.isSwimming = true;
+            if (col.CompareTag("Sea")) psd.isSwimming = true;
         }
         
-        psd.isGrounded = collidedObjectNumber > 1;
+        psd.isGrounded = collidedObjectNumber > 0;
         if (psd.isSwimming) psd.isGrounded = false;
 
-        CheckEnterExitSwimming();
+        UpdateDebugValue();
     }
 
-    private void CheckEnterExitSwimming()
+    private void UpdateDebugValue()
     {
-        if (previousIsSwimming && !psd.isSwimming) OnSwimmingExit?.Invoke();
-        else if (!previousIsSwimming && psd.isSwimming) OnSwimmingEnter?.Invoke();
-
-        previousIsSwimming = psd.isSwimming;
+        collidedObjectNumberDebug = collidedObjectNumber;
     }
     
     private void OnDrawGizmos()

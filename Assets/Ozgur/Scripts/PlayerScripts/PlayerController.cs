@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private float walkingSpeed;
     private float runningSpeed;
     private float jumpSpeed;
+    
     private void Awake()
     {
         psd = PlayerStateData.Singleton;
