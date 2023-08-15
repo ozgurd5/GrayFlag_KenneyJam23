@@ -31,5 +31,7 @@ public class UIAnimations : MonoBehaviour
     private void OnDestroy()
     {
         DOTween.KillAll();
+        EasterEggSceneManager.OnMushroomEvent -= EasterEggSceneManager_OnMushroomEvent;
     }
+
 }

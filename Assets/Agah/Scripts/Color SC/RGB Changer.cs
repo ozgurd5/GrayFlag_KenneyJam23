@@ -13,13 +13,10 @@ public class RGBChanger : MonoBehaviour
 
     float t = 0f;
 
-
     bool redColorEnabled;
     bool greenColorEnabled;
     bool blueColorEnabled;
-    bool yellowColorEnabled;
-    
-
+    bool yellowColorEnabled;    
 
     private void Awake()
     {

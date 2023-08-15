@@ -29,4 +29,9 @@ public class ShowExitTheGame : MonoBehaviour
         ShowExitText();
         Destroy(transform.parent.gameObject, exitDestroyTime);
     }
+
+    private void OnDestroy()
+    {
+        EasterEggSceneManager.OnMushroomEvent -= EasterEggSceneManager_OnMushroomEvent;
+    }
 }

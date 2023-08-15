@@ -10,7 +10,7 @@ public class CoinChestMushroomManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mushroomText;
     
     [Header("Info - No Touch")]
-    [SerializeField] private int coinNumber;
+    public int coinNumber;
     [SerializeField] private int chestNumber;
     [SerializeField] private int mushroomNumber;
 
@@ -36,7 +36,7 @@ public class CoinChestMushroomManager : MonoBehaviour
     public void IncreaseCoinNumber()
     {
         coinNumber += 3;
-        coinText.text = $"Coins: {coinNumber}";
+        coinText.text = $"{coinNumber}";
         _coinNumber = coinNumber;
     }
     
