@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1090413095447860589}
   - component: {fileID: 8982516539091746177}
   - component: {fileID: 1850641092274196410}
-  - component: {fileID: -41123807293822737}
   - component: {fileID: 1193725311472680983}
+  - component: {fileID: 1006905575207777245}
   m_Layer: 7
   m_Name: BEACH Small
   m_TagString: Untagged
@@ -85,28 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-41123807293822737
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718907214628608692}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3045174830671527193, guid: e460e8474f316d14b8464ff825d1d4b9, type: 3}
 --- !u!114 &1193725311472680983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,3 +105,25 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
   yellowMaterialIndexes: 00000000
+--- !u!64 &1006905575207777245
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718907214628608692}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
