@@ -26,4 +26,9 @@ public class SeeShroomsEaten : MonoBehaviour
     {
         shroomText.text = $"{eatenShroomAmount} Shrooms Eaten!!";
     }
+
+    private void OnDestroy()
+    {
+        EasterEggSceneManager.OnMushroomEvent -= EasterEggSceneManager_OnMushroomEvent;
+    }
 }
