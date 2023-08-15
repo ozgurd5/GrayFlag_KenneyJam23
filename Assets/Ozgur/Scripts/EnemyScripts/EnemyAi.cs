@@ -7,11 +7,13 @@ public class EnemyAi : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask playerLayer;
-    
+
     [Header("Assign - Values")]
-    [SerializeField] private float walkPointRange = 5f;
+    [SerializeField] private float walkPointRange = 10f;
     [SerializeField] private float sightRange = 20f;
     [SerializeField] private float attackRange = 7f;
+    [SerializeField] private float walkingSpeed; //zombie: 1 - skeleton: 7
+    [SerializeField] private float runningSpeed; //zombie: 8 - skeleton: 17
     
     private Transform player;
     private NavMeshAgent navMeshAgent;
@@ -64,6 +66,8 @@ public class EnemyAi : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f) isWalkPointSet = false;
         
         if (em.currentState != EnemyManager.EnemyState.Walking) em.EnterWalkingState();
+
+        navMeshAgent.speed = walkingSpeed;
     }
     
     private void SearchWalkPoint()
@@ -89,10 +93,12 @@ public class EnemyAi : MonoBehaviour
         
         navMeshAgent.isStopped = false;
         didEncounterPlayer = true;
-
         em.StopAttack();
+        
         if (em.currentState != EnemyManager.EnemyState.Running) em.EnterRunningState();
+        
         navMeshAgent.SetDestination(player.position);
+        navMeshAgent.speed = runningSpeed;
     }
 
     private void OnDrawGizmosSelected()

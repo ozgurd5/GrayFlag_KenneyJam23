@@ -49,21 +49,9 @@ public class CrosshairManager : MonoBehaviour
         CastRay();
         CastLongRay();
         GetEnemyHookPlace();
-        CalculateCrosshairHighlightCondition();
-
-        //Just like the mesh renderer example, we can not directly change crosshairImage.color.a
-        //We can only assign a color variable to it. Therefore we need a temporary color variable..
-        //..to make changes upon and finally assign it
         
-        temporaryColor = Color.white;
-        if (crosshairAttackCondition)
-        {
-            temporaryColor = Color.red;
-            temporaryColor.a = 1f;
-        }
-        else if (crosshairHighlightCondition) temporaryColor.a = 1f;
-        else temporaryColor.a = opacity;
-        crosshairImage.color = temporaryColor;
+        CalculateCrosshairHighlightCondition();
+        HighlightCrosshair();
 
         HandleDebugInfo();
     }
@@ -118,6 +106,23 @@ public class CrosshairManager : MonoBehaviour
         
         crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtHookTarget || isLookingAtChest || isLookingAtMushroom;
         crosshairAttackCondition = isLookingAtEnemy;
+    }
+
+    private void HighlightCrosshair()
+    {
+        //Just like the mesh renderer example, we can not directly change crosshairImage.color.a
+        //We can only assign a color variable to it. Therefore we need a temporary color variable..
+        //..to make changes upon and finally assign it
+        
+        temporaryColor = Color.white;
+        if (crosshairAttackCondition)
+        {
+            temporaryColor = Color.red;
+            temporaryColor.a = 1f;
+        }
+        else if (crosshairHighlightCondition) temporaryColor.a = 1f;
+        else temporaryColor.a = opacity;
+        crosshairImage.color = temporaryColor;
     }
 
     private void CheckForDeadEnemy()

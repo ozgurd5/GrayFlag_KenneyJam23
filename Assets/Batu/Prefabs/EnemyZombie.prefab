@@ -120,7 +120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5457875082519339948
 Transform:
   m_ObjectHideFlags: 0
@@ -227,7 +227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  knockbackForce: 2500
+  defaultTakenDamage: 3
+  powerUpTakenDamage: 5
+  knockBackForce: 2500
   damageTakingAnimTime: 0.8
   attackPrepareTime: 1
   aliveCollider: {fileID: 6137838205570440563}
@@ -292,7 +294,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  walkPointRange: 5
+  walkPointRange: 10
   sightRange: 20
   attackRange: 7
 --- !u!65 &899882065500666343
@@ -1115,6 +1117,7 @@ GameObject:
   - component: {fileID: 1494355882075984754}
   - component: {fileID: 4438810617778187879}
   - component: {fileID: 5584814927180110167}
+  - component: {fileID: 144840751640361232}
   m_Layer: 0
   m_Name: EnemyCanvas
   m_TagString: Untagged
@@ -1205,6 +1208,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &144840751640361232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2338230629553325280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a0067d44938844fa52c5a8c95d8a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2452207232544515533
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,39 +22,29 @@ public class FakeWaterPhysicsBase : MonoBehaviour
     {
         X,Z
     }
-    
-    protected IEnumerator Rotate(bool isPositive, Axis axis)
+
+    protected void PlaySwimmingAnimations()
     {
-        if (axis == Axis.X) isXRotating = true;
-        else isZRotating = true;
-        
-        float totalAngle = 0;
-        while (totalAngle <= rotatingAmount)
+        if (!isMoving)
         {
-            float angle = rotatingSpeed * Time.deltaTime;
-            totalAngle += angle;
-
-            if (totalAngle > rotatingAmount) angle -= totalAngle - rotatingAmount;
-
-            if (!isPositive) angle = -angle;
-
-            Vector3 rotation;
-            if (axis == Axis.X) rotation = new Vector3(angle, 0f, 0f);
-            else rotation = new Vector3(0f, 0f, angle);
-            
-            transform.Rotate(rotation);
-
-            yield return null;
+            if (isMovingUp) StartCoroutine(Move(false));
+            else StartCoroutine(Move(true));
         }
-
-        if (axis == Axis.X) isXPositive = isPositive;
-        else isZPositive = isPositive;
-
-        if (axis == Axis.X) isXRotating = false;
-        else isZRotating = false;
+        
+        if (!isXRotating)
+        {
+            if (isXPositive) StartCoroutine(Rotate(false, Axis.X));
+            else StartCoroutine(Rotate(true, Axis.X));
+        }
+    
+        if (!isZRotating)
+        {
+            if (isZPositive) StartCoroutine(Rotate(false, Axis.Z));
+            else StartCoroutine(Rotate(true, Axis.Z));
+        }
     }
 
-    protected virtual IEnumerator Move(bool isUp)
+    private IEnumerator Move(bool isUp)
     {
         isMoving = true;
 
@@ -84,25 +74,35 @@ public class FakeWaterPhysicsBase : MonoBehaviour
     {
         return (float)-(Math.Cos(Math.PI * x) - 1) / 2;
     }
-
-    protected void PlaySwimmingAnimations()
-    {
-        if (!isMoving)
-        {
-            if (isMovingUp) StartCoroutine(Move(false));
-            else StartCoroutine(Move(true));
-        }
-        
-        if (!isXRotating)
-        {
-            if (isXPositive) StartCoroutine(Rotate(false, Axis.X));
-            else StartCoroutine(Rotate(true, Axis.X));
-        }
     
-        if (!isZRotating)
+    private IEnumerator Rotate(bool isPositive, Axis axis)
+    {
+        if (axis == Axis.X) isXRotating = true;
+        else isZRotating = true;
+        
+        float totalAngle = 0;
+        while (totalAngle <= rotatingAmount)
         {
-            if (isZPositive) StartCoroutine(Rotate(false, Axis.Z));
-            else StartCoroutine(Rotate(true, Axis.Z));
+            float angle = rotatingSpeed * Time.deltaTime;
+            totalAngle += angle;
+
+            if (totalAngle > rotatingAmount) angle -= totalAngle - rotatingAmount;
+
+            if (!isPositive) angle = -angle;
+
+            Vector3 rotation;
+            if (axis == Axis.X) rotation = new Vector3(angle, 0f, 0f);
+            else rotation = new Vector3(0f, 0f, angle);
+            
+            transform.Rotate(rotation);
+
+            yield return null;
         }
+
+        if (axis == Axis.X) isXPositive = isPositive;
+        else isZPositive = isPositive;
+
+        if (axis == Axis.X) isXRotating = false;
+        else isZRotating = false;
     }
 }
