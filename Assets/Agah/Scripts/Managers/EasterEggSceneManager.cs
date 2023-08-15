@@ -18,12 +18,12 @@ public class EasterEggSceneManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CallMushroomEvent());
-        //InvokeMushroomEvent();
+        //InvokeMushroomEvent(); 
     }
     [Tooltip("Invokes the mushroom event with the int object being the number of mushrooms collected.")]
     public void InvokeMushroomEvent()
     {
-        OnMushroomEvent?.Invoke(mushroomCollected); //TODO 5'i sil, commenti kaldýr.
+        OnMushroomEvent?.Invoke(mushroomCollected);
     }
     IEnumerator CallMushroomEvent() // TODO: Build öncesi sil ve Start'a gerekli fonksiyonu koy.
     {

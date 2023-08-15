@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class EasterEggSceneLoader : MonoBehaviour
 {
-    [SerializeField]Button buttonYes;
-    [SerializeField]Button buttonNo;
     void Start()
     {
         StartCoroutine(Wait());
@@ -19,8 +17,8 @@ public class EasterEggSceneLoader : MonoBehaviour
         DOTween.KillAll();
         ChangeSceneToEasterEgg();
     }
-    void ChangeSceneToEasterEgg()
+    public void ChangeSceneToEasterEgg()
     {
-        SceneManager.LoadScene("Easter Egg"); 
+        SceneManager.LoadScene("Easter Egg");
     }
-}
+} 
