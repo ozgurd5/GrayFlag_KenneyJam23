@@ -8,8 +8,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private GameObject dialogueObject;
     [SerializeField] private GameObject thinkingObject;
     [SerializeField] private GameObject playerCanvas;    // Reference to PlayerCanvas
-    [SerializeField] private GameObject overlayCanvas;   // Reference to OverlayCanvas
-    
+
     //[SerializeField] private GameObject sword;           // Reference to the sword GameObject
     //[SerializeField] private GameObject hookGun;         // Reference to the hook gun GameObject
     
@@ -35,7 +34,6 @@ public class DialogueController : MonoBehaviour
         //hookGun.SetActive(false);
         
         playerCanvas.SetActive(false);
-        overlayCanvas.SetActive(false);
     }
 
     private void OnTriggerExit(Collider col)
@@ -52,6 +50,5 @@ public class DialogueController : MonoBehaviour
         //hookGun.SetActive(true);
         
         playerCanvas.SetActive(true);
-        overlayCanvas.SetActive(true);
     }
 }
