@@ -10,6 +10,7 @@ public class AdaPositionManager : MonoBehaviour
     [SerializeField] Transform adaTargetTr;
     [SerializeField] float moveTime;
     [Header("Assing Main Camera Here")][SerializeField] Camera mainCamera;
+    [SerializeField] CameraManager cameraManager;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class AdaPositionManager : MonoBehaviour
     private void Start()
     {
         Debug.Log(PlayerColorEnabler.IsAllColorEnabled());
-        StartCoroutine(Wait()); 
+        StartCoroutine(WaitForHandleIsland()); 
     }
 
     //Bu Kodda Yapýlacaklar TODO:
@@ -27,10 +28,16 @@ public class AdaPositionManager : MonoBehaviour
     //HandleIsland() FONKSÝYONU OnAllColorEnabled() ÝÇÝNE KONACAK.
 
 
-    IEnumerator Wait()
+    IEnumerator WaitForHandleIsland() //TODO Bu enumerator silinecek ve bunun yerine event dinlenerek çalýþýlacak.
     {
         yield return new WaitForSeconds(3);
         HandleIsland();
+    }
+
+    IEnumerator WaitForIslandAnim()
+    {
+        yield return new WaitForSeconds(11);
+        cameraManager.SwitchCameras(cameraManager.playerCamera);
     }
     private void OnAllColorEnabled()
     {
@@ -52,6 +59,9 @@ public class AdaPositionManager : MonoBehaviour
     public void PlayCutscene() 
     {
         Debug.Log("PlayCutscene()");
+        cameraManager.SwitchCameras(cameraManager.islandCamera);
+        StartCoroutine(WaitForIslandAnim());
+        
     }
 
     public void HandleIsland() 
