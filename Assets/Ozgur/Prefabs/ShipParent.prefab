@@ -3659,7 +3659,7 @@ GameObject:
   - component: {fileID: 2443414599970280471}
   - component: {fileID: 4731827178071223539}
   - component: {fileID: 6181502022034643799}
-  - component: {fileID: 6245509829702341648}
+  - component: {fileID: 2828090238473119400}
   m_Layer: 0
   m_Name: ShipParent
   m_TagString: Ship
@@ -3889,7 +3889,7 @@ MonoBehaviour:
   foamParticles: {fileID: 1701972996595384919}
   maxVelocity: 60
   maxEmissionRate: 30
---- !u!114 &6245509829702341648
+--- !u!114 &2828090238473119400
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3898,15 +3898,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6200755057779098840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77cc12a7c70bbf4b98a5ecdc152cdd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a187be97854aec459c18bf11d323f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingAmount: 1
-  movingTime: 1
-  rotatingAmount: 1
-  rotatingSpeed: 1
-  isXPositive: 0
-  isZPositive: 0
 --- !u!1 &6411689019263451598
 GameObject:
   m_ObjectHideFlags: 0
