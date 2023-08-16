@@ -15,6 +15,9 @@ public class PlayerInteractionManager : MonoBehaviour
     private ShipController sc;
     private ChestManager cm;
     private MushroomManager mm;
+    
+    private InteractionTextManager itm;
+    private InteractionTextManager previousItm;
 
     private void Awake()
     {
@@ -30,11 +33,45 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void Update()
     {
+        HandleInteractionText();
+        
         if (!pim.isInteractKeyDown) return;
         
         HandleShipInteraction();
         HandleChestInteraction();
         HandleMushroomInteraction();
+    }
+    
+    private void HandleInteractionText()
+    {
+        if (CrosshairManager.isLookingAtChest || CrosshairManager.isLookingAtMushroom || CrosshairManager.isLookingAtShipWheel)
+        {
+            if (CrosshairManager.isLookingAtChest)
+                itm = CrosshairManager.crosshairHit.transform.root.GetComponent<InteractionTextManager>();
+            else
+                itm = CrosshairManager.crosshairHit.collider.GetComponent<InteractionTextManager>();
+            
+            itm.OpenInteractionText();
+        }
+        
+        else if (itm)
+        {
+            itm.CloseInteractionText();
+        }
+        
+        //When we look another interactable while looking an interactable, without looking to any other object, interaction..
+        //..text of the first interactable stays open because we never triggered the else if above because we have never..
+        //..looked anywhere other than an interactable. If statement above stayed true while we look from one interactable..
+        //..to another. Anyways, if statement below this line and holding the data of the previousItm fix this issue
+        if (itm && previousItm)
+        {
+            if (itm.id != previousItm.id)
+            {
+                previousItm.CloseInteractionText();
+            }
+        }
+
+        previousItm = itm;
     }
 
     private void HandleShipInteraction()
@@ -71,10 +108,11 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void HandleChestInteraction()
     {
-        if (!CrosshairManager.isLookingAtChest) return;
-        cm = CrosshairManager.crosshairHit.collider.GetComponent<ChestManager>();
-        if (!cm) cm = CrosshairManager.crosshairHit.transform.parent.GetComponent<ChestManager>(); //if lid is selected
-        if (!cm.isChestOpened) cm.OpenChest();
+        if (!CrosshairManager.isLookingAtChest || cm.isChestOpened) return;
+        
+        cm = CrosshairManager.crosshairHit.transform.root.GetComponent<ChestManager>(); //lid can be selected
+        itm.CloseInteractionText();
+        cm.OpenChest();
     }
 
     private void HandleMushroomInteraction()

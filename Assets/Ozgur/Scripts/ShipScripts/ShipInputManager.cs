@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class ShipInputManager : MonoBehaviour
 {
-    [Header("Sensitivity")]
-    public float mouseSensitivity = 0.2f;
-
     [Header("Info - No touch")]
     public Vector2 lookInput;
     public float rotateInput;
@@ -22,8 +19,8 @@ public class ShipInputManager : MonoBehaviour
     void Update()
     {
         lookInput = pia.Ship.Look.ReadValue<Vector2>();
-        lookInput.x *= mouseSensitivity;
-        lookInput.y *= mouseSensitivity;
+        lookInput.x *= PlayerInputManager.Singleton.mouseSensitivity;
+        lookInput.y *= PlayerInputManager.Singleton.mouseSensitivity;
 
         isSailUpKeyDown = pia.Ship.SailUp.WasPressedThisFrame();
         isSailDownKeyDown = pia.Ship.SailDown.WasPressedThisFrame();
