@@ -862,7 +862,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410474728315385331}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e8574d9ef4187a4a898feb60fcd5f5f, type: 3}
   m_Name: 
@@ -872,7 +872,6 @@ MonoBehaviour:
   maxSpeedXZ: 50
   maxSpeedY: 50
   aus: {fileID: 4742588102845881557}
-  collisionTimerLimit: 0
   flyingMovingSpeed: 0
   isIncreasingSpeed: 0
 --- !u!114 &1578110214120312660
@@ -882,7 +881,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410474728315385331}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 816fd0ab6365dc147aa163fa331b9a38, type: 3}
   m_Name: 
@@ -2631,6 +2630,7 @@ MonoBehaviour:
   enemyLong: 0
   chest: 0
   mushroom: 0
+  colorAltar: 0
   lookName: 
 --- !u!114 &2874619748495816332
 MonoBehaviour:
