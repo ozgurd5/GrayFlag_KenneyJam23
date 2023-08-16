@@ -334,17 +334,17 @@ PrefabInstance:
     - target: {fileID: 3867957945215238531, guid: 00318b93beb93eb49b4bfb8ac4e3570b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -251.03
+      value: 620
       objectReference: {fileID: 0}
     - target: {fileID: 3867957945215238531, guid: 00318b93beb93eb49b4bfb8ac4e3570b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -165.6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3867957945215238531, guid: 00318b93beb93eb49b4bfb8ac4e3570b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -691.8
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 3867957945215238531, guid: 00318b93beb93eb49b4bfb8ac4e3570b,
         type: 3}
@@ -3318,12 +3318,12 @@ PrefabInstance:
     - target: {fileID: 2375243323954703284, guid: 73f0262d885f3b949a4b539bbddfb567,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.017853426
+      value: -0.017853403
       objectReference: {fileID: 0}
     - target: {fileID: 2375243323954703284, guid: 73f0262d885f3b949a4b539bbddfb567,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0043627787
+      value: 0.0043627736
       objectReference: {fileID: 0}
     - target: {fileID: 2375243323954703284, guid: 73f0262d885f3b949a4b539bbddfb567,
         type: 3}
@@ -5554,84 +5554,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2144477150}
-    - target: {fileID: 168703278690088450, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 168703278690088450, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 348fe4ced1bb03c41b931249f519f535, type: 3}
-    - target: {fileID: 168703278690088450, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 168703278690088450, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
-        type: 2}
     - target: {fileID: 1295392088035918211, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 443761627}
-    - target: {fileID: 1438751715845955808, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b0fd74335ef9c714d89ce50a2bba57af, type: 2}
-    - target: {fileID: 2116786586502503248, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116786586502503248, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 348fe4ced1bb03c41b931249f519f535, type: 3}
-    - target: {fileID: 2116786586502503248, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116786586502503248, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
-        type: 2}
     - target: {fileID: 2627834661199561956, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 967593732}
-    - target: {fileID: 2684412110758758894, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684412110758758894, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 348fe4ced1bb03c41b931249f519f535, type: 3}
-    - target: {fileID: 2684412110758758894, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2684412110758758894, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
-        type: 2}
     - target: {fileID: 2936884111284859483, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
         type: 3}
       propertyPath: m_Mesh
@@ -5652,27 +5584,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1031928264}
-    - target: {fileID: 4759059135254176196, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759059135254176196, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 348fe4ced1bb03c41b931249f519f535, type: 3}
-    - target: {fileID: 4759059135254176196, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759059135254176196, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 4003078087753723131, guid: 76ae86a7cbe12144a96c5d7a4f66e8f0,
-        type: 2}
     - target: {fileID: 4880358572004317153, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
         type: 3}
       propertyPath: m_Mesh
@@ -5688,16 +5599,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1031928264}
-    - target: {fileID: 7311781867702407781, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueRuneVisual
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985056342958731137, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e6600f01eb036d345af689780b7effe7, type: 2}
     - target: {fileID: 8167275219290094361, guid: 8888a8e5a6d6b284a81a3bd6cf8f4f28,
         type: 3}
       propertyPath: m_Mesh
@@ -7385,6 +7286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089526321448585766, guid: 7f137b39ddfe24747ae9ceeb550c426e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5146392591530446163, guid: 7f137b39ddfe24747ae9ceeb550c426e,
         type: 3}
