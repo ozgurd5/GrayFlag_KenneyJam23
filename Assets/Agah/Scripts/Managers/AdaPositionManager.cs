@@ -36,7 +36,7 @@ public class AdaPositionManager : MonoBehaviour
         PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.PauseMenuState;
         
         adaObject.transform.DOMoveY(adaTargetTr.position.y,moveTime);
-        cameraManager.SwitchCameras(cameraManager.islandCamera);
+        cameraManager.SwitchCameras(cameraManager.islandShakeCamera);
         yield return new WaitForSeconds(10);
         
         cameraManager.SwitchCameras(cameraManager.playerCamera);

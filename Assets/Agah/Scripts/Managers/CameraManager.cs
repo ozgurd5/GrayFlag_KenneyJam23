@@ -7,7 +7,19 @@ public class CameraManager : MonoBehaviour
     public CinemachineVirtualCamera[] cameras;
 
     public CinemachineVirtualCamera playerCamera;
-    public CinemachineVirtualCamera islandCamera;
+    public CinemachineVirtualCamera islandShakeCamera;
+    [Header("Final Cutscene Cameras")]
+    public CinemachineVirtualCamera ada1Camera;
+    public CinemachineVirtualCamera ada2Camera;
+    public CinemachineVirtualCamera ada3Camera;
+    public CinemachineVirtualCamera ada4Camera;
+    [Tooltip("Bu kamera 5. Adanýn FÝNAL cutscene'i için, yerden çýkýþ kamerasý 'islandShakeCamera'")]
+    public CinemachineVirtualCamera ada5Camera; //Bu kamera final cutscene için, karýþtýrma!
+
+
+
+
+
 
     public CinemachineVirtualCamera startCam;
     private CinemachineVirtualCamera currentCam;
