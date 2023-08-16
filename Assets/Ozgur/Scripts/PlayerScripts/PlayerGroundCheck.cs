@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GroundCheck : MonoBehaviour
+public class PlayerGroundCheck : MonoBehaviour
 {
     public static int collidedObjectNumber { get; private set; }
 

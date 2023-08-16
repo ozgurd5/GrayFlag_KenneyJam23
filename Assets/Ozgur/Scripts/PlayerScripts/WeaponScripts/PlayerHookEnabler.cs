@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerHookEnabler : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer hookGunMeshRenderer;
+    private MeshRenderer hookGunMeshRenderer;
     private PlayerHookController hookController;
     private PlayerHookGunAnimationManager hookGunAnimationManager;
     

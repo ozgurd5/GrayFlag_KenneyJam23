@@ -17,16 +17,16 @@ public class PlayerColorEnabler : MonoBehaviour
     //TODO: remove before build
     private void Start()
     {
-        isRedColorEnabled = true;
-        isGreenColorEnabled = true;
-        isBlueColorEnabled = true;
-        isYellowColorEnabled = true;
-        
-        OnRedColorEnabled?.Invoke();
-        OnGreenColorEnabled?.Invoke();
-        OnBlueColorEnabled?.Invoke();
-        OnYellowColorEnabled?.Invoke();
-        OnAllColorEnabled?.Invoke();
+        //isRedColorEnabled = true;
+        //isGreenColorEnabled = true;
+        //isBlueColorEnabled = true;
+        //isYellowColorEnabled = true;
+        //
+        //OnRedColorEnabled?.Invoke();
+        //OnGreenColorEnabled?.Invoke();
+        //OnBlueColorEnabled?.Invoke();
+        //OnYellowColorEnabled?.Invoke();
+        //OnAllColorEnabled?.Invoke();
     }
 
     public static void EnableRedColor()
