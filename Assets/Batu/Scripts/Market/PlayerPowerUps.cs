@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerPowerUps : MonoBehaviour
 {
-    //public static event Action OnHookGunBought;
+    public static event Action OnHookGunBought;
     public static event Action OnFishBought;
     public static event Action OnOrangeBought;
     public static event Action OnChickenBought;
@@ -12,10 +12,10 @@ public class PlayerPowerUps : MonoBehaviour
 
     private void Start()
     {
-        PoorGuyShake.Instance.ShakeCamera(0f, .0f);
+        MoneyCameraShake.Instance.ShakeCamera(0f, .0f);
     }
 
-    // int hookGunPrice = 3;
+    public int hookGunPrice = 3;
     public int fishPrice = 3;
     public int orangePrice = 6;
     public int chickenPrice = 4;
@@ -35,19 +35,20 @@ public class PlayerPowerUps : MonoBehaviour
         return isEnough;
     }
     
-    /*public void BuyHookGun()
+    public void BuyHookGun()
     {
         if(IsCoinEnough(hookGunPrice))
         {
             OnHookGunBought?.Invoke();
+            
             Debug.Log("HookGunBought");
         }
         else
         {
-            PoorGuyShake.Instance.ShakeCamera(5f,.1f);
-            Debug.Log("fakirküpek");
+            MoneyCameraShake.Instance.ShakeCamera(5f,.1f);
+            Debug.Log("notEnoughMoneyForHookGun");
         }
-    }*/
+    }
 
     public void BuyFish()
     {
@@ -58,7 +59,7 @@ public class PlayerPowerUps : MonoBehaviour
         }
         else
         {
-            PoorGuyShake.Instance.ShakeCamera(5f,.1f);
+            MoneyCameraShake.Instance.ShakeCamera(5f,.1f);
             Debug.Log("notEnoughMoneyForFish");
         }
     }
@@ -72,7 +73,7 @@ public class PlayerPowerUps : MonoBehaviour
         }
         else
         {
-            PoorGuyShake.Instance.ShakeCamera(5f,.1f);
+            MoneyCameraShake.Instance.ShakeCamera(5f,.1f);
             Debug.Log("notEnoughMoneyForOrange");
         }
     }
@@ -86,7 +87,7 @@ public class PlayerPowerUps : MonoBehaviour
         }
         else
         {
-            PoorGuyShake.Instance.ShakeCamera(5f,.1f);
+            MoneyCameraShake.Instance.ShakeCamera(5f,.1f);
             Debug.Log("notEnoughMoneyForChicken");
         }
     }

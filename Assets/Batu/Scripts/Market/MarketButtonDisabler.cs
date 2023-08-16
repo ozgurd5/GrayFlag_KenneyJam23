@@ -11,14 +11,12 @@ public class MarketButtonDisabler : MonoBehaviour
     [SerializeField] private GameObject fishButton;
     [SerializeField] private GameObject orangeButton;
     [SerializeField] private GameObject chickenButton;
-    //[SerializeField] private GameObject hookGunButton;
 
     private void Awake()
     {
         PlayerPowerUps.OnFishBought += DisableFishButton;
         PlayerPowerUps.OnOrangeBought += DisableOrangeButton;
         PlayerPowerUps.OnChickenBought += DisableChickenButton;
-        //PlayerPowerUps.OnHookGunBought += DisableHookGunButton;
     }
     
     private void DisableFishButton()
@@ -36,17 +34,11 @@ public class MarketButtonDisabler : MonoBehaviour
         chickenButton.SetActive(false);
     }
     
-    /*private void DisableHookGunButton()
-    {
-        hookGunButton.SetActive(false);
-    }*/
-
     private void OnDestroy()
     {
         PlayerPowerUps.OnFishBought -= DisableFishButton;
         PlayerPowerUps.OnOrangeBought -= DisableOrangeButton;
         PlayerPowerUps.OnChickenBought -= DisableChickenButton;
-        //PlayerPowerUps.OnHookGunBought -= DisableHookGunButton;
     }
 }
 

@@ -1,9 +1,9 @@
 using UnityEngine;
 using Cinemachine;
 
-public class PoorGuyShake : MonoBehaviour
+public class MoneyCameraShake : MonoBehaviour
 {
-    public static PoorGuyShake Instance { get; private set; }
+    public static MoneyCameraShake Instance { get; private set; }
     private CinemachineVirtualCamera cinemachineVirtualCamera;
     private float shakeTimer;
     private float shakeTimerTotal;
