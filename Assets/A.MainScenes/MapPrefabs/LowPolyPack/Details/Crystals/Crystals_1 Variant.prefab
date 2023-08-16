@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6814438763532739699}
   - component: {fileID: 8426839474124654599}
   - component: {fileID: 3107250612913631131}
+  - component: {fileID: 4255427540234482322}
   m_Layer: 0
   m_Name: Crystals_1 Variant
   m_TagString: Untagged
@@ -106,3 +107,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5613289306586048733, guid: 394fcce1c1173ea49a5e8906b0f858b8, type: 3}
+--- !u!114 &4255427540234482322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010274231737051877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855ad1a9227625d4095c9743e260135d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTime: 3
+  myColors:
+  - {r: 0, g: 0, b: 1, a: 0}
+  - {r: 0, g: 1, b: 0, a: 0}
+  - {r: 1, g: 0.04705883, b: 0.039215688, a: 0}

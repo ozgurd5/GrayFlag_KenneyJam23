@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3564166262501366778}
   - component: {fileID: 7253171926941049493}
   - component: {fileID: 5875646709486120007}
-  m_Layer: 0
+  - component: {fileID: 7528227256094363517}
+  m_Layer: 8
   m_Name: Crystals_3 Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -87.17651, y: -2.9302144, z: 106.866844}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0afac88e2e40694438063c020aa496ee, type: 2}
+  - {fileID: 2100000, guid: 7afd70dcb7461f748a6a5769e9f7d977, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +76,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -106,3 +107,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 927268763840450624, guid: 5046d945f7313124685e2171e96a7a41, type: 3}
+--- !u!114 &7528227256094363517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202587685622987407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855ad1a9227625d4095c9743e260135d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTime: 3
+  myColors:
+  - {r: 0, g: 0, b: 1, a: 0}
+  - {r: 0, g: 1, b: 0, a: 0}
+  - {r: 1, g: 0.04705883, b: 0.039215688, a: 0}
