@@ -12,6 +12,7 @@ public class MarketButtonDisabler : MonoBehaviour
     [SerializeField] private GameObject orangeButton;
     [SerializeField] private GameObject chickenButton;
 
+
     private void Awake()
     {
         PlayerPowerUps.OnFishBought += DisableFishButton;
