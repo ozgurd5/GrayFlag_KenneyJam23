@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 5516371393828964515}
   - component: {fileID: 783378629214106968}
   - component: {fileID: 5365519363255723731}
+  - component: {fileID: 2245726873069336919}
   m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
@@ -466,15 +467,15 @@ RectTransform:
   m_GameObject: {fileID: 1042799196620146972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.15, y: 1.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8716622862258350028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.25}
-  m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 7, y: 0}
+  m_SizeDelta: {x: 160, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &783378629214106968
 CanvasRenderer:
@@ -504,7 +505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38e68b30cf1925f438cf465d953b35a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bb7f3296a9d7a54896901a77bf681cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -514,6 +515,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2245726873069336919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042799196620146972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633870d5e3d915a48b7e2e917c35216e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstColor: 1
+  firstColorOnlySprite: {fileID: 21300000, guid: 50c7508c30702814faab6eb9917b4523,
+    type: 3}
+  secondColor: 0
+  secondColorOnlySprite: {fileID: 0}
+  allColorsSprite: {fileID: 0}
+  isFirstColorEnabled: 0
+  isSecondColorEnabled: 0
 --- !u!1 &1157141985990083437
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 5, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1219353833580806285
@@ -1042,6 +1063,7 @@ GameObject:
   - component: {fileID: 7201956008798709444}
   - component: {fileID: 7839745748878709517}
   - component: {fileID: 4300808337111454226}
+  - component: {fileID: 6080449052596776934}
   m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
@@ -1065,7 +1087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -5.2298, y: 0}
+  m_AnchoredPosition: {x: 5.2298, y: 0}
   m_SizeDelta: {x: 20.4594, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7839745748878709517
@@ -1096,7 +1118,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6cde67e47a9a2824fb0e1161a4c8de47, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2b83cc040ba5c46b74fd12af5b8033, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1106,6 +1128,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6080449052596776934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2935095286628632973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633870d5e3d915a48b7e2e917c35216e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstColor: 1
+  firstColorOnlySprite: {fileID: 21300000, guid: 99e3f663645a66b49bf21ff6a756b741,
+    type: 3}
+  secondColor: 0
+  secondColorOnlySprite: {fileID: 0}
+  allColorsSprite: {fileID: 0}
+  isFirstColorEnabled: 0
+  isSecondColorEnabled: 0
 --- !u!1 &3285519377610929995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,7 +2434,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 7201956008798709444}
   m_HandleRect: {fileID: 0}
-  m_Direction: 1
+  m_Direction: 0
   m_MinValue: 1
   m_MaxValue: 15
   m_WholeNumbers: 1

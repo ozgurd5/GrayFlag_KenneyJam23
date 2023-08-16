@@ -8,12 +8,6 @@ public class PlayerPowerUps : MonoBehaviour
     public static event Action OnOrangeBought;
     public static event Action OnChickenBought;
     
-    
-
-    private void Start()
-    {
-        MoneyCameraShake.Instance.ShakeCamera(0f, .0f);
-    }
 
     public int hookGunPrice = 3;
     public int fishPrice = 3;

@@ -13,21 +13,18 @@ public class PlayerColorEnabler : MonoBehaviour
     private static bool isGreenColorEnabled; 
     private static bool isBlueColorEnabled;
     private static bool isYellowColorEnabled;
-
-    //TODO: remove before build
+    
+    #if UNITY_EDITOR
     private void Start()
     {
-        //isRedColorEnabled = true;
-        //isGreenColorEnabled = true;
-        //isBlueColorEnabled = true;
-        //isYellowColorEnabled = true;
-        //
-        //OnRedColorEnabled?.Invoke();
-        //OnGreenColorEnabled?.Invoke();
-        //OnBlueColorEnabled?.Invoke();
-        //OnYellowColorEnabled?.Invoke();
-        //OnAllColorEnabled?.Invoke();
+        //EnableColorsAutomatically();
     }
+    
+    private void Update()
+    {
+        EnableColorsManually();
+    }
+    #endif
 
     public static void EnableRedColor()
     {
@@ -70,5 +67,21 @@ public class PlayerColorEnabler : MonoBehaviour
         if(isRedColorEnabled &&  isGreenColorEnabled && isBlueColorEnabled && isYellowColorEnabled)
             return true;
         else return false;
+    }
+
+    private void EnableColorsAutomatically()
+    {
+        EnableRedColor();
+        EnableGreenColor();
+        EnableBlueColor();
+        EnableYellowColor();
+    }
+
+    private void EnableColorsManually()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) EnableRedColor();
+        else if (Input.GetKeyDown(KeyCode.G)) EnableGreenColor();
+        else if (Input.GetKeyDown(KeyCode.B)) EnableBlueColor();
+        else if (Input.GetKeyDown(KeyCode.Y)) EnableYellowColor();
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8165617569662775200}
   - component: {fileID: 1781620175601194751}
   - component: {fileID: 1663111727322628555}
+  - component: {fileID: 1317152867657915757}
   m_Layer: 0
   m_Name: bottleLarge
   m_TagString: Untagged
@@ -27,10 +28,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4330150997927693095}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 233.84612, y: 14.874998, z: -929.69196}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7999997, y: 0.8, z: 0.7999997}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,3 +106,25 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: 1c8dc9092de938946a5d6e7f6ce0a7e1, type: 2}
   yellowMaterialIndexes: 01000000
+--- !u!64 &1317152867657915757
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330150997927693095}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3142160206416209169, guid: 155a10b8696451240b4f9e6b8342c55c, type: 3}

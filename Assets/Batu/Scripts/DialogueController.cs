@@ -25,6 +25,9 @@ public class DialogueController : MonoBehaviour
         thinkingObject.SetActive(true);
         isOpen = true;
         dialogue.StartDialogue();
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         
         playerCanvas.SetActive(false);
     }
@@ -37,6 +40,9 @@ public class DialogueController : MonoBehaviour
         thinkingObject.SetActive(false);
         isOpen = false;
         dialogue.ResetDialogue();
+        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         
         playerCanvas.SetActive(true);
     }

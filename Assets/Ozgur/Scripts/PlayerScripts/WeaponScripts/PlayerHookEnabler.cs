@@ -15,11 +15,12 @@ public class PlayerHookEnabler : MonoBehaviour
         PlayerPowerUps.OnHookGunBought += EnableHookGun;
     }
 
-    //TODO: remove before build
+    #if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H)) EnableHookGun();
     }
+    #endif
 
     private void EnableHookGun()
     {
