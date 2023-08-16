@@ -32,5 +32,13 @@ public class ColorAltarManager : MonoBehaviour
         
         lr.enabled = true;
         lr.SetPosition(1, targetTransform.position);
+
+        activatedAltars++;
+        CheckCompletion();
+    }
+
+    private void CheckCompletion()
+    {
+        if (activatedAltars == 4) Debug.Log("Completed");
     }
 }

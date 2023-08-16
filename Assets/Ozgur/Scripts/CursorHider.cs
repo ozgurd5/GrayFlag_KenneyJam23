@@ -1,13 +1,16 @@
-using System;
 using UnityEngine;
 
 public class CursorHider : MonoBehaviour
 {
+    public static CursorHider Singleton;
+    
     private PlayerStateData psd;
     private PlayerStateData.PlayerMainState previousState;
 
     private void Awake()
     {
+        Singleton = GetComponent<CursorHider>();
+        
         psd = PlayerStateData.Singleton;
 
         PauseMenu.OnGamePause += PauseGame;
@@ -20,7 +23,7 @@ public class CursorHider : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -29,7 +32,7 @@ public class CursorHider : MonoBehaviour
         psd.currentMainState = PlayerStateData.PlayerMainState.PauseMenuState;
     }
 
-    private void ContinueGame()
+    public void ContinueGame()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
