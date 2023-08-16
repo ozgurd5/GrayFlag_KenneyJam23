@@ -38,6 +38,8 @@ public class AdaPositionManager : MonoBehaviour
     {
         yield return new WaitForSeconds(11);
         cameraManager.SwitchCameras(cameraManager.playerCamera);
+        yield return new WaitForSeconds(2);
+        PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;
     }
     private void OnAllColorEnabled()
     {
@@ -59,9 +61,9 @@ public class AdaPositionManager : MonoBehaviour
     public void PlayCutscene() 
     {
         Debug.Log("PlayCutscene()");
-        cameraManager.SwitchCameras(cameraManager.islandCamera);
-        StartCoroutine(WaitForIslandAnim());
-        
+        PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.PauseMenuState;
+        cameraManager.SwitchCameras(cameraManager.islandCamera); //2 saniye sürüyor
+        StartCoroutine(WaitForIslandAnim()); // 11 saniye sürüyor, adanýn kýmýldamasý 10 saniye sürüyor
     }
 
     public void HandleIsland() 

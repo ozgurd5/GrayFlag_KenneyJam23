@@ -20,7 +20,6 @@ public class EasterEggSceneManager : MonoBehaviour
         StartCoroutine(CallMushroomEvent());
         //InvokeMushroomEvent(); 
     }
-    [Tooltip("Invokes the mushroom event with the int object being the number of mushrooms collected.")]
     public void InvokeMushroomEvent()
     {
         OnMushroomEvent?.Invoke(mushroomCollected);
