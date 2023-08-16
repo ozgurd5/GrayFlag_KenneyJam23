@@ -15,19 +15,19 @@ public class PlayerColorEnabler : MonoBehaviour
     private static bool isYellowColorEnabled;
 
     //TODO: remove before build
+    #region RemoveBeforeBuild
+
     private void Start()
     {
-        //isRedColorEnabled = true;
-        //isGreenColorEnabled = true;
-        //isBlueColorEnabled = true;
-        //isYellowColorEnabled = true;
-        //
-        //OnRedColorEnabled?.Invoke();
-        //OnGreenColorEnabled?.Invoke();
-        //OnBlueColorEnabled?.Invoke();
-        //OnYellowColorEnabled?.Invoke();
-        //OnAllColorEnabled?.Invoke();
+        //EnableColorsAutomatically();
     }
+    
+    private void Update()
+    {
+        EnableColorsManually();
+    }
+
+    #endregion
 
     public static void EnableRedColor()
     {
@@ -70,5 +70,46 @@ public class PlayerColorEnabler : MonoBehaviour
         if(isRedColorEnabled &&  isGreenColorEnabled && isBlueColorEnabled && isYellowColorEnabled)
             return true;
         else return false;
+    }
+
+    private void EnableColorsAutomatically()
+    {
+        isRedColorEnabled = true;
+        isGreenColorEnabled = true;
+        isBlueColorEnabled = true;
+        isYellowColorEnabled = true;
+        
+        OnRedColorEnabled?.Invoke();
+        OnGreenColorEnabled?.Invoke();
+        OnBlueColorEnabled?.Invoke();
+        OnYellowColorEnabled?.Invoke();
+        OnAllColorEnabled?.Invoke();
+    }
+
+    private void EnableColorsManually()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            OnRedColorEnabled?.Invoke();
+            isRedColorEnabled = true;
+        }
+        
+        else if (Input.GetKeyDown(KeyCode.G))
+        {
+            OnGreenColorEnabled?.Invoke();
+            isGreenColorEnabled = true;
+        }
+        
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            OnBlueColorEnabled?.Invoke();
+            isBlueColorEnabled = true;
+        }
+        
+        else if (Input.GetKeyDown(KeyCode.Y))
+        {
+            OnYellowColorEnabled?.Invoke();
+            isYellowColorEnabled = true;
+        }
     }
 }
