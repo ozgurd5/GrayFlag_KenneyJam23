@@ -11,7 +11,7 @@ public class MoneyCameraShake : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        Instance = GetComponent<MoneyCameraShake>();
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
