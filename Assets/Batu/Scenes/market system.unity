@@ -1043,21 +1043,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2509889201839747802, guid: e49aacbb0ac825643a88c48c99e0bbbc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 349030630}
     - target: {fileID: 2908043204757583016, guid: e49aacbb0ac825643a88c48c99e0bbbc,
         type: 3}
       propertyPath: m_Name
       value: GunCanvas (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3959896329512175839, guid: e49aacbb0ac825643a88c48c99e0bbbc,
+    - target: {fileID: 2908043204757583016, guid: e49aacbb0ac825643a88c48c99e0bbbc,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 349030630}
-    - target: {fileID: 8092717030649923953, guid: e49aacbb0ac825643a88c48c99e0bbbc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 349030630}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1181,22 +1181,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4057536578471449110, guid: 728241b414aad5d42b86224b274ffafd,
+    - target: {fileID: 3884164799765033787, guid: 728241b414aad5d42b86224b274ffafd,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 349030630}
-    - target: {fileID: 4224384740378955900, guid: 728241b414aad5d42b86224b274ffafd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 349030630}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5914756041513713813, guid: 728241b414aad5d42b86224b274ffafd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 349030630}
-    - target: {fileID: 6862020377569404426, guid: 728241b414aad5d42b86224b274ffafd,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1290,8 +1280,8 @@ SceneRoots:
   - {fileID: 991207498}
   - {fileID: 299566961}
   - {fileID: 672607710}
+  - {fileID: 21848041}
   - {fileID: 8514128013143027543}
   - {fileID: 3680849183026049305}
-  - {fileID: 14004227}
-  - {fileID: 21848041}
   - {fileID: 4496496118783540699}
+  - {fileID: 14004227}
