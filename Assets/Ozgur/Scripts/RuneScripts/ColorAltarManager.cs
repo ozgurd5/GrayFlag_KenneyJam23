@@ -5,7 +5,7 @@ public class ColorAltarManager : MonoBehaviour
     public static int activatedAltars;
     
     [Header("Assign")]
-    [SerializeField] private Transform targetTransform;
+    [SerializeField] private Transform targetPointTransform;
     
     [Header("Info - No Touch")]
     public bool isActivated;
@@ -13,14 +13,14 @@ public class ColorAltarManager : MonoBehaviour
     private GameObject rune;
     private LineRenderer lr;
     private AudioSource aus;
+    private Transform laserPointTransform;
 
     private void Awake()
     {
         rune = transform.GetChild(0).gameObject;
-        aus = GetComponent<AudioSource>();
-        
         lr = GetComponent<LineRenderer>();
-        lr.SetPosition(0, transform.position);
+        aus = GetComponent<AudioSource>();
+        laserPointTransform = transform.GetChild(2);
     }
 
     public void EnableAltar()
@@ -28,10 +28,11 @@ public class ColorAltarManager : MonoBehaviour
         isActivated = true;
         
         rune.SetActive(true);
-        //aus.Play();
+        aus.Play();
         
         lr.enabled = true;
-        lr.SetPosition(1, targetTransform.position);
+        lr.SetPosition(0, laserPointTransform.position);
+        lr.SetPosition(1, targetPointTransform.position);
 
         activatedAltars++;
         CheckCompletion();
