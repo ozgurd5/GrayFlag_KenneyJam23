@@ -5,21 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/A.MainScenes/Menu.unity
     guid: 0eeb51aca07a3c24b945912a664b11d0
-  - enabled: 1
+  - enabled: 0
     path: Assets/A.MainScenes/Game.unity
     guid: 48be021d434459e49accb0f356be5f36
   - enabled: 0
     path: Assets/Ozgur/Scenes/ozgurScene.unity
-    guid: 29c6fe48313958245ac8848d2404fd60
-  - enabled: 1
+    guid: 65f1932117fc41048be1c4958205085e
+  - enabled: 0
     path: Assets/Agah/Scenes/Easter Egg.unity
     guid: e3958cdb23a2ef04384ddab54c35178f
   - enabled: 0
     path: Assets/Agah/Scenes/TestScene!.unity
     guid: bdab49155263b0f429214d4e67368c3c
+  - enabled: 1
+    path: Assets/Ozgur/Scenes/RuneLaser.unity
+    guid: 81eee32f7b0a85743a7e0514890e83d0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 69e47259e9454ae479b7de06fd79c1b9,
       type: 2}

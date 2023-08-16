@@ -1,80 +1,57 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class AdaPositionManager : MonoBehaviour
 {
-    [SerializeField] GameObject AdaObject;
-    [SerializeField] Transform adaTargetTr;
-    [SerializeField] float moveTime;
-    [Header("Assing Main Camera Here")][SerializeField] Camera mainCamera;
-    [SerializeField] CameraManager cameraManager;
+    [Header("Assign")]
+    [SerializeField] private GameObject adaObject;
+    [SerializeField] private Transform adaTargetTr;
+    [SerializeField] private float moveTime = 10f;
+    
+    [Header("Assign - Cameras")]
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private CameraManager cameraManager;
 
     private void Awake()
     {
-        PlayerColorEnabler.OnAllColorEnabled += OnAllColorEnabled;
+        PlayerColorEnabler.OnAllColorEnabled += HandleIsland;
     }
 
-    private void Start()
+    private void HandleIsland()
     {
-        Debug.Log(PlayerColorEnabler.IsAllColorEnabled());
-        StartCoroutine(WaitForHandleIsland()); 
+        StartCoroutine(HandleIslandWithTimeDelay());
     }
 
-    //Bu Kodda Yapýlacaklar TODO:
-    //Wait() ENUMATORÜ SÝLÝNECEK, CUTSCENE YAPILIP REFERANSLANIP PlayCutscene() ÝÇÝNDE REFERANSLANICAK,
-    //HandleIsland() FONKSÝYONU OnAllColorEnabled() ÝÇÝNE KONACAK.
-
-
-    IEnumerator WaitForHandleIsland() //TODO Bu enumerator silinecek ve bunun yerine event dinlenerek çalýþýlacak.
+    private IEnumerator HandleIslandWithTimeDelay()
     {
-        yield return new WaitForSeconds(3);
-        HandleIsland();
+        yield return new WaitForSeconds(1f);
+        
+        ShowIsland();
+        StartCoroutine(PlayCutscene());
     }
 
-    IEnumerator WaitForIslandAnim()
+    private IEnumerator PlayCutscene() 
     {
-        yield return new WaitForSeconds(11);
+        PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.PauseMenuState;
+        
+        adaObject.transform.DOMoveY(adaTargetTr.position.y,moveTime);
+        cameraManager.SwitchCameras(cameraManager.islandCamera);
+        yield return new WaitForSeconds(10);
+        
         cameraManager.SwitchCameras(cameraManager.playerCamera);
         yield return new WaitForSeconds(2);
+        
         PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;
     }
-    private void OnAllColorEnabled()
-    {
-        //HandleIsland();
-        Debug.Log("OnAllColorEnabled()"); // bu da silinecek.
-    }
-
-    public void ShowIsland()
+    
+    private void ShowIsland()
     {
         mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("InvisibleLayer");
     }
-
-    public void MoveIsland()
-    {
-        AdaObject.transform.DOMoveY(adaTargetTr.position.y,moveTime);
-        Debug.Log("MoveIsland();");
-    }
-
-    public void PlayCutscene() 
-    {
-        Debug.Log("PlayCutscene()");
-        PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.PauseMenuState;
-        cameraManager.SwitchCameras(cameraManager.islandCamera); //2 saniye sürüyor
-        StartCoroutine(WaitForIslandAnim()); // 11 saniye sürüyor, adanýn kýmýldamasý 10 saniye sürüyor
-    }
-
-    public void HandleIsland() 
-    {
-        ShowIsland();
-        MoveIsland();
-        PlayCutscene();
-    }
+    
     private void OnDestroy()
     {
-        PlayerColorEnabler.OnAllColorEnabled -= OnAllColorEnabled;
+        PlayerColorEnabler.OnAllColorEnabled -= HandleIsland;
     }
-
 }

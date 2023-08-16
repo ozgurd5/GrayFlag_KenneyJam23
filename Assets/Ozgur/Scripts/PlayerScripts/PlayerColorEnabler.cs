@@ -13,10 +13,8 @@ public class PlayerColorEnabler : MonoBehaviour
     private static bool isGreenColorEnabled; 
     private static bool isBlueColorEnabled;
     private static bool isYellowColorEnabled;
-
-    //TODO: remove before build
-    #region RemoveBeforeBuild
-
+    
+    #if UNITY_EDITOR
     private void Start()
     {
         //EnableColorsAutomatically();
@@ -26,8 +24,7 @@ public class PlayerColorEnabler : MonoBehaviour
     {
         EnableColorsManually();
     }
-
-    #endregion
+    #endif
 
     public static void EnableRedColor()
     {
@@ -74,42 +71,17 @@ public class PlayerColorEnabler : MonoBehaviour
 
     private void EnableColorsAutomatically()
     {
-        isRedColorEnabled = true;
-        isGreenColorEnabled = true;
-        isBlueColorEnabled = true;
-        isYellowColorEnabled = true;
-        
-        OnRedColorEnabled?.Invoke();
-        OnGreenColorEnabled?.Invoke();
-        OnBlueColorEnabled?.Invoke();
-        OnYellowColorEnabled?.Invoke();
-        OnAllColorEnabled?.Invoke();
+        EnableRedColor();
+        EnableGreenColor();
+        EnableBlueColor();
+        EnableYellowColor();
     }
 
     private void EnableColorsManually()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            OnRedColorEnabled?.Invoke();
-            isRedColorEnabled = true;
-        }
-        
-        else if (Input.GetKeyDown(KeyCode.G))
-        {
-            OnGreenColorEnabled?.Invoke();
-            isGreenColorEnabled = true;
-        }
-        
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            OnBlueColorEnabled?.Invoke();
-            isBlueColorEnabled = true;
-        }
-        
-        else if (Input.GetKeyDown(KeyCode.Y))
-        {
-            OnYellowColorEnabled?.Invoke();
-            isYellowColorEnabled = true;
-        }
+        if (Input.GetKeyDown(KeyCode.R)) EnableRedColor();
+        else if (Input.GetKeyDown(KeyCode.G)) EnableGreenColor();
+        else if (Input.GetKeyDown(KeyCode.B)) EnableBlueColor();
+        else if (Input.GetKeyDown(KeyCode.Y)) EnableYellowColor();
     }
 }
