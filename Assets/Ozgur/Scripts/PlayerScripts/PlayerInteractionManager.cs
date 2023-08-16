@@ -53,12 +53,13 @@ public class PlayerInteractionManager : MonoBehaviour
         
         if (isLookingAtInteractable)
         {
-            //We can look at chest lid and it doesn't have any InteractionTextCanvas, so we must reach the chest which is the root
+            //We may look at chest lid and it doesn't have any InteractionTextCanvas
             if (CrosshairManager.isLookingAtChest)
-                itm = CrosshairManager.crosshairHit.transform.root.Find("InteractionTextCanvas").GetComponent<InteractionTextManager>();
+            {
+                itm = CrosshairManager.crosshairHit.collider.transform.Find("InteractionTextCanvas")?.GetComponent<InteractionTextManager>();
+                if (!itm) itm = CrosshairManager.crosshairHit.collider.transform.parent.Find("InteractionTextCanvas").GetComponent<InteractionTextManager>();
+            }
             
-            //If we are looking at ship wheel, we must not reach the root. It's the ship itself. Other interactable objects..
-            //..are not important, they can work in both
             else
                 itm = CrosshairManager.crosshairHit.collider.transform.Find("InteractionTextCanvas").GetComponent<InteractionTextManager>();
             
@@ -121,7 +122,10 @@ public class PlayerInteractionManager : MonoBehaviour
     {
         if (!CrosshairManager.isLookingAtChest) return;
         
-        cm = CrosshairManager.crosshairHit.transform.root.GetComponent<ChestManager>(); //lid can be selected
+        //We may look at chest lid
+        cm = CrosshairManager.crosshairHit.collider.transform.GetComponent<ChestManager>();
+        if (!cm) cm = CrosshairManager.crosshairHit.collider.transform.parent.GetComponent<ChestManager>();
+        
         if (cm.isChestOpened) return;
         
         itm.CloseInteractionText();
