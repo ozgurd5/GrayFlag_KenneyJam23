@@ -3,33 +3,33 @@ using UnityEngine;
 public class InteractionTextManager : MonoBehaviour
 {
     private static int lastID;
-    
-    [Header("SELECT IF IT'S CHEST")]
-    [SerializeField] private bool isChest;
-    
+
     [Header("Info - No Touch")]
     [SerializeField] private bool isOpen;
     public int id;
-    
-    private GameObject interactionTextCanvas;
-    private ChestManager chestManager;
+
+    private Canvas canvas;
+    private ChestManager cm;
+    private ColorAltarManager cam;
 
     private void Awake()
     {
         id = lastID;
         lastID++;
-        
-        interactionTextCanvas = transform.Find("InteractionTextCanvas").gameObject;
-        if (isChest) chestManager = GetComponent<ChestManager>();
+
+        canvas = GetComponent<Canvas>();
+        if (transform.parent.CompareTag("Chest")) cm = transform.parent.GetComponent<ChestManager>();
+        else if (transform.parent.CompareTag("ColorAltar")) cam = transform.parent.GetComponent<ColorAltarManager>();
     }
 
     public void OpenInteractionText()
     {
         if (isOpen) return;
-        if (isChest && chestManager.isChestOpened) return;
+        if (transform.parent.CompareTag("Chest") && cm.isChestOpened) return;
+        if (transform.parent.CompareTag("ColorAltar") && cam.isActivated) return;
         
         isOpen = true;
-        interactionTextCanvas.SetActive(true);
+        canvas.enabled = true;
     }
 
     public void CloseInteractionText()
@@ -37,6 +37,6 @@ public class InteractionTextManager : MonoBehaviour
         if (!isOpen) return;
         
         isOpen = false;
-        interactionTextCanvas.SetActive(false);
+        canvas.enabled = false;
     }
 }

@@ -3086,7 +3086,6 @@ GameObject:
   - component: {fileID: 5213086262045339082}
   - component: {fileID: 14128944976074855}
   - component: {fileID: 3737097712792738363}
-  - component: {fileID: 1296164449569666394}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: ShipWheel
@@ -3203,20 +3202,6 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 0}
   yellowMaterialIndexes: 
---- !u!114 &1296164449569666394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5462861326131598806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7411dad5abf1934bbb0e7ddc5d52c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isChest: 0
-  isOpen: 0
 --- !u!1 &5552424720961859133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3773,7 +3758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9077a00d4c586448b870dc3c10574c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 0.2
   lookInput: {x: 0, y: 0}
   rotateInput: 0
   isSailUpKeyDown: 0
@@ -6750,7 +6734,7 @@ PrefabInstance:
     - target: {fileID: 7147237094893088086, guid: 8064b08e834a90a419ca951a5a1006de,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

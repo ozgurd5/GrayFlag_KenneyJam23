@@ -15,6 +15,9 @@ public class PlayerInteractionManager : MonoBehaviour
     private ShipController sc;
     private ChestManager cm;
     private MushroomManager mm;
+    private ColorAltarManager cam;
+
+    private bool isLookingAtInteractable;
     
     private InteractionTextManager itm;
     private InteractionTextManager previousItm;
@@ -40,16 +43,24 @@ public class PlayerInteractionManager : MonoBehaviour
         HandleShipInteraction();
         HandleChestInteraction();
         HandleMushroomInteraction();
+        HandleColorAltarInteraction();
     }
     
     private void HandleInteractionText()
     {
-        if (CrosshairManager.isLookingAtChest || CrosshairManager.isLookingAtMushroom || CrosshairManager.isLookingAtShipWheel)
+        isLookingAtInteractable = CrosshairManager.isLookingAtChest || CrosshairManager.isLookingAtMushroom || CrosshairManager.isLookingAtShipWheel
+                                  || CrosshairManager.isLookingAtColorAltar; //ADD NEW HERE 5 - First 4 is in CrosshairManager.cs
+        
+        if (isLookingAtInteractable)
         {
+            //We can look at chest lid and it doesn't have any InteractionTextCanvas, so we must reach the chest which is the root
             if (CrosshairManager.isLookingAtChest)
-                itm = CrosshairManager.crosshairHit.transform.root.GetComponent<InteractionTextManager>();
+                itm = CrosshairManager.crosshairHit.transform.root.Find("InteractionTextCanvas").GetComponent<InteractionTextManager>();
+            
+            //If we are looking at ship wheel, we must not reach the root. It's the ship itself. Other interactable objects..
+            //..are not important, they can work in both
             else
-                itm = CrosshairManager.crosshairHit.collider.GetComponent<InteractionTextManager>();
+                itm = CrosshairManager.crosshairHit.collider.transform.Find("InteractionTextCanvas").GetComponent<InteractionTextManager>();
             
             itm.OpenInteractionText();
         }
@@ -108,9 +119,11 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void HandleChestInteraction()
     {
-        if (!CrosshairManager.isLookingAtChest || cm.isChestOpened) return;
+        if (!CrosshairManager.isLookingAtChest) return;
         
         cm = CrosshairManager.crosshairHit.transform.root.GetComponent<ChestManager>(); //lid can be selected
+        if (cm.isChestOpened) return;
+        
         itm.CloseInteractionText();
         cm.OpenChest();
     }
@@ -118,7 +131,19 @@ public class PlayerInteractionManager : MonoBehaviour
     private void HandleMushroomInteraction()
     {
         if (!CrosshairManager.isLookingAtMushroom) return;
+        
         mm = CrosshairManager.crosshairHit.collider.GetComponent<MushroomManager>();
         if (!mm.isCollected) mm.CollectMushroom();
+    }
+
+    private void HandleColorAltarInteraction()
+    {
+        if (!CrosshairManager.isLookingAtColorAltar) return;
+        
+        cam = CrosshairManager.crosshairHit.collider.GetComponent<ColorAltarManager>();
+        if (cam.isActivated) return;
+        
+        itm.CloseInteractionText();
+        cam.EnableAltar();
     }
 }
