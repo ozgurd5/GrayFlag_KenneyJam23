@@ -17,7 +17,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Collider deadCollider;
 
     [Header("Assign - Sounds")]
-    [SerializeField] private float idleSoundInterval = 10f;
+    [SerializeField] private float idleSoundTimeInterval = 2f;
+    [SerializeField] private float idleSoundProbability = 20f;
     [SerializeField] private AudioSource aus;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip deathSound;
@@ -111,9 +112,26 @@ public class EnemyManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(idleSoundInterval);
-            aus.PlayOneShot(idleSound);
+            bool isSoundPlayed = false;
+            while (!isSoundPlayed)
+            {
+                if (GetProbability(idleSoundProbability))
+                {
+                    aus.PlayOneShot(idleSound);
+                    isSoundPlayed = true;
+                }
+
+                yield return new WaitForSeconds(idleSoundTimeInterval);
+            }
         }
+    }
+
+    private bool GetProbability(float probability)
+    {
+        float random = Random.Range(0, 100);
+
+        if (random <= probability) return true;
+        else return false;
     }
 
     public void GetHit(Vector3 playerTransformForward)

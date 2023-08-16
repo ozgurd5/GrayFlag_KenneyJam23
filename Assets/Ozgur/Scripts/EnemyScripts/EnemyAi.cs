@@ -83,6 +83,7 @@ public class EnemyAi : MonoBehaviour
     {
         navMeshAgent.isStopped = true;
         transform.LookAt(player, Vector3.up);
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
 
         if (em.currentState != EnemyManager.EnemyState.Attack) em.AttackPlayer();
     }
