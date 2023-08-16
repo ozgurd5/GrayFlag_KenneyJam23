@@ -9,6 +9,8 @@ public class CrosshairManager : MonoBehaviour
     public static bool isLookingAtHookTarget;
     public static bool isLookingAtChest;
     public static bool isLookingAtMushroom;
+    public static bool isLookingAtColorAltar;
+    
     public static RaycastHit crosshairHit;
     public static Transform enemyHookPlace;
     
@@ -35,6 +37,7 @@ public class CrosshairManager : MonoBehaviour
     [SerializeField] private bool enemyLong;
     [SerializeField] private bool chest;
     [SerializeField] private bool mushroom;
+    [SerializeField] private bool colorAltar;
     [SerializeField] private string lookName;
 
     private void Awake()
@@ -66,6 +69,8 @@ public class CrosshairManager : MonoBehaviour
             isLookingAtEnemy = false;
             isLookingAtHookTarget = false;
             isLookingAtChest = false;
+            isLookingAtColorAltar = false;
+            //ADD NEW HERE 1
             return;
         }
 
@@ -73,6 +78,8 @@ public class CrosshairManager : MonoBehaviour
         isLookingAtHookTarget = crosshairHit.collider.CompareTag("HookPlace");
         isLookingAtChest = crosshairHit.collider.CompareTag("Chest");
         isLookingAtMushroom = crosshairHit.collider.CompareTag("Mushroom");
+        isLookingAtColorAltar = crosshairHit.collider.CompareTag("ColorAltar");
+        //ADD NEW HERE 2
         
         isLookingAtEnemy = crosshairHit.collider.CompareTag("Enemy");
         if (isLookingAtEnemy) CheckForDeadEnemy();
@@ -104,7 +111,9 @@ public class CrosshairManager : MonoBehaviour
     {
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
         
-        crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtHookTarget || isLookingAtChest || isLookingAtMushroom;
+        crosshairHighlightCondition = isLookingAtShipWheel || isLookingAtHookTarget || isLookingAtChest || isLookingAtMushroom
+            || isLookingAtColorAltar; //ADD NEW HERE 3
+        
         crosshairAttackCondition = isLookingAtEnemy;
     }
 
@@ -142,6 +151,9 @@ public class CrosshairManager : MonoBehaviour
         enemyLong = isLookingAtEnemyLong;
         chest = isLookingAtChest;
         mushroom = isLookingAtMushroom;
+        colorAltar = isLookingAtColorAltar;
+        //ADD NEW HERE 4
+        //ADD NEW HERE 5 IS IN PlayerInteractionManager.cs. Add it there if it is an interactable
         if (crosshairHit.collider != null) lookName = crosshairHit.collider.name;
     }
 }

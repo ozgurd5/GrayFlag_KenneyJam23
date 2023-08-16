@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,7 +9,6 @@ public class PlayerHookController : MonoBehaviour
     [SerializeField] private float maxSpeedXZ = 50f;
     [SerializeField] private float maxSpeedY = 50f;
     [SerializeField] private AudioSource aus;
-    [SerializeField] private float collisionTimerLimit;
     
     private PlayerStateData psd;
     private PlayerInputManager pim;
