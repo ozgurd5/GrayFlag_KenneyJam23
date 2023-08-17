@@ -44,7 +44,6 @@ public class UIColorChanger : MonoBehaviour
 
     private void EnableFirstColor()
     {
-        Debug.Log("first: " + name);
         isFirstColorEnabled = true;
 
         image.enabled = true;
@@ -56,7 +55,6 @@ public class UIColorChanger : MonoBehaviour
 
     private void EnableSecondColor()
     {
-        Debug.Log("second: " + name);
         isSecondColorEnabled = true;
 
         image.enabled = true;
@@ -68,7 +66,6 @@ public class UIColorChanger : MonoBehaviour
 
     private void EnableAllColors()
     {
-        Debug.Log("all: " + name);
         image.enabled = true;
         image.sprite = allColorsSprite;
     }
