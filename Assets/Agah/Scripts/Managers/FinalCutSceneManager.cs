@@ -11,10 +11,13 @@ public class FinalCutSceneManager : MonoBehaviour
         " The result of cameraMoveLimit / cameraMoveSpeed gives the time one camera takes to rotate around one island")]
     [SerializeField] float cameraMoveLimit = 1.5f;
 
+    [Tooltip("This is the wait before the final cutscene plays AFTER the game is complete!")]
+    [SerializeField] float waitTime = 2f;
+
     [SerializeField]CameraManager cameraManager;
 
     bool isGameComplete;
-    bool isCutSceneOver;
+    public static bool isCutSceneOver;
 
 
     private void Awake()
@@ -24,20 +27,14 @@ public class FinalCutSceneManager : MonoBehaviour
 
     private void ColorAltarManager_OnGameCompleted()
     {
-        Debug.Log("Game Complete Event Recieved " + isGameComplete);
         isGameComplete = true;
-        Debug.Log(isGameComplete);
+        Debug.Log("EVENT ALINDI");
     }
 
     private void Start()
     {
         isCutSceneOver = false;
-
-        cameraManager.ada1Camera.Priority = 0;
-        cameraManager.ada2Camera.Priority = 0;
-        cameraManager.ada3Camera.Priority = 0;
-        cameraManager.ada4Camera.Priority = 0;
-        cameraManager.ada5Camera.Priority = 0;
+        isGameComplete = false;
 
         ResetCamera(cameraManager.ada1Camera);
         ResetCamera(cameraManager.ada2Camera);
@@ -48,12 +45,13 @@ public class FinalCutSceneManager : MonoBehaviour
 
     private void Update()
     {
-        if (isGameComplete && !isCutSceneOver)
-            PlayFinalCutscene();
-    }
-    void PlayFinalCutscene()
-    {
+        if (!isGameComplete) return;
 
+        StartCoroutine(PlayFinalCutscene());
+    }
+    IEnumerator PlayFinalCutscene()
+    {
+        yield return new WaitForSeconds(waitTime);
         PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.PauseMenuState;
 
         MoveCamera(cameraManager.ada5Camera);
@@ -72,22 +70,18 @@ public class FinalCutSceneManager : MonoBehaviour
 
         if (HasCameraMoved(cameraManager.ada1Camera))
             cameraManager.SwitchCameras(cameraManager.playerCamera);
-
-        StartCoroutine(WaitFor(2));
-        PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;
-
-        isCutSceneOver = true;
+            
+        //StartCoroutine(WaitFor(2));
+            PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;
+            isCutSceneOver = true;
+        
     }
-
-    IEnumerator WaitFor(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-    }
-
     void MoveCamera(CinemachineVirtualCamera cameraToMove)
     {
-            cameraManager.SwitchCameras(cameraToMove); 
-            cameraToMove.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition += cameraMoveSpeed*Time.deltaTime; 
+        cameraManager.SwitchCameras(cameraToMove);
+        Debug.Log(cameraToMove.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition);
+        if (cameraToMove.GetCinemachineComponent<CinemachineTrackedDolly>() == null) Debug.Log(" cimachine null ");
+        cameraToMove.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition += cameraMoveSpeed * Time.deltaTime;
     }
     bool HasCameraMoved(CinemachineVirtualCamera cameraToMove)
     {
@@ -102,6 +96,7 @@ public class FinalCutSceneManager : MonoBehaviour
     }
     void ResetCamera(CinemachineVirtualCamera cameraToReset)
     {
+        cameraToReset.Priority = 0;
         cameraToReset.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition = 0;
     }
 

@@ -44,6 +44,8 @@ public class ColorAltarManager : MonoBehaviour
             impulseSource.GenerateImpulse();
             impulse = false;
         }
+        if (Input.GetKey(KeyCode.V))
+            OnGameCompleted?.Invoke();
     }
 
     public void EnableAltar()
