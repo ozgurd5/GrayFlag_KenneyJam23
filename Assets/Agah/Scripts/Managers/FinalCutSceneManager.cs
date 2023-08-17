@@ -13,17 +13,26 @@ public class FinalCutSceneManager : MonoBehaviour
 
     [SerializeField]CameraManager cameraManager;
 
+    bool isGameComplete;
+    bool isCutSceneOver;
+
+
     private void Awake()
     {
-        PlayerColorEnabler.OnAllColorEnabled += PlayerColorEnabler_OnAllColorEnabled;
+        ColorAltarManager.OnGameCompleted += ColorAltarManager_OnGameCompleted;
     }
 
-    private void PlayerColorEnabler_OnAllColorEnabled()
+    private void ColorAltarManager_OnGameCompleted()
     {
-        return;
+        Debug.Log("Game Complete Event Recieved " + isGameComplete);
+        isGameComplete = true;
+        Debug.Log(isGameComplete);
     }
+
     private void Start()
     {
+        isCutSceneOver = false;
+
         cameraManager.ada1Camera.Priority = 0;
         cameraManager.ada2Camera.Priority = 0;
         cameraManager.ada3Camera.Priority = 0;
@@ -39,10 +48,12 @@ public class FinalCutSceneManager : MonoBehaviour
 
     private void Update()
     {
-        PlayFinalCutscene();
+        if (isGameComplete && !isCutSceneOver)
+            PlayFinalCutscene();
     }
     void PlayFinalCutscene()
     {
+
         PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.PauseMenuState;
 
         MoveCamera(cameraManager.ada5Camera);
@@ -65,7 +76,7 @@ public class FinalCutSceneManager : MonoBehaviour
         StartCoroutine(WaitFor(2));
         PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;
 
-        return;
+        isCutSceneOver = true;
     }
 
     IEnumerator WaitFor(float seconds)
@@ -92,5 +103,10 @@ public class FinalCutSceneManager : MonoBehaviour
     void ResetCamera(CinemachineVirtualCamera cameraToReset)
     {
         cameraToReset.GetCinemachineComponent<CinemachineTrackedDolly>().m_PathPosition = 0;
+    }
+
+    private void OnDestroy()
+    {
+        ColorAltarManager.OnGameCompleted -= ColorAltarManager_OnGameCompleted;
     }
 }
