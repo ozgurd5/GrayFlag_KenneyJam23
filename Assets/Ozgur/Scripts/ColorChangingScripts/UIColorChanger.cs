@@ -40,13 +40,14 @@ public class UIColorChanger : MonoBehaviour
         else if (secondColor == GrayFlagColor.Blue) PlayerColorEnabler.OnBlueColorEnabled += EnableSecondColor;
         else if (secondColor == GrayFlagColor.Yellow) PlayerColorEnabler.OnYellowColorEnabled += EnableSecondColor;
         else if (secondColor == GrayFlagColor.None) isSecondColorEnabled = true;
-        
     }
 
     private void EnableFirstColor()
     {
+        Debug.Log("first: " + name);
         isFirstColorEnabled = true;
 
+        image.enabled = true;
         image.sprite = firstColorOnlySprite;
         
         if (secondColor == GrayFlagColor.None) return;
@@ -55,8 +56,10 @@ public class UIColorChanger : MonoBehaviour
 
     private void EnableSecondColor()
     {
+        Debug.Log("second: " + name);
         isSecondColorEnabled = true;
 
+        image.enabled = true;
         image.sprite = secondColorOnlySprite;
         
         if (firstColor == GrayFlagColor.None) return;
@@ -65,10 +68,12 @@ public class UIColorChanger : MonoBehaviour
 
     private void EnableAllColors()
     {
+        Debug.Log("all: " + name);
+        image.enabled = true;
         image.sprite = allColorsSprite;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (firstColor == GrayFlagColor.Red) PlayerColorEnabler.OnRedColorEnabled -= EnableFirstColor;
         else if (firstColor == GrayFlagColor.Green) PlayerColorEnabler.OnGreenColorEnabled -= EnableFirstColor;

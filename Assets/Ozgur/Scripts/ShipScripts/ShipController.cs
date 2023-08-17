@@ -91,7 +91,6 @@ public class ShipController : MonoBehaviour
     {
         shipCamera.enabled = true;
         rb.isKinematic = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     public void DropControl()

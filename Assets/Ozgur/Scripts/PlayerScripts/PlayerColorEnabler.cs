@@ -17,12 +17,12 @@ public class PlayerColorEnabler : MonoBehaviour
     #if UNITY_EDITOR
     private void Start()
     {
-        EnableColorsAutomatically();
+        //EnableColorsAutomatically();
     }
     
     private void Update()
     {
-        //EnableColorsManually();
+        EnableColorsManually();
     }
     #endif
 
