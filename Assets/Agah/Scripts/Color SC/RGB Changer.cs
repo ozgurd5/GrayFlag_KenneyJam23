@@ -11,42 +11,27 @@ public class RGBChanger : MonoBehaviour
 
     int colorIndex = 0;
 
-    float t = 0f;
+    bool isAllColorsEnabled;
+    bool isGameOver;
 
-    bool redColorEnabled;
-    bool greenColorEnabled;
-    bool blueColorEnabled;
-    bool yellowColorEnabled;    
+    float t = 0f;
 
     private void Awake()
     {
-        PlayerColorEnabler.OnBlueColorEnabled += PlayerColorEnabler_OnBlueColorEnabled;
-        PlayerColorEnabler.OnRedColorEnabled += PlayerColorEnabler_OnRedColorEnabled;
-        PlayerColorEnabler.OnGreenColorEnabled += PlayerColorEnabler_OnGreenColorEnabled;
-        PlayerColorEnabler.OnYellowColorEnabled += PlayerColorEnabler_OnYellowColorEnabled;
-    }
-    
-    #region ReceiveEvents
-    private void PlayerColorEnabler_OnYellowColorEnabled()
-    {
-        yellowColorEnabled = true;
+        PlayerColorEnabler.OnAllColorEnabled += PlayerColorEnabler_OnAllColorEnabled;
+        ColorAltarManager.OnGameCompleted += ColorAltarManager_OnGameCompleted;
     }
 
-    private void PlayerColorEnabler_OnGreenColorEnabled()
+    private void ColorAltarManager_OnGameCompleted()
     {
-        greenColorEnabled = true;
+        isGameOver = true;
     }
 
-    private void PlayerColorEnabler_OnRedColorEnabled()
+    private void PlayerColorEnabler_OnAllColorEnabled()
     {
-        redColorEnabled = true;
+        isAllColorsEnabled = true;
     }
 
-    private void PlayerColorEnabler_OnBlueColorEnabled()
-    {
-        blueColorEnabled = true;
-    }
-    #endregion
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -54,7 +39,7 @@ public class RGBChanger : MonoBehaviour
 
     void Update()
     {
-        if (IsAllColorsEnabled())
+        if (isAllColorsEnabled && isGameOver)
             ChangeColors();
     }
 
@@ -69,12 +54,6 @@ public class RGBChanger : MonoBehaviour
             colorIndex++;
             colorIndex = (colorIndex >= myColors.Length) ? 0 : colorIndex;
         }
-    }
-
-    bool IsAllColorsEnabled()
-    {
-        if(redColorEnabled && blueColorEnabled && greenColorEnabled && yellowColorEnabled) return true;
-        else return false;
     }
 
 }
