@@ -13,8 +13,8 @@ namespace EpicToonFX
 		public bool spawnWithoutLight = true;
 		public bool spawnWithoutSound = true;
 
-		int startPos = 15;
-		bool splitParticle = false;
+		//int startPos = 15;
+		//bool splitParticle = false;
 
 		void Start ()
 		{	
