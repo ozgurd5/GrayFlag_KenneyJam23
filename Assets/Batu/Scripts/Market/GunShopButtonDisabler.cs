@@ -11,7 +11,7 @@ public class GunShopButtonDisabler : MonoBehaviour
     [SerializeField] private GameObject hookGunButton;
     void Awake()
     {
-        PlayerPowerUps.OnHookGunBought += DisableHookGunButton;
+        MarketManager.OnHookGunBought += DisableHookGunButton;
     }
 
     private void DisableHookGunButton()
@@ -21,6 +21,6 @@ public class GunShopButtonDisabler : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerPowerUps.OnHookGunBought -= DisableHookGunButton;
+        MarketManager.OnHookGunBought -= DisableHookGunButton;
     }
 }

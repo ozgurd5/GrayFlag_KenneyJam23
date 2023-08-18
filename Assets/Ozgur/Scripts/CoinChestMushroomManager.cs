@@ -9,12 +9,9 @@ public class CoinChestMushroomManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI chestText;
     [SerializeField] private TextMeshProUGUI mushroomText;
     
-    [Header("Info - No Touch")]
-    public int coinNumber;
-    [SerializeField] private int chestNumber;
-    [SerializeField] private int mushroomNumber;
-
-    static int _chestNumber, _mushroomNumber, _coinNumber;
+    public int coinNumber {private set; get;}
+    public int chestNumber {private set; get;}
+    public int mushroomNumber {private set; get;}
 
     //The reason why every mushroom doesn't have it's own audio source is they destroy before the audio clip ends
     private AudioSource mushroomSource;
@@ -37,14 +34,18 @@ public class CoinChestMushroomManager : MonoBehaviour
     {
         coinNumber += 3;
         coinText.text = $"{coinNumber}";
-        _coinNumber = coinNumber;
+    }
+    
+    public void DecreaseCoinNumber(int decreaseAmount)
+    {
+        coinNumber -= decreaseAmount;
+        coinText.text = $"{coinNumber}";
     }
     
     public void IncreaseChestNumber()
     {
         chestNumber++;
-        chestText.text = chestNumber + "/" + ChestManager.totalChestCount;
-        _chestNumber = chestNumber;    
+        chestText.text = chestNumber + "/" + ChestManager.totalChestCount;  
     }
 
     public void IncreaseMushroomNumber()
@@ -52,18 +53,5 @@ public class CoinChestMushroomManager : MonoBehaviour
         mushroomNumber++;
         mushroomText.text = mushroomNumber + "/" + MushroomManager.totalMushroomNumber;
         mushroomSource.Play();
-        _mushroomNumber = mushroomNumber;
     }
-
-    public static int GetNumber(string objNumberToGet)
-    {
-        if (objNumberToGet == "Chest")
-            return _chestNumber;
-        else if (objNumberToGet == "Mushroom")
-            return _mushroomNumber;
-        else if (objNumberToGet == "Coin")
-            return _coinNumber;
-        else return 0;
-    }
-
 }

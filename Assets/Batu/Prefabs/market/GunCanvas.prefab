@@ -426,8 +426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishButton: {fileID: 7842730107822873908}
-  orangeButton: {fileID: 0}
-  chickenButton: {fileID: 0}
+  orangeButton: {fileID: 2864615327520017108}
+  chickenButton: {fileID: 5057968907000132204}
 --- !u!114 &3659252870260922382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1634,6 +1634,11 @@ PrefabInstance:
       propertyPath: images.Array.data[2]
       value: 
       objectReference: {fileID: 7921108613333516104}
+    - target: {fileID: 578847858347798233, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
+        type: 3}
+      propertyPath: m_Name
+      value: SniperDefaultVersion
+      objectReference: {fileID: 0}
     - target: {fileID: 2127060045654407391, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
         type: 3}
       propertyPath: m_Name
@@ -1744,6 +1749,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SniperButtonYellow
       objectReference: {fileID: 0}
+    - target: {fileID: 3681870342731441833, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
+        type: 3}
+      propertyPath: m_Name
+      value: SniperText
+      objectReference: {fileID: 0}
     - target: {fileID: 4188778719484787070, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
         type: 3}
       propertyPath: m_Name
@@ -1765,7 +1775,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3443375173169357837}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2864615327520017108}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -1789,13 +1799,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2864615327520017108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 578847858347798233, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
+    type: 3}
+  m_PrefabInstance: {fileID: 3443375173169357837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7621000844238677306 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5046961343876612407, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
     type: 3}
   m_PrefabInstance: {fileID: 3443375173169357837}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2864615327520017108}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -1821,11 +1837,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5602017549843000410}
     m_Modifications:
+    - target: {fileID: 1232680178830628089, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
+      propertyPath: m_Name
+      value: HookGunCoin
+      objectReference: {fileID: 0}
     - target: {fileID: 1359174302972529771, guid: a8908d140dd5f584cbffacd4597aee60,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 3659252870260922382}
+    - target: {fileID: 6692017296886489989, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
+      propertyPath: m_Name
+      value: HookGunDefaultVersion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803938721219384822, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
+      propertyPath: m_Name
+      value: HookGunPrice
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479925756054547445, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
+      propertyPath: m_Name
+      value: HookGunText
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610512582723625523, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
+      propertyPath: m_Name
+      value: HookGunPressedVersion
+      objectReference: {fileID: 0}
     - target: {fileID: 7995896242011616290, guid: a8908d140dd5f584cbffacd4597aee60,
         type: 3}
       propertyPath: m_Name
@@ -1981,6 +2022,11 @@ PrefabInstance:
       propertyPath: images.Array.data[2]
       value: 
       objectReference: {fileID: 873071375517550576}
+    - target: {fileID: 578847858347798233, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
+        type: 3}
+      propertyPath: m_Name
+      value: RifleDefaultVersion
+      objectReference: {fileID: 0}
     - target: {fileID: 2127060045654407391, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
         type: 3}
       propertyPath: m_Name
@@ -2106,6 +2152,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RifleButtonYellow
       objectReference: {fileID: 0}
+    - target: {fileID: 3681870342731441833, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
+        type: 3}
+      propertyPath: m_Name
+      value: RifleText
+      objectReference: {fileID: 0}
     - target: {fileID: 4188778719484787070, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
         type: 3}
       propertyPath: m_Name
@@ -2127,7 +2178,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5636810064039140533}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5057968907000132204}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -2145,13 +2196,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5057968907000132204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 578847858347798233, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
+    type: 3}
+  m_PrefabInstance: {fileID: 5636810064039140533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7099936258460221903 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3220621890181029242, guid: 0ba09317ee13f9c4ab22b49bc1d03b46,
     type: 3}
   m_PrefabInstance: {fileID: 5636810064039140533}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5057968907000132204}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}

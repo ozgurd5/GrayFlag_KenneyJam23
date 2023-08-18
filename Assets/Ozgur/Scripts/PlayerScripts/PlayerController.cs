@@ -42,12 +42,12 @@ public class PlayerController : MonoBehaviour
         runningSpeed = defaultRunningSpeed;
         jumpSpeed = defaultJumpSpeed;
 
-        PlayerPowerUps.OnOrangeBought += IncreaseSpeed;
+        MarketManager.OnOrangeBought += IncreaseSpeed;
     }
     
     private void Update()
     {
-        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
+        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.DialogueState)) return;
         
         DecideIdleOrMovingStates();
         DecideWalkingOrRunningStates();
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (psd.currentMainState != PlayerStateData.PlayerMainState.NormalState) return;
+        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.DialogueState)) return;
         
         HandleMovement();
         HandleJump();
@@ -151,6 +151,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerPowerUps.OnOrangeBought -= IncreaseSpeed;
+        MarketManager.OnOrangeBought -= IncreaseSpeed;
     }
 }

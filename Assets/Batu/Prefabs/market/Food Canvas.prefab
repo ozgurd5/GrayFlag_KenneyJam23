@@ -1957,6 +1957,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PlayThisSoundEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 1359174302972529771, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7995896242011616290, guid: a8908d140dd5f584cbffacd4597aee60,
         type: 3}
       propertyPath: m_Name
@@ -2094,8 +2099,18 @@ PrefabInstance:
       objectReference: {fileID: 4735053641914820911}
     - target: {fileID: 1359174302972529771, guid: a8908d140dd5f584cbffacd4597aee60,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyChicken
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359174302972529771, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PlayThisSoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359174302972529771, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3362214446213298363, guid: a8908d140dd5f584cbffacd4597aee60,
         type: 3}
@@ -2239,8 +2254,18 @@ PrefabInstance:
       objectReference: {fileID: 4735053641914820911}
     - target: {fileID: 1359174302972529771, guid: a8908d140dd5f584cbffacd4597aee60,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyOrange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359174302972529771, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: PlayThisSoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359174302972529771, guid: a8908d140dd5f584cbffacd4597aee60,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3362214446213298363, guid: a8908d140dd5f584cbffacd4597aee60,
         type: 3}

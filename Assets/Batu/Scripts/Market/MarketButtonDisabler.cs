@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
 
 public class MarketButtonDisabler : MonoBehaviour
 {
@@ -11,13 +6,12 @@ public class MarketButtonDisabler : MonoBehaviour
     [SerializeField] private GameObject fishButton;
     [SerializeField] private GameObject orangeButton;
     [SerializeField] private GameObject chickenButton;
-
-
+    
     private void Awake()
     {
-        PlayerPowerUps.OnFishBought += DisableFishButton;
-        PlayerPowerUps.OnOrangeBought += DisableOrangeButton;
-        PlayerPowerUps.OnChickenBought += DisableChickenButton;
+        MarketManager.OnFishBought += DisableFishButton;
+        MarketManager.OnOrangeBought += DisableOrangeButton;
+        MarketManager.OnChickenBought += DisableChickenButton;
     }
     
     private void DisableFishButton()
@@ -37,9 +31,9 @@ public class MarketButtonDisabler : MonoBehaviour
     
     private void OnDestroy()
     {
-        PlayerPowerUps.OnFishBought -= DisableFishButton;
-        PlayerPowerUps.OnOrangeBought -= DisableOrangeButton;
-        PlayerPowerUps.OnChickenBought -= DisableChickenButton;
+        MarketManager.OnFishBought -= DisableFishButton;
+        MarketManager.OnOrangeBought -= DisableOrangeButton;
+        MarketManager.OnChickenBought -= DisableChickenButton;
     }
 }
 

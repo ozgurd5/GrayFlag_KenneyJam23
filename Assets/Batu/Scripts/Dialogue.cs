@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -13,6 +13,8 @@ public class Dialogue : MonoBehaviour
     private Coroutine typingCoroutine;
 
     private bool dialogueInProgress;
+    
+    public event Action OnDialogueEnd;
     
     void Start()
     {
@@ -69,6 +71,8 @@ public class Dialogue : MonoBehaviour
         {
             dialogueInProgress = false;
             gameObject.SetActive(false); // Disable the canvas when dialogue ends
+            
+            OnDialogueEnd?.Invoke();
         }
     }
     public void ResetDialogue()

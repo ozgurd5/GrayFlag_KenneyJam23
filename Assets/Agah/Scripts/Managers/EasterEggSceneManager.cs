@@ -11,7 +11,7 @@ public class EasterEggSceneManager : MonoBehaviour
     [Tooltip("Wait for seconds before starting the effects. Default is 0.")][SerializeField] int waitTime = 0;
     private void Awake()
     {
-        var _mushroomCollected = CoinChestMushroomManager.GetNumber("Mushroom");
+        var _mushroomCollected = CoinChestMushroomManager.Singleton.mushroomNumber;
         mushroomCollected = _mushroomCollected;
         DontDestroyOnLoad(gameObject);
     }
@@ -24,7 +24,7 @@ public class EasterEggSceneManager : MonoBehaviour
     {
         OnMushroomEvent?.Invoke(mushroomCollected);
     }
-    IEnumerator CallMushroomEvent() // TODO: Build öncesi sil ve Start'a gerekli fonksiyonu koy.
+    IEnumerator CallMushroomEvent() // TODO: Build Ã¶ncesi sil ve Start'a gerekli fonksiyonu koy.
     {
         yield return new WaitForSeconds(waitTime);
         InvokeMushroomEvent();

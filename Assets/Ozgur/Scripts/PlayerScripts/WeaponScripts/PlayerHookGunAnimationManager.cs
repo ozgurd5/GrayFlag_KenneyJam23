@@ -70,7 +70,8 @@ public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
 
     private void Update()
     {
-        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
+        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState
+            or PlayerStateData.PlayerMainState.DialogueState)) return;
         
         HandleHiddenStatus();
         CheckDialogueAndSwimmingConditions();

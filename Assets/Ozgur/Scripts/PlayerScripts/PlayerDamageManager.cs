@@ -32,7 +32,7 @@ public class PlayerDamageManager : MonoBehaviour
         healthBar = GetComponentInChildren<Slider>();
         
         health = defaultHealth;
-        PlayerPowerUps.OnFishBought += IncreaseHealth;
+        MarketManager.OnFishBought += IncreaseHealth;
     }
 
     public void GetHit(Vector3 enemyTransformForward)
@@ -81,6 +81,6 @@ public class PlayerDamageManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerPowerUps.OnFishBought -= IncreaseHealth;
+        MarketManager.OnFishBought -= IncreaseHealth;
     }
 }

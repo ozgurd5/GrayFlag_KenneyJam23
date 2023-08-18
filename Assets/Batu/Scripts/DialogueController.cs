@@ -1,5 +1,4 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 
 public class DialogueController : MonoBehaviour
@@ -9,12 +8,14 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private GameObject thinkingObject;
     [SerializeField] private GameObject playerCanvas;    // Reference to PlayerCanvas
     
-    public static bool isOpen = false;
+    public static bool isOpen;
     private Dialogue dialogue;
 
     private void Awake()
     {
         dialogue = dialogueObject.GetComponentInChildren<Dialogue>();
+
+        dialogue.OnDialogueEnd += CloseDialogue;
     }
 
     private void OnTriggerEnter(Collider col)
@@ -28,14 +29,18 @@ public class DialogueController : MonoBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.DialogueState;
         
         playerCanvas.SetActive(false);
     }
 
     private void OnTriggerExit(Collider col)
     {
-        if (!col.CompareTag("Player")) return;
-        
+        if (col.CompareTag("Player")) CloseDialogue();
+    }
+
+    private void CloseDialogue()
+    {
         dialogueObject.SetActive(false);
         thinkingObject.SetActive(false);
         isOpen = false;
@@ -43,7 +48,13 @@ public class DialogueController : MonoBehaviour
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;
         
         playerCanvas.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        dialogue.OnDialogueEnd -= CloseDialogue;
     }
 }

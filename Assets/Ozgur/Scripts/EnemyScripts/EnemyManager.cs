@@ -59,7 +59,7 @@ public class EnemyManager : MonoBehaviour
         attackRoutine = EnterAttackState();
         
         takenDamage = defaultTakenDamage;
-        PlayerPowerUps.OnChickenBought += IncreaseTakenDamage;
+        MarketManager.OnChickenBought += IncreaseTakenDamage;
     }
 
     public void AttackPlayer()
@@ -191,6 +191,6 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerPowerUps.OnChickenBought -= IncreaseTakenDamage;
+        MarketManager.OnChickenBought -= IncreaseTakenDamage;
     }
 }
