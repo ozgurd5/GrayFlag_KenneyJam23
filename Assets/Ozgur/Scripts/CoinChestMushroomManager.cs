@@ -8,6 +8,10 @@ public class CoinChestMushroomManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinText;
     [SerializeField] private TextMeshProUGUI chestText;
     [SerializeField] private TextMeshProUGUI mushroomText;
+
+    [Header("Market Coin Texts")]
+    [SerializeField] private TextMeshProUGUI foodCanvasCoinText;
+    [SerializeField] private TextMeshProUGUI gunCanvasCoinText;
     
     public int coinNumber {private set; get;}
     public int chestNumber {private set; get;}
@@ -34,12 +38,16 @@ public class CoinChestMushroomManager : MonoBehaviour
     {
         coinNumber += 3;
         coinText.text = $"{coinNumber}";
+        foodCanvasCoinText.text = $"{coinNumber}";
+        gunCanvasCoinText.text = $"{coinNumber}";
     }
     
     public void DecreaseCoinNumber(int decreaseAmount)
     {
         coinNumber -= decreaseAmount;
         coinText.text = $"{coinNumber}";
+        foodCanvasCoinText.text = $"{coinNumber}";
+        gunCanvasCoinText.text = $"{coinNumber}";
     }
     
     public void IncreaseChestNumber()

@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 433}
+  m_AnchoredPosition: {x: 0, y: 198.00003}
   m_SizeDelta: {x: 292, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &45247339299544127
@@ -1130,6 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8234be740033b37498e18242ed4238de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMarketNPC: 0
   textComponent: {fileID: 6931899535136083378}
   lines:
   - ' Hello Traveler! '
@@ -1471,9 +1472,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8234be740033b37498e18242ed4238de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMarketNPC: 1
   textComponent: {fileID: 3105205070017185112}
   lines:
-  - ' Hello  adventurer'
+  - ' Hello adventurer!'
   - 'Are you looking for guns? '
   - If you need to reach high spots...
   - Here there is a hook gun.
@@ -2347,6 +2349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8234be740033b37498e18242ed4238de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMarketNPC: 1
   textComponent: {fileID: 4386727847129207379}
   lines:
   - ' Welcome'
@@ -2524,7 +2527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 437}
+  m_AnchoredPosition: {x: 0, y: 202}
   m_SizeDelta: {x: 292, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7006565664433109697
@@ -2870,6 +2873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8234be740033b37498e18242ed4238de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMarketNPC: 0
   textComponent: {fileID: 8163927864179149748}
   lines:
   - ' HI !'
@@ -2965,6 +2969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8234be740033b37498e18242ed4238de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMarketNPC: 0
   textComponent: {fileID: 2694539229898578106}
   lines:
   - ' What''s Up Dude'

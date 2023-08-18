@@ -8,6 +8,11 @@ public class MarketManager : MonoBehaviour
     public static event Action OnFishBought;
     public static event Action OnOrangeBought;
     public static event Action OnChickenBought;
+    public static event Action OnMarketCanvasClosed;
+
+    [Header("Assign Canvases")]
+    [SerializeField] private GameObject foodCanvas;
+    [SerializeField] private GameObject gunCanvas;
     
     [Header("Assign Prices")]
     [SerializeField] private int hookGunPrice = 3;
@@ -81,7 +86,7 @@ public class MarketManager : MonoBehaviour
         if (IsCoinEnough(chickenPrice))
         {
             OnChickenBought?.Invoke();
-            CoinChestMushroomManager.Singleton.DecreaseCoinNumber(chickenPrice);//
+            CoinChestMushroomManager.Singleton.DecreaseCoinNumber(chickenPrice);
             Debug.Log("Chicken Bought");
         }
         
@@ -90,6 +95,20 @@ public class MarketManager : MonoBehaviour
             impulse.GenerateImpulse();
             Debug.Log("Not Enough Money for Chicken");
         }
+    }
+
+    public void BuyLockedItem()
+    {
+        impulse.GenerateImpulse();
+        Debug.Log("Can not buy");
+    }
+
+    public void CloseMarketCanvas()
+    {
+        foodCanvas.SetActive(false);
+        gunCanvas.SetActive(false);
+        
+        OnMarketCanvasClosed?.Invoke();
     }
 }
 

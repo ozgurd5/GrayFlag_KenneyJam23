@@ -9,6 +9,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private GameObject playerCanvas;    // Reference to PlayerCanvas
     
     public static bool isOpen;
+    public static event Action OnPlayerExitNpcCollider;
     private Dialogue dialogue;
 
     private void Awake()
@@ -16,6 +17,8 @@ public class DialogueController : MonoBehaviour
         dialogue = dialogueObject.GetComponentInChildren<Dialogue>();
 
         dialogue.OnDialogueEnd += CloseDialogue;
+        OnPlayerExitNpcCollider += CloseDialogue;
+        MarketManager.OnMarketCanvasClosed += CloseDialogue;
     }
 
     private void OnTriggerEnter(Collider col)
@@ -36,7 +39,7 @@ public class DialogueController : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (col.CompareTag("Player")) CloseDialogue();
+        if (col.CompareTag("Player")) OnPlayerExitNpcCollider?.Invoke();
     }
 
     private void CloseDialogue()
@@ -56,5 +59,7 @@ public class DialogueController : MonoBehaviour
     private void OnDestroy()
     {
         dialogue.OnDialogueEnd -= CloseDialogue;
+        OnPlayerExitNpcCollider += CloseDialogue;
+        MarketManager.OnMarketCanvasClosed -= CloseDialogue;
     }
 }

@@ -525,10 +525,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3884164799765033787}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MarketManager, Assembly-CSharp
+        m_MethodName: CloseMarketCanvas
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 6373561003201516513}
   - component: {fileID: 7795173525278166857}
   m_Layer: 5
-  m_Name: Food Canvas
+  m_Name: FoodCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf84e21df8e216345992d565abcb1edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hookGunButton: {fileID: 0}
   fishButton: {fileID: 3520209274756896981}
   orangeButton: {fileID: 352413252356954381}
   chickenButton: {fileID: 703931912278792892}

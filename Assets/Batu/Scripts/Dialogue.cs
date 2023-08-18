@@ -5,9 +5,13 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    public TextMeshProUGUI textComponent;
-    public string[] lines;
-    public float textSpeed;
+    [Header("SELECT FOR MARKET NPC")]
+    [SerializeField] private bool isMarketNPC;
+    
+    [Header("Assign")]
+    [SerializeField] private TextMeshProUGUI textComponent;
+    [SerializeField] private string[] lines;
+    [SerializeField] private float textSpeed;
 
     private int index;
     private Coroutine typingCoroutine;
@@ -15,14 +19,14 @@ public class Dialogue : MonoBehaviour
     private bool dialogueInProgress;
     
     public event Action OnDialogueEnd;
-    
-    void Start()
+
+    private void Start()
     {
         textComponent.text = string.Empty;
         dialogueInProgress = false;
     }
     
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -47,19 +51,18 @@ public class Dialogue : MonoBehaviour
             dialogueInProgress = true;
             typingCoroutine = StartCoroutine(TypeLine());
         }
-        
     }
 
-    IEnumerator TypeLine()
+    private IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        foreach (char c in lines[index])
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
     }
 
-    void NextLine()
+    private void NextLine()
     {
         if (index < lines.Length - 1)
         {
@@ -72,9 +75,10 @@ public class Dialogue : MonoBehaviour
             dialogueInProgress = false;
             gameObject.SetActive(false); // Disable the canvas when dialogue ends
             
-            OnDialogueEnd?.Invoke();
+            if (!isMarketNPC) OnDialogueEnd?.Invoke();
         }
     }
+    
     public void ResetDialogue()
     {
         dialogueInProgress = false;
