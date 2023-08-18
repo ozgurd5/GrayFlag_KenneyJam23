@@ -317,7 +317,6 @@ GameObject:
   - component: {fileID: 7925862875906976820}
   - component: {fileID: 1321456863182281406}
   - component: {fileID: 667993061452007911}
-  - component: {fileID: 2689706535343821533}
   - component: {fileID: 3659252870260922382}
   - component: {fileID: 8472090056222851784}
   - component: {fileID: 6297757369804636280}
@@ -412,22 +411,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2689706535343821533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2908043204757583016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf84e21df8e216345992d565abcb1edb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hookGunButton: {fileID: 6845201473639336595}
-  fishButton: {fileID: 0}
-  orangeButton: {fileID: 0}
-  chickenButton: {fileID: 0}
 --- !u!114 &3659252870260922382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2148,12 +2131,6 @@ PrefabInstance:
 --- !u!224 &4806289352890157334 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8267330793974134695, guid: a8908d140dd5f584cbffacd4597aee60,
-    type: 3}
-  m_PrefabInstance: {fileID: 3461063857072209585}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6845201473639336595 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7995896242011616290, guid: a8908d140dd5f584cbffacd4597aee60,
     type: 3}
   m_PrefabInstance: {fileID: 3461063857072209585}
   m_PrefabAsset: {fileID: 0}

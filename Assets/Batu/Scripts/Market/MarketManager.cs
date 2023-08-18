@@ -19,12 +19,19 @@ public class MarketManager : MonoBehaviour
     [SerializeField] private int fishPrice = 3;
     [SerializeField] private int orangePrice = 6;
     [SerializeField] private int chickenPrice = 4;
+    
+    [Header("Assign - Buttons")] 
+    [SerializeField] private GameObject hookGunButton;
+    [SerializeField] private GameObject fishButton;
+    [SerializeField] private GameObject orangeButton;
+    [SerializeField] private GameObject chickenButton;
 
     private CinemachineImpulseSource impulse;
 
     private void Awake()
     {
         impulse = GetComponent<CinemachineImpulseSource>();
+        DialogueController.OnPlayerExitNpcCollider += CloseMarketCanvas;
     }
 
     private bool IsCoinEnough(int price)
@@ -39,6 +46,7 @@ public class MarketManager : MonoBehaviour
         {
             OnHookGunBought?.Invoke();
             CoinChestMushroomManager.Singleton.DecreaseCoinNumber(hookGunPrice);
+            hookGunButton.SetActive(false);
             Debug.Log("Hook Gun Bought");
         }
         
@@ -55,6 +63,7 @@ public class MarketManager : MonoBehaviour
         {
             OnFishBought?.Invoke();
             CoinChestMushroomManager.Singleton.DecreaseCoinNumber(fishPrice);
+            fishButton.SetActive(false);
             Debug.Log("Fish Bought");
         }
         
@@ -71,6 +80,7 @@ public class MarketManager : MonoBehaviour
         {
             OnOrangeBought?.Invoke();
             CoinChestMushroomManager.Singleton.DecreaseCoinNumber(orangePrice);
+            orangeButton.SetActive(false);
             Debug.Log("Orange Bought");
         }
         
@@ -87,6 +97,7 @@ public class MarketManager : MonoBehaviour
         {
             OnChickenBought?.Invoke();
             CoinChestMushroomManager.Singleton.DecreaseCoinNumber(chickenPrice);
+            chickenButton.SetActive(false);
             Debug.Log("Chicken Bought");
         }
         

@@ -84,6 +84,5 @@ public class Dialogue : MonoBehaviour
         dialogueInProgress = false;
         index = 0;
         textComponent.text = string.Empty;
-        gameObject.SetActive(false);
     }
 }
