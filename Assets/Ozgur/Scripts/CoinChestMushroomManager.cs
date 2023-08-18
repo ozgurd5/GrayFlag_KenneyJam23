@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 
 public class CoinChestMushroomManager : MonoBehaviour
 {

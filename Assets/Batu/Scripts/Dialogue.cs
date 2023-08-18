@@ -17,7 +17,7 @@ public class Dialogue : MonoBehaviour
     private Coroutine typingCoroutine;
 
     private bool dialogueInProgress;
-    
+
     public event Action OnDialogueEnd;
 
     private void Start()
@@ -28,7 +28,7 @@ public class Dialogue : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && dialogueInProgress)
         {
             if (textComponent.text == lines[index])
             {

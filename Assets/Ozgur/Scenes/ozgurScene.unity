@@ -2131,12 +2131,12 @@ PrefabInstance:
     - target: {fileID: 1463997623550740164, guid: 33facb0fc71bbce4285c90f1746dae2d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0040599774
+      value: -0.0040599904
       objectReference: {fileID: 0}
     - target: {fileID: 1463997623550740164, guid: 33facb0fc71bbce4285c90f1746dae2d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0010262453
+      value: 0.0010262487
       objectReference: {fileID: 0}
     - target: {fileID: 1985512912536952228, guid: 33facb0fc71bbce4285c90f1746dae2d,
         type: 3}
@@ -2349,6 +2349,12 @@ Transform:
 --- !u!224 &762469476 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 617574647093035171, guid: 728241b414aad5d42b86224b274ffafd,
+    type: 3}
+  m_PrefabInstance: {fileID: 530198502}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &762469483 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 4612807956083182552, guid: 728241b414aad5d42b86224b274ffafd,
     type: 3}
   m_PrefabInstance: {fileID: 530198502}
   m_PrefabAsset: {fileID: 0}
@@ -7878,7 +7884,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2908043206291886624}
+      objectReference: {fileID: 2908043206291886631}
     - target: {fileID: 4653827038905655337, guid: 7f137b39ddfe24747ae9ceeb550c426e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -7938,7 +7944,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 530198503}
+      objectReference: {fileID: 762469483}
     - target: {fileID: 8833406308711752117, guid: 7f137b39ddfe24747ae9ceeb550c426e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -8539,6 +8545,12 @@ PrefabInstance:
 --- !u!1 &2908043206291886624 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2908043204757583016, guid: e49aacbb0ac825643a88c48c99e0bbbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1570006664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &2908043206291886631 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7925862875906976820, guid: e49aacbb0ac825643a88c48c99e0bbbc,
     type: 3}
   m_PrefabInstance: {fileID: 1570006664}
   m_PrefabAsset: {fileID: 0}

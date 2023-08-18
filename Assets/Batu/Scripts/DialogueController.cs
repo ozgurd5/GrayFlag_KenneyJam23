@@ -11,6 +11,9 @@ public class DialogueController : MonoBehaviour
     public static bool isOpen;
     public static event Action OnPlayerExitNpcCollider;
     private Dialogue dialogue;
+    
+    //bruh
+    private Canvas dialogueCanvas;
 
     private void Awake()
     {
@@ -19,13 +22,16 @@ public class DialogueController : MonoBehaviour
         dialogue.OnDialogueEnd += CloseDialogue;
         OnPlayerExitNpcCollider += CloseDialogue;
         MarketManager.OnMarketCanvasClosed += CloseDialogue;
+        
+        //bruh
+        dialogueCanvas = dialogueObject.GetComponent<Canvas>();
     }
 
     private void OnTriggerEnter(Collider col)
     {
         if (!col.CompareTag("Player")) return;
         
-        dialogueObject.SetActive(true);
+        dialogueCanvas.enabled = true;
         thinkingObject.SetActive(true);
         isOpen = true;
         dialogue.StartDialogue();
@@ -44,7 +50,7 @@ public class DialogueController : MonoBehaviour
 
     private void CloseDialogue()
     {
-        dialogueObject.SetActive(false);
+        dialogueCanvas.enabled = false;
         thinkingObject.SetActive(false);
         isOpen = false;
         dialogue.ResetDialogue();
