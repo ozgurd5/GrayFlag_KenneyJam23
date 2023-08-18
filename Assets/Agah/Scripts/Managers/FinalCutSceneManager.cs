@@ -45,6 +45,15 @@ public class FinalCutSceneManager : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_EDITOR
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            isCutSceneOver=true;
+            Debug.Log("P tuþuna basýldý, isCutSceneOver = " + isCutSceneOver);
+        }
+
+#endif
+
         if (!isGameComplete) return;
 
         StartCoroutine(PlayFinalCutscene());
