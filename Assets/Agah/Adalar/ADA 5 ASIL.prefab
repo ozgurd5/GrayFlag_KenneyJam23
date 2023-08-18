@@ -20178,7 +20178,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 134
+  m_VersionIndex: 137
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -20260,7 +20260,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018369037483076593}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -27454,6 +27454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8234be740033b37498e18242ed4238de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMarketNPC: 0
   textComponent: {fileID: 3569593624335320061}
   lines:
   - HA HA HA!
@@ -50603,7 +50604,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 134
+  m_VersionIndex: 137
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -62323,18 +62324,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1896328426248038968, guid: 024c6ab188ff99943871f7f5ed633893,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1896328426248038968, guid: 024c6ab188ff99943871f7f5ed633893,
-        type: 3}
       propertyPath: m_VersionIndex
-      value: 134
-      objectReference: {fileID: 0}
-    - target: {fileID: 6459806239544869007, guid: 024c6ab188ff99943871f7f5ed633893,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      value: 137
       objectReference: {fileID: 0}
     - target: {fileID: 6843820998963068764, guid: 024c6ab188ff99943871f7f5ed633893,
         type: 3}
@@ -62390,11 +62381,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "AdaDibiMa\u011FaraFinal"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8441534607434449897, guid: 024c6ab188ff99943871f7f5ed633893,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

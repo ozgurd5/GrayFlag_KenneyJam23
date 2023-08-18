@@ -19,7 +19,8 @@ public class PlayerLookingController : MonoBehaviour
 
     private void Update()
     {
-        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
+        if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState
+            or PlayerStateData.PlayerMainState.DialogueState)) return;
         
         HandleLooking();
         CalculateMovingDirection();
@@ -27,6 +28,8 @@ public class PlayerLookingController : MonoBehaviour
 
     private void HandleLooking()
     {
+        if (psd.currentMainState == PlayerStateData.PlayerMainState.DialogueState) return;
+        
         currentRotation.x -= pim.lookInput.y;
         currentRotation.y += pim.lookInput.x;
         

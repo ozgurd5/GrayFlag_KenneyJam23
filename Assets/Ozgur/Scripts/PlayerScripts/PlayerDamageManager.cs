@@ -1,4 +1,4 @@
-using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +7,9 @@ public class PlayerDamageManager : MonoBehaviour
     [Header("Assign Manually")]
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private GameObject playerDamageEffect;
-    
+
     [Header("Assign")]
+    [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private int defaultHealth = 20;
     [SerializeField] private int powerUpHealth = 30;
     [SerializeField] private int knockBackForce = 1500;
@@ -32,13 +33,14 @@ public class PlayerDamageManager : MonoBehaviour
         healthBar = GetComponentInChildren<Slider>();
         
         health = defaultHealth;
-        PlayerPowerUps.OnFishBought += IncreaseHealth;
+        MarketManager.OnFishBought += IncreaseHealth;
     }
 
     public void GetHit(Vector3 enemyTransformForward)
     {
         health -= 3;
         healthBar.value = health;
+        healthText.text = $"{health}";
         
         rb.AddForce(20f * transform.up);
         rb.AddForce(knockBackForce * enemyTransformForward, ForceMode.Acceleration);
@@ -63,6 +65,7 @@ public class PlayerDamageManager : MonoBehaviour
             transform.position = respawnPoint.position;
             health = defaultHealth;
             healthBar.value = health;
+            healthText.text = $"{health}";
             
             aus.PlayOneShot(deathSound);
         }
@@ -77,10 +80,11 @@ public class PlayerDamageManager : MonoBehaviour
         healthBar.maxValue = powerUpHealth;
         
         healthBar.value = powerUpHealth;
+        healthText.text = $"{powerUpHealth}";
     }
 
     private void OnDestroy()
     {
-        PlayerPowerUps.OnFishBought -= IncreaseHealth;
+        MarketManager.OnFishBought -= IncreaseHealth;
     }
 }

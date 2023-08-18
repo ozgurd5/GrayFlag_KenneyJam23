@@ -13,9 +13,10 @@ public class PlayerStateData : MonoBehaviour
     public enum PlayerMainState
     {
         NormalState,
-        ShipControllingState,
-        PauseMenuState,
-        HookState,
+        HookState,  //Custom movement
+        ShipControllingState,   //No looking - No movement - Ship input and control
+        PauseMenuState, //No looking - No movement
+        DialogueState, //No looking
     }
 
     [Header("Main State")]

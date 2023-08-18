@@ -12,7 +12,7 @@ public class PlayerHookEnabler : MonoBehaviour
         hookController = GetComponent<PlayerHookController>();
         hookGunAnimationManager = GetComponent<PlayerHookGunAnimationManager>();
 
-        PlayerPowerUps.OnHookGunBought += EnableHookGun;
+        MarketManager.OnHookGunBought += EnableHookGun;
     }
 
     #if UNITY_EDITOR
@@ -31,6 +31,6 @@ public class PlayerHookEnabler : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerPowerUps.OnHookGunBought -= EnableHookGun;
+        MarketManager.OnHookGunBought -= EnableHookGun;
     }
 }

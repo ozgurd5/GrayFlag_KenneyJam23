@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 
 public class CoinChestMushroomManager : MonoBehaviour
 {
@@ -8,13 +7,14 @@ public class CoinChestMushroomManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinText;
     [SerializeField] private TextMeshProUGUI chestText;
     [SerializeField] private TextMeshProUGUI mushroomText;
-    
-    [Header("Info - No Touch")]
-    public int coinNumber;
-    [SerializeField] private int chestNumber;
-    [SerializeField] private int mushroomNumber;
 
-    static int _chestNumber, _mushroomNumber, _coinNumber;
+    [Header("Market Coin Texts")]
+    [SerializeField] private TextMeshProUGUI foodCanvasCoinText;
+    [SerializeField] private TextMeshProUGUI gunCanvasCoinText;
+    
+    public int coinNumber {private set; get;}
+    public int chestNumber {private set; get;}
+    public int mushroomNumber {private set; get;}
 
     //The reason why every mushroom doesn't have it's own audio source is they destroy before the audio clip ends
     private AudioSource mushroomSource;
@@ -37,14 +37,22 @@ public class CoinChestMushroomManager : MonoBehaviour
     {
         coinNumber += 3;
         coinText.text = $"{coinNumber}";
-        _coinNumber = coinNumber;
+        foodCanvasCoinText.text = $"{coinNumber}";
+        gunCanvasCoinText.text = $"{coinNumber}";
+    }
+    
+    public void DecreaseCoinNumber(int decreaseAmount)
+    {
+        coinNumber -= decreaseAmount;
+        coinText.text = $"{coinNumber}";
+        foodCanvasCoinText.text = $"{coinNumber}";
+        gunCanvasCoinText.text = $"{coinNumber}";
     }
     
     public void IncreaseChestNumber()
     {
         chestNumber++;
-        chestText.text = chestNumber + "/" + ChestManager.totalChestCount;
-        _chestNumber = chestNumber;    
+        chestText.text = chestNumber + "/" + ChestManager.totalChestCount;  
     }
 
     public void IncreaseMushroomNumber()
@@ -52,18 +60,5 @@ public class CoinChestMushroomManager : MonoBehaviour
         mushroomNumber++;
         mushroomText.text = mushroomNumber + "/" + MushroomManager.totalMushroomNumber;
         mushroomSource.Play();
-        _mushroomNumber = mushroomNumber;
     }
-
-    public static int GetNumber(string objNumberToGet)
-    {
-        if (objNumberToGet == "Chest")
-            return _chestNumber;
-        else if (objNumberToGet == "Mushroom")
-            return _mushroomNumber;
-        else if (objNumberToGet == "Coin")
-            return _coinNumber;
-        else return 0;
-    }
-
 }

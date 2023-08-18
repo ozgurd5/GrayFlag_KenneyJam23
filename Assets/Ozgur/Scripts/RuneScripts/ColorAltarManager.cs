@@ -37,14 +37,12 @@ public class ColorAltarManager : MonoBehaviour
         laserPointTransform = transform.GetChild(2);
     }
 
+    #if UNITY_EDITOR
     private void Update()
     {
-        if (impulse)
-        {
-            impulseSource.GenerateImpulse();
-            impulse = false;
-        }
+        if (Input.GetKeyDown(KeyCode.U)) OnGameCompleted?.Invoke();
     }
+    #endif
 
     public void EnableAltar()
     {

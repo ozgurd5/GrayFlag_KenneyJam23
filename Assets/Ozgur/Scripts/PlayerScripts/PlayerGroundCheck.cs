@@ -5,8 +5,8 @@ public class PlayerGroundCheck : MonoBehaviour
     public static int collidedObjectNumber { get; private set; }
 
     [Header("Assign")]
-    [SerializeField] private float radius = 1f;
-    [SerializeField] private float offset = 0.6f;
+    [SerializeField] private float radius = 0.8f;//1f;
+    [SerializeField] private float offset = 0.8f;//0.6f;
 
     [Header("Select")] [SerializeField] private bool gizmos;
     
