@@ -11,8 +11,8 @@ public class MarketManager : MonoBehaviour
     public static event Action OnMarketCanvasClosed;
 
     [Header("Assign Canvases")]
-    [SerializeField] private GameObject foodCanvas;
-    [SerializeField] private GameObject gunCanvas;
+    [SerializeField] private Canvas foodCanvas;
+    [SerializeField] private Canvas gunCanvas;
     
     [Header("Assign Prices")]
     [SerializeField] private int hookGunPrice = 3;
@@ -102,12 +102,12 @@ public class MarketManager : MonoBehaviour
         impulse.GenerateImpulse();
         Debug.Log("Can not buy");
     }
-
+    
     public void CloseMarketCanvas()
     {
-        foodCanvas.SetActive(false);
-        gunCanvas.SetActive(false);
-        
+        foodCanvas.enabled = false;
+        gunCanvas.enabled = false;
+
         OnMarketCanvasClosed?.Invoke();
     }
 }
