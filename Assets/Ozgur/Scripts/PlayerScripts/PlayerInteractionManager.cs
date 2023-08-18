@@ -7,12 +7,12 @@ public class PlayerInteractionManager : MonoBehaviour
     private PlayerInputManager pim;
     private Rigidbody rb;
 
+    private ShipController sc;
     private CinemachineVirtualCamera playerCamera;
     private CameraFollow cf;
     private GameObject sword;
     private GameObject hookGun;
     
-    private ShipController sc;
     private ChestManager cm;
     private MushroomManager mm;
     private ColorAltarManager cam;
@@ -28,6 +28,7 @@ public class PlayerInteractionManager : MonoBehaviour
         pim = PlayerInputManager.Singleton;
         rb = GetComponent<Rigidbody>();
 
+        sc = GameObject.Find("ShipParent").GetComponent<ShipController>();
         playerCamera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
         cf = playerCamera.GetComponent<CameraFollow>();
         sword = playerCamera.transform.Find("Sword").gameObject;
@@ -105,7 +106,6 @@ public class PlayerInteractionManager : MonoBehaviour
 
         if (psd.currentMainState == PlayerStateData.PlayerMainState.NormalState && CrosshairManager.isLookingAtShipWheel)
         {
-            sc = CrosshairManager.crosshairHit.collider.GetComponentInParent<ShipController>();
             sc.TakeControl();
             
             playerCamera.enabled = false;
