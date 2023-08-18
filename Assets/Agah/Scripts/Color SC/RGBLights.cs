@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RGBLights : MonoBehaviour
 {
-    Light light;
+    Light _light;
     [SerializeField][Range(0f, 15f)] float lerpTime;
 
     [SerializeField] Color[] myColors;
@@ -15,7 +15,7 @@ public class RGBLights : MonoBehaviour
 
     void Start()
     {
-        light = GetComponent<Light>();
+        _light = GetComponent<Light>();
     }
 
     void Update()
@@ -25,7 +25,7 @@ public class RGBLights : MonoBehaviour
 
     void ChangeColors()
     {
-        light.color = Color.Lerp(light.color, myColors[colorIndex], lerpTime * Time.deltaTime);
+        _light.color = Color.Lerp(_light.color, myColors[colorIndex], lerpTime * Time.deltaTime);
 
         t = Mathf.Lerp(t, 1f, lerpTime * Time.deltaTime);
         if (t > .99f)
