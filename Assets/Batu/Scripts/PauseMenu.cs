@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,19 +8,22 @@ public class PauseMenu : MonoBehaviour
     
     public static event Action OnGameContinue;
     
-    public static bool Paused = false;
-    public GameObject PauseMenuCanvas;
+    public static bool paused = false;
+    public GameObject pauseMenuCanvas;
+    private GameObject playerCanvas;
+    private GameObject dialogueCanvasları;
 
-    void Start()
+    void Awake()
     {
-        Time.timeScale = 1f;
+        playerCanvas = GameObject.Find("Player/PlayerCanvas");
+        dialogueCanvasları = GameObject.Find("DialogueCanvasları");
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Paused)
+            if (paused)
             {
                 Play();
             }
@@ -35,22 +36,26 @@ public class PauseMenu : MonoBehaviour
 
     void Stop()
     {
+        playerCanvas.SetActive(false);
+        dialogueCanvasları.SetActive(false);
         OnGamePause?.Invoke();
-        PauseMenuCanvas.SetActive(true);
+        pauseMenuCanvas.SetActive(true);
         Time.timeScale = 0f;
-        Paused = true; 
+        paused = true; 
     }
 
     public void Play()
     {
+        playerCanvas.SetActive(true);
+        dialogueCanvasları.SetActive(true);
         OnGameContinue?.Invoke();
-        PauseMenuCanvas.SetActive(false);
+        pauseMenuCanvas.SetActive(false);
         Time.timeScale = 1f;
-        Paused = false;
+        paused = false;
     }
 
     public void MainMenuButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("Menu");
     }
 }

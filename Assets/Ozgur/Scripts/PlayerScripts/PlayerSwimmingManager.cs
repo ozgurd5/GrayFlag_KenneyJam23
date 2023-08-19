@@ -10,7 +10,10 @@ public class PlayerSwimmingManager : MonoBehaviour
     [SerializeField] private AudioSource splashSource;
     [SerializeField] private AudioSource normalSwimSource;
     [SerializeField] private AudioSource fastSwimSource;
-    [SerializeField] private  float splashVelocityLimit = -20;
+    [SerializeField] private float splashVelocityLimit = -20;
+    [SerializeField] private ParticleSystem whiteParticle;
+    [SerializeField] private ParticleSystem blueParticle;
+    private ParticleSystem waterParticle;
 
     private PlayerStateData psd;
     private Rigidbody rb;
@@ -21,6 +24,11 @@ public class PlayerSwimmingManager : MonoBehaviour
     {
         psd = PlayerStateData.Singleton;
         rb = GetComponent<Rigidbody>();
+
+        waterParticle = whiteParticle;
+        OnSwimmingEnter += PlaySwimmingParticle;
+        OnSwimmingExit += StopSwimmingParticle;
+        PlayerColorEnabler.OnBlueColorEnabled += EnableParticleColor;
 
         OnSwimmingEnter += PlaySplashSound;
     }
@@ -53,8 +61,30 @@ public class PlayerSwimmingManager : MonoBehaviour
         else if (psd.isRunning) fastSwimSource.Play();
     }
 
+    private void PlaySwimmingParticle()
+    {
+        waterParticle.gameObject.SetActive(true);
+        waterParticle.Play();
+    }
+
+    private void StopSwimmingParticle()
+    {
+        waterParticle.gameObject.SetActive(false);
+    }
+
+    private void EnableParticleColor()
+    {
+        waterParticle = blueParticle;
+    }
+    
     private void OnDestroy()
     {
         OnSwimmingEnter -= PlaySplashSound;
+        OnSwimmingExit -= StopSwimmingParticle;
+        PlayerColorEnabler.OnBlueColorEnabled -= EnableParticleColor;
+        
+        OnSwimmingEnter -= PlaySwimmingParticle;
+        
     }
+    
 }
