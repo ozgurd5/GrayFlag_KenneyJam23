@@ -3,6 +3,7 @@ using System.Collections;
 using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShipController : MonoBehaviour
 {
@@ -24,21 +25,28 @@ public class ShipController : MonoBehaviour
     [Header("Assign - Look")]
     [SerializeField] private float cameraMinYPos = 10f;
     [SerializeField] private float cameraMaxYPos = 110f;
-    
+
     [Header("Info - No touch")]
     public SailMode currentSailMode;
     [SerializeField] private float movingSpeed;
     [SerializeField] private float rotationSpeed;
+    public bool canMoveForward;
+    public bool canMoveBackward;
+    public bool canRotateRight;
+    public bool canRotateLeft;
 
     private ShipInputManager sim;
+    private ShipAnimationManager sam;
     private Transform cameraFollowTransform;
     private Transform cameraLookAtTransform;
     private CinemachineVirtualCamera shipCamera;
     private Rigidbody rb;
     private AudioSource aus;
 
-    private PlayerStateData psd;
-    
+    private PlayerStateData psd;    
+
+    public IEnumerator stopShipWithoutPhysicsCoroutine { private set; get; }
+
     public enum SailMode
     {
         Reverse,
@@ -53,6 +61,7 @@ public class ShipController : MonoBehaviour
         rotationSpeed = stationaryRotationSpeed;
         
         sim = GetComponent<ShipInputManager>();
+        sam = GetComponent<ShipAnimationManager>();
         cameraFollowTransform = transform.Find("ShipCameraFollow");
         cameraLookAtTransform = transform.Find("ShipCameraLookAt");
         shipCamera = GameObject.Find("ShipCamera").GetComponent<CinemachineVirtualCamera>();
@@ -60,6 +69,8 @@ public class ShipController : MonoBehaviour
         aus = GetComponent<AudioSource>();
 
         psd = PlayerStateData.Singleton;;
+
+        stopShipWithoutPhysicsCoroutine = StopShipWithoutPhysics();
     }
 
     private void HandleLooking()
@@ -97,6 +108,10 @@ public class ShipController : MonoBehaviour
     {
         shipCamera.enabled = false;
         rb.isKinematic = true;
+        
+        sam.SetStationary();
+        StopAllCoroutines();
+        StartCoroutine(stopShipWithoutPhysicsCoroutine);
         currentSailMode = SailMode.Stationary;
     }
     
@@ -108,8 +123,16 @@ public class ShipController : MonoBehaviour
 
     private void HandleMovement()
     {
-        rb.velocity = transform.forward * movingSpeed;
-        transform.Rotate(0f, sim.rotateInput * rotationSpeed, 0f);
+        if ((canMoveForward && currentSailMode != SailMode.Reverse) || (canMoveBackward && currentSailMode == SailMode.Reverse))
+            rb.velocity = transform.forward * movingSpeed;
+        else
+        {
+            rb.velocity = Vector3.zero;
+            movingSpeed = 0f;
+        }
+        
+        if ((sim.rotateInput == -1 && canRotateLeft) || (sim.rotateInput == 1 && canRotateRight))
+            transform.Rotate(0f, sim.rotateInput * rotationSpeed, 0f);
     }
 
     private void IncreaseSail()
@@ -189,8 +212,9 @@ public class ShipController : MonoBehaviour
             movingSpeed += acceleration * Time.deltaTime;
             yield return null;
         }
-        
-        if (currentSailMode == SailMode.Stationary) movingSpeed = 0f;
+
+        //End result won't not be the exact movingSpeedToReach
+        movingSpeed = movingSpeedToReach;
     }
     
     private IEnumerator DecreaseMovingSpeed(float movingSpeedToReach)
@@ -200,8 +224,9 @@ public class ShipController : MonoBehaviour
             movingSpeed -= deceleration * Time.deltaTime;
             yield return null;
         }
-
-        if (currentSailMode == SailMode.Stationary) movingSpeed = 0f;
+        
+        //End result won't not be the exact movingSpeedToReach
+        movingSpeed = movingSpeedToReach;
     }
     
     private IEnumerator IncreaseRotationSpeed(float rotationSpeedToReach)
@@ -211,6 +236,9 @@ public class ShipController : MonoBehaviour
             rotationSpeed -= rotationAcceleration * Time.deltaTime;
             yield return null;
         }
+        
+        //End result won't not be the exact rotationSpeedToReach
+        rotationSpeed = rotationSpeedToReach;
     }
 
     private IEnumerator DecreaseRotationSpeed(float rotationSpeedToReach)
@@ -218,6 +246,20 @@ public class ShipController : MonoBehaviour
         while (rotationSpeed < rotationSpeedToReach)
         {
             rotationSpeed += rotationAcceleration * Time.deltaTime;
+            yield return null;
+        }
+        
+        //End result won't not be the exact rotationSpeedToReach
+        rotationSpeed = rotationSpeedToReach;
+    }
+
+    private IEnumerator StopShipWithoutPhysics()
+    {
+        StartCoroutine(DecreaseMovingSpeed(0));
+        
+        while (movingSpeed > 0)
+        {
+            transform.position += transform.forward * (Time.deltaTime * movingSpeed);
             yield return null;
         }
     }

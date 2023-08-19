@@ -27,7 +27,6 @@ public class ShipAnimationManager : MonoBehaviour
     private ShipInputManager sim;
     private PlayerStateData psd;
 
-    private ShipController.SailMode currentSailMode;
     private bool isRotatingAnimationPlaying;
     private float rotationAmount;
     private int currentPosition;    //-1 left 0 middle 1 right
@@ -58,16 +57,16 @@ public class ShipAnimationManager : MonoBehaviour
 
     private void PlayAnimation(ShipController.SailMode sailMode)
     {
-        currentSailMode = sailMode;
-        
         if (sailMode == ShipController.SailMode.Stationary) SetStationary();
         else if (sailMode == ShipController.SailMode.HalfSail) SetHalfSail();
         else if (sailMode == ShipController.SailMode.FullSail) SetFullSail();
     }
     
-    private void SetStationary()
+    public void SetStationary()
     {
+        PlayFrontSailUpAnimation();
         PlayMidSailUpAnimation();
+        PlayBackSailUpAnimation();
     }
 
     private void SetHalfSail()
