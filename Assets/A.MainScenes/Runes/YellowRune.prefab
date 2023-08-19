@@ -32,8 +32,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -737.32, y: 33.5179, z: -529.3588}
-  m_LocalScale: {x: 0.11094176, y: 0.5668934, z: 0.18428165}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.1, y: 0, z: 0.2}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -123,7 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCollected: 0
   runeParticle: {fileID: 0}
-  newSkybox: {fileID: 2100000, guid: 07d9b45f8a6013142a785022267c54ee, type: 2}
 --- !u!82 &2804829039978715909
 AudioSource:
   m_ObjectHideFlags: 0

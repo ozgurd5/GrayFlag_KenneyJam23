@@ -1,5 +1,3 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RGBChanger : MonoBehaviour
@@ -12,20 +10,20 @@ public class RGBChanger : MonoBehaviour
     int colorIndex = 0;
 
     bool isAllColorsEnabled;
-    bool isGameOver;
+    //bool isGameOver;
 
     float t = 0f;
 
     private void Awake()
     {
         PlayerColorEnabler.OnAllColorEnabled += PlayerColorEnabler_OnAllColorEnabled;
-        ColorAltarManager.OnGameCompleted += ColorAltarManager_OnGameCompleted;
+        //ColorAltarManager.OnGameCompleted += ColorAltarManager_OnGameCompleted;
     }
 
-    private void ColorAltarManager_OnGameCompleted()
-    {
-        isGameOver = true;
-    }
+    //private void ColorAltarManager_OnGameCompleted()
+    //{
+    //    isGameOver = true;
+    //}
 
     private void PlayerColorEnabler_OnAllColorEnabled()
     {
@@ -39,14 +37,14 @@ public class RGBChanger : MonoBehaviour
 
     void Update()
     {
-        if (isAllColorsEnabled && isGameOver)
+        if (isAllColorsEnabled)// && isGameOver)
             ChangeColors();
     }
 
     void ChangeColors()
     {
         meshRenderer.material.color = Color.Lerp(meshRenderer.material.color, myColors[colorIndex], lerpTime * Time.deltaTime);
-
+        
         t = Mathf.Lerp(t, 1f, lerpTime * Time.deltaTime);
         if (t > .99f)
         {
