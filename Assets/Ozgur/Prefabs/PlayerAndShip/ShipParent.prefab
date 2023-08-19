@@ -4642,7 +4642,6 @@ GameObject:
   - component: {fileID: 4731827178071223539}
   - component: {fileID: 6181502022034643799}
   - component: {fileID: 2828090238473119400}
-  - component: {fileID: 5265424753129116017}
   m_Layer: 10
   m_Name: ShipParent
   m_TagString: Ship
@@ -4890,19 +4889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a187be97854aec459c18bf11d323f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5265424753129116017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6200755057779098840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 919b56fad4204714798eeadf17628671, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aus: {fileID: 0}
 --- !u!1 &6411689019263451598
 GameObject:
   m_ObjectHideFlags: 0
