@@ -7,7 +7,7 @@ using UnityEditor;
 public class TextFlag : MonoBehaviour
 {
     public TMP_Text textComponent;
-    void Update()
+    void LateUpdate()
     {
         textComponent.ForceMeshUpdate();
         var textInfo = textComponent.textInfo;
