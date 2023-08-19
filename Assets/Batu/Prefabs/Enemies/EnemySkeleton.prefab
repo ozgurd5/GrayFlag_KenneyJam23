@@ -1528,7 +1528,7 @@ GameObject:
   - component: {fileID: 5953192798894016935}
   - component: {fileID: 4651637017737408094}
   m_Layer: 0
-  m_Name: SkeletonV2
+  m_Name: EnemySkeleton
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1598,7 +1598,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.12, y: 0.16, z: 0.12}
+  m_Size: {x: 0.16, y: 0.16, z: 0.16}
   m_Center: {x: -0.0037247143, y: 0.07954401, z: 0}
 --- !u!54 &2054350124775419215
 Rigidbody:
@@ -1674,9 +1674,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27919c04949ebe5449650b070786de56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
-  defaultTakenDamage: 3
-  powerUpTakenDamage: 5
+  health: 150
+  damage: 25
   knockBackForce: 2500
   damageTakingAnimTime: 0.8
   attackPrepareTime: 0.7
@@ -2436,9 +2435,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 15
+  m_MaxValue: 150
   m_WholeNumbers: 1
-  m_Value: 15
+  m_Value: 150
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

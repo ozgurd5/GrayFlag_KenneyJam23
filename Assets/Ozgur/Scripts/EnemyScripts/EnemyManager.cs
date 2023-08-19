@@ -5,9 +5,8 @@ using UnityEngine.UI;
 public class EnemyManager : MonoBehaviour
 {
     [Header("Assign")]
-    [SerializeField] private int health; //10 zombie - 15 skeleton
-    [SerializeField] private int defaultTakenDamage = 3;
-    [SerializeField] private int powerUpTakenDamage = 5;
+    [SerializeField] private int health;    //100 zombie - 150 skeleton
+    [SerializeField] private int damage;    //20 zombie - 25 skeleton
     [SerializeField] private int knockBackForce = 2500;
     [SerializeField] private float damageTakingAnimTime = 0.8f;
     public float attackPrepareTime; //1 zombie - 0.7 skeleton
@@ -33,8 +32,6 @@ public class EnemyManager : MonoBehaviour
     private RaycastHit hit;
     private IEnumerator idleSoundCoroutine;
     private IEnumerator attackRoutine;
-    
-    private int takenDamage;
 
     public enum EnemyState
     {
@@ -57,9 +54,6 @@ public class EnemyManager : MonoBehaviour
         
         idleSoundCoroutine = HandleIdleSound();
         attackRoutine = EnterAttackState();
-        
-        takenDamage = defaultTakenDamage;
-        MarketManager.OnChickenBought += IncreaseTakenDamage;
     }
 
     public void AttackPlayer()
@@ -84,7 +78,7 @@ public class EnemyManager : MonoBehaviour
 
         yield return new WaitForSeconds(attackPrepareTime);
 
-        player.GetComponent<PlayerDamageManager>().GetHit(transform.forward);
+        player.GetComponent<PlayerDamageManager>().GetHit(transform.forward, damage);
         aus.PlayOneShot(attackSound);
     }
 
@@ -134,7 +128,7 @@ public class EnemyManager : MonoBehaviour
         else return false;
     }
 
-    public void GetHit(Vector3 playerTransformForward)
+    public void GetHit(Vector3 playerTransformForward, int takenDamage)
     {
         if (currentState == EnemyState.Dead) return;
 
@@ -182,15 +176,5 @@ public class EnemyManager : MonoBehaviour
             aus.PlayOneShot(damageSound);
             return false;
         }
-    }
-
-    private void IncreaseTakenDamage()
-    {
-        takenDamage = powerUpTakenDamage;
-    }
-
-    private void OnDestroy()
-    {
-        MarketManager.OnChickenBought -= IncreaseTakenDamage;
     }
 }

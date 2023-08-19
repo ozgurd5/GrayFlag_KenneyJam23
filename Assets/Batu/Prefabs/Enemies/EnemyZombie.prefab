@@ -185,7 +185,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.16, z: 0.1}
+  m_Size: {x: 0.16, y: 0.16, z: 0.16}
   m_Center: {x: -0.0037247143, y: 0.07954401, z: 0}
 --- !u!54 &7239240239474887057
 Rigidbody:
@@ -226,9 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27919c04949ebe5449650b070786de56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  defaultTakenDamage: 3
-  powerUpTakenDamage: 5
+  health: 100
+  damage: 20
   knockBackForce: 2500
   damageTakingAnimTime: 0.8
   attackPrepareTime: 1
@@ -265,7 +264,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.08
-  m_Speed: 8
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -298,8 +297,8 @@ MonoBehaviour:
   walkPointRange: 10
   sightRange: 20
   attackRange: 7
-  walkingSpeed: 0
-  runningSpeed: 0
+  walkingSpeed: 1
+  runningSpeed: 8
 --- !u!65 &899882065500666343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1279,7 +1278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 5.2298, y: 0}
+  m_AnchoredPosition: {x: 5.229801, y: 0}
   m_SizeDelta: {x: 20.4594, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5440885445005436684
@@ -2465,9 +2464,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 10
+  m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

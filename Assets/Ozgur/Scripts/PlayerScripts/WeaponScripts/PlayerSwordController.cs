@@ -28,11 +28,14 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     [SerializeField] private float hiddenPositionY = -1.1f;
     [SerializeField] private float hiddenPositionYBack = -0.4f;
     [SerializeField] private AudioSource hidingSource;
-
+    
+    [Header("Assign - Damage")]
+    [SerializeField] private int defaultDamage = 25;
+    [SerializeField] private int powerUpDamage = 40;
+    
     private PlayerStateData psd;
     private PlayerInputManager pim;
     private Transform sword;
-    private ParticleSystem attackParticle;
 
     [Header("Info - No Touch")]
     [SerializeField] private bool isHidden;
@@ -53,6 +56,9 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     private IEnumerator playExposeWeaponAnimation;
     private Tweener hideTween;
     
+    private int damage;
+    private ParticleSystem attackParticle;
+    
     private bool previousIsDialogueOpen;
     private bool previousIsSwimming;
     private bool didExitSwimming;
@@ -70,6 +76,9 @@ public class PlayerSwordController : WeaponAnimationManagerBase
 
         attackParticle = whiteAttackParticle;
         PlayerColorEnabler.OnYellowColorEnabled += EnableYellowParticle;
+        
+        damage = defaultDamage;
+        MarketManager.OnChickenBought += IncreaseDamage;
         
         //Walking values are the default values
         DisableRunningMode();
@@ -107,7 +116,7 @@ public class PlayerSwordController : WeaponAnimationManagerBase
 
         if (CrosshairManager.isLookingAtEnemy)
         {
-            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward);
+            CrosshairManager.crosshairHit.collider.GetComponent<EnemyManager>().GetHit(transform.forward, damage);
             attackParticle.Play();
         }
     }
@@ -236,9 +245,15 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     {
         attackParticle = yellowAttackParticle;
     }
-
+    
+    private void IncreaseDamage()
+    {
+        damage = powerUpDamage;
+    }
+    
     private void OnDestroy()
     {
         PlayerColorEnabler.OnYellowColorEnabled -= EnableYellowParticle;
+        MarketManager.OnChickenBought -= IncreaseDamage;
     }
 }

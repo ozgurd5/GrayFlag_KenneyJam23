@@ -686,6 +686,8 @@ MonoBehaviour:
   hiddenPositionY: -1.1
   hiddenPositionYBack: -0.4
   hidingSource: {fileID: 2245045330203281498}
+  defaultDamage: 25
+  powerUpDamage: 40
   isHidden: 0
   isHidingAnimationPlaying: 0
   isRunningModeActive: 0
@@ -1183,8 +1185,8 @@ MonoBehaviour:
   respawnPoint: {fileID: 0}
   playerDamageEffect: {fileID: 2471462566660503249}
   healthText: {fileID: 7491143681860728676}
-  defaultHealth: 20
-  powerUpHealth: 30
+  defaultHealth: 100
+  powerUpHealth: 150
   knockBackForce: 1500
   damageStopTime: 0.5
   aus: {fileID: 7643033943649779526}
@@ -1643,8 +1645,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75.8, y: 3.66}
-  m_SizeDelta: {x: 18.0933, y: 10.89}
+  m_AnchoredPosition: {x: -76, y: 3.5}
+  m_SizeDelta: {x: 20, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &336781391358234666
 CanvasRenderer:
@@ -1674,7 +1676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 695109c4ea179f84d9bc0d04684c430f, type: 2}
   m_sharedMaterial: {fileID: -7761624670617084980, guid: 695109c4ea179f84d9bc0d04684c430f,
@@ -1829,9 +1831,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 20
+  m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 20
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

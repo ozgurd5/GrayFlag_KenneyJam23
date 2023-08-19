@@ -10,8 +10,8 @@ public class PlayerDamageManager : MonoBehaviour
 
     [Header("Assign")]
     [SerializeField] private TextMeshProUGUI healthText;
-    [SerializeField] private int defaultHealth = 20;
-    [SerializeField] private int powerUpHealth = 30;
+    [SerializeField] private int defaultHealth = 100;
+    [SerializeField] private int powerUpHealth = 150;
     [SerializeField] private int knockBackForce = 1500;
     [SerializeField] private float damageStopTime = 0.5f;
 
@@ -36,9 +36,9 @@ public class PlayerDamageManager : MonoBehaviour
         MarketManager.OnFishBought += IncreaseHealth;
     }
 
-    public void GetHit(Vector3 enemyTransformForward)
+    public void GetHit(Vector3 enemyTransformForward, int damage)
     {
-        health -= 3;
+        health -= damage;
         healthBar.value = health;
         healthText.text = $"{health}";
         
