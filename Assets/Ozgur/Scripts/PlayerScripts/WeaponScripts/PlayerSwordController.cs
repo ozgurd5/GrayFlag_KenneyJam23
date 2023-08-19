@@ -9,7 +9,8 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     [SerializeField] private float walkingAnimationHalfDuration = 0.5f;
     [SerializeField] private float runningAnimationHalfDuration = 0.2f;
     [SerializeField] private AudioSource attackSource;
-    [SerializeField] private ParticleSystem attackParticle;
+    [SerializeField] private ParticleSystem whiteAttackParticle;
+    [SerializeField] private ParticleSystem yellowAttackParticle;
 
     [Header("Assign")]
     [SerializeField] private float attackRotationX = 50f;
@@ -31,6 +32,7 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     private PlayerStateData psd;
     private PlayerInputManager pim;
     private Transform sword;
+    private ParticleSystem attackParticle;
 
     [Header("Info - No Touch")]
     [SerializeField] private bool isHidden;
@@ -65,6 +67,9 @@ public class PlayerSwordController : WeaponAnimationManagerBase
         playMovingAnimation = PlayMovingAnimation();
         playHideWeaponAnimation = PlayHideWeaponAnimation();
         playExposeWeaponAnimation = PlayExposeWeaponAnimation();
+
+        attackParticle = whiteAttackParticle;
+        PlayerColorEnabler.OnYellowColorEnabled += EnableYellowParticle;
         
         //Walking values are the default values
         DisableRunningMode();
@@ -225,5 +230,15 @@ public class PlayerSwordController : WeaponAnimationManagerBase
 
         previousIsSwimming = psd.isSwimming;
         previousIsDialogueOpen = DialogueController.isOpen;
+    }
+
+    private void EnableYellowParticle()
+    {
+        attackParticle = yellowAttackParticle;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerColorEnabler.OnYellowColorEnabled -= EnableYellowParticle;
     }
 }

@@ -10,8 +10,10 @@ public class ChestManager : MonoBehaviour
     [SerializeField] private float chestOpeningAnimationTime = 0.5f;
     [SerializeField] private float coinAnimationTime = 0.5f;
     [SerializeField] private float coinFlyTime = 0.1f;
-    [SerializeField] private ParticleSystem chestOpenParticle;
-
+    [SerializeField] private ParticleSystem whiteCoinParticle;
+    [SerializeField] private ParticleSystem yellowCoinParticle;
+    
+    private ParticleSystem chestOpenParticle;
 
     [Header("Assign - Sound")]
     [SerializeField] private AudioClip chestSound;
@@ -36,6 +38,9 @@ public class ChestManager : MonoBehaviour
 
         playerTransform = GameObject.Find("Player").transform;
         aus = GetComponent<AudioSource>();
+
+        chestOpenParticle = whiteCoinParticle;
+        PlayerColorEnabler.OnYellowColorEnabled += EnableYellowParticle;
 
         totalChestCount++;
     }
@@ -71,5 +76,15 @@ public class ChestManager : MonoBehaviour
         Destroy(coin1Transform.gameObject);
         Destroy(coin2Transform.gameObject);
         Destroy(coin3Transform.gameObject);
+    }
+
+    private void EnableYellowParticle()
+    {
+        chestOpenParticle = yellowCoinParticle;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerColorEnabler.OnYellowColorEnabled -= EnableYellowParticle;
     }
 }
