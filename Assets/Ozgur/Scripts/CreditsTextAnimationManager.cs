@@ -6,6 +6,7 @@ public class CreditsTextAnimationManager : MonoBehaviour
 {
     [Header("Assign")]
     [SerializeField] private TextMeshProUGUI[] texts;
+    [SerializeField] private float waitTimeBeforeStart = 3f;
     [SerializeField] private float totalCreditsTime;
     [SerializeField] private float fadeTime = 1f;
     [SerializeField] private float waitTime = 0.5f;
@@ -14,11 +15,18 @@ public class CreditsTextAnimationManager : MonoBehaviour
     {
         foreach (var text in texts) text.alpha = 0f;
 
+        ColorAltarManager.OnGameCompleted += PlayTextAnimationMethod;
+    }
+
+    private void PlayTextAnimationMethod()
+    {
         StartCoroutine(PlayTextAnimation());
     }
 
     private IEnumerator PlayTextAnimation()
     {
+        yield return new WaitForSeconds(waitTimeBeforeStart);
+        
         float displayTime = (totalCreditsTime / 3) - (fadeTime * 2) - waitTime;
         
         foreach (var text in texts)
@@ -44,12 +52,17 @@ public class CreditsTextAnimationManager : MonoBehaviour
         {
             if (isFadeIn) text.alpha += increaseSpeed * Time.deltaTime;
             else text.alpha -= increaseSpeed * Time.deltaTime;
-            Debug.Log(text.alpha);
+            
             timePassed += Time.deltaTime;
             yield return null;
         }
 
         if (isFadeIn) text.alpha = 1f;
         else text.alpha = 0f;
+    }
+
+    private void OnDestroy()
+    {
+        ColorAltarManager.OnGameCompleted -= PlayTextAnimationMethod;
     }
 }
