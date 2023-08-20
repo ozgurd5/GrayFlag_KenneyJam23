@@ -27,7 +27,7 @@ public class EasterEggSceneLoader : MonoBehaviour
 
     IEnumerator Wait() //TODO: Bu Class geçiþi yapacak, Wait fonksiyonu silinecek. 
     {
-        yield return new WaitForSeconds(5); 
+        yield return new WaitForSeconds(0); 
         DOTween.KillAll();
         ChangeSceneToEasterEgg();
     }
@@ -35,7 +35,6 @@ public class EasterEggSceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Easter Egg");
     }
-
     public void PlayerYesButton()
     {
         playerYes = true;

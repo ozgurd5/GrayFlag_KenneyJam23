@@ -18,6 +18,8 @@ public class FinalCutSceneManager : MonoBehaviour
 
     bool isGameComplete;
     public static bool isCutSceneOver;
+    [Tooltip("FOR THIS CLASS TO WORK, YOU NEED TO ENSURE ALL CAMERAS ARE ASSINGED IN THE CameraManager CLASS/OBJECT.")]
+    public bool READTOOLTIP;
 
 
     private void Awake()
@@ -78,7 +80,7 @@ public class FinalCutSceneManager : MonoBehaviour
             MoveCamera(cameraManager.ada1Camera);
 
         if (HasCameraMoved(cameraManager.ada1Camera))
-            cameraManager.SwitchCameras(cameraManager.playerCamera);
+            MoveCamera(cameraManager.ada5Camera); //Eðer oyuncunun kamerasý çalýþacak ise => //cameraManager.SwitchCameras(cameraManager.playerCamera);
             
         //StartCoroutine(WaitFor(2));
             PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;
