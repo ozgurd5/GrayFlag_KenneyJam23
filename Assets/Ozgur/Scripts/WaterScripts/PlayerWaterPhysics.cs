@@ -24,6 +24,8 @@ public class PlayerWaterPhysics : FakeWaterPhysicsBase
     private void Update()
     {
         if (canPlayerSwimAnimationPlay) PlaySwimmingAnimations();
+
+        PlayerSwimPositionSafety();
     }
 
     private void EnableSwimmingAnimation()
@@ -60,6 +62,16 @@ public class PlayerWaterPhysics : FakeWaterPhysicsBase
         
         playerEg.enabled = true;
         playerRb.useGravity = true;
+    }
+
+    private void PlayerSwimPositionSafety()
+    {
+        if (transform.position.y < swimPosition)
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.y = swimPosition;
+            transform.position = newPosition;
+        }
     }
     
     private void OnDestroy()
