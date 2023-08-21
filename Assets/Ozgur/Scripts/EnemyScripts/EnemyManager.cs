@@ -62,14 +62,12 @@ public class EnemyManager : MonoBehaviour
     {
         if (currentState == EnemyState.Dead) return;
         
-        Debug.Log("attack: " + currentState);
         attackCoroutine = AttackPlayer();
         StartCoroutine(attackCoroutine);
     }
 
     public void StopAttack()
     {
-        Debug.Log("stop attack");
         StopCoroutine(attackCoroutine);
     }
 
@@ -79,7 +77,7 @@ public class EnemyManager : MonoBehaviour
         
         currentState = EnemyState.Attack;
         an.Play("EnemyAttack");
-        Debug.Log("attack routine");
+        
         yield return new WaitForSeconds(attackPrepareTime);
 
         player.GetComponent<PlayerDamageManager>().GetHit(transform.forward, damage);
@@ -135,7 +133,7 @@ public class EnemyManager : MonoBehaviour
     public void GetHit(Vector3 playerTransformForward, int takenDamage)
     {
         if (currentState == EnemyState.Dead) return;
-        Debug.Log("gethit");
+        
         StopAttack();
         currentState = EnemyState.GettingDamage;
 

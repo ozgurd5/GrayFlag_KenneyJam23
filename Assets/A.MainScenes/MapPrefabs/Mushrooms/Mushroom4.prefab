@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 8846224690617994213}
   - component: {fileID: 790087606514223344}
   - component: {fileID: 1355177739327941261}
+  - component: {fileID: 1559560693734599327}
   m_Layer: 0
-  m_Name: Mushroom 4 Variant
+  m_Name: Mushroom4
   m_TagString: Mushroom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,8 +65,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d05650ca49162b04480853cc21a4e8c3, type: 2}
-  - {fileID: 2100000, guid: d05650ca49162b04480853cc21a4e8c3, type: 2}
+  - {fileID: 2100000, guid: 25f0c06633fb11b4685ed8f57b4cf14c, type: 2}
+  - {fileID: 2100000, guid: 325f39dac63eefb4bb2f84c5c453f254, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,6 +124,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mushroomFlyTime: 0.1
   isCollected: 0
+--- !u!114 &1559560693734599327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440795246847202610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080a524ed3cc0e646a3ba047244e5a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
+  redMaterialIndexes: 00000000
+  greenMaterial: {fileID: 2100000, guid: 8d7c3c3938f122449bbd39bcbcc97525, type: 2}
+  greenMaterialIndexes: 01000000
+  blueMaterial: {fileID: 0}
+  blueMaterialIndexes: 
+  yellowMaterial: {fileID: 0}
+  yellowMaterialIndexes: 
 --- !u!1001 &3015311471193775701
 PrefabInstance:
   m_ObjectHideFlags: 0
