@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.ComponentModel;
 using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
@@ -8,6 +9,10 @@ using UnityEngine.SceneManagement;
 public class ShipController : MonoBehaviour
 {
     public static event Action<SailMode> OnSailChanged;
+    public static event Action OnMovementStarted;
+    public static event Action OnMovementEnded;
+    public static event Action OnRotationStarted;
+    public static event Action OnRotationEnded;
     
     [Header("Assign - Movement")]
     [SerializeField] private float fullSailSpeed = 60f;
@@ -17,7 +22,6 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float deceleration = 30f;
 
     [Header("Assign - Rotation")]
-    [SerializeField] private float rotationAcceleration = 2f; //2 means nearly no acceleration at all
     [SerializeField] private float stationaryRotationSpeed = 1f;
     [SerializeField] private float halfSailRotationSpeed = 0.75f;
     [SerializeField] private float fullSailRotationSpeed = 0.5f;
@@ -34,6 +38,7 @@ public class ShipController : MonoBehaviour
     public bool canMoveBackward;
     public bool canRotateRight;
     public bool canRotateLeft;
+    [SerializeField] private bool isRotating;
 
     private ShipInputManager sim;
     private ShipAnimationManager sam;
@@ -42,9 +47,10 @@ public class ShipController : MonoBehaviour
     private CinemachineVirtualCamera shipCamera;
     private Rigidbody rb;
     private AudioSource aus;
+    private PlayerStateData psd;
 
-    private PlayerStateData psd;    
-
+    private bool previousIsRotating;
+    
     public IEnumerator stopShipWithoutPhysicsCoroutine { private set; get; }
 
     public enum SailMode
@@ -73,29 +79,21 @@ public class ShipController : MonoBehaviour
         stopShipWithoutPhysicsCoroutine = StopShipWithoutPhysics();
     }
 
-    private void HandleLooking()
-    {
-        if (psd.currentMainState != PlayerStateData.PlayerMainState.ShipControllingState) return;
-
-        cameraFollowTransform.RotateAround(cameraLookAtTransform.position, Vector3.up, sim.lookInput.x);
-        
-        if ((cameraFollowTransform.position.y < cameraMinYPos && sim.lookInput.y < 0) ||
-            cameraFollowTransform.position.y > cameraMaxYPos && sim.lookInput.y > 0) return;
-        
-        cameraFollowTransform.RotateAround(cameraLookAtTransform.position, cameraFollowTransform.right, sim.lookInput.y);
-    }
-
     private void Update()
     {
         if (psd.currentMainState != PlayerStateData.PlayerMainState.ShipControllingState) return;
         
         HandleLooking();
         HandleSailMode();
+        HandleRotatingEvents();
     }
 
     private void FixedUpdate()
     {
-        if (psd.currentMainState == PlayerStateData.PlayerMainState.ShipControllingState) HandleMovement();
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.ShipControllingState) return;
+        
+        HandleMovement();
+        HandleRotating();
     }
 
     public void TakeControl()
@@ -115,24 +113,47 @@ public class ShipController : MonoBehaviour
         currentSailMode = SailMode.Stationary;
     }
     
-    private void HandleSailMode()
+    private void HandleLooking()
     {
-        if (sim.isSailUpKeyDown && currentSailMode != SailMode.FullSail) IncreaseSail();
-        else if (sim.isSailDownKeyDown && currentSailMode != SailMode.Reverse) DecreaseSail();
+        if (psd.currentMainState != PlayerStateData.PlayerMainState.ShipControllingState) return;
+
+        cameraFollowTransform.RotateAround(cameraLookAtTransform.position, Vector3.up, sim.lookInput.x);
+        
+        if ((cameraFollowTransform.position.y < cameraMinYPos && sim.lookInput.y < 0) ||
+            cameraFollowTransform.position.y > cameraMaxYPos && sim.lookInput.y > 0) return;
+        
+        cameraFollowTransform.RotateAround(cameraLookAtTransform.position, cameraFollowTransform.right, sim.lookInput.y);
     }
 
     private void HandleMovement()
     {
         if ((canMoveForward && currentSailMode != SailMode.Reverse) || (canMoveBackward && currentSailMode == SailMode.Reverse))
+        {
             rb.velocity = transform.forward * movingSpeed;
+        }
+        
         else
         {
             rb.velocity = Vector3.zero;
             movingSpeed = 0f;
         }
-        
+    }
+
+    private void HandleRotating()
+    {
         if ((sim.rotateInput == -1 && canRotateLeft) || (sim.rotateInput == 1 && canRotateRight))
+        {
             transform.Rotate(0f, sim.rotateInput * rotationSpeed, 0f);
+            isRotating = true;
+        }
+        
+        else isRotating = false; 
+    }
+
+    private void HandleSailMode()
+    {
+        if (sim.isSailUpKeyDown && currentSailMode != SailMode.FullSail) IncreaseSail();
+        else if (sim.isSailDownKeyDown && currentSailMode != SailMode.Reverse) DecreaseSail();
     }
 
     private void IncreaseSail()
@@ -143,7 +164,7 @@ public class ShipController : MonoBehaviour
         {
             StopAllCoroutines();
             StartCoroutine(IncreaseMovingSpeed(0f));
-            StartCoroutine(IncreaseRotationSpeed(stationaryRotationSpeed));
+            rotationSpeed = stationaryRotationSpeed;
         }
         
         else if (currentSailMode == SailMode.HalfSail)
@@ -153,7 +174,9 @@ public class ShipController : MonoBehaviour
             
             StopAllCoroutines();
             StartCoroutine(IncreaseMovingSpeed(halfSailSpeed));
-            StartCoroutine(IncreaseRotationSpeed(halfSailRotationSpeed));
+            rotationSpeed = halfSailRotationSpeed;
+            
+            OnMovementStarted?.Invoke();
         }
         
         else if (currentSailMode == SailMode.FullSail)
@@ -163,7 +186,7 @@ public class ShipController : MonoBehaviour
             
             StopAllCoroutines();
             StartCoroutine(IncreaseMovingSpeed(fullSailSpeed));
-            StartCoroutine(IncreaseRotationSpeed(fullSailRotationSpeed));
+            rotationSpeed = fullSailRotationSpeed;
         }
         
         currentSailMode = (SailMode)math.clamp((int)currentSailMode, 0, 3);
@@ -178,7 +201,7 @@ public class ShipController : MonoBehaviour
         {
             StopAllCoroutines();
             StartCoroutine(DecreaseMovingSpeed(-1 * reverseSpeed));
-            StartCoroutine(DecreaseRotationSpeed(stationaryRotationSpeed));
+            rotationSpeed = stationaryRotationSpeed;
         }
         
         else if (currentSailMode == SailMode.Stationary)
@@ -188,7 +211,9 @@ public class ShipController : MonoBehaviour
             
             StopAllCoroutines();
             StartCoroutine(DecreaseMovingSpeed(0f));
-            StartCoroutine(DecreaseRotationSpeed(stationaryRotationSpeed));
+            rotationSpeed = stationaryRotationSpeed;
+            
+            OnMovementEnded?.Invoke();
         }
         
         else if (currentSailMode == SailMode.HalfSail)
@@ -198,7 +223,7 @@ public class ShipController : MonoBehaviour
             
             StopAllCoroutines();
             StartCoroutine(DecreaseMovingSpeed(halfSailSpeed));
-            StartCoroutine(DecreaseRotationSpeed(halfSailRotationSpeed));
+            rotationSpeed = halfSailRotationSpeed;
         }
         
         currentSailMode = (SailMode)math.clamp((int)currentSailMode, 0, 3);
@@ -208,7 +233,7 @@ public class ShipController : MonoBehaviour
     private IEnumerator IncreaseMovingSpeed(float movingSpeedToReach)
     {
         while (movingSpeed < movingSpeedToReach)
-        {
+        { 
             movingSpeed += acceleration * Time.deltaTime;
             yield return null;
         }
@@ -228,30 +253,6 @@ public class ShipController : MonoBehaviour
         //End result won't not be the exact movingSpeedToReach
         movingSpeed = movingSpeedToReach;
     }
-    
-    private IEnumerator IncreaseRotationSpeed(float rotationSpeedToReach)
-    {
-        while (rotationSpeed > rotationSpeedToReach)
-        {
-            rotationSpeed -= rotationAcceleration * Time.deltaTime;
-            yield return null;
-        }
-        
-        //End result won't not be the exact rotationSpeedToReach
-        rotationSpeed = rotationSpeedToReach;
-    }
-
-    private IEnumerator DecreaseRotationSpeed(float rotationSpeedToReach)
-    {
-        while (rotationSpeed < rotationSpeedToReach)
-        {
-            rotationSpeed += rotationAcceleration * Time.deltaTime;
-            yield return null;
-        }
-        
-        //End result won't not be the exact rotationSpeedToReach
-        rotationSpeed = rotationSpeedToReach;
-    }
 
     private IEnumerator StopShipWithoutPhysics()
     {
@@ -262,5 +263,13 @@ public class ShipController : MonoBehaviour
             transform.position += transform.forward * (Time.deltaTime * movingSpeed);
             yield return null;
         }
+    }
+
+    private void HandleRotatingEvents()
+    {
+        if (!previousIsRotating && isRotating) OnRotationStarted?.Invoke();
+        else if (previousIsRotating && !isRotating) OnRotationEnded?.Invoke(); 
+
+        previousIsRotating = isRotating;
     }
 }
