@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1128229101724263441}
   - component: {fileID: 3208709490491059253}
   - component: {fileID: 4181249116733027449}
+  - component: {fileID: -3635580933150682670}
   m_Layer: 0
   m_Name: Wooden Stick_5 Variant
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6539661634618054821, guid: 13aa18d3e85a15e4da4cc971e8c3df68, type: 3}
+--- !u!208 &-3635580933150682670
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362892936310296484}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.117000006, y: 0.845, z: 0.13700001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.065000005, y: 0.845, z: -0.07700001}
+  m_TimeToStationary: 0.5

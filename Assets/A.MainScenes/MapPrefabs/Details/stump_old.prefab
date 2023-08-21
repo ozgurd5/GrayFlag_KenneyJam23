@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3773690162989234522}
   - component: {fileID: -8301582550531802806}
   - component: {fileID: -2086061059096711822}
+  - component: {fileID: 8090232695877803777}
   m_Layer: 0
   m_Name: stump_old
   m_TagString: Untagged
@@ -127,3 +128,19 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 0}
   yellowMaterialIndexes: 
+--- !u!208 &8090232695877803777
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636883315522434792}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.178, y: 0.133, z: 0.185}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.018000001, y: 0.133, z: 0}
+  m_TimeToStationary: 0.5

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6960683671459904144}
   - component: {fileID: 5719091854366308306}
   - component: {fileID: 5555185763050148908}
+  - component: {fileID: 964698985865631061}
   m_Layer: 0
   m_Name: Rock_Formation_1 Variant
   m_TagString: Untagged
@@ -127,3 +128,19 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 1, a: 0}
   - {r: 0, g: 1, b: 0, a: 0}
   - {r: 1, g: 0.9995193, b: 0, a: 0}
+--- !u!208 &964698985865631061
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069602687747947729}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 15.209001, y: 9.940001, z: 9.693001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.23700002, y: 9.757001, z: -0.28100002}
+  m_TimeToStationary: 0.5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7395849646522011483}
   - component: {fileID: 6667004495300342776}
   - component: {fileID: 2178447271610163276}
+  - component: {fileID: -3702149625507950326}
   m_Layer: 0
   m_Name: Vine_2 Variant
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7240804886366487378, guid: 8b5cb1b50226d7b438505f024cb7440e, type: 3}
+--- !u!208 &-3702149625507950326
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6976830831792907290}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.076000005, y: 1.7370001, z: 0.060000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.0050000004, y: -1.7370001, z: -0.003}
+  m_TimeToStationary: 0.5

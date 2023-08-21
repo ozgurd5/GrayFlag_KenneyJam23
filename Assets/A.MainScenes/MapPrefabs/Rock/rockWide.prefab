@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2033735077819202971}
   - component: {fileID: 9017326276447767146}
   - component: {fileID: -5145022378457073265}
+  - component: {fileID: -8600464940785298375}
   m_Layer: 0
   m_Name: rockWide
   m_TagString: Untagged
@@ -127,3 +128,19 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: 0a5916af69507944aa7fcbfdcdb8caaa, type: 2}
   yellowMaterialIndexes: 00000000
+--- !u!208 &-8600464940785298375
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992864292190484905}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.54700005, y: 0.51000005, z: 0.78400004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.51000005, z: 0}
+  m_TimeToStationary: 0.5

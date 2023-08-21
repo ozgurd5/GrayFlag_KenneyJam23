@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7883441365959414926}
   - component: {fileID: 474815576575679990}
   - component: {fileID: -6406784390655461436}
+  - component: {fileID: -5686093074934675703}
   m_Layer: 0
   m_Name: rocksTall
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4586707582881829976, guid: 8a66c693cc8ebe247988f59c13ed988e, type: 3}
+--- !u!208 &-5686093074934675703
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826007778318343090}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.467, y: 0.29500002, z: 0.407}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.29500002, z: 0}
+  m_TimeToStationary: 0.5

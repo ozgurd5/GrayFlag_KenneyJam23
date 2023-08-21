@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7253171926941049493}
   - component: {fileID: 5875646709486120007}
   - component: {fileID: 7528227256094363517}
+  - component: {fileID: 3892063218596307816}
   m_Layer: 8
   m_Name: Crystals_3 Variant
   m_TagString: Untagged
@@ -124,3 +125,19 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 1, a: 0}
   - {r: 0, g: 1, b: 0, a: 0}
   - {r: 1, g: 0.04705883, b: 0.039215688, a: 0}
+--- !u!208 &3892063218596307816
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202587685622987407}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.75100005, y: 0.75900006, z: 0.596}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.0050000004, y: 0.76000005, z: -0.012}
+  m_TimeToStationary: 0.5

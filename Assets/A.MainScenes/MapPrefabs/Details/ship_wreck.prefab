@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 7611496641578474278}
   - component: {fileID: -8588210539763618123}
   - component: {fileID: -2132539929393535359}
+  - component: {fileID: -2408217991249229211}
   m_Layer: 0
   m_Name: ship_wreck
   m_TagString: Untagged
@@ -260,3 +261,19 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
   yellowMaterialIndexes: 0000000002000000
+--- !u!208 &-2408217991249229211
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6869146382107134771}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 14.251, y: 29.604002, z: 40.246002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 29.604002, z: -8.251}
+  m_TimeToStationary: 0.5

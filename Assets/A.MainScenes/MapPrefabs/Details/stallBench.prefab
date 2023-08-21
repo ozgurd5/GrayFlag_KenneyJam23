@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6419984030004230821}
   - component: {fileID: -2928413009606729585}
   - component: {fileID: 8163283855016016921}
+  - component: {fileID: -9199614207917159366}
   m_Layer: 0
   m_Name: stallBench
   m_TagString: Untagged
@@ -127,3 +128,19 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
   yellowMaterialIndexes: 00000000
+--- !u!208 &-9199614207917159366
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8167703004734100710}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.13000001, y: 0.113000005, z: 0.47000003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.113000005, z: 0}
+  m_TimeToStationary: 0.5

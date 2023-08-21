@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 585397856493998685}
   - component: {fileID: 5352508594105987112}
   - component: {fileID: 2101238582463433951}
+  - component: {fileID: 5073729229374275156}
   m_Layer: 0
   m_Name: Rock_14 Variant
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8827430047998774373, guid: 57baff59bb59d0b46accd859ee20bcea, type: 3}
+--- !u!208 &5073729229374275156
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519009321563498505}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.6990004, y: 1.9490001, z: 3.1460001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1.575, y: 1.9490001, z: -0.45900002}
+  m_TimeToStationary: 0.5

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6816097324408773481}
   - component: {fileID: -3937438499579748418}
   - component: {fileID: 1950201321723141233}
+  - component: {fileID: 6813702763370137445}
   m_Layer: 0
   m_Name: fence_simpleCenter
   m_TagString: Untagged
@@ -128,3 +129,19 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
   yellowMaterialIndexes: 0000000001000000
+--- !u!208 &6813702763370137445
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035147321011029598}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.17300001, z: 0.035}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.17300001, z: 0.46500003}
+  m_TimeToStationary: 0.5

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4551516132602060533}
   - component: {fileID: 3756765510642059645}
   - component: {fileID: -451142058165582945}
+  - component: {fileID: 8528422437606151942}
   m_Layer: 0
   m_Name: rockLarge (1)
   m_TagString: Untagged
@@ -127,3 +128,19 @@ MonoBehaviour:
   blueMaterialIndexes: 00000000
   yellowMaterial: {fileID: 0}
   yellowMaterialIndexes: 
+--- !u!208 &8528422437606151942
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295822312210395489}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.799, y: 0.58100003, z: 0.725}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.58100003, z: 0}
+  m_TimeToStationary: 0.5

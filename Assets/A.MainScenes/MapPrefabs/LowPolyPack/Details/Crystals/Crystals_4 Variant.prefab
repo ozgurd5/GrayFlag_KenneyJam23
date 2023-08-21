@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7473367268747792559}
   - component: {fileID: 8867229084545532648}
   - component: {fileID: 870001098667776718}
+  - component: {fileID: 3330983530871525406}
   m_Layer: 0
   m_Name: Crystals_4 Variant
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7290824091463148026, guid: 3a31be19f17c9a84b9c07355284ca98d, type: 3}
+--- !u!208 &3330983530871525406
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9107322836253277139}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.28300002, y: 1.465, z: 0.28300002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.062000003, y: 1.45, z: 0.011000001}
+  m_TimeToStationary: 0.5

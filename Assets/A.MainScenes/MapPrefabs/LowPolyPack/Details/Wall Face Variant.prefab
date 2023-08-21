@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1277515052094650354}
   - component: {fileID: 5828705771316708204}
   - component: {fileID: 5842375380434621697}
+  - component: {fileID: 2185339901004047671}
   m_Layer: 0
   m_Name: Wall Face Variant
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3869892604957812155, guid: a9ad1cdd8c1d0174f9b2c090d55e9bad, type: 3}
+--- !u!208 &2185339901004047671
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7688945067175578843}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 17.331001, y: 15.908001, z: 10.812}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.043, y: 15.417001, z: 10.620001}
+  m_TimeToStationary: 0.5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2837848031052929361}
   - component: {fileID: 9068352991217071197}
   - component: {fileID: 9017544228347724850}
+  - component: {fileID: 6779593965131651367}
   m_Layer: 0
   m_Name: Tree Witchered_4 Variant
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2644287730636240658, guid: 3ce79cfca44b23f47afd097b81955003, type: 3}
+--- !u!208 &6779593965131651367
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927975205825084592}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.283, y: 2.6910002, z: 2.0530002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.22500001, y: 2.69, z: -0.041}
+  m_TimeToStationary: 0.5

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6979117770681947066}
   - component: {fileID: 422532510836938495}
   - component: {fileID: -4694044672543781298}
+  - component: {fileID: -7655146590223538065}
   m_Layer: 0
   m_Name: stone_largeB
   m_TagString: Untagged
@@ -128,3 +129,19 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 0}
   yellowMaterialIndexes: 
+--- !u!208 &-7655146590223538065
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63313326141802544}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.38300002, y: 0.215, z: 0.508}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.215, z: 0}
+  m_TimeToStationary: 0.5

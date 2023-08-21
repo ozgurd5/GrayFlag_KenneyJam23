@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7576275151047119844}
   - component: {fileID: 2281506634144589557}
   - component: {fileID: 815430049430607899}
+  - component: {fileID: -7502540230721879365}
   m_Layer: 0
   m_Name: hole
   m_TagString: Untagged
@@ -107,3 +108,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -32554838642020637, guid: fea2402fcd49c06419d820651b23d54c, type: 3}
+--- !u!208 &-7502540230721879365
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003762040092875519}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5.117, y: 0.4, z: 4.255}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.079, y: 0.4, z: -0.18400002}
+  m_TimeToStationary: 0.5

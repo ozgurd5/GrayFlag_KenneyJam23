@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7298759938747533836}
   - component: {fileID: 3348364825251996188}
   - component: {fileID: -3738359325684080635}
+  - component: {fileID: 4225450646260741475}
   m_Layer: 0
   m_Name: fence
   m_TagString: Untagged
@@ -127,3 +128,19 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
   yellowMaterialIndexes: 00000000
+--- !u!208 &4225450646260741475
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3929723290693803933}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 0.259, z: 0.021000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.259, z: 0.22900002}
+  m_TimeToStationary: 0.5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3338065971963519102}
   - component: {fileID: 1973367228216133668}
   - component: {fileID: 9086105725923591203}
+  - component: {fileID: -7929241037815632168}
   m_Layer: 0
   m_Name: Rock_Formation_3 Variant
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3780870540005228012, guid: d292675db04cbd1499f9730a4fc61a04, type: 3}
+--- !u!208 &-7929241037815632168
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8969688301178129867}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 8.353001, y: 5.9960003, z: 4.978}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.165, y: 5.9820004, z: -1.327}
+  m_TimeToStationary: 0.5

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8234501656340754479}
   - component: {fileID: -2500455269908792865}
   - component: {fileID: 8255796538891753997}
+  - component: {fileID: 1901524581495381911}
   m_Layer: 0
   m_Name: tower
   m_TagString: Untagged
@@ -133,3 +134,19 @@ MonoBehaviour:
   blueMaterialIndexes: 00000000
   yellowMaterial: {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
   yellowMaterialIndexes: 020000000500000006000000
+--- !u!208 &1901524581495381911
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150350332803081154}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 16.612001, y: 18.575, z: 16.701}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 3.7120001, y: 18.575, z: 0.80100006}
+  m_TimeToStationary: 0.5

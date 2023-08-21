@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8951287819724553134}
   - component: {fileID: -964766262372765752}
   - component: {fileID: -6162270735234621670}
+  - component: {fileID: -1240480226957678514}
   m_Layer: 0
   m_Name: log_large
   m_TagString: Untagged
@@ -128,3 +129,19 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: bce5ffe54c590094486b77055efad9bf, type: 2}
   yellowMaterialIndexes: 00000000
+--- !u!208 &-1240480226957678514
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378564620175501787}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.208, z: 0.275}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.208, z: -0.022000002}
+  m_TimeToStationary: 0.5

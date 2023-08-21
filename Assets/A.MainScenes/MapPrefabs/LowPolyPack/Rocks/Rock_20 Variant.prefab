@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4869257119726068013}
   - component: {fileID: 390952229128073828}
   - component: {fileID: 900827210594260878}
+  - component: {fileID: 2915708212404096168}
   m_Layer: 0
   m_Name: Rock_20 Variant
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2016702375862384417, guid: fee4e85b0baec37468148c17211bf915, type: 3}
+--- !u!208 &2915708212404096168
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8279861379808225980}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.325, y: 1.7550001, z: 3.3720002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.030000001, y: 1.7370001, z: -0.018000001}
+  m_TimeToStationary: 0.5

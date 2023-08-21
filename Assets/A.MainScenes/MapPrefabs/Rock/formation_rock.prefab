@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3262088721200747259}
   - component: {fileID: 2061552139510460014}
   - component: {fileID: -3903319238357112919}
+  - component: {fileID: -732087155803467241}
   m_Layer: 0
   m_Name: formation_rock
   m_TagString: Untagged
@@ -128,3 +129,19 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: 1c8dc9092de938946a5d6e7f6ce0a7e1, type: 2}
   yellowMaterialIndexes: 0000000001000000
+--- !u!208 &-732087155803467241
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2685872122635801702}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5.2990003, y: 6.124, z: 5.3360004}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 5.2990003, y: 6.124, z: 5.3360004}
+  m_TimeToStationary: 0.5

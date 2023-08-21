@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 971015119889463600}
   - component: {fileID: 6814723052856150920}
   - component: {fileID: 258066535693225885}
+  - component: {fileID: 2891971754344953270}
   m_Layer: 0
   m_Name: Group 23
   m_TagString: Untagged
@@ -127,6 +128,22 @@ MonoBehaviour:
   blueMaterialIndexes: 
   yellowMaterial: {fileID: 2100000, guid: 6cdc89ca9f4bab144881e925f0766b1f, type: 2}
   yellowMaterialIndexes: 00000000
+--- !u!208 &2891971754344953270
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642934859621277967}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.306, y: 12.150001, z: 2.243}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 2.306, y: 12.150001, z: 1.7470001}
+  m_TimeToStationary: 0.5
 --- !u!1 &5718052637778842113
 GameObject:
   m_ObjectHideFlags: 0

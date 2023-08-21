@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1781620175601194751}
   - component: {fileID: 1663111727322628555}
   - component: {fileID: 1317152867657915757}
+  - component: {fileID: 2851303111855983195}
   m_Layer: 0
   m_Name: bottleLarge
   m_TagString: Untagged
@@ -128,3 +129,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3142160206416209169, guid: 155a10b8696451240b4f9e6b8342c55c, type: 3}
+--- !u!208 &2851303111855983195
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330150997927693095}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.225, y: 2.125, z: 1.225}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 2.125, z: 0}
+  m_TimeToStationary: 0.5

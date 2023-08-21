@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7084471039757899948}
   - component: {fileID: 3043809219681520687}
   - component: {fileID: 1195564490679541104}
+  - component: {fileID: -5540156011248764488}
   m_Layer: 0
   m_Name: Plant_9 Variant
   m_TagString: Untagged
@@ -106,3 +107,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2526252571346687298, guid: 6f4a425917bead44b91c03543c2b106c, type: 3}
+--- !u!208 &-5540156011248764488
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4897102633058899952}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.23900001, y: 0.162, z: 0.224}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.026, y: 0.162, z: 0.026}
+  m_TimeToStationary: 0.5

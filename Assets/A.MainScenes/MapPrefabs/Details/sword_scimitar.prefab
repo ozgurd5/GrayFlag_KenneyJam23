@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8751524082579230041}
   - component: {fileID: -7214987522344408526}
   - component: {fileID: -1907684167023449048}
+  - component: {fileID: 3895303454822883900}
   m_Layer: 0
   m_Name: sword_scimitar
   m_TagString: Untagged
@@ -130,3 +131,19 @@ MonoBehaviour:
   blueMaterialIndexes: 00000000
   yellowMaterial: {fileID: 0}
   yellowMaterialIndexes: 
+--- !u!208 &3895303454822883900
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696484327464858739}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.005, y: 3.3890002, z: 0.55}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.12900001, y: 2.3890002, z: 0}
+  m_TimeToStationary: 0.5
