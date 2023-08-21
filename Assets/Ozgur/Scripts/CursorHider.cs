@@ -30,10 +30,11 @@ public class CursorHider : MonoBehaviour
 
     private void ContinueGame()
     {
+        psd.currentMainState = previousState;
+        if (psd.currentMainState == PlayerStateData.PlayerMainState.DialogueState) return;
+        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        
-        psd.currentMainState = previousState;
     }
 
     private void OnDestroy()
