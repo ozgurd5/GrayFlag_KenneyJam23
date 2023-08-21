@@ -15,24 +15,24 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float walkingSpeed; //zombie: 1 - skeleton: 7
     [SerializeField] private float runningSpeed; //zombie: 8 - skeleton: 17
     
+    [Header("No Touch - Info")]
+    [SerializeField] private Vector3 walkPoint;
+    [SerializeField] private bool isWalkPointSet;
+    [SerializeField] private bool isPlayerInSightRange;
+    [SerializeField] private bool isPlayerInAttackRange;
+    [SerializeField] private bool didEncounterPlayer;
+    
     private Transform player;
     private NavMeshAgent navMeshAgent;
     private EnemyManager em;
-    
-    private Vector3 walkPoint;
-    private bool isWalkPointSet;
-    
-    private bool isPlayerInSightRange;
-    private bool isPlayerInAttackRange;
-    
-    private bool didEncounterPlayer;
-    private bool isAttacking;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         em = GetComponent<EnemyManager>();
+
+        PlayerDamageManager.OnPlayerDeath += ResetAfterPlayerDeath;
     }
 
     private void Start()
@@ -74,18 +74,20 @@ public class EnemyAi : MonoBehaviour
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
+        
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
+        
         if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer)) isWalkPointSet = true;
     }
 
     private void AttackPlayer()
     {
         navMeshAgent.isStopped = true;
+        
         transform.LookAt(player, Vector3.up);
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
 
-        if (em.currentState != EnemyManager.EnemyState.Attack) em.AttackPlayer();
+        if (em.currentState != EnemyManager.EnemyState.Attack) em.EnterAttackState();
     }
 
     private void ChasePlayer()
@@ -94,12 +96,23 @@ public class EnemyAi : MonoBehaviour
         
         navMeshAgent.isStopped = false;
         didEncounterPlayer = true;
-        em.StopAttack();
         
+        if (em.currentState == EnemyManager.EnemyState.Attack) em.StopAttack();
         if (em.currentState != EnemyManager.EnemyState.Running) em.EnterRunningState();
         
         navMeshAgent.SetDestination(player.position);
         navMeshAgent.speed = runningSpeed;
+    }
+
+    private void ResetAfterPlayerDeath()
+    {
+        didEncounterPlayer = false;
+        navMeshAgent.isStopped = false;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerDamageManager.OnPlayerDeath -= ResetAfterPlayerDeath;
     }
 
     private void OnDrawGizmosSelected()

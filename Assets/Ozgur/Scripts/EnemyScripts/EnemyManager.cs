@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class EnemyManager : MonoBehaviour
 {
     [Header("Assign")]
-    [SerializeField] private int health;    //100 zombie - 150 skeleton
-    [SerializeField] private int damage;    //20 zombie - 25 skeleton
-    [SerializeField] private int knockBackForce = 2500;
-    [SerializeField] private float damageTakingAnimTime = 0.8f;
+    [SerializeField] private int health; //100 zombie - 150 skeleton
+    [SerializeField] private int damage; //20 zombie - 25 skeleton
+    [SerializeField] private int knockBackForce; //2500 zombie - 5000 skeleton
+    [SerializeField] private float damageTakingAnimTime = 0.6f;
     public float attackPrepareTime; //1 zombie - 0.7 skeleton
     
     [Header("Assign - Colliders")]
@@ -31,7 +31,8 @@ public class EnemyManager : MonoBehaviour
     
     private RaycastHit hit;
     private IEnumerator idleSoundCoroutine;
-    private IEnumerator attackRoutine;
+    private IEnumerator attackCoroutine;
+    private IEnumerator resetTakingDamageCoroutine;
 
     public enum EnemyState
     {
@@ -53,29 +54,32 @@ public class EnemyManager : MonoBehaviour
         player = GameObject.Find("Player");
         
         idleSoundCoroutine = HandleIdleSound();
-        attackRoutine = EnterAttackState();
+        attackCoroutine = AttackPlayer();
+        resetTakingDamageCoroutine = ResetTakingDamage();
     }
 
-    public void AttackPlayer()
+    public void EnterAttackState()
     {
         if (currentState == EnemyState.Dead) return;
         
-        attackRoutine = EnterAttackState();
-        StartCoroutine(attackRoutine);
+        Debug.Log("attack: " + currentState);
+        attackCoroutine = AttackPlayer();
+        StartCoroutine(attackCoroutine);
     }
 
     public void StopAttack()
     {
-        StopCoroutine(attackRoutine);
+        Debug.Log("stop attack");
+        StopCoroutine(attackCoroutine);
     }
 
-    private IEnumerator EnterAttackState()
+    private IEnumerator AttackPlayer()
     {
         aus.Stop();
         
         currentState = EnemyState.Attack;
         an.Play("EnemyAttack");
-
+        Debug.Log("attack routine");
         yield return new WaitForSeconds(attackPrepareTime);
 
         player.GetComponent<PlayerDamageManager>().GetHit(transform.forward, damage);
@@ -131,7 +135,7 @@ public class EnemyManager : MonoBehaviour
     public void GetHit(Vector3 playerTransformForward, int takenDamage)
     {
         if (currentState == EnemyState.Dead) return;
-
+        Debug.Log("gethit");
         StopAttack();
         currentState = EnemyState.GettingDamage;
 
@@ -139,14 +143,19 @@ public class EnemyManager : MonoBehaviour
         healthBar.value = health;
         if (CheckForDeath()) return;
         
-        an.Play("EnemyGetHit");
+        an.Play("EnemyGetHit", 0, 0.2f);
         rb.AddForce(knockBackForce * playerTransformForward, ForceMode.Acceleration);
-        Invoke(nameof(ResetTakingDamage), damageTakingAnimTime);
+
+        StopCoroutine(resetTakingDamageCoroutine);
+        resetTakingDamageCoroutine = ResetTakingDamage();
+        StartCoroutine(resetTakingDamageCoroutine);
     }
     
-    private void ResetTakingDamage()
+    private IEnumerator ResetTakingDamage()
     {
-        if (currentState == EnemyState.Dead) return;
+        if (currentState == EnemyState.Dead) yield break;
+
+        yield return new WaitForSeconds(damageTakingAnimTime);
         
         currentState = EnemyState.Walking;
         rb.velocity = Vector3.zero;

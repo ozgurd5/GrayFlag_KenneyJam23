@@ -1,9 +1,13 @@
+using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerDamageManager : MonoBehaviour
 {
+    public static event Action OnPlayerDeath;
+    
     [Header("Assign Manually")]
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private GameObject playerDamageEffect;
@@ -60,17 +64,27 @@ public class PlayerDamageManager : MonoBehaviour
     
     private void CheckForDeath()
     {
-        if (health < 0)
+        if (health <= 0)
         {
             transform.position = respawnPoint.position;
+            StartCoroutine(SetRbKinematicAndBack());
+            aus.PlayOneShot(deathSound);
+            
             health = defaultHealth;
             healthBar.value = health;
             healthText.text = $"{health}";
             
-            aus.PlayOneShot(deathSound);
+            OnPlayerDeath?.Invoke();
         }
         
         else aus.PlayOneShot(damageSound);
+    }
+
+    private IEnumerator SetRbKinematicAndBack()
+    {
+        rb.isKinematic = true;
+        yield return null;
+        rb.isKinematic = false;
     }
 
     private void IncreaseHealth()
