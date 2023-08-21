@@ -8,7 +8,7 @@ public class CreditsTextAnimationManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] texts;
     [Tooltip("Wait time BEFORE the animation starts playing.")]
     [SerializeField] private float waitTimeBeforeStart = 3f;
-    [Tooltip("The total time it takes to play all text animations.")]
+    [Tooltip("The total time it takes to play all text animations. The time one text takes = displayTime = (totalCreditsTime / 5) - (fadeTime * 2) - waitTime;")]
     [SerializeField] private float totalCreditsTime;
     [Tooltip("The time texts takes to fade in and out into the screen.")]
     [SerializeField] private float fadeTime = 1f;
@@ -31,7 +31,7 @@ public class CreditsTextAnimationManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTimeBeforeStart);
         
-        float displayTime = (totalCreditsTime / 3) - (fadeTime * 2) - waitTime;
+        float displayTime = (totalCreditsTime / 5) - (fadeTime * 2) - waitTime;
         
         foreach (var text in texts)
         {

@@ -80,12 +80,9 @@ public class FinalCutSceneManager : MonoBehaviour
             MoveCamera(cameraManager.ada1Camera);
 
         if (HasCameraMoved(cameraManager.ada1Camera))
-            MoveCamera(cameraManager.ada5Camera); //Eðer oyuncunun kamerasý çalýþacak ise => //cameraManager.SwitchCameras(cameraManager.playerCamera);
-            
-        //StartCoroutine(WaitFor(2));
-            PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;
             isCutSceneOver = true;
-        
+
+        PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;   
     }
     void MoveCamera(CinemachineVirtualCamera cameraToMove)
     {
