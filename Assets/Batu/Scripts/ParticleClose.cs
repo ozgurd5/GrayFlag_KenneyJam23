@@ -20,7 +20,6 @@ public class ParticleClose : MonoBehaviour
 
         energyParticles.Add(this);
         animator = GetComponent<Animator>();
-        
     }
 
     public void PlayAnim()

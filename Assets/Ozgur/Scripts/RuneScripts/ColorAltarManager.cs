@@ -29,9 +29,7 @@ public class ColorAltarManager : MonoBehaviour
     private GameObject rune;
     private LineRenderer lr;
     private Transform laserPointTransform;
-    
-    
-    
+
     private void Awake()
     {
         rune = transform.GetChild(0).gameObject;
@@ -70,8 +68,6 @@ public class ColorAltarManager : MonoBehaviour
             energyBall.Play();
             isEnergyBallPlaying = true;
         }
-        
-        
     }
 
     private IEnumerator CheckCompletion()
