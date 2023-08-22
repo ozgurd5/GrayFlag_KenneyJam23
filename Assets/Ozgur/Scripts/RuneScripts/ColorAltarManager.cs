@@ -14,6 +14,7 @@ public class ColorAltarManager : MonoBehaviour
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private float explosionTime = 1f;
     [SerializeField] private CinemachineImpulseSource impulseSource;
+
     public bool impulse;
     
     [Header("Assign - Sounds")]
@@ -28,19 +29,23 @@ public class ColorAltarManager : MonoBehaviour
     private GameObject rune;
     private LineRenderer lr;
     private Transform laserPointTransform;
-
+    
+    
+    
     private void Awake()
     {
         rune = transform.GetChild(0).gameObject;
         lr = GetComponent<LineRenderer>();
         runePlaceSource = GetComponent<AudioSource>();
         laserPointTransform = transform.GetChild(2);
+        
     }
 
     #if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.U)) OnGameCompleted?.Invoke();
+        
     }
     #endif
 
@@ -65,15 +70,31 @@ public class ColorAltarManager : MonoBehaviour
             energyBall.Play();
             isEnergyBallPlaying = true;
         }
+        
+        
     }
 
     private IEnumerator CheckCompletion()
     {
         if (activatedAltars != 4) yield break;
+
+        foreach (var item in ParticleClose.energyParticles)
+        {
+            item.PlayAnim();
+        }
         
-        energyBall.gameObject.SetActive(false);
-        explosion.Play();
+        yield return new WaitForSeconds(2.0f);
+        
+        explosion.Play(); 
         explosionSource.Play();
+        
+        MeshDestroy meshDestroyScript = FindObjectOfType<MeshDestroy>();
+        if (meshDestroyScript != null)
+        {
+            meshDestroyScript.DestroyMesh();
+            Debug.Log("kırıldı");
+        }
+
         impulseSource.GenerateImpulse();
         
         yield return new WaitForSeconds(explosionTime);
