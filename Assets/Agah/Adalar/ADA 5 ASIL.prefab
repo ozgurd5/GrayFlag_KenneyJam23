@@ -3090,6 +3090,7 @@ GameObject:
   - component: {fileID: 2289671884720664886}
   - component: {fileID: 2611635528064384001}
   - component: {fileID: 4283613023037263788}
+  - component: {fileID: 800682807186830230}
   m_Layer: 0
   m_Name: bones (1)
   m_TagString: Untagged
@@ -3184,6 +3185,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 555025636787146220, guid: 078775ede468e4745bf2d22cd971ec5c, type: 3}
+--- !u!208 &800682807186830230
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227270168454920608}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.43100002, y: 0.22100002, z: 0.291}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.22100002, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1266885258463732168
 GameObject:
   m_ObjectHideFlags: 0
@@ -20284,7 +20301,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 179
+  m_VersionIndex: 182
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -51470,7 +51487,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 176
+  m_VersionIndex: 179
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -59877,7 +59894,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8619829729414927600, guid: b822c09937446024eb658d10c4478a24,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4906299313507861235}
   m_SourcePrefab: {fileID: 100100000, guid: b822c09937446024eb658d10c4478a24, type: 3}
 --- !u!4 &2574746112036383270 stripped
 Transform:
@@ -59885,6 +59906,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4174001321669173770}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5652793161571563258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8619829729414927600, guid: b822c09937446024eb658d10c4478a24,
+    type: 3}
+  m_PrefabInstance: {fileID: 4174001321669173770}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &4906299313507861235
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652793161571563258}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.44700003, y: 0.041, z: 0.36200002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.002, y: 0.041, z: -0.008}
+  m_TimeToStationary: 0.5
 --- !u!1001 &4200389511253302783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60994,8 +61037,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8619829729414927600, guid: b822c09937446024eb658d10c4478a24,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8130241331347282021}
   m_SourcePrefab: {fileID: 100100000, guid: b822c09937446024eb658d10c4478a24, type: 3}
+--- !u!1 &3762359580089534194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8619829729414927600, guid: b822c09937446024eb658d10c4478a24,
+    type: 3}
+  m_PrefabInstance: {fileID: 4875532948912640514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &8130241331347282021
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762359580089534194}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.44700003, y: 0.041, z: 0.36200002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.002, y: 0.041, z: -0.008}
+  m_TimeToStationary: 0.5
 --- !u!4 &6484904764898515502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1897807530384754732, guid: b822c09937446024eb658d10c4478a24,
@@ -63605,7 +63674,7 @@ PrefabInstance:
     - target: {fileID: 1896328426248038968, guid: 024c6ab188ff99943871f7f5ed633893,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 179
+      value: 182
       objectReference: {fileID: 0}
     - target: {fileID: 1941290995301976974, guid: 024c6ab188ff99943871f7f5ed633893,
         type: 3}

@@ -165,6 +165,7 @@ public class EnemyManager : MonoBehaviour
         
         if (health <= 0)
         {
+            StopCoroutine(resetTakingDamageCoroutine);
             currentState = EnemyState.Dead;
             an.Play("EnemyDeath");
             

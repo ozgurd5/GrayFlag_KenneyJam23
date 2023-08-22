@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShipStair : MonoBehaviour
 {
-    [Header("Assign")] [SerializeField] private float stairSpeed = 5f;
+    [Header("Assign")] [SerializeField] private float stairSpeed = 10f;
     
     private Rigidbody playerRb;
     

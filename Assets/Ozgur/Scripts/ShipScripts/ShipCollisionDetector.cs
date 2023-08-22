@@ -20,7 +20,6 @@ public class ShipCollisionDetector : MonoBehaviour
         
         if (name == "FrontShield")
         {
-            Debug.Log("Enter: " + col.name);
             sc.StopCoroutine(sc.stopShipWithoutPhysicsCoroutine);
             sc.canMoveForward = false;
         }
@@ -36,9 +35,9 @@ public class ShipCollisionDetector : MonoBehaviour
 
         if (name == "FrontShield")
         {
-            Debug.Log("Exit: " + col.name);
             sc.canMoveForward = true;
         }
+        
         if (name == "BackShield") sc.canMoveBackward = true;
         if (name is "RightShieldFront" or "LeftShieldBack") sc.canRotateRight = true;
         if (name is "LeftShieldFront" or "RightShieldBack") sc.canRotateLeft = true;

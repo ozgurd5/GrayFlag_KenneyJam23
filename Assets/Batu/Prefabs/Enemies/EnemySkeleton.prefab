@@ -1676,7 +1676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 150
   damage: 25
-  knockBackForce: 5000
+  knockBackForce: 2500
   damageTakingAnimTime: 0.8
   attackPrepareTime: 0.7
   aliveCollider: {fileID: 5155212839611940888}
@@ -3167,6 +3167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7214987522344408526, guid: 233cc927121899a4f9c6f41c415e654d, type: 3}
+    - {fileID: 3895303454822883900, guid: 233cc927121899a4f9c6f41c415e654d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
