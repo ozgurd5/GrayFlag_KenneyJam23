@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 649794090132293874}
   - component: {fileID: 4602695955762970916}
   - component: {fileID: 1391868508225170453}
+  - component: {fileID: 8410691757293623756}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -106,7 +107,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 80
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -163,6 +164,22 @@ MonoBehaviour:
     m_FrequencyGain: 1
     m_Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &8410691757293623756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538644184915573226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2da3d4dffa442d47b61f0a61fcf5286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increaseAmount: 10
+  fovChangeTime: 0.1
+  defaultFov: 0
+  isFovIncreased: 0
 --- !u!1 &3026391508542526417
 GameObject:
   m_ObjectHideFlags: 0
