@@ -12,8 +12,8 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private float walkPointRange = 10f;
     [SerializeField] private float sightRange = 20f;
     [SerializeField] private float attackRange = 7f;
-    [SerializeField] private float walkingSpeed; //zombie: 1 - skeleton: 7
-    [SerializeField] private float runningSpeed; //zombie: 8 - skeleton: 17
+    [SerializeField] private float walkingSpeed; //zombie: 0.1 - skeleton: 5
+    [SerializeField] private float runningSpeed; //zombie: 5 - skeleton: 15
     
     [Header("No Touch - Info")]
     [SerializeField] private Vector3 walkPoint;

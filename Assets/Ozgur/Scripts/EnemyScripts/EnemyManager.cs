@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     [Header("Assign")]
     [SerializeField] private int health; //100 zombie - 150 skeleton
     [SerializeField] private int damage; //20 zombie - 25 skeleton
-    [SerializeField] private int knockBackForce; //2500 zombie - 5000 skeleton
+    [SerializeField] private int knockBackForce = 300;
     [SerializeField] private float damageTakingAnimTime = 0.6f;
     public float attackPrepareTime; //1 zombie - 0.7 skeleton
     

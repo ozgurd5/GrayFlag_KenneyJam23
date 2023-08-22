@@ -211,7 +211,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &347492080682599521
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 20
-  knockBackForce: 1500
-  damageTakingAnimTime: 0.8
+  knockBackForce: 300
+  damageTakingAnimTime: 0.6
   attackPrepareTime: 1
   aliveCollider: {fileID: 6137838205570440563}
   deadCollider: {fileID: 899882065500666343}
@@ -297,8 +297,8 @@ MonoBehaviour:
   walkPointRange: 10
   sightRange: 20
   attackRange: 7
-  walkingSpeed: 6
-  runningSpeed: 12
+  walkingSpeed: 0.1
+  runningSpeed: 5
   walkPoint: {x: 0, y: 0, z: 0}
   isWalkPointSet: 0
   isPlayerInSightRange: 0

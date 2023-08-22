@@ -16,7 +16,7 @@ public class PlayerDamageManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private int defaultHealth = 100;
     [SerializeField] private int powerUpHealth = 150;
-    [SerializeField] private int knockBackForce = 1500;
+    [SerializeField] private int knockBackForce = 1000;
     [SerializeField] private float damageStopTime = 0.5f;
 
     [Header("Assign - Sound")]
