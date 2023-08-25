@@ -9559,6 +9559,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.20000002
       objectReference: {fileID: 0}
+    - target: {fileID: 2480335374234394712, guid: cb76cb22191dc4946b6ff0a865e6a226,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480335374234394712, guid: cb76cb22191dc4946b6ff0a865e6a226,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480335374234394712, guid: cb76cb22191dc4946b6ff0a865e6a226,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2480335374234394712, guid: cb76cb22191dc4946b6ff0a865e6a226,
+        type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2678397636010980729, guid: cb76cb22191dc4946b6ff0a865e6a226,
         type: 3}
       propertyPath: playOnAwake

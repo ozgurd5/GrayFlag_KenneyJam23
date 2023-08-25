@@ -6379,6 +6379,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2162968028317960918, guid: 228281748efeda644b10998c3646994f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2678956251590717013, guid: 228281748efeda644b10998c3646994f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -6399,6 +6404,11 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1101421637}
+    - target: {fileID: 4895986971267370950, guid: 228281748efeda644b10998c3646994f,
+        type: 3}
+      propertyPath: m_text
+      value: ("Level Design, Story, Easter Egg Design")
+      objectReference: {fileID: 0}
     - target: {fileID: 5833866835398060896, guid: 228281748efeda644b10998c3646994f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -6414,6 +6424,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 625102080}
+    - target: {fileID: 6207471549111003822, guid: 228281748efeda644b10998c3646994f,
+        type: 3}
+      propertyPath: m_text
+      value: ("UI-UX, NPC System, VFX-SFX, 3D Modelling")
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347426623408989433, guid: 228281748efeda644b10998c3646994f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7467760753658171156, guid: 228281748efeda644b10998c3646994f,
         type: 3}
       propertyPath: m_Name
@@ -6439,6 +6459,11 @@ PrefabInstance:
       propertyPath: LoadingScreen
       value: 
       objectReference: {fileID: 1542616059626414475}
+    - target: {fileID: 8538950945883745795, guid: 228281748efeda644b10998c3646994f,
+        type: 3}
+      propertyPath: m_text
+      value: ("Player & Ship Controls, Color & Combat Mechanics")
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

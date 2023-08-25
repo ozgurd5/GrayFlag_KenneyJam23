@@ -20,9 +20,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue6
+  m_Name: Green61
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: 89fd80bb78797304ca7c14714dc1a8a7, type: 2}
+  m_Parent: {fileID: 2100000, guid: 149b845c3eeecf244acaee97984a8d6e, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -38,8 +38,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Metallic: 0.063
+    - _ReceiveShadows: 1
+    - _Smoothness: 0
     m_Colors:
-    - _BaseColor: {r: 0.7490566, g: 0.8499514, b: 1, a: 1}
-    - _Color: {r: 0.7490565, g: 0.8499514, b: 1, a: 1}
+    - _BaseColor: {r: 0.5696954, g: 0.6313726, b: 0.32941177, a: 1}
+    - _Color: {r: 0.5696954, g: 0.6313726, b: 0.32941175, a: 1}
   m_BuildTextureStacks: []

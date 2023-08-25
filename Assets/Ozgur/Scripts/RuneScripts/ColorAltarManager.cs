@@ -29,6 +29,9 @@ public class ColorAltarManager : MonoBehaviour
     private GameObject rune;
     private LineRenderer lr;
     private Transform laserPointTransform;
+    
+    private bool gameCompleted = false;
+
 
     private void Awake()
     {
@@ -38,14 +41,33 @@ public class ColorAltarManager : MonoBehaviour
         laserPointTransform = transform.GetChild(2);
         
     }
-
-    #if UNITY_EDITOR
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U)) OnGameCompleted?.Invoke();
-        
+        if (gameCompleted)
+        {
+            // Disable line renderers
+            LineRenderer[] lineRenderers = FindObjectsOfType<LineRenderer>();
+            foreach (var lineRenderer in lineRenderers)
+            {
+                if (lineRenderer.CompareTag("ColorAltar"))
+                {
+                    lineRenderer.enabled = false;
+                }
+            }
+
+            // Stop laser sources
+            AudioSource[] audioSources = FindObjectsOfType<AudioSource>();
+            foreach (var audioSource in audioSources)
+            {
+                if (audioSource.CompareTag("ColorAltar"))
+                {
+                    audioSource.Stop();
+                }
+            }
+        }
     }
-    #endif
+    
 
     public void EnableAltar()
     {
@@ -79,7 +101,7 @@ public class ColorAltarManager : MonoBehaviour
             item.PlayAnim();
         }
         
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
         
         explosion.Play(); 
         explosionSource.Play();
@@ -88,14 +110,15 @@ public class ColorAltarManager : MonoBehaviour
         if (meshDestroyScript != null)
         {
             meshDestroyScript.DestroyMesh();
-            Debug.Log("kırıldı");
         }
 
         impulseSource.GenerateImpulse();
-        
+
         yield return new WaitForSeconds(explosionTime);
-        
+
         Debug.Log("Game Completed");
+        gameCompleted = true;
         OnGameCompleted?.Invoke();
     }
+    
 }

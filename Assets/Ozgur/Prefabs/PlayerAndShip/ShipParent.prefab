@@ -8199,12 +8199,12 @@ PrefabInstance:
     - target: {fileID: 117550225062020290, guid: e64280f1856a2814eb2c6b12338a98a7,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 8
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 117550225062020290, guid: e64280f1856a2814eb2c6b12338a98a7,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 2.55
       objectReference: {fileID: 0}
     - target: {fileID: 117550225062020290, guid: e64280f1856a2814eb2c6b12338a98a7,
         type: 3}
@@ -8214,12 +8214,12 @@ PrefabInstance:
     - target: {fileID: 117550225062020290, guid: e64280f1856a2814eb2c6b12338a98a7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.17
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 117550225062020290, guid: e64280f1856a2814eb2c6b12338a98a7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.24
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 294834521049009007, guid: e64280f1856a2814eb2c6b12338a98a7,
         type: 3}
@@ -8283,8 +8283,23 @@ PrefabInstance:
       objectReference: {fileID: 6556570861794672174}
     - target: {fileID: 4414657574581043348, guid: e64280f1856a2814eb2c6b12338a98a7,
         type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414657574581043348, guid: e64280f1856a2814eb2c6b12338a98a7,
+        type: 3}
       propertyPath: ShapeModule.radiusThickness
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414657574581043348, guid: e64280f1856a2814eb2c6b12338a98a7,
+        type: 3}
+      propertyPath: InitialModule.startRotationY.scalar
+      value: -0.2617994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414657574581043348, guid: e64280f1856a2814eb2c6b12338a98a7,
+        type: 3}
+      propertyPath: InitialModule.startRotationY.minScalar
+      value: 0.5235988
       objectReference: {fileID: 0}
     - target: {fileID: 4564136702633534625, guid: e64280f1856a2814eb2c6b12338a98a7,
         type: 3}
