@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 2636214481070513713}
   - component: {fileID: 5780874393386303438}
   - component: {fileID: 8301147661826054587}
+  - component: {fileID: 438752976504911167}
   m_Layer: 5
   m_Name: AfterCredits
   m_TagString: Untagged
@@ -509,6 +510,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &438752976504911167
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321488440507113189}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6451267719022496295
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +643,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2672084049356279392}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: EasterEggSceneLoader, Assembly-CSharp
+        m_MethodName: PlayerYesButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6970404426909333490
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,4 +777,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1321598507034095778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: EasterEggSceneLoader, Assembly-CSharp
+        m_MethodName: PlayerNoButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

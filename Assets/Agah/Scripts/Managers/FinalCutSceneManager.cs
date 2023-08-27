@@ -17,7 +17,7 @@ public class FinalCutSceneManager : MonoBehaviour
     [SerializeField]CameraManager cameraManager;
 
     bool isGameComplete;
-    public static bool isCutSceneOver;
+    public static event Action IsCutSceneOver;
     [Tooltip("FOR THIS CLASS TO WORK, YOU NEED TO ENSURE ALL CAMERAS ARE ASSINGED IN THE CameraManager CLASS/OBJECT.")]
     public bool READTOOLTIP;
 
@@ -35,7 +35,6 @@ public class FinalCutSceneManager : MonoBehaviour
 
     private void Start()
     {
-        isCutSceneOver = false;
         isGameComplete = false;
 
         ResetCamera(cameraManager.ada1Camera);
@@ -50,8 +49,8 @@ public class FinalCutSceneManager : MonoBehaviour
 #if UNITY_EDITOR
         if(Input.GetKeyDown(KeyCode.P))
         {
-            isCutSceneOver=true;
-            Debug.Log("P tuþuna basýldý, isCutSceneOver = " + isCutSceneOver);
+            IsCutSceneOver?.Invoke();
+            Debug.Log("P tuþuna basýldý, isCutSceneOver invoked ");
         }
 
 #endif
@@ -80,7 +79,7 @@ public class FinalCutSceneManager : MonoBehaviour
             MoveCamera(cameraManager.ada1Camera);
 
         if (HasCameraMoved(cameraManager.ada1Camera))
-            isCutSceneOver = true;
+            IsCutSceneOver?.Invoke();
 
         PlayerStateData.Singleton.currentMainState = PlayerStateData.PlayerMainState.NormalState;   
     }

@@ -18,13 +18,12 @@ public class EasterEggSceneManager : MonoBehaviour
         var _mushroomCollected = CoinChestMushroomManager.Singleton.mushroomNumber;
         mushroomCollected = _mushroomCollected;
         StartCoroutine(CallMushroomEvent());
-        //InvokeMushroomEvent(); 
     }
     public void InvokeMushroomEvent()
     {
         OnMushroomEvent?.Invoke(mushroomCollected);
     }
-    IEnumerator CallMushroomEvent() // TODO: Build öncesi sil ve Start'a gerekli fonksiyonu koy.
+    IEnumerator CallMushroomEvent() 
     {
         yield return new WaitForSeconds(waitTime);
         InvokeMushroomEvent();
