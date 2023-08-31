@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class EasterEggSceneLoader : MonoBehaviour
 {
     bool playerYes;
+    bool playerYesBefore;
     bool playerNo;
 
     bool isCutsceneOver = false;
@@ -64,7 +65,11 @@ public class EasterEggSceneLoader : MonoBehaviour
     }
     public void PlayerYesButton()
     {
-        playerYes = true;
+        if(!playerYesBefore) playerYesBefore = true;
+        else
+        {
+            playerYes = true;
+        }
         Debug.Log("Button Clicked !! ");
     }
     public void PlayerNoButton()

@@ -30,6 +30,7 @@ public class FinalCutSceneManager : MonoBehaviour
     private void ColorAltarManager_OnGameCompleted()
     {
         isGameComplete = true;
+        Timer.StopTimer();
         Debug.Log("EVENT ALINDI");
     }
 
