@@ -82,6 +82,7 @@ public class EasterEggSceneLoader : MonoBehaviour
     {
         Debug.Log("Debug");
         canvas.interactable=true;
+        canvas.gameObject.GetComponent<Canvas>().sortingOrder = 1;
         float timePassed = 0f;
         float increaseSpeed = 1 / fadeTime;
 

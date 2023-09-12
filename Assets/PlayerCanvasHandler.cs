@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCanvasHandler : MonoBehaviour
 {
-    [SerializeField] CanvasGroup canvasToHandle;
+    [SerializeField] Canvas[] canvasToHandle;
 
     private void Awake()
     {
@@ -13,7 +13,10 @@ public class PlayerCanvasHandler : MonoBehaviour
 
     private void ColorAltarManager_OnGameCompleted()
     {
-        canvasToHandle.alpha = 0;
+        foreach (var canvas in canvasToHandle) 
+        { 
+          canvas.gameObject.SetActive(false);
+        }
     }
 }
 
