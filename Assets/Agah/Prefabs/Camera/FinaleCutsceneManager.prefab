@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad55623c0e4141b48a4bae9cc73a1c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMoveSpeed: 0.15
-  cameraMoveLimit: 1.5
+  cameraMoveSpeed: 0.1
+  cameraMoveLimit: 3
+  waitTime: 1
   cameraManager: {fileID: 0}
+  READTOOLTIP: 0

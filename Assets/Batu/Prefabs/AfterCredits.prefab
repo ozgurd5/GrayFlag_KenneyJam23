@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 3201448348291536312}
   - component: {fileID: 2672084049356279392}
   - component: {fileID: 6371330441340652399}
+  - component: {fileID: 1201060135525849673}
   m_Layer: 5
   m_Name: yes
   m_TagString: Untagged
@@ -656,6 +657,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1201060135525849673}
+        m_TargetAssemblyTypeName: QuestionScript, Assembly-CSharp
+        m_MethodName: ChangeQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1201060135525849673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451267719022496295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7440d82d62166418a0758ab7c7c598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmp: {fileID: 175276143374373382}
 --- !u!1 &6970404426909333490
 GameObject:
   m_ObjectHideFlags: 0
