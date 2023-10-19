@@ -1499,7 +1499,7 @@ GameObject:
   - component: {fileID: 630346673504259325}
   - component: {fileID: 2518473714793891812}
   - component: {fileID: 1142116394777701893}
-  - component: {fileID: 4879631420678414876}
+  - component: {fileID: 8358913820881530893}
   m_Layer: 0
   m_Name: WelcomeGuy
   m_TagString: Untagged
@@ -1587,8 +1587,8 @@ MonoBehaviour:
   dialogueObject: {fileID: 0}
   thinkingObject: {fileID: 352205560236649218}
   playerCanvas: {fileID: 0}
---- !u!135 &4879631420678414876
-SphereCollider:
+--- !u!136 &8358913820881530893
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1605,9 +1605,11 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.12074926
-  m_Center: {x: -2.4389868e-10, y: 0.08334527, z: 0.037475593}
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Height: 0.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.07, z: 0}
 --- !u!1 &4286638831400020273
 GameObject:
   m_ObjectHideFlags: 0

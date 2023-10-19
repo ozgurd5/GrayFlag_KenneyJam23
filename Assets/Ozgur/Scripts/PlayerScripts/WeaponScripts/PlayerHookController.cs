@@ -73,7 +73,7 @@ public class PlayerHookController : MonoBehaviour
     private IEnumerator HandleShoot()
     {
         if (CrosshairManager.isLookingAtEnemy || CrosshairManager.isLookingAtEnemyLong) hookedPosition = CrosshairManager.enemyHookPlace.position;
-        else hookedPosition = CrosshairManager.crosshairHit.transform.position;
+        else hookedPosition = CrosshairManager.crosshairHit.collider.transform.position;
 
         lr.enabled = true;
         lr.SetPosition(1, hookedPosition);
