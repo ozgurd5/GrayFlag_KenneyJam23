@@ -80,7 +80,7 @@ public class PlayerHookController : MonoBehaviour
         
         flyingCondition = true;
         
-        yield return new WaitForSeconds(an.attackAnimationHalfDuration);
+        yield return new WaitForSeconds(an.wav.attackAnimationHalfDuration);
         
         lr.enabled = false;
     }
