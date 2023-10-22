@@ -44,7 +44,7 @@ public class PlayerHookController : MonoBehaviour
     private void Update()
     {
         if (psd.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
-        if (an.isHidden) return;
+        if (an.isHidden || an.isAttackAnimationPlaying) return;
         
         lr.SetPosition(0, lineOutTransform.position);
         EnterHookState();
