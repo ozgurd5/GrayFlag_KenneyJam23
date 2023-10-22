@@ -1,6 +1,7 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSwordController : WeaponAnimationManagerBase
 {
@@ -47,13 +48,13 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     [SerializeField] private float movingAnimationPositionZ;
     [SerializeField] private float movingAnimationPositionZBack;
 
-    private IEnumerator playMovingAnimation;
+    private IEnumerator movingAnimation;
     private Tweener movingTweenY;
     private Tweener movingTweenZ;
     private Tweener runningModeRotationTween;
     
-    private IEnumerator playHideWeaponAnimation;
-    private IEnumerator playExposeWeaponAnimation;
+    private IEnumerator hideWeaponAnimation;
+    private IEnumerator exposeWeaponAnimation;
     private Tweener hideTween;
     
     private int damage;
@@ -69,10 +70,11 @@ public class PlayerSwordController : WeaponAnimationManagerBase
         psd = PlayerStateData.Singleton;
         pim = PlayerInputManager.Singleton;
         sword = GameObject.Find("PlayerCamera/Sword").transform;
+        cooldownSlider = GameObject.Find("PlayerCanvas/SwordCooldownSlider").GetComponent<Slider>();
 
-        playMovingAnimation = PlayMovingAnimation();
-        playHideWeaponAnimation = PlayHideWeaponAnimation();
-        playExposeWeaponAnimation = PlayExposeWeaponAnimation();
+        movingAnimation = PlayMovingAnimation();
+        hideWeaponAnimation = PlayHideWeaponAnimation();
+        exposeWeaponAnimation = PlayExposeWeaponAnimation();
 
         attackParticle = whiteAttackParticle;
         PlayerColorEnabler.OnYellowColorEnabled += EnableYellowParticle;
@@ -91,14 +93,15 @@ public class PlayerSwordController : WeaponAnimationManagerBase
         
         HandleHiddenStatus();
         CheckDialogueAndSwimmingConditions();
+
         if (isHidden || isHidingAnimationPlaying) return;
         
         DecideForMovingAnimationHalfDuration();
         
         if (psd.isMoving && !isMovingAnimationPlaying)
         {
-            playMovingAnimation = PlayMovingAnimation();
-            StartCoroutine(playMovingAnimation);
+            movingAnimation = PlayMovingAnimation();
+            StartCoroutine(movingAnimation);
         }
         else if (psd.isIdle && isMovingAnimationPlaying) StopMovingAnimation();
         
@@ -107,10 +110,99 @@ public class PlayerSwordController : WeaponAnimationManagerBase
 
         HandleAttack();
     }
-    
+
+    private void HandleHiddenStatus()
+    {
+        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen ))
+        {
+            isHidden = true;
+
+            hideWeaponAnimation = PlayHideWeaponAnimation();
+            StartCoroutine(hideWeaponAnimation);
+        }
+
+        else if (didExitSwimming || didExitDialogue || (isHidden && pim.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
+        {
+            isHidden = false;
+
+            exposeWeaponAnimation = PlayExposeWeaponAnimation();
+            StartCoroutine(exposeWeaponAnimation);
+        }
+    }
+
+    private void CheckDialogueAndSwimmingConditions()
+    {
+        didExitSwimming = previousIsSwimming && !psd.isSwimming;
+        didExitDialogue = previousIsDialogueOpen && !DialogueController.isOpen;
+
+        previousIsSwimming = psd.isSwimming;
+        previousIsDialogueOpen = DialogueController.isOpen;
+    }
+
+    private void DecideForMovingAnimationHalfDuration()
+    {
+        if (psd.isWalking) movingAnimationHalfDuration = walkingAnimationHalfDuration;
+        else if (psd.isRunning) movingAnimationHalfDuration = runningAnimationHalfDuration;
+    }
+
+    private IEnumerator PlayMovingAnimation()
+    {
+        isMovingAnimationPlaying = true;
+
+        movingTweenZ = sword.transform.DOLocalMoveZ(movingAnimationPositionZ, movingAnimationHalfDuration);
+        movingTweenY = sword.transform.DOLocalMoveY(movingAnimationPositionY, movingAnimationHalfDuration);
+        yield return new WaitForSeconds(movingAnimationHalfDuration);
+
+        movingTweenZ = sword.transform.DOLocalMoveY(movingAnimationPositionYBack, movingAnimationHalfDuration);
+        movingTweenY = sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, movingAnimationHalfDuration);
+        yield return new WaitForSeconds(movingAnimationHalfDuration);
+
+        isMovingAnimationPlaying = false;
+    }
+
+    private void StopMovingAnimation()
+    {
+        StopCoroutine(movingAnimation);
+        isMovingAnimationPlaying = false;
+
+        movingTweenZ.Kill();
+        movingTweenY.Kill();
+
+        if (psd.isIdle) sword.transform.DOLocalMoveY(movingAnimationPositionYBack, 0.1f);
+        sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, 0.1f);
+    }
+
+    private void EnableRunningMode()
+    {
+        attackRotationXBack = runningModeRotationX;
+        movingAnimationPositionZ = runningModeMovingAnimationPositionZ;
+        movingAnimationPositionZBack = runningModeMovingAnimationPositionZBack;
+
+        StopMovingAnimation();
+
+        runningModeRotationTween.Kill();
+        runningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(runningModeRotationX, 0f, 0f), 0.1f);
+
+        isRunningModeActive = true;
+    }
+
+    private void DisableRunningMode()
+    {
+        attackRotationXBack = walkingModeRotationX;
+        movingAnimationPositionZ = walkingModeMovingAnimationPositionZ;
+        movingAnimationPositionZBack = walkingModeMovingAnimationPositionZBack;
+
+        StopMovingAnimation();
+
+        runningModeRotationTween.Kill();
+        runningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(walkingModeRotationX, 0f, 0f), 0.1f);
+
+        isRunningModeActive = false;
+    }
+
     private void HandleAttack()
     {
-        if (!pim.isAttackKeyDown) return;
+        if (!pim.isAttackKeyDown || isAttackAnimationPlaying) return;
         StartCoroutine(PlayAttackAnimation(sword, attackRotationX, attackRotationXBack, 0f, attackAnimationHalfDuration));
         attackSource.Play();
 
@@ -121,90 +213,10 @@ public class PlayerSwordController : WeaponAnimationManagerBase
         }
     }
 
-    private void DecideForMovingAnimationHalfDuration()
-    {
-        if (psd.isWalking) movingAnimationHalfDuration = walkingAnimationHalfDuration;
-        else if (psd.isRunning) movingAnimationHalfDuration = runningAnimationHalfDuration;
-    }
-    
-    private IEnumerator PlayMovingAnimation()
-    {
-        isMovingAnimationPlaying = true;
-        
-        movingTweenZ = sword.transform.DOLocalMoveZ(movingAnimationPositionZ, movingAnimationHalfDuration);
-        movingTweenY = sword.transform.DOLocalMoveY(movingAnimationPositionY, movingAnimationHalfDuration);
-        yield return new WaitForSeconds(movingAnimationHalfDuration);
-        
-        movingTweenZ = sword.transform.DOLocalMoveY(movingAnimationPositionYBack, movingAnimationHalfDuration);
-        movingTweenY = sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, movingAnimationHalfDuration);
-        yield return new WaitForSeconds(movingAnimationHalfDuration);
-        
-        isMovingAnimationPlaying = false;
-    }
-    
-    private void EnableRunningMode()
-    {
-        attackRotationXBack = runningModeRotationX;
-        movingAnimationPositionZ = runningModeMovingAnimationPositionZ;
-        movingAnimationPositionZBack = runningModeMovingAnimationPositionZBack;
-        
-        StopMovingAnimation();
-
-        runningModeRotationTween.Kill();
-        runningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(runningModeRotationX, 0f, 0f), 0.1f);
-        
-        isRunningModeActive = true;
-    }
-
-    private void DisableRunningMode()
-    {
-        attackRotationXBack = walkingModeRotationX;
-        movingAnimationPositionZ = walkingModeMovingAnimationPositionZ;
-        movingAnimationPositionZBack = walkingModeMovingAnimationPositionZBack;
-        
-        StopMovingAnimation();
-        
-        runningModeRotationTween.Kill();
-        runningModeRotationTween = sword.transform.DOLocalRotate(new Vector3(walkingModeRotationX, 0f, 0f), 0.1f);
-
-        isRunningModeActive = false;
-    }
-
-    private void StopMovingAnimation()
-    {
-        StopCoroutine(playMovingAnimation);
-        isMovingAnimationPlaying = false;
-        
-        movingTweenZ.Kill();
-        movingTweenY.Kill();
-
-        if (psd.isIdle) sword.transform.DOLocalMoveY(movingAnimationPositionYBack, 0.1f);
-        sword.transform.DOLocalMoveZ(movingAnimationPositionZBack, 0.1f);
-    }
-
-    private void HandleHiddenStatus()
-    {
-        if (!isHidden && (pim.isWeaponHideKeyDown || psd.isSwimming || DialogueController.isOpen ))
-        {
-            isHidden = true;
-            
-            playHideWeaponAnimation = PlayHideWeaponAnimation();
-            StartCoroutine(playHideWeaponAnimation);
-        }
-
-        else if (didExitSwimming || didExitDialogue || (isHidden && pim.isWeaponHideKeyDown && !psd.isSwimming && !DialogueController.isOpen))
-        {
-            isHidden = false;
-            
-            playExposeWeaponAnimation = PlayExposeWeaponAnimation();
-            StartCoroutine(playExposeWeaponAnimation);
-        }
-    }
-
     private IEnumerator PlayHideWeaponAnimation()
     {
         StopMovingAnimation();
-        StopCoroutine(playExposeWeaponAnimation);
+        StopCoroutine(exposeWeaponAnimation);
         hideTween.Kill();
         hidingSource.Play();
         
@@ -220,7 +232,7 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     {
         if (psd.isSwimming) yield break;
         
-        StopCoroutine(playHideWeaponAnimation);
+        StopCoroutine(hideWeaponAnimation);
         hideTween.Kill();
         hidingSource.Play();
         
@@ -230,15 +242,6 @@ public class PlayerSwordController : WeaponAnimationManagerBase
         yield return new WaitForSeconds(hidingTime);
 
         isHidingAnimationPlaying = false;
-    }
-    
-    private void CheckDialogueAndSwimmingConditions()
-    {
-        didExitSwimming = previousIsSwimming && !psd.isSwimming;
-        didExitDialogue = previousIsDialogueOpen && !DialogueController.isOpen;
-
-        previousIsSwimming = psd.isSwimming;
-        previousIsDialogueOpen = DialogueController.isOpen;
     }
 
     private void EnableYellowParticle()

@@ -1,6 +1,7 @@
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
 {
@@ -59,6 +60,7 @@ public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
         psd = PlayerStateData.Singleton;
         pim = PlayerInputManager.Singleton;
         hookGun = GameObject.Find("PlayerCamera/HookGun").transform;
+        cooldownSlider = GameObject.Find("PlayerCanvas/HookGunCooldownSlider").GetComponent<Slider>();
 
         playMovingAnimation = PlayMovingAnimation();
         playHideWeaponAnimation = PlayHideWeaponAnimation();
