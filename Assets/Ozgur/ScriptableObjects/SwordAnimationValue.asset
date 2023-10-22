@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15959580a838cbd47834ee46f6ee5519, type: 3}
+  m_Name: SwordAnimationValue
+  m_EditorClassIdentifier: 
+  attackAnimationHalfDuration: 0.3
+  walkingAnimationHalfDuration: 0.5
+  runningAnimationHalfDuration: 0.2
+  attackRotationX: 50
+  attackRotationY: 0
+  runningModeRotationX: 25
+  walkingModeRotationX: 0
+  movingAnimationPositionY: -0.35
+  movingAnimationPositionYBack: -0.4
+  walkingModeMovingAnimationPositionZ: 0.62
+  walkingModeMovingAnimationPositionZBack: 0.6
+  runningModeMovingAnimationPositionZ: 0.52
+  runningModeMovingAnimationPositionZBack: 0.5
+  hidingTime: 0.3
+  hiddenPositionY: -1.1
+  hiddenPositionYBack: -0.4
