@@ -23,6 +23,8 @@ public class PlayerHookGunAnimationManager : WeaponAnimationManagerBase
     
     private void HandleAttack()
     {
-        if (PlayerInputManager.Singleton.isHookKeyDown && !isHidden) StartCoroutine(PlayAttackAnimation());
+        if (!PlayerInputManager.Singleton.isHookKeyDown || isHidden || isAttackAnimationPlaying) return;
+        if (PlayerStateData.Singleton.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
+        StartCoroutine(PlayAttackAnimation());
     }
 }

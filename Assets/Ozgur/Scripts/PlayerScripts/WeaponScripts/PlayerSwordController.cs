@@ -40,6 +40,7 @@ public class PlayerSwordController : WeaponAnimationManagerBase
     private void HandleAttack()
     {
         if (!PlayerInputManager.Singleton.isAttackKeyDown || isAttackAnimationPlaying || isHidden) return;
+        if (PlayerStateData.Singleton.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
         StartCoroutine(PlayAttackAnimation());
         attackSource.Play();
 

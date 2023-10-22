@@ -28,12 +28,12 @@ public class WeaponAnimationManagerBase : MonoBehaviour
     private IEnumerator hideWeaponAnimation;
     private IEnumerator exposeWeaponAnimation;
     private Tweener hideTween;
-    public bool isHidden; //PlayerHookController.cs needs access
+    [Header("Info - No Touch")] public bool isHidden; //PlayerHookController.cs needs access
     private bool isHidingAnimationPlaying;
 
     //Attacking
     private Tweener attackRotationTween;
-    protected bool isAttackAnimationPlaying;
+    public bool isAttackAnimationPlaying; //PlayerHookController.cs needs access
     private float attackRotationXBack;
 
 
@@ -55,8 +55,7 @@ public class WeaponAnimationManagerBase : MonoBehaviour
     /// </summary>
     protected void OnUpdate()
     {
-        if (PlayerStateData.Singleton.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState
-            or PlayerStateData.PlayerMainState.DialogueState)) return;
+        if (PlayerStateData.Singleton.currentMainState is not (PlayerStateData.PlayerMainState.NormalState or PlayerStateData.PlayerMainState.HookState)) return;
 
         HandleHiddenStatus();
         CheckDialogueAndSwimmingConditions();
