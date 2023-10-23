@@ -7,6 +7,7 @@ public class WeaponAnimationValue : ScriptableObject
     public float attackAnimationHalfDuration = 0.1f;
     public float walkingAnimationHalfDuration = 0.5f;
     public float runningAnimationHalfDuration = 0.2f;
+    public float runningModeSwitchDuration = 0.2f;
 
     [Header("Assign - Rotations")]
     public float defaultRotationY = 0f;
