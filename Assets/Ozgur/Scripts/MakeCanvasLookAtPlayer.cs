@@ -11,7 +11,9 @@ public class MakeCanvasLookAtPlayer : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(playerTransform.position);
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y + 180f, 0f);
+        transform.LookAt(playerTransform.position, Vector3.up);
+
+        //Prevent looking down
+        if (transform.eulerAngles.x < 270) transform.rotation = Quaternion.Euler(360, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 }
