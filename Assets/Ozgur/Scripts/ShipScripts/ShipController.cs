@@ -118,11 +118,12 @@ public class ShipController : MonoBehaviour
         if (psd.currentMainState != PlayerStateData.PlayerMainState.ShipControllingState) return;
 
         cameraFollowTransform.RotateAround(cameraLookAtTransform.position, Vector3.up, sim.lookInput.x);
-        
-        if ((cameraFollowTransform.position.y < cameraMinYPos && sim.lookInput.y < 0) ||
-            cameraFollowTransform.position.y > cameraMaxYPos && sim.lookInput.y > 0) return;
-        
         cameraFollowTransform.RotateAround(cameraLookAtTransform.position, cameraFollowTransform.right, sim.lookInput.y);
+
+        if ((cameraFollowTransform.position.y < cameraMinYPos && sim.lookInput.y < 0) || (cameraFollowTransform.position.y > cameraMaxYPos && sim.lookInput.y > 0))
+        {
+            cameraFollowTransform.RotateAround(cameraLookAtTransform.position, cameraFollowTransform.right, -sim.lookInput.y);
+        }
     }
 
     private void HandleMovement()
