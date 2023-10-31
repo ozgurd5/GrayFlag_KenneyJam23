@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class AdaPositionManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class AdaPositionManager : MonoBehaviour
     [Header("Assign - Cameras")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private CameraManager cameraManager;
+
+    public static event Action OnAda5IsHere; //for music change
 
     private void Awake()
     {
@@ -25,8 +28,8 @@ public class AdaPositionManager : MonoBehaviour
 
     private IEnumerator HandleIslandWithTimeDelay()
     {
-        yield return new WaitForSeconds(1f);
-        
+        OnAda5IsHere?.Invoke();
+        yield return new WaitForSeconds(3f);
         ShowIsland();
         StartCoroutine(PlayCutscene());
     }
