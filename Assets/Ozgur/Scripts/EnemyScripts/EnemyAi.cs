@@ -21,7 +21,8 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] private bool isPlayerInSightRange;
     [SerializeField] private bool isPlayerInAttackRange;
     [SerializeField] private bool didEncounterPlayer;
-    
+    [SerializeField] private Collider[] overlapSphereColliders;
+
     private Transform player;
     private NavMeshAgent navMeshAgent;
     private EnemyManager em;
@@ -76,8 +77,19 @@ public class EnemyAi : MonoBehaviour
         float randomX = Random.Range(-walkPointRange, walkPointRange);
         
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer)) isWalkPointSet = true;
+
+        //Walk point must must be in open space, not inside of an object. Check the note in bellow.
+        overlapSphereColliders = Physics.OverlapSphere(walkPoint, 2f);
+        bool isOverlapping = overlapSphereColliders.Length > 1; //We must ignore the ground which is always overlapping.
+
+        //Walk point must be over the ground, not in air.
+        bool isThereGround = Physics.Raycast(walkPoint, -transform.up, 0.01f, groundLayer);
+
+        if (isOverlapping && isThereGround) isWalkPointSet = true;
+
+        //The note in bellow: We must not use OverlapSphereNonAlloc because it doesn't count initial colliders. These are the ones I want to count..
+        //..but it doesn't. I think it's work like sphereCast. Unit docs note about sphereCast:
+        //SphereCast will not detect colliders for which the sphere overlaps the collider.
     }
 
     private void AttackPlayer()
@@ -119,7 +131,11 @@ public class EnemyAi : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(walkPoint, 2f);
     }
 }
