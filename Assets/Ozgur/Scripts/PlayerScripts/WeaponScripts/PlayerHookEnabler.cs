@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerHookEnabler : MonoBehaviour
@@ -17,7 +18,7 @@ public class PlayerHookEnabler : MonoBehaviour
         MarketManager.OnHookGunBought += EnableHookGun;
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H)) EnableHookGun();
