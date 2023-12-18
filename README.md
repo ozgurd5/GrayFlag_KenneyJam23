@@ -1,4 +1,6 @@
 # GrayFlag_KenneyJam23
+https://www.youtube.com/watch?v=NcSXuU3Big4
+
 https://ozgurd5.itch.io/grayflag
 
 Gray Flag is an exploration game about exploring colors in Grey Islands!<br>
